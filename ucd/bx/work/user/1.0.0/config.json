@@ -1,0 +1,16 @@
+{
+  "stable": true,
+  "exports": {
+    "user": {}
+  },
+  "packs": {
+	  "/pkg/user.css": [
+		  "/src/login.css",
+		  "/src/register.css"
+	  ],
+	  "/pkg/user.js": [
+		  "/src/login.js",
+		  "/src/register.js"
+	  ]
+  }
+}
