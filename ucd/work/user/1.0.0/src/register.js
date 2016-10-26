@@ -1,3 +1,4 @@
+require('./common.js')
 var $ = require('$');
 var regiester = $('#Register');
 var Register = {

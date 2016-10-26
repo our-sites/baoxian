@@ -1,12 +1,12 @@
 {{ atmjs.use(':login') }}
-{%include 'html/common/header.html' | path %}
+{%include 'html/layout/header.html' | path('work/common') %}
 <div id="Login">
     <div class="login-body clf">
         <div class="logo">
-            <img src="./img/logo.png" alt="logo" width="56" height="56">
+            <img src="{{ 'html/img/logo.png' | uri('work/common') }}" alt="logo" width="56" height="56">
         </div>
         <div class="fl">
-            <img src="./img/login-left.jpg" alt="欢迎登录保险管家" width="320" height="320">
+            <img src="{{ 'html/img/login-left.jpg' | uri('work/common') }}" alt="欢迎登录保险管家" width="320" height="320">
         </div>
         <div class="fr">
             <form action="">
@@ -31,4 +31,4 @@
     </div>
     <div class="copyright">　© 2016 baoxianguanjia.com 豫ICP备13006688号</div>
 </div>
-{%include 'html/common/footer.html' | path %}
+{%include 'html/layout/footer.html' | path('work/common') %}

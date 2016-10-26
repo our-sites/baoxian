@@ -34,7 +34,7 @@ class Consult(models.Model):
 
 class Company(models.Model):
     cid=models.AutoField(primary_key=True)
-    comname=models.CharField(max_length=100,verbose_name="企业名")
+    comname=models.CharField(max_length=100,verbose_name="企业名",unique=True)
     shortname=models.CharField(max_length=100,verbose_name="企业名简写")
     img=models.ImageField(max_length=200,upload_to="company_img",verbose_name="企业图片")
     class Meta:

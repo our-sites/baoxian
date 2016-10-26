@@ -1,13 +1,26 @@
-;/*!work/user/1.0.0:login*/
-define('work/user/1.0.0:login', [], function(require, exports, module) {
+;/*!work/user/1.0.0:common*/
+define('work/user/1.0.0:common', ['work/common/1.0.0:common'], function(require, exports, module) {
 
+  require('work/common/1.0.0:common');
+  
+  // @require 'work/user/1.0.0:common.css';
+  
+
+});
+
+;/*!work/user/1.0.0:login*/
+define('work/user/1.0.0:login', ['work/user/1.0.0:common'], function(require, exports, module) {
+
+  require('work/user/1.0.0:common');
   // @require work/user/1.0.0:login.css
+  
 
 });
 
 ;/*!work/user/1.0.0:register*/
-define('work/user/1.0.0:register', ['com/global/1.0.0:dollar'], function(require, exports, module) {
+define('work/user/1.0.0:register', ['work/user/1.0.0:common', 'com/global/1.0.0:dollar'], function(require, exports, module) {
 
+  require('work/user/1.0.0:common')
   var $ = require('com/global/1.0.0:dollar');
   var regiester = $('#Register');
   var Register = {

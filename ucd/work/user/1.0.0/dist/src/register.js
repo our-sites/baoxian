@@ -1,5 +1,6 @@
-define('work/user/1.0.0:register', ['com/global/1.0.0:dollar'], function(require, exports, module) {
+define('work/user/1.0.0:register', ['work/user/1.0.0:common', 'com/global/1.0.0:dollar'], function(require, exports, module) {
 
+  require('work/user/1.0.0:common')
   var $ = require('com/global/1.0.0:dollar');
   var regiester = $('#Register');
   var Register = {

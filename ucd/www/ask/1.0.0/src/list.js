@@ -1,1 +1,3 @@
-// @require ./list.css
+require('./common.js');
+
+// @require './list.css'

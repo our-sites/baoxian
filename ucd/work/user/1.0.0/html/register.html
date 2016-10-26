@@ -1,9 +1,9 @@
 {{ atmjs.use(':register') }}
-{%include 'html/common/header.html' | path %}
+{%include 'html/layout/header.html' | path('work/common') %}
 <div id="Register">
     <div class="register-body">
         <div class="logo">
-            <img src="./img/logo.png" alt="logo" width="56" height="56">
+            <img src="{{ 'html/img/logo.png' | uri('work/common') }}" alt="logo" width="56" height="56">
         </div>
         <form action="">
             <h2>注册保险管家账号</h2>
@@ -40,4 +40,4 @@
     </div>
     <div class="copyright">　© 2016 baoxianguanjia.com 豫ICP备13006688号</div>
 </div>
-{%include 'html/common/footer.html' | path %}
+{%include 'html/layout/footer.html' | path('work/common') %}

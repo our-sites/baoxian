@@ -5,10 +5,12 @@
   },
   "packs": {
 	  "/pkg/user.css": [
+		  "/src/common.css",
 		  "/src/login.css",
 		  "/src/register.css"
 	  ],
 	  "/pkg/user.js": [
+		  "/src/common.js",
 		  "/src/login.js",
 		  "/src/register.js"
 	  ]

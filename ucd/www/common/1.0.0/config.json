@@ -1,0 +1,7 @@
+{
+  "stable": true,
+  "exports": {
+    "common": {}
+  },
+  "packs": {}
+}

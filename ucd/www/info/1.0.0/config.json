@@ -1,0 +1,19 @@
+{
+  "stable": false,
+  "exports": {
+    "index": {},
+	"detail": {}
+  },
+  "packs": {
+	  "/pkg/info.js": [
+		  "/src/common.js",
+		  "/src/index.js",
+		  "/src/detail.js"
+	  ],
+	  "/pkg/info.css": [
+		  "/src/common.css",
+		  "/src/index.css",
+		  "/src/detail.css"
+	  ]
+  }
+}

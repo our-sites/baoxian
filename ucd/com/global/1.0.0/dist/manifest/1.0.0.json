@@ -24,6 +24,10 @@
     "com/global/1.0.0:global": {
       "uri": "/com/global/1.0.0/src/global.js",
       "type": "js",
+      "deps": [
+        "com/global/1.0.0:dollar",
+        "com/global/1.0.0:global.css"
+      ],
       "pkg": "com/global/1.0.0:p1"
     }
   },
@@ -44,7 +48,8 @@
         "com/global/1.0.0:global"
       ],
       "deps": [
-        "lib/jquery/1.11.3:jquery"
+        "lib/jquery/1.11.3:jquery",
+        "com/global/1.0.0:global.css"
       ]
     }
   }

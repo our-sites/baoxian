@@ -8,8 +8,7 @@
   "alias": {
     "$": "com/global:dollar",
     "jquery": "jquery:jquery",
-    "global": "com/global:global",
-    "global.css": "com/global:global.css"
+    "global": "com/global:global"
   },
   "formatTag": false,
   "async": true,
