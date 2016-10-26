@@ -32,5 +32,41 @@ class Consult(models.Model):
     def __unicode__(self):
         return self.title+"---"+datetime.datetime.fromtimestamp(self.addtime).strftime("%Y-%m-%d")
 
+class Company(models.Model):
+    cid=models.AutoField(primary_key=True)
+    comname=models.CharField(max_length=100,verbose_name="企业名")
+    shortname=models.CharField(max_length=100,verbose_name="企业名简写")
+    img=models.ImageField(max_length=200,upload_to="company_img",verbose_name="企业图片")
+    class Meta:
+        db_table="bx_company"
+        verbose_name="保险企业"
+        verbose_name_plural="所有保险企业"
+    def __unicode__(self):
+        return  self.comname
+
+class UserType(models.Model):
+    id=models.AutoField(primary_key=True)
+    type_name=models.CharField(max_length=50,verbose_name="类型名")
+    end_age=models.PositiveIntegerField(default=0,verbose_name="结束年龄")
+    img=models.ImageField(max_length=200,upload_to="usertype_img",verbose_name="图片")
+    class Meta:
+        db_table="bx_usertype_tab"
+        verbose_name="保险人群"
+        verbose_name_plural="所有保险人群"
+    def __unicode__(self):
+        return self.type_name
+
+class CateType(models.Model):
+    id=models.AutoField(primary_key=True)
+    type_name=models.CharField(max_length=80,verbose_name="类型名")
+    usertype_id=models.ForeignKey(to=UserType,db_column="usertype_id",verbose_name="人群名")
+    class Meta:
+        db_table="bx_catetype_tab"
+        verbose_name="保险类型"
+        verbose_name_plural="所有保险类型"
+    def __unicode__(self):
+        return self.type_name
+
+
 
 

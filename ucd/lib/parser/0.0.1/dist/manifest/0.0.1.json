@@ -1,0 +1,9 @@
+{
+  "res": {
+    "lib/parser/0.0.1:parser": {
+      "uri": "/lib/parser/0.0.1/src/parser.js",
+      "type": "js"
+    }
+  },
+  "pkg": {}
+}

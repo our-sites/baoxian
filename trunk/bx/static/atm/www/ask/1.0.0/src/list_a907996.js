@@ -1,0 +1,1 @@
+define("www/ask/1.0.0:list",[],function(){});

@@ -1,0 +1,1 @@
+define("com/arale/1.2.0:auto-render",["lib/jquery/1.11.3:jquery"],function(r,a){var e=r("lib/jquery/1.11.3:jquery");a.autoRender=function(r){return new this(r).render()};var t="off"===e(document.body).attr("data-api");a.isDataApiOff=function(r){var a=e(r).attr("data-api");return"off"===a||"on"!==a&&t}});

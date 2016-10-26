@@ -5,5 +5,5 @@ __author__ = 'admin'
 # ---------------------------------
 
 from django.contrib import  admin
-from models import Consult
-admin.site.register([Consult])
+from models import Consult,Company,UserType,CateType
+admin.site.register([Consult,Company,UserType,CateType])

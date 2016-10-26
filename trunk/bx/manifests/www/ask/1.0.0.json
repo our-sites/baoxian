@@ -1,0 +1,19 @@
+{
+  "res": {
+    "www/ask/1.0.0:list.css": {
+      "uri": "/www/ask/1.0.0/src/list_28c08b4.css",
+      "type": "css",
+      "deps": [
+        "com/global/1.0.0:global.css"
+      ]
+    },
+    "www/ask/1.0.0:list": {
+      "uri": "/www/ask/1.0.0/src/list_a907996.js",
+      "type": "js",
+      "deps": [
+        "www/ask/1.0.0:list.css"
+      ]
+    }
+  },
+  "pkg": {}
+}

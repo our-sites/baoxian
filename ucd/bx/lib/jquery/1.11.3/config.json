@@ -1,8 +1,0 @@
-{
-  "packs": {
-    "/pkg/{{module}}-{{version}}.js": [
-      "/src/origin/{{module}}.js",
-      "/src/{{module}}.js"
-    ]
-  }
-}

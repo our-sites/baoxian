@@ -1,0 +1,9 @@
+{
+  "builds": [
+    {
+      "glob": "/src/parser.js",
+      "isMod": false,
+      "important": true
+    }
+  ]
+}

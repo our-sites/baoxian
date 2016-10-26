@@ -1,0 +1,63 @@
+{
+  "res": {
+    "work/user/1.0.0:login.css": {
+      "uri": "/work/user/1.0.0/src/login.css",
+      "type": "css",
+      "deps": [
+        "com/global/1.0.0:global.css"
+      ],
+      "pkg": "work/user/1.0.0:p0"
+    },
+    "work/user/1.0.0:login": {
+      "uri": "/work/user/1.0.0/src/login.js",
+      "type": "js",
+      "deps": [
+        "work/user/1.0.0:login.css"
+      ],
+      "pkg": "work/user/1.0.0:p1"
+    },
+    "work/user/1.0.0:register.css": {
+      "uri": "/work/user/1.0.0/src/register.css",
+      "type": "css",
+      "deps": [
+        "com/global/1.0.0:global.css"
+      ],
+      "pkg": "work/user/1.0.0:p0"
+    },
+    "work/user/1.0.0:register": {
+      "uri": "/work/user/1.0.0/src/register.js",
+      "type": "js",
+      "deps": [
+        "com/global/1.0.0:dollar",
+        "work/user/1.0.0:register.css"
+      ],
+      "pkg": "work/user/1.0.0:p1"
+    }
+  },
+  "pkg": {
+    "work/user/1.0.0:p0": {
+      "uri": "/work/user/1.0.0/pkg/user.css",
+      "type": "css",
+      "has": [
+        "work/user/1.0.0:login.css",
+        "work/user/1.0.0:register.css"
+      ],
+      "deps": [
+        "com/global/1.0.0:global.css"
+      ]
+    },
+    "work/user/1.0.0:p1": {
+      "uri": "/work/user/1.0.0/pkg/user.js",
+      "type": "js",
+      "has": [
+        "work/user/1.0.0:login",
+        "work/user/1.0.0:register"
+      ],
+      "deps": [
+        "work/user/1.0.0:login.css",
+        "com/global/1.0.0:dollar",
+        "work/user/1.0.0:register.css"
+      ]
+    }
+  }
+}

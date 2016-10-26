@@ -1,0 +1,17 @@
+{
+  "stable": true,
+  "debug": {
+    "param": "debugId",
+    "importCss": false
+  },
+  "loaderId": "parser:parser",
+  "alias": {
+    "$": "com/global:dollar",
+    "jquery": "jquery:jquery",
+    "global": "com/global:global",
+    "global.css": "com/global:global.css"
+  },
+  "formatTag": false,
+  "async": true,
+  "together": false
+}

@@ -1,0 +1,81 @@
+{
+  "res": {
+    "com/arale/1.2.0:aspect": {
+      "uri": "/com/arale/1.2.0/src/aspect.js",
+      "type": "js",
+      "pkg": "com/arale/1.2.0:p0"
+    },
+    "com/arale/1.2.0:attribute": {
+      "uri": "/com/arale/1.2.0/src/attribute.js",
+      "type": "js",
+      "pkg": "com/arale/1.2.0:p0"
+    },
+    "com/arale/1.2.0:auto-render": {
+      "uri": "/com/arale/1.2.0/src/auto-render.js",
+      "type": "js",
+      "deps": [
+        "lib/jquery/1.11.3:jquery"
+      ],
+      "pkg": "com/arale/1.2.0:p0"
+    },
+    "com/arale/1.2.0:base": {
+      "uri": "/com/arale/1.2.0/src/base.js",
+      "type": "js",
+      "deps": [
+        "com/arale/1.2.0:class",
+        "com/arale/1.2.0:events",
+        "com/arale/1.2.0:aspect",
+        "com/arale/1.2.0:attribute"
+      ],
+      "pkg": "com/arale/1.2.0:p0"
+    },
+    "com/arale/1.2.0:class": {
+      "uri": "/com/arale/1.2.0/src/class.js",
+      "type": "js",
+      "pkg": "com/arale/1.2.0:p0"
+    },
+    "com/arale/1.2.0:daparser": {
+      "uri": "/com/arale/1.2.0/src/daparser.js",
+      "type": "js",
+      "deps": [
+        "lib/jquery/1.11.3:jquery"
+      ],
+      "pkg": "com/arale/1.2.0:p0"
+    },
+    "com/arale/1.2.0:events": {
+      "uri": "/com/arale/1.2.0/src/events.js",
+      "type": "js",
+      "pkg": "com/arale/1.2.0:p0"
+    },
+    "com/arale/1.2.0:widget": {
+      "uri": "/com/arale/1.2.0/src/widget.js",
+      "type": "js",
+      "deps": [
+        "lib/jquery/1.11.3:jquery",
+        "com/arale/1.2.0:base",
+        "com/arale/1.2.0:daparser",
+        "com/arale/1.2.0:auto-render"
+      ],
+      "pkg": "com/arale/1.2.0:p0"
+    }
+  },
+  "pkg": {
+    "com/arale/1.2.0:p0": {
+      "uri": "/com/arale/1.2.0/pkg/arale.js",
+      "type": "js",
+      "has": [
+        "com/arale/1.2.0:aspect",
+        "com/arale/1.2.0:attribute",
+        "com/arale/1.2.0:class",
+        "com/arale/1.2.0:events",
+        "com/arale/1.2.0:base",
+        "com/arale/1.2.0:daparser",
+        "com/arale/1.2.0:auto-render",
+        "com/arale/1.2.0:widget"
+      ],
+      "deps": [
+        "lib/jquery/1.11.3:jquery"
+      ]
+    }
+  }
+}

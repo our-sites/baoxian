@@ -1,0 +1,51 @@
+{
+  "res": {
+    "com/global/1.0.0:css/font-awesome.css": {
+      "uri": "/com/global/1.0.0/src/css/font-awesome.css",
+      "type": "css",
+      "pkg": "com/global/1.0.0:p0"
+    },
+    "com/global/1.0.0:dollar": {
+      "uri": "/com/global/1.0.0/src/dollar.js",
+      "type": "js",
+      "deps": [
+        "lib/jquery/1.11.3:jquery"
+      ],
+      "pkg": "com/global/1.0.0:p1"
+    },
+    "com/global/1.0.0:global.css": {
+      "uri": "/com/global/1.0.0/src/global.css",
+      "type": "css",
+      "deps": [
+        "com/global/1.0.0:css/font-awesome.css"
+      ],
+      "pkg": "com/global/1.0.0:p0"
+    },
+    "com/global/1.0.0:global": {
+      "uri": "/com/global/1.0.0/src/global.js",
+      "type": "js",
+      "pkg": "com/global/1.0.0:p1"
+    }
+  },
+  "pkg": {
+    "com/global/1.0.0:p0": {
+      "uri": "/com/global/1.0.0/pkg/global.css",
+      "type": "css",
+      "has": [
+        "com/global/1.0.0:css/font-awesome.css",
+        "com/global/1.0.0:global.css"
+      ]
+    },
+    "com/global/1.0.0:p1": {
+      "uri": "/com/global/1.0.0/pkg/global.js",
+      "type": "js",
+      "has": [
+        "com/global/1.0.0:dollar",
+        "com/global/1.0.0:global"
+      ],
+      "deps": [
+        "lib/jquery/1.11.3:jquery"
+      ]
+    }
+  }
+}

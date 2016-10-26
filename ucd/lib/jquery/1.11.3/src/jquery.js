@@ -1,0 +1,1 @@
+window.jQuery = module.exports = require('./origin/jquery.js');

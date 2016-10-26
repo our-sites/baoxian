@@ -1,0 +1,16 @@
+{
+  "alias": {
+    "spm-jquery": "jquery:jquery",
+    "widget": "com/arale:widget"
+  },
+  "packs": {
+    "/pkg/validator.js": [
+      "/src/async.js",
+      "/src/utils.js",
+      "/src/rule.js",
+      "/src/item.js",
+      "/src/core.js",
+      "/src/validator.js"
+    ]
+  }
+}
