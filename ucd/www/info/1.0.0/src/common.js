@@ -1,3 +1,3 @@
-require('www/common/common.js');
+require('www/common:common.js');
 
 // @require './common.css'

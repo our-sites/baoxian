@@ -22,8 +22,12 @@
       "pkg": "com/global/1.0.0:p0"
     },
     "com/global/1.0.0:global": {
-      "uri": "/com/global/1.0.0/src/global_a039e0b.js",
+      "uri": "/com/global/1.0.0/src/global_2733578.js",
       "type": "js",
+      "deps": [
+        "com/global/1.0.0:dollar",
+        "com/global/1.0.0:global.css"
+      ],
       "pkg": "com/global/1.0.0:p1"
     }
   },
@@ -37,14 +41,15 @@
       ]
     },
     "com/global/1.0.0:p1": {
-      "uri": "/com/global/1.0.0/pkg/global_523817e.js",
+      "uri": "/com/global/1.0.0/pkg/global_f5ab4f9.js",
       "type": "js",
       "has": [
         "com/global/1.0.0:dollar",
         "com/global/1.0.0:global"
       ],
       "deps": [
-        "lib/jquery/1.11.3:jquery"
+        "lib/jquery/1.11.3:jquery",
+        "com/global/1.0.0:global.css"
       ]
     }
   }

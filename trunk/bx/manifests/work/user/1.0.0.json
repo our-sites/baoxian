@@ -1,33 +1,43 @@
 {
   "res": {
-    "work/user/1.0.0:login.css": {
-      "uri": "/work/user/1.0.0/src/login_e9a86a5.css",
+    "work/user/1.0.0:common.css": {
+      "uri": "/work/user/1.0.0/src/common_53ebf41.css",
       "type": "css",
+      "pkg": "work/user/1.0.0:p0"
+    },
+    "work/user/1.0.0:common": {
+      "uri": "/work/user/1.0.0/src/common_9e21533.js",
+      "type": "js",
       "deps": [
-        "com/global/1.0.0:global.css"
+        "work/common/1.0.0:common",
+        "work/user/1.0.0:common.css"
       ],
+      "pkg": "work/user/1.0.0:p1"
+    },
+    "work/user/1.0.0:login.css": {
+      "uri": "/work/user/1.0.0/src/login_b22b2a0.css",
+      "type": "css",
       "pkg": "work/user/1.0.0:p0"
     },
     "work/user/1.0.0:login": {
-      "uri": "/work/user/1.0.0/src/login_e260104.js",
+      "uri": "/work/user/1.0.0/src/login_bf84a8b.js",
       "type": "js",
       "deps": [
+        "work/user/1.0.0:common",
         "work/user/1.0.0:login.css"
       ],
       "pkg": "work/user/1.0.0:p1"
     },
     "work/user/1.0.0:register.css": {
-      "uri": "/work/user/1.0.0/src/register_846b76c.css",
+      "uri": "/work/user/1.0.0/src/register_021dce1.css",
       "type": "css",
-      "deps": [
-        "com/global/1.0.0:global.css"
-      ],
       "pkg": "work/user/1.0.0:p0"
     },
     "work/user/1.0.0:register": {
-      "uri": "/work/user/1.0.0/src/register_6b81d8e.js",
+      "uri": "/work/user/1.0.0/src/register_f747775.js",
       "type": "js",
       "deps": [
+        "work/user/1.0.0:common",
         "com/global/1.0.0:dollar",
         "work/user/1.0.0:register.css"
       ],
@@ -36,24 +46,25 @@
   },
   "pkg": {
     "work/user/1.0.0:p0": {
-      "uri": "/work/user/1.0.0/pkg/user_3f09ee9.css",
+      "uri": "/work/user/1.0.0/pkg/user_327c03d.css",
       "type": "css",
       "has": [
+        "work/user/1.0.0:common.css",
         "work/user/1.0.0:login.css",
         "work/user/1.0.0:register.css"
-      ],
-      "deps": [
-        "com/global/1.0.0:global.css"
       ]
     },
     "work/user/1.0.0:p1": {
-      "uri": "/work/user/1.0.0/pkg/user_e43ad9a.js",
+      "uri": "/work/user/1.0.0/pkg/user_4b4003e.js",
       "type": "js",
       "has": [
+        "work/user/1.0.0:common",
         "work/user/1.0.0:login",
         "work/user/1.0.0:register"
       ],
       "deps": [
+        "work/common/1.0.0:common",
+        "work/user/1.0.0:common.css",
         "work/user/1.0.0:login.css",
         "com/global/1.0.0:dollar",
         "work/user/1.0.0:register.css"

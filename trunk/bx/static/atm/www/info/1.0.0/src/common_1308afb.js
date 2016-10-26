@@ -1,0 +1,1 @@
+define("www/info/1.0.0:common",["www/common/common"],function(o){o("www/common/common.js")});
