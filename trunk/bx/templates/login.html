@@ -1,19 +1,47 @@
+{% load atm %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cmn-Hans">
+
 <head>
     <meta charset="UTF-8">
-    <title>login</title>
+    <title>登录页</title>
+{% atmcss work/user:login %}
 </head>
+
 <body>
-<form  action="" method="post">
-    {% csrf_token %}
-    <div class="form-group">
-        <input type="text" name='username' class="form-control" placeholder="用户名" required="">
+    <div id="Login">
+        <div class="login-body clf">
+            <div class="logo">
+                <a href="/">
+                    <img src="/static/imgs/logo.png" alt="logo" width="56" height="56">
+                </a>
+            </div>
+            <div class="fl">
+                <img src="/static/imgs/login-left.jpg" alt="欢迎登录保险管家" width="320" height="320">
+            </div>
+            <div class="fr">
+                <form action="">
+                    <h2>登录保险管家</h2>
+                    <input type="text" placeholder="手机/邮箱" class="error">
+                    <div class="error-tip">手机格式不正确</div>
+                    <input type="password" placeholder="密码">
+                    <div class="clf">
+                        <label>
+                        <input type="checkbox">
+                        自动登录
+                    </label>
+                        <div class="fr">
+                            <a href="./register.html" class="color">注册保险管家账号</a> |
+                            <a href="#" class="color">忘记密码？</a>
+                        </div>
+                    </div>
+                    <button type="submit">登录</button>
+                </form>
+            </div>
+        </div>
+        <div class="copyright">　© 2016 baoxianguanjia.com 豫ICP备13006688号</div>
     </div>
-    <div class="form-group">
-        <input type="password" name='password' class="form-control" placeholder="密码" required="">
-    </div>
-    <button type="submit" >登 录</button>
-</form>
+    {% atmjs work/user:login %}
 </body>
+
 </html>

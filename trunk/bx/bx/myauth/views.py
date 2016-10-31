@@ -11,6 +11,7 @@ from cookie_encrypt import  phpcookie_encode
 import  urllib
 import time
 import  datetime
+import  random
 from django.shortcuts import  render_to_response
 from models import  MyUser
 from django.template.context import  RequestContext
@@ -51,7 +52,7 @@ def login(request):
                     if isinstance(username,unicode):
                         username=username.encode("utf-8")
                     result.set_cookie("user_info",urllib.quote(
-                            phpcookie_encode("\t".join([str(user.supid), username,request.ip,str(timestamp)]),'gc895316')),
+                            phpcookie_encode("\t".join([str(user.uid), username,request.ip,str(timestamp)]),'gc895316')),
                                       domain=".baoxiangj.com")
                     return  result
     return render_to_response(settings.LOGIN_TEMPLATE_NAME,locals(),context_instance=RequestContext(request))
@@ -64,3 +65,34 @@ def logout(request):
     else:
         result.delete_cookie("user_info",domain=".baoxiangj.com")
     return  result
+
+
+
+def register(request):
+    if request.method=="POST":
+        postinfo=request.POST
+        phone=postinfo.get("phone")
+        usertype=postinfo.get("usertype")
+        usertype=int(usertype)
+        assert len(str(phone))==11
+        assert  usertype in (1,2)
+        phone=int(phone)
+        passwd=postinfo.get("passwd")
+        salt=MyUser.make_salt()
+        password=MyUser.hashed_password(salt,passwd)
+        try:
+            a=MyUser.objects.filter(Q(phone=str(phone))|Q(username=phone)).count()
+            assert a==0
+        except:
+            phone_error="该手机号已被注册！"
+        else:
+            user=MyUser(username=str(phone),phone=phone,salt=salt,password=password,state=1,usertype=usertype,ip=request.ip)
+            user.save()
+            timestamp=int(time.time())
+            result=  HttpResponseRedirect("/")
+            result.set_cookie("user_info",urllib.quote(
+                    phpcookie_encode("\t".join([str(user.uid), user.username,request.ip,str(timestamp)]),'gc895316')),
+                              domain=".baoxiangj.com")
+            return  result
+
+    return  render_to_response("register.html",locals(),context_instance=RequestContext(request))

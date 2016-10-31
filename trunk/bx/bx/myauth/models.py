@@ -26,7 +26,7 @@ class MyUser(models.Model):
     tel=models.CharField(max_length=20)   # tel  vchar(20)    电话号
     email=models.CharField(max_length=100)  # email vchar(100)
     qq=models.CharField(max_length=20)      # qq vchar(20)  qq号
-    weixin=models.CharField(max_length=100)  # weixin vchar(100) 微信号
+   # weixin=models.CharField(max_length=100)  # weixin vchar(100) 微信号
     imgurl=models.ImageField(max_length=100,upload_to="userimgurl")  # imgurl vchar(100)    头像url
     sex=models.PositiveSmallIntegerField(default=0)  # sex tinyint(1) unsigned     性别  1男  2女
     birthday=models.IntegerField(default=0)  # birthday int(11) unsigned   生日  20160101
@@ -46,21 +46,21 @@ class MyUser(models.Model):
             return True
         else:
             return False
-
-    def hashed_password(self,password=None):
-        if not password:
-            return  self.password
-        else:
-            return   md5(md5(password+self.salt))
+    @classmethod
+    def hashed_password(cls,salt,password):
+        return   md5(md5(password+salt))
 
     def check_password(self,password):
-        if  self.state==1 and   self.hashed_password(password)==self.password:
+        if  self.state==1 and   self.hashed_password(self.salt,password)==self.password:
             return True
         else:
             return False
-    def make_salt(self,password):
+
+    @classmethod
+    def make_salt(cls):
         _u=random.sample(["a","b","c","d","e","f","0","1","2","3","4","5","6","7"],6)
         return "".join(_u)
+
     def __unicode__(self):
         return  self.username
 

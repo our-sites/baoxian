@@ -11,6 +11,7 @@ import  api
 import  ask
 import  dingzhi
 import  zixun
+import  views
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'bx.views.home', name='home'),
@@ -25,9 +26,10 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
                        (r"admin/bx/consult/\d+/themes/default/css/ueditor.css",lambda x:HttpResponseRedirect("/static/editor/themes/default/css/ueditor.css")),
-
+                       (r"^favicon.ico$",lambda x:HttpResponseRedirect('/static/favicon.ico')),
     url(r'^admin/', include(admin.site.urls)),
     url(r"api/",include(api.site.urls)),
+                       (r"^$",views.home),
                        (r"ask/",include(ask.site.urls)),
                        (r"dingzhi/",include(dingzhi.site.urls)),
                        (r"zixun/",include(zixun.site.urls)),

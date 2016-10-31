@@ -67,6 +67,37 @@ class CateType(models.Model):
     def __unicode__(self):
         return self.type_name
 
+class Product(models.Model):
+    pid=models.AutoField(primary_key=True)
+    pro_name=models.CharField(max_length=100,verbose_name="产品名")
+    cid=models.PositiveIntegerField(default=0,verbose_name="企业ID")
+    bx_type=models.CharField(max_length=30,verbose_name="产品类型")
+    min_price=models.IntegerField(verbose_name="最低价格",default=0)
+    bx_feature=models.CharField(max_length=300,verbose_name="产品特色")
+    insurance_timelimit=models.CharField(max_length=200,verbose_name="保障期限")
+    insurance_paytype=models.CharField(max_length=200,verbose_name="缴费方式")
+    insurance_agelimit=models.CharField(max_length=200,verbose_name="承保年龄")
+    star_age=models.IntegerField(default=0,verbose_name="投保开始年龄")
+    end_age=models.IntegerField(default=0,verbose_name="投保结束年龄")
+    pro_desc_content=models.TextField(verbose_name="产品内容")
+    pro_desc_case=RichTextUploadingField(verbose_name="投保案例")
+    pro_desc_reason=RichTextUploadingField(verbose_name="投保理由")
+    pro_desc_duty=RichTextUploadingField(verbose_name="责任免除")
+    from_url=models.CharField(max_length=200,verbose_name="采集来源",unique=True)
+    img=models.ImageField(max_length=200,upload_to="pro_imgs",verbose_name="产品图片")
+    meta=models.CharField(max_length=300,verbose_name="额外信息",default="",blank=True)
+    addtime=models.IntegerField(default=0,verbose_name="创建时间戳")
+    class Meta:
+        db_table="bx_product"
+        verbose_name="产品"
+        verbose_name_plural="所有产品"
+
+    def __unicode__(self):
+        return  self.pro_name
+
+
+
+
 
 
 

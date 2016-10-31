@@ -1,5 +1,5 @@
 {{ atmjs.use(':list') }}
-{%include 'html/layout/header.html' | path('www/common') %}
+{%include 'html/layouts/header.html' | path('www/common') %}
 <div id="askList" class="clf">
     <div class="ask-list-left">
         <!--提问-->
@@ -100,49 +100,6 @@
         </div>
     </div>
 
-    <!--热心顾问-->
-    <div class="ask-list-right">
-        <!--title-->
-        <h3 class="rank-title">
-            <b>热心顾问</b>
-            <div class="rank-title-tab">
-                <a href="" class="active">今日</a>
-                <a href="">本周</a>
-                <a href="">本月</a>
-            </div>
-        </h3>
-        <!--list-->
-        <div class="rank-item">
-            <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}" alt="" width="32" height="32" class="rank-item-avatar">
-            <span class="rank-item-name">这是个名字</span>
-            <span class="rank-item-company">公司的名字</span>
-            <span class="rank-item-level"></span>
-            <span class="rank-item-authentication"></span>
-            <span class="rank-item-score">554条回答</span>
-            <a href="" class="rank-item-link">咨询他</a>
-        </div>
-
-        <div class="rank-item">
-            <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}" alt="" width="32" height="32" class="rank-item-avatar">
-            <span class="rank-item-name">这是个名字</span>
-            <span class="rank-item-company">公司的名字</span>
-            <span class="rank-item-level"></span>
-            <span class="rank-item-authentication"></span>
-            <span class="rank-item-score">554条回答</span>
-            <a href="" class="rank-item-link">咨询他</a>
-        </div>
-
-        <div class="rank-item">
-            <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}" alt="" width="32" height="32" class="rank-item-avatar">
-            <span class="rank-item-name">这是个名字</span>
-            <span class="rank-item-company">公司的名字</span>
-            <span class="rank-item-level"></span>
-            <span class="rank-item-authentication"></span>
-            <span class="rank-item-score">554条回答</span>
-            <a href="" class="rank-item-link">咨询他</a>
-        </div>
-
-
-    </div>
+    {%include 'html/layouts/sections/热心顾问.html' | path('www/common') %}
 </div>
-{%include 'html/layout/footer.html' | path('www/common') %}
+{%include 'html/layouts/footer.html' | path('www/common') %}

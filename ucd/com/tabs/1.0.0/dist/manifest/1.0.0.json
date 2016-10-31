@@ -1,0 +1,12 @@
+{
+  "res": {
+    "com/tabs/1.0.0:tabs": {
+      "uri": "/com/tabs/1.0.0/src/tabs.js",
+      "type": "js",
+      "deps": [
+        "lib/jquery/1.11.3:jquery"
+      ]
+    }
+  },
+  "pkg": {}
+}

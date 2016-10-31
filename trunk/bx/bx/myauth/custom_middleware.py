@@ -14,7 +14,7 @@ class SelfAuthMiddleware(object):
             suplier_login_cookie=phpcookie_decode(login_cookie,'gc895316')
             try:
                 uid,username,ip,timestamp=suplier_login_cookie.split("\t")
-                user=MyUser.objects.get(supid=int(uid),state=1)
+                user=MyUser.objects.get(uid=int(uid),state=1)
             except Exception as e :
                 print "Exception",e.message
                 request.myuser=None

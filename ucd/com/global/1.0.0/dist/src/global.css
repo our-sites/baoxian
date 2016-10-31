@@ -316,6 +316,11 @@ a.color:hover {
     border-color: #42bad0;
 }
 
+/* 功能 */
+.fn-hidden{
+    display: none;
+}
+
 /**
  * @require com/global/1.0.0:css/font-awesome.css
  */

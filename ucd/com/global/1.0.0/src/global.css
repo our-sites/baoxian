@@ -318,6 +318,11 @@ a.color:hover {
     border-color: #42bad0;
 }
 
+/* 功能 */
+.fn-hidden{
+    display: none;
+}
+
 /**
  * @require ./css/font-awesome.css
  */
