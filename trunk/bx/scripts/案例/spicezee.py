@@ -25,7 +25,7 @@ def index_handle(result):
                 "%Y-%m-%d").timetuple()
                                          )))
     for detail_url,addtime in zip(detail_list,time_list):
-        def detail_handle(result,url=detail_url,addtime=addtime):
+        def detail_handle(result,url="http://www.spicezee.com"+detail_url,addtime=addtime):
             doc=PyQuery(result)
             title= doc(".pagetit").html()
             content=doc("#content_font").html()

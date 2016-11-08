@@ -1,0 +1,235 @@
+#coding:utf-8
+__author__ = 'admin'
+# --------------------------------
+# Created by admin  on 2016/11/1.
+# ---------------------------------
+
+from django.contrib.admin.views.decorators import  staff_member_required
+from django.http import  HttpResponse,HttpResponseRedirect
+from django.shortcuts import  render_to_response
+from django.template.context import RequestContext
+from  bx.myauth.models import *
+from bx.models import Area
+import  datetime
+from django.core.paginator import Paginator,EmptyPage
+from ..models import Consult
+
+
+@staff_member_required
+def home(request):
+    return  HttpResponseRedirect('/manage/user/buy/')
+
+@staff_member_required
+def user_buy(request):
+    if request.method=="POST" and  request.POST.get("input") :
+        _type=request.POST.get("type","")
+        input=request.POST.get("input","")
+        if _type=="phone":
+            try:
+                input=int(input)
+            except:
+                allinfo=[]
+            else:
+                allinfo=MyUser.objects.filter(usertype=1,phone=input)
+        else:
+            allinfo=MyUser.objects.filter(usertype=1,username=input)
+        area_config=dict([(i["id"],i["shortname"]) for i in  Area.objects.filter(id__in=[i.province  for i in allinfo ]+[i.city for i in allinfo]).values("id","shortname") ])
+        for i in allinfo:
+            i.province_info=area_config.get(i.province,"")
+            i.city_info=area_config.get(i.city,"")
+            i.datetime=datetime.datetime.fromtimestamp(i.addtime).strftime("%Y-%m-%d %H:%M:%S")
+        return  render_to_response("manage_user_buy.html",locals(),context_instance=RequestContext(request))
+    else:
+        page=request.GET.get("page","1")
+        page=int(page)
+        allinfo_paginator=Paginator(MyUser.objects.filter(usertype=1),15)
+        try:
+            allinfo=allinfo_paginator.page(page)
+        except EmptyPage:
+            allinfo=allinfo_paginator.page(1)
+            page=1
+        allinfo.next_page_number()
+        allinfo.has_next()
+        area_config=dict([(i["id"],i["shortname"]) for i in  Area.objects.filter(id__in=[i.province  for i in allinfo ]+[i.city for i in allinfo]).values("id","shortname") ])
+        for i in allinfo:
+            i.province_info=area_config.get(i.province,"")
+            i.city_info=area_config.get(i.city,"")
+            i.datetime=datetime.datetime.fromtimestamp(i.addtime).strftime("%Y-%m-%d %H:%M:%S")
+        return  render_to_response("manage_user_buy.html",locals(),context_instance=RequestContext(request))
+
+@staff_member_required
+def user_buy_detail(request,_id):
+    myuser=MyUser.objects.get(usertype=1,uid=int(_id))
+    if request.method=="POST":
+        img=request.FILES.get("img")
+        real_name=request.POST.get("real_name")
+        state=request.POST.get("state")
+        state=int(state)
+        tel=request.POST.get("tel")
+        email=request.POST.get("email")
+        qq=request.POST.get("qq")
+        sex=request.POST.get("sex")
+        sex=int(sex)
+        if img:
+            myuser.imgurl=img
+        myuser.real_name=real_name
+        myuser.state=state
+        myuser.tel=tel
+        myuser.email=email
+        myuser.qq=qq
+        myuser.sex=sex
+        myuser.save()
+        return  HttpResponseRedirect(request.get_full_path())
+    else:
+        try:
+            _t=Area.objects.get(level=1,id=myuser.province)
+        except Area.DoesNotExist:
+            myuser.province_info=""
+        else:
+            myuser.province_info=_t.areaname
+        try:
+            _t=Area.objects.get(level=2,id=myuser.city)
+        except Area.DoesNotExist:
+            myuser.city_info=""
+        else:
+            myuser.city_info=_t.areaname
+        myuser.datetime=datetime.datetime.fromtimestamp(myuser.addtime).strftime("%Y-%m-%d %H:%M:%S")
+        return  render_to_response("manage_user_buy_detail.html",locals(),context_instance=RequestContext(request))
+
+@staff_member_required
+def user_buy_resetpwd(request,_id):
+    myuser=MyUser.objects.get(usertype=1,uid=int(_id))
+    if request.method=="POST":
+        newpwd=request.POST.get("newpwd")
+        salt=MyUser.make_salt()
+        password=MyUser.hashed_password(salt,newpwd)
+        myuser.salt=salt
+        myuser.password=password
+        myuser.save()
+        message=u"success! 新密码是%s"%newpwd
+        return  render_to_response("manage_user_buy_resetpwd.html",locals(),context_instance=RequestContext(request))
+    return  render_to_response("manage_user_buy_resetpwd.html",locals(),context_instance=RequestContext(request))
+
+@staff_member_required
+def user_proxy(request):
+    if request.method=="POST" and  request.POST.get("input") :
+        _type=request.POST.get("type","")
+        input=request.POST.get("input","")
+        if _type=="phone":
+            try:
+                input=int(input)
+            except:
+                allinfo=[]
+            else:
+                allinfo=MyUser.objects.filter(usertype=2,phone=input)
+        else:
+            allinfo=MyUser.objects.filter(usertype=2,username=input)
+        area_config=dict([(i["id"],i["shortname"]) for i in  Area.objects.filter(id__in=[i.province  for i in allinfo ]+[i.city for i in allinfo]).values("id","shortname") ])
+        for i in allinfo:
+            i.province_info=area_config.get(i.province,"")
+            i.city_info=area_config.get(i.city,"")
+            i.datetime=datetime.datetime.fromtimestamp(i.addtime).strftime("%Y-%m-%d %H:%M:%S")
+        return  render_to_response("manage_user_proxy.html",locals(),context_instance=RequestContext(request))
+    else:
+        page=request.GET.get("page","1")
+        page=int(page)
+        allinfo_paginator=Paginator(MyUser.objects.filter(usertype=2),15)
+        try:
+            allinfo=allinfo_paginator.page(page)
+        except EmptyPage:
+            allinfo=allinfo_paginator.page(1)
+            page=1
+        allinfo.next_page_number()
+        allinfo.has_next()
+        area_config=dict([(i["id"],i["shortname"]) for i in  Area.objects.filter(id__in=[i.province  for i in allinfo ]+[i.city for i in allinfo]).values("id","shortname") ])
+        for i in allinfo:
+            i.province_info=area_config.get(i.province,"")
+            i.city_info=area_config.get(i.city,"")
+            i.datetime=datetime.datetime.fromtimestamp(i.addtime).strftime("%Y-%m-%d %H:%M:%S")
+        return  render_to_response("manage_user_proxy.html",locals(),context_instance=RequestContext(request))
+
+@staff_member_required
+def user_proxy_detail(request,_id):
+    myuser=MyUser.objects.get(usertype=2,uid=int(_id))
+    if request.method=="POST":
+        img=request.FILES.get("img")
+        real_name=request.POST.get("real_name")
+        state=request.POST.get("state")
+        state=int(state)
+        tel=request.POST.get("tel")
+        email=request.POST.get("email")
+        qq=request.POST.get("qq")
+        sex=request.POST.get("sex")
+        sex=int(sex)
+        if img:
+            myuser.imgurl=img
+        myuser.real_name=real_name
+        myuser.state=state
+        myuser.tel=tel
+        myuser.email=email
+        myuser.qq=qq
+        myuser.sex=sex
+        myuser.save()
+        return  HttpResponseRedirect(request.get_full_path())
+    else:
+        try:
+            _t=Area.objects.get(level=1,id=myuser.province)
+        except Area.DoesNotExist:
+            myuser.province_info=""
+        else:
+            myuser.province_info=_t.areaname
+        try:
+            _t=Area.objects.get(level=2,id=myuser.city)
+        except Area.DoesNotExist:
+            myuser.city_info=""
+        else:
+            myuser.city_info=_t.areaname
+        myuser.datetime=datetime.datetime.fromtimestamp(myuser.addtime).strftime("%Y-%m-%d %H:%M:%S")
+        return  render_to_response("manage_user_proxy_detail.html",locals(),context_instance=RequestContext(request))
+
+@staff_member_required
+def user_proxy_resetpwd(request,_id):
+    myuser=MyUser.objects.get(usertype=2,uid=int(_id))
+    if request.method=="POST":
+        newpwd=request.POST.get("newpwd")
+        salt=MyUser.make_salt()
+        password=MyUser.hashed_password(salt,newpwd)
+        myuser.salt=salt
+        myuser.password=password
+        myuser.save()
+        message=u"success! 新密码是%s"%newpwd
+        return  render_to_response("manage_user_proxy_resetpwd.html",locals(),context_instance=RequestContext(request))
+    return  render_to_response("manage_user_proxy_resetpwd.html",locals(),context_instance=RequestContext(request))
+
+
+@staff_member_required
+def zixun_add(request):
+    if request.method=="POST":
+        title=request.POST.get("title")
+        _type=request.POST.get("type")
+        _type=int(_type)
+        writer=request.POST.get("writer")
+        content=request.POST.get("content")
+        keywords=request.POST.get("keywords")
+        description=request.POST.get("description")
+        obj=Consult(title=title,type=_type,writer=writer,_from=str(time.time()),addtime=int(time.time()),
+                content=content,status=1,keywords=keywords,description=description,
+                imghandle_tag=1)
+        obj.save()
+        return render_to_response("manage_zixun_add_success.html",locals(),context_instance=RequestContext(request))
+    else:
+        return  render_to_response("manage_zixun_add.html",locals(),context_instance=RequestContext(request))
+
+@staff_member_required
+def zixun_all(request):
+    return  render_to_response("manage_zixun_all.html",locals(),context_instance=RequestContext(request))
+
+
+def logout(request):
+    try:
+        assert  request.user.is_staff
+        result= HttpResponseRedirect("/manage/logout/")
+        result.delete_cookie("sessionid")
+        return  result
+    except:
+        return HttpResponseRedirect("/manage/")

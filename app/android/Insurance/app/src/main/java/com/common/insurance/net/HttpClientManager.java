@@ -98,7 +98,7 @@ public class HttpClientManager<T> {
                     InsuranceLogger.d("net", "onfail");
 
                     if (responseHandler != null) {
-                        responseHandler.onFailure(request, -1, null, e);
+                        responseHandler.onFailure(request, e);
 
                     }
 

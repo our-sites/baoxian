@@ -110,7 +110,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "bx.myauth.custom_middleware.SelfAuthMiddleware"  # self auth
+    "bx.myauth.custom_middleware.SelfAuthMiddleware" , # self auth
+    "bx.ip_middleware.IpMiddleware"
 )
 
 ROOT_URLCONF = 'bx.urls'
@@ -135,7 +136,8 @@ INSTALLED_APPS = (
     "bx",
     "bx.ask",
     "bx.dingzhi",
-    "bx.zixun"
+    "bx.zixun",
+    "bx.manage"
 )
 
 # A sample logging configuration. The only tangible logging

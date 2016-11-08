@@ -1,0 +1,120 @@
+{% extends "manage_base.html" %}
+{% block style %}
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            background: #f7f7f7;
+        }
+
+        .main-container {
+            padding-top: 60px;
+            font-family: "microsoft yahei", arial, sans serif;
+            background: #fff;
+            min-height: 100%;
+            box-sizing: border-box;
+        }
+
+        .col-md-10,
+        .col-md-12,
+        .col-md-2 {
+            padding: 8px 15px;
+        }
+
+        .btn-primary {
+            width: 120px;
+        }
+
+        .hd {
+            padding: 6px 0 6px 10px;
+            border-left: 2px solid #337ab7;
+            margin-bottom: 20px;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="container main-container">
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="hd">所有资讯</h3>
+            </div>
+        </div>
+        <div class="row">
+
+        </div>
+        <div class="row">
+            <form action="{{ request.path }}" method="post" class="form-inline">{% csrf_token %}
+                <div class="form-group">
+                    <label></label>
+                    <select name="type" class="form-control" style="width: 100px" id="projselect">
+                        <option value="phone">手机号</option>
+                        <option value="username">用户名</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label></label>
+                    <input type="text" name="input" id="id_start_time" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-sm" style="width: 60px">查询</button>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>用户ID</th>
+                    <th>用户名</th>
+                    <th>手机号</th>
+                    <th>ip</th>
+                    <th>省</th>
+                    <th>市</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in allinfo %}
+                <tr>
+                    <td>{{ i.uid }}</td>
+                    <td>{{ i.username }}</td>
+                    <td>{{ i.phone }}</td>
+                                        <td>{{ i.ip }}</td>
+                    <td>{{ i.province_info }}</td>
+                    <td>{{ i.city_info }}</td>
+                    <td>{{ i.datetime }}</td>
+                    <td><a href="/manage/user/proxy/{{ i.uid }}.html">详情</a></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% if allinfo_paginator.num_pages >= 2 %}
+        {% load range %}
+        <div class="row">
+            <div style="text-align: center">
+                <ul class="pagination">
+                    <li>
+                        <a href="{{ request.path }}?page=1">首页</a>
+                    </li>
+                    {% for i in page|near:4 %}
+                        {% if i > 0 %}
+                    <li {% if i == page %}class="active" {% endif %}>
+                        <a href="{{ request.path }}?page={{ i }}" >{{ i }}</a>
+                    </li>{% endif %}{% endfor %}
+                {% if allinfo.has_next %}
+                    <li><a title="下一页"
+                           href="{{ request.path }}?page={{ allinfo.next_page_number }}">
+                        &gt;&gt;</a></li>{% endif %}
+                    <li>
+                        <a href="{{ request.path }}?page={{ allinfo_paginator.num_pages }}">尾页</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+{% endblock %}

@@ -7,6 +7,9 @@ from threadspider import *
 from pyquery import  *
 import  re
 import  time
+import  sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 spider_init(8,2000000)
 alldata=[]
@@ -23,10 +26,10 @@ def index_handle(result):
             doc("[data-sudaclick]").remove()
             title,content= doc("#artibodyTitle").html(),doc("#artibody").html()
             content=PyQuery(content).html()
-            print "【采集到的数据】：","标题："+title,"\t","内容："+content.replace("\r","").replace("\n","")
+            # print "【采集到的数据】：","标题："+title,"\n","内容："+content.replace("\r","").replace("\n","")
             alldata.append ([url ,title,content.replace("\r","").replace("\n","")])
         Spider(detail_url,code="utf-8",handle=detail_handle)
 Spider("http://finance.sina.com.cn/money/insurance/",code="utf-8",handle=index_handle)
 spider_join()
-# for i in alldata:
-#     print "标题:%s \t内容:%s"%(i[1],i[2])
+for i in alldata:
+    print "标题:%s \t内容:%s"%(i[1],i[2])

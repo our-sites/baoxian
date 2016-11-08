@@ -11,6 +11,6 @@
     "global": "com/global:global"
   },
   "formatTag": false,
-  "async": true,
+  "async": false,
   "together": false
 }

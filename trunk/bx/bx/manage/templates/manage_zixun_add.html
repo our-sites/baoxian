@@ -1,0 +1,109 @@
+{% extends "manage_base.html" %}
+{% block style %}
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            background: #f7f7f7;
+        }
+
+        .main-container {
+            padding-top: 60px;
+            font-family: "microsoft yahei", arial, sans serif;
+            background: #fff;
+            min-height: 100%;
+            box-sizing: border-box;
+        }
+
+        .col-md-10,
+        .col-md-12,
+        .col-md-2 {
+            padding: 8px 15px;
+        }
+
+        .btn-primary {
+            width: 120px;
+        }
+
+        .hd {
+            padding: 6px 0 6px 10px;
+            border-left: 2px solid #337ab7;
+            margin-bottom: 20px;
+        }
+    </style>
+        <script type="text/javascript" src="/static/admin/js/jquery.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js"></script>
+<script type="text/javascript" src="/static/ckeditor/jquery.min.js"></script>
+<script type="text/javascript" src="/static/ckeditor/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/static/ckeditor/ckeditor-init.js"></script>
+{% endblock %}
+{% block content %}
+    <div class="container main-container">
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="hd">增加资讯</h3>
+            </div>
+        </div>
+        <div class="row" style="padding-top: 40px">
+            <form class="form-horizontal" role="form" method="post" id="xxxxx">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="oldpwd" class="col-sm-1 control-label ">标题：</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="oldpwd" name="title" placeholder="请输入标题"
+                               required="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="oldpwdd" class="col-sm-1 control-label ">SEO-K：</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="oldpwdd" name="keywords" placeholder="请输入keywords"
+                               required="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="oldpwddd" class="col-sm-1 control-label ">SEO-D：</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="oldpwddd" name="description" placeholder="请输入description"
+                               required="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="firstname" class="col-sm-1 control-label ">类型：</label>
+                    <div class="col-sm-3">
+                        <select name="type" class="form-control" style="width: 150px" id="projselect">
+                                                <option value="1">保险百科</option>
+                                                <option value="2">社会案例</option>
+                            <option value="3">团体规划</option>
+                            <option value="4">保险新闻</option>
+                            <option value="5">监管动态</option>
+                            <option value="6">保险词条</option>
+                                            </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastname" class="col-sm-1 control-label">作者：</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="lastname" name="writer"
+                               placeholder="请输入作者" required="" value="admin">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastname" class="col-sm-1 control-label">作者：</label>
+                    <div class="col-sm-9">
+  <textarea id="id_content" rows="10" cols="40" name="content" data-processed="0" data-config='{"filebrowserWindowWidth": 940, "toolbar_Basic": [["Source", "-", "Bold", "Italic"]], "language": "en-us", "toolbar_Full": [["Styles", "Format", "Bold", "Italic", "Underline", "Strike", "SpellChecker", "Undo", "Redo"], ["Link", "Unlink", "Anchor"], ["Image", "Flash", "Table", "HorizontalRule"], ["TextColor", "BGColor"], ["Smiley", "SpecialChar"], ["Source"]], "filebrowserUploadUrl": "/ckeditor/upload/", "height": 700, "width": 900, "filebrowserBrowseUrl": "/ckeditor/browse/", "skin": "moono", "filebrowserWindowHeight": 725, "toolbar": [["div", "Source", "-", "Save", "NewPage", "Preview", "-", "Templates"], ["Cut", "Copy", "Paste", "PasteText", "PasteFromWord", "-", "Print", "SpellChecker", "Scayt"], ["Undo", "Redo", "-", "Find", "Replace", "-", "SelectAll", "RemoveFormat"], ["Form", "Checkbox", "Radio", "TextField", "Textarea", "Select", "Button", "ImageButton", "HiddenField"], ["Bold", "Italic", "Underline", "Strike", "-", "Subscript", "Superscript"], ["NumberedList", "BulletedList", "-", "Outdent", "Indent", "Blockquote"], ["JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock"], ["Link", "Unlink", "Anchor"], ["Image", "Flash", "Table", "HorizontalRule", "Smiley", "SpecialChar", "PageBreak"], ["Styles", "Format", "Font", "FontSize"], ["TextColor", "BGColor"], ["Maximize", "ShowBlocks", "-", "About", "pbckcode"]]}' data-external-plugin-resources='[]' data-id="id_content" data-type="ckeditortype">
+</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-1 col-sm-2">
+                        <button type="submit" class="btn btn-info btn-block" id="_submit">确定</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

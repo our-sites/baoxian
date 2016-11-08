@@ -10,6 +10,29 @@ from django.conf import  global_settings
 import  datetime
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
+import  re
+
+def filter_tags(htmlstr):
+    s=re.sub("<[^<>]+>",'',htmlstr)
+    return s
+
+def replace_charentity(htmlstr):
+    htmlstr=htmlstr.replace("&quot;",'"')
+    htmlstr=htmlstr.replace("&amp;",'&')
+    htmlstr=htmlstr.replace("&lt;",'<')
+    htmlstr=htmlstr.replace("&gt;",'>')
+    htmlstr=htmlstr.replace("&nbsp;",' ')
+    return htmlstr
+
+class Area(models.Model):
+    id=models.AutoField(primary_key=True)
+    areaname=models.CharField(max_length=50)
+    parentid=models.PositiveIntegerField()
+    shortname=models.CharField(max_length=50)
+    level=models.PositiveIntegerField()
+    class Meta:
+        db_table='area'
+
 
 class Consult(models.Model):
     zid=models.AutoField(primary_key=True)
@@ -23,6 +46,7 @@ class Consult(models.Model):
     description=models.CharField(max_length=100,default="",blank=True,verbose_name="SEO-描述")
     content=RichTextUploadingField(verbose_name="内容")
     status=models.PositiveSmallIntegerField(verbose_name="资讯状态",default=1,help_text="1代表正常 其他值代表异常")
+    imghandle_tag=models.PositiveIntegerField(default=0)
     class Meta:
         db_table="bx_consult"
         ordering=["-addtime"]
@@ -31,7 +55,16 @@ class Consult(models.Model):
 
     def __unicode__(self):
         return self.title+"---"+datetime.datetime.fromtimestamp(self.addtime).strftime("%Y-%m-%d")
-
+    def get_simple_content(self):
+        a=filter_tags(self.content)
+        b= replace_charentity(a)
+        return  b.strip()
+    def get_date(self):
+        return datetime.datetime.fromtimestamp(self.addtime).strftime("%Y-%m-%d")
+    def get_type(self):
+        config={1:"保险百科",2:"社会案例",3:"保险规划",4:"保险新闻",5:"监管动态",6:"保险词条"}
+        if self.type in config:
+            return config[self.type]
 class Company(models.Model):
     cid=models.AutoField(primary_key=True)
     comname=models.CharField(max_length=100,verbose_name="企业名",unique=True)
@@ -94,6 +127,51 @@ class Product(models.Model):
 
     def __unicode__(self):
         return  self.pro_name
+
+class ProxyUserProfile(models.Model):
+    id=models.AutoField(primary_key=True)
+    position=models.CharField(max_length=30,verbose_name="职位")
+    cid=models.IntegerField(default=0,verbose_name="所属企业ID")
+    wenxin=models.CharField(max_length=100,verbose_name="微信号")
+    my_ad=models.TextField(verbose_name="个人介绍")
+    uid=models.IntegerField(unique=True,verbose_name="用户ID")
+    certifi_num=models.CharField(max_length=50,verbose_name="资格证编号",unique=True)
+    practice_num=models.CharField(max_length=50,verbose_name="执业证编号")
+    certifi_status=models.IntegerField(default=0,verbose_name="审核状态 ",help_text="1 待审核 2审核通过 3 拘审")
+    certifi_message=models.CharField(max_length=50,verbose_name="审核消息")
+    meta=models.CharField(max_length=100,verbose_name="额外的信息")
+    class Meta:
+        db_table="bx_proxyuser_profile"
+        verbose_name="代理人信息"
+        verbose_name_plural="所有代理人信息"
+    def __unicode__(self):
+        return  self.id
+
+class Ask(models.Model):
+    askid=models.AutoField(primary_key=True)
+    ask_title=models.CharField(max_length=255,verbose_name="标题")
+    ask_content=models.CharField(max_length=1000,verbose_name="内容")
+    uid=models.IntegerField(default=0,verbose_name="提问者ID")
+    ask_time=models.IntegerField(default= lambda :int(time.time()),verbose_name="提问时间")
+    class Meta:
+        db_table="bx_ask"
+        verbose_name="提问"
+        verbose_name_plural="所有提问"
+    def __unicode__(self):
+        return  self.ask_title
+
+class Answer(models.Model):
+    ansid=models.AutoField(primary_key=True)
+    askid=models.PositiveIntegerField(default=0,verbose_name="问题ID")
+    ans_content=models.CharField(max_length=1000,verbose_name="内容")
+    uid=models.IntegerField(default=0,verbose_name="用户ID")
+    ans_time=models.PositiveIntegerField(default=0,verbose_name="回答时间")
+    parent_ansid=models.PositiveIntegerField(default=0,verbose_name="父回答ID")
+    class Meta:
+        db_table="bx_answer"
+        verbose_name="回答"
+        verbose_name_plural="所有回答"
+
 
 
 

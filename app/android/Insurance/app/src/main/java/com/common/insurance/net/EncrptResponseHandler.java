@@ -21,6 +21,10 @@ public class EncrptResponseHandler extends JsonResponseHandler {
     public void onSuccess(IRequest request, JSONArray response) {
     }
 
+    public void onFailure(final IRequest request) {
+    }
+
+
     private void onRequestSuccess(final IRequest request, final JSONArray response) {
 
 
@@ -30,9 +34,6 @@ public class EncrptResponseHandler extends JsonResponseHandler {
     private void onRequestSuccess(final IRequest request, final JSONObject response) {
 
         onSuccess(request, response);
-    }
-
-    public void onFailure(final IRequest request) {
     }
 
 
@@ -46,39 +47,16 @@ public class EncrptResponseHandler extends JsonResponseHandler {
     @Override
     public final void onFailure(IRequest request, int statusCode, String responseBody, Throwable error) {
 
-
         onRequestFailure(request, responseBody);
     }
 
 
     @Override
-    public final void onSuccess(IRequest request, int statusCode, JSONArray jsonArray) {
-
-        try {
-
-            JSONObject contentJsonObj = jsonArray.getJSONObject(0);
-
-            // 有code字段即为失败
-            if (contentJsonObj.has("code")) {
-                int errorCode = contentJsonObj.optInt("code");
-                String errorMessage = contentJsonObj.optString("message");
-                onRequestFailure(request, jsonArray.toString());
-            }
-
-            // 成功
-            else {
-                onRequestSuccess(request, jsonArray);
-            }
-
-        } catch (Exception e) {
-            onRequestFailure(request, jsonArray == null ? "" : jsonArray.toString());
-        }
-    }
-
-    @Override
     public final void onSuccess(IRequest request, int statusCode, JSONObject jsonObj) {
 
         try {
+            //// TODO: 16/10/28 处理业务相应信息
+
             onRequestSuccess(request, jsonObj);
 
         } catch (Exception e) {
@@ -86,6 +64,12 @@ public class EncrptResponseHandler extends JsonResponseHandler {
         }
     }
 
+
+    @Override
+    public byte[] prepareResponseData(IRequest request, byte[] responseData) throws Exception {
+        //解密，解压缩
+        return super.prepareResponseData(request, responseData);
+    }
 
     private boolean shouldDecrypt() {
 

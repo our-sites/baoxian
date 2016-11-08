@@ -9,7 +9,7 @@ from models import *
 class SelfAuthMiddleware(object):
     def process_request(self, request):
         login_cookie=request.COOKIES.get("user_info","")
-        request.ip=request.META.get("REMOTE_ADDR","0.0.0.0")
+        request.ip=request.META.get("HTTP_X_REAL_IP","0.0.0.0")
         if login_cookie:
             suplier_login_cookie=phpcookie_decode(login_cookie,'gc895316')
             try:

@@ -1,52 +1,8 @@
-{% load atm %}
-<!DOCTYPE html>
-<html lang="zh-cmn-Hans">
-
-<head>
-    <meta charset="UTF-8">
-    <title>问吧列表页</title>
-    {% atmcss www/ask:list %}
-</head>
-
-<body>
-
-    <!--公用top-->
-    <div class="bx-top">
-        <div class="clf">
-            <span>关注我们</span>
-            <div class="fr">
-                <!--未登录-->
-                <div class="bx-top-not-login">
-                    <a href="" class="color">登录</a> |
-                    <a href="" class="color">注册</a>
-                </div>
-                <!--已登录-->
-                <div class="bx-top-login"></div>
-            </div>
-        </div>
-    </div>
-    <!--公用header-->
-    <div class="bx-header">
-        <div class="clf">
-            <img src="/static/imgs/bx-logo.png" alt="logo" class="fl" width="210" height="56">
-            <div class="fr">
-                <div class="bx-header-search-box">
-                    <input type="text" placeholder="请输入...">
-                    <a href="javascript:;">搜索</a>
-                </div>
-                <p>热门搜索： <a href="">少儿</a> | <a href="">医疗</a> | <a href="">养老</a> | <a href="">少儿</a> | <a href="">医疗</a> |
-                    <a href="">养老</a></p>
-            </div>
-        </div>
-    </div>
-    <!--公用nav-->
-    <div class="bx-nav">
-        <ul class="clf">
-            <li><a href="">首页</a></li>
-            <li class="active"><a href="">问吧</a></li>
-        </ul>
-    </div>
-
+{% extends "base.html" %}
+{% block title %}问吧首页_保险管家{% endblock %}
+{% load atm  %}
+{% block css %}{% atmcss www/ask:list %}{% endblock %}
+{% block content %}
     <div id="askList" class="clf">
         <div class="ask-list-left">
             <!--提问-->
@@ -188,12 +144,7 @@
 
         </div>
     </div>
-
-    <!-- 公用底部-->
-    <div class="bx-footer">
-        © 2016 baoxianguanjia.com 豫ICP备13006688号
-    </div>
+{% endblock %}
+{% block js %}
     {% atmjs www/ask:list %}
-</body>
-
-</html>
+{% endblock %}

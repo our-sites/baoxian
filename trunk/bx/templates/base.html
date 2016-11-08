@@ -1,10 +1,18 @@
+{% load atm %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<!-- saved from url=(0065)http://192.168.12.48:2015/files/bx/www/info/1.0.0/html/index.html -->
+<html lang="zh-cmn-Hans"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>{% block title %}保险管家{% endblock %}</title>
+{% block css %}{% endblock %}
+<style>@font-face{font-family:uc-nexus-iconfont;src:url(chrome-extension://pogijhnlcfmcppgimcaccdkmbedjkmhi/res/font_1476274416_922599.woff) format('woff'),url(chrome-extension://pogijhnlcfmcppgimcaccdkmbedjkmhi/res/font_1476274416_922599.ttf) format('truetype')}</style></head>
 <body>
-
+{% include "top.html" %}
+{% include "header.html" %}
+{% include "nav.html" %}
+{% block content %}
+{% endblock %}
+{% include "footer.html" %}
+{% block js %}
+{% endblock %}
 </body>
 </html>

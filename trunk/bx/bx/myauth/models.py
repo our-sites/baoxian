@@ -14,6 +14,19 @@ from django.db import  models
 from ..manger import MyManager
 import time
 
+class ProxyUserProfile(models.Model):
+    id=models.AutoField(primary_key=True)
+    position=models.CharField(max_length=100,default='')
+    cid=models.IntegerField(default=0)
+    weixin=models.CharField(max_length=100)
+    my_ad=models.TextField()
+    uid=models.IntegerField()
+    certifi_num=models.CharField(max_length=50,unique=True) #资格证编号
+    certifi_status=models.IntegerField(default=0)   #1 待审核  2 审核通过  3 拘审
+    certifi_message=models.CharField(max_length=50)
+    practice_num=models.CharField(max_length=50)      #执业证编号
+    class Meta:
+        db_table="bx_proxyuser_profile"
 
 class MyUser(models.Model):
     uid=models.AutoField(primary_key=True)   # uid  主键
@@ -29,7 +42,7 @@ class MyUser(models.Model):
    # weixin=models.CharField(max_length=100)  # weixin vchar(100) 微信号
     imgurl=models.ImageField(max_length=100,upload_to="userimgurl")  # imgurl vchar(100)    头像url
     sex=models.PositiveSmallIntegerField(default=0)  # sex tinyint(1) unsigned     性别  1男  2女
-    birthday=models.IntegerField(default=0)  # birthday int(11) unsigned   生日  20160101
+    birthday=models.CharField(default="",max_length=30)  # birthday int(11) unsigned   生日  20160101
     ip=models.CharField(max_length=15)  # ip vchar(15)   注册IP
     province=models.PositiveIntegerField(default=0)  # province int(11) unsigned      省id
     city=models.PositiveIntegerField(default=0)  # city int(11) unsigned     市id
