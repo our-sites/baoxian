@@ -155,8 +155,3 @@
 #askList .ask-list-item .result-box .result-ctrl label.active i.fa.fa-heart-o:before {
     content: "\f004";
 }
-
-#askList .warmheart-advisers{
-    float: right;
-    width: 300px;
-}

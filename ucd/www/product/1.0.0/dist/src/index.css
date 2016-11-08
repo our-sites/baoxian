@@ -1,0 +1,269 @@
+#productList {
+    width: 1200px;
+    margin: 20px auto 0;
+    overflow: hidden;
+}
+
+/*条件筛选*/
+#productList .product-condition {
+    width: 1198px;
+    margin: 0 auto 10px;
+    border: 1px solid #ebebeb;
+    overflow: hidden;
+}
+
+#productList .product-condition > .clf {
+    width: 1168px;
+    line-height: 30px;
+    padding: 4px 10px 4px 20px;
+    border-bottom: 1px solid #ebebeb;
+}
+
+#productList .product-condition > .clf > .fl {
+    width: 112px;
+}
+
+#productList .product-condition > .clf > .fr {
+    width: 148px;
+    text-align: right;
+}
+
+#productList .product-condition .more {
+    display: inline-block;
+    width: 48px;
+    height: 22px;
+    line-height: 22px;
+    border: 1px solid #ebebeb;
+    text-align: center;
+    margin-top: 3px;
+}
+
+#productList .product-condition .content {
+    display: inline-block;
+}
+
+#productList .product-condition a.active {
+    color: #42bad0;
+}
+
+#productList .product-condition .single {
+    display: inline-block;
+    width: 110px;
+}
+
+#productList .product-condition .people {
+    height: 30px;
+}
+
+#productList .product-condition .type {
+    height: 30px;
+}
+
+#productList .product-condition .company {
+    height: 60px;
+    border-bottom: none;
+}
+
+#productList .product-condition .company .more {
+    margin-top: 34px;
+}
+
+#productList .product-condition .company .grapheme {
+    display: inline-block;
+}
+
+#productList .product-condition .company .single-grapheme {
+    margin-right: 15px;
+}
+
+/*已选条件*/
+#productList .chose-condition {
+    width: 1168px;
+    line-height: 30px;
+    padding: 4px 10px 4px 20px;
+    border: 1px solid #ebebeb;
+    background-color: #f5f5f5;
+    margin-bottom: 20px;
+}
+
+#productList .chose-condition .fl {
+    width: 112px;
+}
+
+/*筛选结果*/
+#productList .product-list {
+    float: left;
+    width: 886px;
+    overflow: hidden;
+}
+
+#productList .product-list .product-item {
+    float: left;
+    width: 280px;
+    height: 266px;
+    margin: 0 20px 20px 0;
+    position: relative;
+    border: 1px solid #ebebeb;
+    overflow: hidden;
+}
+
+#productList .product-list .product-item.right {
+    margin-right: 0;
+}
+
+#productList .product-list .product-item h4 {
+    width: 240px;
+    height: 22px;
+    line-height: 22px;
+    margin: 30px 20px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#productList .product-list .product-item ul {
+    width: 240px;
+    height: 72px;
+    line-height: 24px;
+    overflow: hidden;
+    margin: 0 0 24px 20px;
+    color: #616161;
+}
+
+#productList .product-list .product-item li {
+    width: 155px;
+    text-indent: 9px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background: transparent no-repeat 0 10px url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA4hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpjMjU0ZjMyMC04MmNkLTQ2NzMtOWY4Mi1jYjJmMDgyZGExMTgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MTlGMUE2MzlBNTg5MTFFNjkyNENBRDJDQTAyNkY4QTUiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MTlGMUE2MzhBNTg5MTFFNjkyNENBRDJDQTAyNkY4QTUiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOmI3NmQ3ZDQxLWNhNzYtNDZhMS04M2Y3LTg5ZjgwMTM0ODNkNSIgc3RSZWY6ZG9jdW1lbnRJRD0iYWRvYmU6ZG9jaWQ6cGhvdG9zaG9wOmIwMGM1ZjUxLWQyYTEtMTE3OS1hMWY1LWE5YjZhZjA5ZjYwYSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PguIZxUAAAA0SURBVHjaYvz//z8DDDAzMTEtXLhw48aN/v7+zIqKihDh379/MykoKABZ3NzcISEhAAEGAG4fDME/CGLEAAAAAElFTkSuQmCC");
+
+}
+
+#productList .product-list .product-item .view {
+    display: block;
+    width: 84px;
+    height: 32px;
+    color: #ffffff;
+    background-color: #42bad0;
+    text-align: center;
+    line-height: 32px;
+    position: absolute;
+    right: 22px;
+    top: 106px;
+}
+
+#productList .product-list .product-item .view:hover {
+    background-color: #4bd3eb;
+}
+
+#productList .product-list .product-item dl {
+    color: #808080;
+    line-height: 26px;
+}
+
+#productList .product-list .product-item dt {
+    float: left;
+    width: 78px;
+    height: 26px;
+    border-top: 1px solid #ebebeb;
+    border-right: 1px solid #ebebeb;
+    background-color: #f5f5f5;
+    text-align: center;
+}
+
+#productList .product-list .product-item dd {
+    float: left;
+    width: 201px;
+    height: 26px;
+    border-top: 1px solid #ebebeb;
+    text-indent: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/*私人定制*/
+.custom-box {
+    width: 300px;
+    height: 331px;
+    margin-bottom: 25px;
+}
+
+.custom-box h3 {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-indent: 20px;
+    color: #42bad0;
+    background-color: #e9f2f4;
+    font-weight: bold;
+}
+
+.custom-box .custom-content {
+    width: 298px;
+    height: 290px;
+    border: 1px solid #ebebeb;
+    border-top: none;
+    overflow: hidden;
+
+}
+
+.custom-box .custom-content form {
+    margin: 20px;
+}
+
+.custom-box .custom-content .submit {
+    width: 258px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #ffffff;
+    background-color: #42bad0;
+    border: 0;
+    cursor: pointer;
+}
+
+.custom-box .custom-content .submit:hover {
+    background-color: #4bd3eb;
+}
+
+.custom-box .custom-content .form-control {
+    height: 32px;
+    line-height: 32px;
+    margin-bottom: 10px;
+}
+
+.custom-box .custom-content .form-control label {
+    float: left;
+    width: 56px;
+    height: 100%;
+    color: #616161;
+}
+
+.custom-box .custom-content .form-control-ele {
+    float: left;
+    width: 202px;
+    height: 100%;
+}
+
+.custom-box .custom-content .form-control-ele select,
+.custom-box .custom-content .form-control-ele input {
+    border: 1px solid #ebebeb;
+    height: 30px;
+    width: 202px;
+    padding: 0 8px;
+}
+
+.custom-box .custom-content .form-control-ele input{
+    width: 184px;
+}
+
+.custom-box .custom-content .form-control-ele select.small {
+    width: 96px;
+}
+.custom-box .custom-content .form-control-ele select.small.first{
+    margin-right: 6px;
+}
