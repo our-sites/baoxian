@@ -92,7 +92,6 @@
 
 /*筛选结果*/
 #productList .product-list {
-    float: left;
     width: 886px;
     overflow: hidden;
 }
