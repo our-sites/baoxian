@@ -1,0 +1,101 @@
+.lively-advisers {
+    width: 300px;
+}
+
+.lively-advisers .rank-title {
+    position: relative;
+    width: 100%;
+    height: 26px;
+    line-height: 26px;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.lively-advisers .rank-title b {
+    font-size: 14px;
+}
+
+.lively-advisers .rank-title-tab {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 26px;
+}
+
+.lively-advisers .rank-title-tab a {
+    display: inline-block;
+    border-bottom: 1px solid transparent;
+    margin-right: 5px;
+}
+
+.lively-advisers .rank-title-tab a:hover,
+.lively-advisers .rank-title-tab a.active {
+    border-color: #42bad0;
+}
+
+.lively-advisers .rank-item {
+    padding: 10px 8px;
+    height: 64px;
+    line-height: 28px;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.lively-advisers .rank-item:hover {
+    background-color: #fafafa;
+}
+
+.lively-advisers .rank-item .fr{
+    width: 72px;
+    padding: 2px 8px 2px 0;
+    text-align: right;
+}
+
+.lively-advisers .rank-item .info{
+    display: inline-block;
+    overflow: hidden;
+    padding: 2px 0;
+}
+
+.lively-advisers .rank-item-link {
+    color: #42bad0;
+    font-weight: bold;
+}
+
+.lively-advisers .rank-item-score {
+    color: #424242;
+    font-weight: bold;
+}
+
+.lively-advisers .rank-item-avatar {
+    width: 46px;
+    height: 62px;
+    border: 1px solid #eee;
+}
+
+.lively-advisers .rank-item-name {
+    margin-right: 10px;
+    color: #616161;
+}
+
+.lively-advisers .rank-item-company {
+    color: #616161;
+}
+
+.lively-advisers .rank-item-level,
+.lively-advisers .rank-item-authentication {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 5px;
+}
+
+.lively-advisers .rank-item-level {
+    margin-right: 2px;
+    background: url("./img/author-level.png") no-repeat 0 0;
+}
+
+.lively-advisers .rank-item-authentication {
+    background: url("./img/author-authentication.png") no-repeat 0 0;
+}
+

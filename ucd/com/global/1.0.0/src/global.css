@@ -191,7 +191,7 @@ a.color:hover {
 .bx-top > .clf,
 .bx-header > .clf,
 .bx-nav > .clf {
-    width: 960px;
+    width: 1200px;
     margin: 0 auto;
 }
 
@@ -263,7 +263,7 @@ a.color:hover {
 
 .bx-nav {
     height: 40px;
-    background-color: #e9f2f4;
+    background-color: #42bad0;
 }
 
 .bx-nav > .clf {
@@ -291,7 +291,7 @@ a.color:hover {
 .bx-footer{
     color: #9e9e9e;
     text-align: center;
-    width: 960px;
+    width: 1200px;
     margin: 60px auto 0;
     padding: 36px 0;
     border-top: 1px solid #ebebeb;

@@ -13,6 +13,22 @@
         "com/tabs/1.0.0:tabs",
         "www/common/1.0.0:common.css"
       ]
+    },
+    "www/common/1.0.0:crubms.css": {
+      "uri": "/www/common/1.0.0/src/crubms.css",
+      "type": "css"
+    },
+    "www/common/1.0.0:custom-box.css": {
+      "uri": "/www/common/1.0.0/src/custom-box.css",
+      "type": "css"
+    },
+    "www/common/1.0.0:lively-advisers.css": {
+      "uri": "/www/common/1.0.0/src/lively-advisers.css",
+      "type": "css"
+    },
+    "www/common/1.0.0:warmheart-advisers.css": {
+      "uri": "/www/common/1.0.0/src/warmheart-advisers.css",
+      "type": "css"
     }
   },
   "pkg": {}

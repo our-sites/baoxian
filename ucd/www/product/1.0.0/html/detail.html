@@ -1,0 +1,38 @@
+{{ atmjs.use(':detail') }}
+{%include 'html/layouts/header.html' | path('www/common') %}
+<div id="productDetail" class="clf">
+    <!--面包屑导航-->
+    <div class="bx-crubms">
+        <a href="">保险岛首页</a> &gt;
+        <a href="">保险产品</a> &gt;
+        <a href="">少儿重大疾病险</a> &gt;
+        <a href="">民生人寿保险股份有限公司</a> &gt;
+        <a href="">民生如意鑫康终身重大疾病保险</a>
+    </div>
+
+    <div class="clf">
+        <div class="fl">
+            <!--概览-->
+            <div class="product-preview clf">
+
+            </div>
+            <!--所有信息-->
+            <div class="information">
+
+            </div>
+        </div>
+
+
+        <div class="fr">
+            <!--私人定制-->
+            {%include 'html/layouts/sections/私人定制.html' | path('www/common') %}
+            <!--活跃顾问-->
+            {%include 'html/layouts/sections/活跃顾问.html' | path('www/common') %}
+        </div>
+
+    </div>
+
+
+</div>
+
+{%include 'html/layouts/footer.html' | path('www/common') %}
