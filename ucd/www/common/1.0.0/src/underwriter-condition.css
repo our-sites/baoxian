@@ -1,0 +1,46 @@
+.underwriter-condition {
+    width: 300px;
+}
+
+.underwriter-condition h3 {
+    width: 100%;
+    height: 26px;
+    line-height: 26px;
+    border-bottom: 1px solid #ebebeb;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.underwriter-condition-item {
+    height: 60px;
+    padding-right: 20px;
+    border-bottom: 1px solid #ebebeb;
+    overflow: hidden;
+}
+
+.underwriter-condition-item:hover {
+    background-color: #fafafa;
+}
+
+.underwriter-condition-item:hover a{
+    color: #42bad0;
+}
+
+.underwriter-condition-item .fl {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    color: #ffffff;
+    background-color: #42bad0;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    margin: 10px 10px 0 0;
+}
+
+.underwriter-condition-item p {
+    height: 36px;
+    overflow: hidden;
+    margin: 12px 0;
+}
