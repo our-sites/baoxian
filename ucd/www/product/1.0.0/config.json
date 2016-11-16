@@ -1,7 +1,8 @@
 {
   "stable": false,
   "exports": {
-    "product": {}
+	"index": {},
+	"detail": {}
   },
   "packs": {}
 }

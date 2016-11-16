@@ -14,7 +14,7 @@
       "pkg": "com/global/1.0.0:p1"
     },
     "com/global/1.0.0:global.css": {
-      "uri": "/com/global/1.0.0/src/global_bc4f184.css",
+      "uri": "/com/global/1.0.0/src/global_cde01fe.css",
       "type": "css",
       "deps": [
         "com/global/1.0.0:css/font-awesome.css"
@@ -33,7 +33,7 @@
   },
   "pkg": {
     "com/global/1.0.0:p0": {
-      "uri": "/com/global/1.0.0/pkg/global_1e83517.css",
+      "uri": "/com/global/1.0.0/pkg/global_74ae046.css",
       "type": "css",
       "has": [
         "com/global/1.0.0:css/font-awesome.css",

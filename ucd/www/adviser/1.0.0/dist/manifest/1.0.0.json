@@ -1,0 +1,55 @@
+{
+  "res": {
+    "www/adviser/1.0.0:common.css": {
+      "uri": "/www/adviser/1.0.0/src/common.css",
+      "type": "css",
+      "pkg": "www/adviser/1.0.0:p0"
+    },
+    "www/adviser/1.0.0:common": {
+      "uri": "/www/adviser/1.0.0/src/common.js",
+      "type": "js",
+      "deps": [
+        "www/common/1.0.0:common",
+        "www/adviser/1.0.0:common.css"
+      ],
+      "pkg": "www/adviser/1.0.0:p1"
+    },
+    "www/adviser/1.0.0:index.css": {
+      "uri": "/www/adviser/1.0.0/src/index.css",
+      "type": "css",
+      "pkg": "www/adviser/1.0.0:p0"
+    },
+    "www/adviser/1.0.0:index": {
+      "uri": "/www/adviser/1.0.0/src/index.js",
+      "type": "js",
+      "deps": [
+        "www/adviser/1.0.0:common",
+        "www/adviser/1.0.0:index.css"
+      ],
+      "pkg": "www/adviser/1.0.0:p1"
+    }
+  },
+  "pkg": {
+    "www/adviser/1.0.0:p0": {
+      "uri": "/www/adviser/1.0.0/pkg/adviser.css",
+      "type": "css",
+      "has": [
+        "www/adviser/1.0.0:common.css",
+        "www/adviser/1.0.0:index.css"
+      ]
+    },
+    "www/adviser/1.0.0:p1": {
+      "uri": "/www/adviser/1.0.0/pkg/adviser.js",
+      "type": "js",
+      "has": [
+        "www/adviser/1.0.0:common",
+        "www/adviser/1.0.0:index"
+      ],
+      "deps": [
+        "www/common/1.0.0:common",
+        "www/adviser/1.0.0:common.css",
+        "www/adviser/1.0.0:index.css"
+      ]
+    }
+  }
+}

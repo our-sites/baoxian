@@ -13,6 +13,9 @@ import  dingzhi
 import  zixun
 import  views
 import  manage
+import  product
+import  dailiren
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'bx.views.home', name='home'),
@@ -35,5 +38,7 @@ urlpatterns = patterns('',
                        (r"ask/",include(ask.site.urls)),
                        (r"dingzhi/",include(dingzhi.site.urls)),
                        (r"zixun/",include(zixun.site.urls)),
+                       (r"product/",include(product.site.urls)),
+                       (r"dailiren/",include(dailiren.site.urls)),
                        (r'^ckeditor/', include('ckeditor_uploader.urls')),
 )

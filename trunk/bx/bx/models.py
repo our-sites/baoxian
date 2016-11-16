@@ -11,6 +11,7 @@ import  datetime
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 import  re
+import  json
 
 def filter_tags(htmlstr):
     s=re.sub("<[^<>]+>",'',htmlstr)
@@ -61,10 +62,34 @@ class Consult(models.Model):
         return  b.strip()
     def get_date(self):
         return datetime.datetime.fromtimestamp(self.addtime).strftime("%Y-%m-%d")
+
+    def get_datetime(self):
+        return  datetime.date.fromtimestamp(self.addtime).strftime("%Y-%m-%d %H:%M:%S")
+
     def get_type(self):
         config={1:"保险百科",2:"社会案例",3:"保险规划",4:"保险新闻",5:"监管动态",6:"保险词条"}
         if self.type in config:
             return config[self.type]
+    def simple_title(self):
+        if len(self.title)>17:
+            return self.title[:17]+".."
+        else:
+            return self.title
+
+    def simple_seo_k(self):
+        return  self.keywords+(".." if len(self.keywords)>9 else '' )
+
+    def simple_seo_d(self):
+        return  self.description+(".." if len(self.description)>9 else "")
+
+    def get_status(self):
+        if self.status==1:
+            return  "正常"
+        else:
+            return "禁用"
+    def get_from(self):
+        return  self._from
+
 class Company(models.Model):
     cid=models.AutoField(primary_key=True)
     comname=models.CharField(max_length=100,verbose_name="企业名",unique=True)
@@ -127,6 +152,23 @@ class Product(models.Model):
 
     def __unicode__(self):
         return  self.pro_name
+
+    def get_pro_desc_json(self):
+        try:
+            return  json.loads(self.pro_desc_content)
+        except:
+            return []
+
+    def get_type_name_list(self):
+        t_list=[]
+        for i in self.bx_type.split(","):
+            try:
+                t_list.append(int(i))
+            except:
+                pass
+        objs=CateType.objects.filter(id__in=t_list)
+        return [i.type_name  for i in objs]
+
 
 class ProxyUserProfile(models.Model):
     id=models.AutoField(primary_key=True)

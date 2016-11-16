@@ -185,6 +185,7 @@ var atmjs;
         loadJs: function (url) {
             var script = document.createElement('script');
             script.type = 'text/javascript';
+            script.charset = 'utf-8';
             script.src = url;
             head.appendChild(script);
             return this;

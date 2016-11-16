@@ -137,7 +137,9 @@ INSTALLED_APPS = (
     "bx.ask",
     "bx.dingzhi",
     "bx.zixun",
-    "bx.manage"
+    "bx.manage",
+    "bx.product",
+    "bx.dailiren"
 )
 
 # A sample logging configuration. The only tangible logging

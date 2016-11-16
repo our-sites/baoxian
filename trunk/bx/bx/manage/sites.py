@@ -23,6 +23,7 @@ class Manage(object):
                                (r"user/proxy/resetpwd/(\d+)\.html",views.user_proxy_resetpwd),
                                (r"^zixun/add/",views.zixun_add),
                                (r"^zixun/all/",views.zixun_all),
+                               (r"zixun/detail/(\d+)\.html",views.zixun_detail),
                                (r"logout/",views.logout)
             )
         return urlpatterns

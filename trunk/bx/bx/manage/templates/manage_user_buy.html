@@ -102,7 +102,7 @@
                         <a href="{{ request.path }}?page=1">首页</a>
                     </li>
                     {% for i in page|near:4 %}
-                        {% if i > 0 %}
+                        {% if i > 0 and i <= allinfo_paginator.num_pages %}
                     <li {% if i == page %}class="active" {% endif %}>
                         <a href="{{ request.path }}?page={{ i }}" >{{ i }}</a>
                     </li>{% endif %}{% endfor %}

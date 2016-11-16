@@ -135,6 +135,61 @@
                 <td>创建时间</td>
                 <td>{{ myuser.datetime }}</td>
             </tr>
+            <tr>
+                <td>职位</td>
+                <td>{{ myuser.xx }}</td>
+            </tr>
+            <tr>
+                <td>所属保险公司</td>
+                <td><select class="form-control" name="cid" style="width: 200px">
+                    <option value="0">无</option>
+                    {% for i in allcompany %}
+                        <option value="{{ i.cid }}" {% if myprofile %}{% if myprofile.cid == i.cid %}selected{% endif %}{% endif %}>{{ i.shortname }}</option>
+                    {% endfor %}
+
+                </select></td>
+            </tr>
+            <tr>
+                <td>微信号</td>
+                <td><input type="text" class="form-control" id="fdsfdddscdf"  value="{{ myprofile.weixin }}" style="width: 200px" name="weixin"></td>
+            </tr>
+            <tr>
+                <td>个人简介</td>
+                <td><textarea type="text" class="form-control" id="dvdaer"   style="width: 400px" name="my_ad" >{% if myprofile %}{{ myprofile.my_ad }}{% endif %}</textarea></td>
+            </tr>
+            <tr>
+                <td>资格证编号</td>
+                <td><input type="text" class="form-control" id="fdsfdsc"  value="{% if myprofile %}{{ myprofile.certifi_num }}{% endif %}" style="width: 200px" name="certifi_num">
+                </td>
+            </tr>
+            <tr>
+                <td>执业证编号</td>
+                <td><input type="text" class="form-control" id="fdsfddsc"  value="{% if myprofile %}{{ myprofile.practice_num }}{% endif %}" style="width: 320px" name="practice_num"></td>
+            </tr>
+                        <tr>
+                <td>元信息</td>
+                <td>{% if myprofile %}<label class="label label-info">{{ myprofile.meta }}</label>{% endif %}</td>
+            </tr>
+            {% if myprofile.certifi_status in  status_range %}
+                        <tr>
+                <td>认证状态</td>
+                <td>
+                    <label class="checkbox-inline">
+                        <input type="radio" name="certifi_status" id="optionsRadifdosfds" value="1" {% if myprofile.certifi_status == 1 %}checked{% endif %}>待审核
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="radio" name="certifi_status" id="optionsRadiosfdsdfds" value="2" {% if myprofile.certifi_status == 2 %}checked{% endif %}>审核通过
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="radio" name="certifi_status" id="optionsRadiosfdsdfds" value="3" {% if myprofile.certifi_status == 3 %}checked{% endif %}>拘审
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>认证通知</td>
+                <td><input type="text" class="form-control" id="fdsfddscdf"  value="{{ myprofile.certifi_message }}" style="width: 300px" name="certifi_message"></td>
+            </tr>
+            {% endif %}
                         <tr>
                 <td>操作</td>
                 <td><button type="submit" class="btn btn-primary btn-sm">提交</button></td>

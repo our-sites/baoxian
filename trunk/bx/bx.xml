@@ -6,6 +6,8 @@
     <chdir>./</chdir>
     <module>django_wsgi</module>
     <processes>4</processes> <!-- 进程数 -->
+    <gevent>100</gevent>
+    <gevent-monkey-patch>true</gevent-monkey-patch>
     <pidfile>/home/nginx/logs/uwsgi_bx.pid</pidfile>
     <disable-logging>false</disable-logging>
     <buffer-size>32768</buffer-size>

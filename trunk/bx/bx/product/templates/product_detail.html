@@ -1,0 +1,416 @@
+{% extends "base.html" %}
+{% block title %}
+    {{ info.pro_name }}保险产品_保险管家
+{% endblock %}
+{% load atm %}
+{% block css %}
+    {% atmcss www/product:detail %}
+{% endblock %}
+{% block content %}
+    <div id="productDetail" class="clf">
+    <!--面包屑导航-->
+    <div class="bx-crubms">
+        <a href="">保险管家</a> &gt;
+        <a href="">保险产品</a> &gt;
+        <a href="">{{ company.comname }}</a> &gt;
+        <a href="">{{ product.pro_name }}</a>
+    </div>
+
+    <div class="clf">
+        <div class="fl">
+            <!--概览-->
+            <div class="product-preview clf">
+                <div class="product-preview-pic">
+                    <div class="product-preview-img-box">
+                        <img src="{{ product.img.url }}" alt="" style="height: 100%;">
+                    </div>
+                </div>
+                <div class="product-preview-word">
+                    <h2>{{ product.pro_name }}</h2>
+                    <p class="product-preview-feature">
+                        <span>特色</span>
+                        {{ product.bx_feature }}
+                    </p>
+                    <div class="product-preview-label clf">
+                        <span class="fl">
+                            标签：
+                        </span>
+                        <p>
+                            {{ company.comname }}  {% for i in product.get_type_name_list %}|  {{ i }}  {% endfor %}
+                        </p>
+                    </div>
+                    <ul>
+                        <li><span>承保年龄：</span>{{ product.insurance_agelimit }}</li>
+                        <li><span>保障期限：</span>{{ product.insurance_timelimit }}</li>
+                        <li><span>缴费方式：</span>{{ product.insurance_paytype }}</li>
+                    </ul>
+                </div>
+            </div>
+            <!--所有信息-->
+            <div class="product-information">
+                <!--tabs-->
+                <div class="product-information-tabs">
+                    <ul class="clf">
+                        <li class="active">产品详情</li>
+                        <li>相关案例</li>
+                        <li>理赔流程</li>
+                    </ul>
+                </div>
+                <!--产品详情-->
+                <div class="product-info-detail">
+
+                </div>
+                <!--相关案例-->
+                <div class="product-info-example"></div>
+                <!--理赔流程-->
+                <div class="product-info-process"></div>
+            </div>
+
+            <!--相关产品-->
+            <div class="relative-product">
+                <h3>相关产品</h3>
+                <div class="clf">
+
+                    <div class="relative-product-item">
+                        <div class="relative-product-item-img">
+                            <img src="" alt="" style="height: 100%;">
+                        </div>
+                        <div class="relative-product-item-word">
+                            <h4>国寿福升级版（终身版）</h4>
+                            <p>保障80种重疾和20种轻症，范围范围范围</p>
+                        </div>
+                    </div>
+                    <div class="relative-product-item">
+                        <div class="relative-product-item-img">
+                            <img src="" alt="" style="height: 100%;">
+                        </div>
+                        <div class="relative-product-item-word">
+                            <h4>国寿福升级版（终身版）</h4>
+                            <p>保障80种重疾和20种轻症，范围范围范围</p>
+                        </div>
+                    </div>
+                    <div class="relative-product-item">
+                        <div class="relative-product-item-img">
+                            <img src="" alt="" style="height: 100%;">
+                        </div>
+                        <div class="relative-product-item-word">
+                            <h4>国寿福升级版（终身版）</h4>
+                            <p>保障80种重疾和20种轻症，范围范围范围</p>
+                        </div>
+                    </div>
+                    <div class="relative-product-item last">
+                        <div class="relative-product-item-img">
+                            <img src="" alt="" style="height: 100%;">
+                        </div>
+                        <div class="relative-product-item-word">
+                            <h4>国寿福升级版（终身版）</h4>
+                            <p>保障80种重疾和20种轻症，范围范围范围</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+  <div class="fr">
+                <!--私人定制-->
+                <div class="custom-box">
+                    <h3>私人定制</h3>
+                    <div class="custom-content">
+                        <form action="">
+                            <div class="form-control clf">
+                                <label for="year">
+                                    出生年月
+                                </label>
+                                <div class="form-control-ele">
+                                    <select name="year" id="year" class="small first">
+                                        <option value="2016">2016</option>
+                                    </select>
+                                    <select name="month" id="month" class="small">
+                                        <option value="1">1月</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-control clf">
+                                <label for="type">
+                                    保险类型
+                                </label>
+                                <div class="form-control-ele">
+                                    <select name="type" id="type">
+                                        <option value="1">人寿险</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-control clf">
+                                <label for="money">
+                                    价格区间
+                                </label>
+                                <div class="form-control-ele">
+                                    <select name="money" id="money">
+                                        <option value="1">0~300元</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-control clf">
+                                <label for="contact">
+                                    联系电话
+                                </label>
+                                <div class="form-control-ele">
+                                    <input type="text" id="contact" name="contact" placeholder="请填写">
+                                </div>
+                            </div>
+                            <div class="form-control clf">
+                                <label for="address">
+                                    居住地区
+                                </label>
+                                <div class="form-control-ele">
+                                    <select name="address" id="address">
+                                        <option value="1">河南省 郑州市 金水区</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="submit">提交</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!--活跃顾问-->
+
+                <!-- 活跃顾问 -->
+                <div class="lively-advisers">
+                    <!--title-->
+                    <h3 class="rank-title">
+                        <b>活跃顾问</b>
+                        <div class="rank-title-tab">
+                            <a href="" class="active">今日</a>
+                            <a href="">本周</a>
+                            <a href="">本月</a>
+                        </div>
+                    </h3>
+                    <!--list-->
+
+                    <div class="rank-type rank-day">
+                        <div class="rank-item clf">
+                            <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" class="rank-item-avatar">
+                            <div class="info">
+                                <p>
+                                    <span class="rank-item-name">1这是个名字</span>
+                                    <span class="rank-item-level"></span>
+                                    <span class="rank-item-authentication"></span>
+                                </p>
+                                <p>
+                                    <span class="rank-item-company">公司的名字</span>
+                                </p>
+                            </div>
+                            <div class="fr">
+                                <span class="rank-item-score">554条回答</span>
+                                <a href="" class="rank-item-link">咨询他</a>
+                            </div>
+                        </div>
+                        <div class="rank-item clf">
+                            <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" class="rank-item-avatar">
+                            <div class="info">
+                                <p>
+                                    <span class="rank-item-name">1这是个名字</span>
+                                    <span class="rank-item-level"></span>
+                                    <span class="rank-item-authentication"></span>
+                                </p>
+                                <p>
+                                    <span class="rank-item-company">公司的名字</span>
+                                </p>
+                            </div>
+                            <div class="fr">
+                                <span class="rank-item-score">554条回答</span>
+                                <a href="" class="rank-item-link">咨询他</a>
+                            </div>
+                        </div>
+                        <div class="rank-item clf">
+                            <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" class="rank-item-avatar">
+                            <div class="info">
+                                <p>
+                                    <span class="rank-item-name">1这是个名字</span>
+                                    <span class="rank-item-level"></span>
+                                    <span class="rank-item-authentication"></span>
+                                </p>
+                                <p>
+                                    <span class="rank-item-company">公司的名字</span>
+                                </p>
+                            </div>
+                            <div class="fr">
+                                <span class="rank-item-score">554条回答</span>
+                                <a href="" class="rank-item-link">咨询他</a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="rank-type rank-week fn-hidden">
+                        <div class="rank-item clf">
+                            <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" class="rank-item-avatar">
+                            <div class="info">
+                                <p>
+                                    <span class="rank-item-name">1这是个名字</span>
+                                    <span class="rank-item-level"></span>
+                                    <span class="rank-item-authentication"></span>
+                                </p>
+                                <p>
+                                    <span class="rank-item-company">公司的名字</span>
+                                </p>
+                            </div>
+                            <div class="fr">
+                                <span class="rank-item-score">554条回答</span>
+                                <a href="" class="rank-item-link">咨询他</a>
+                            </div>
+                        </div>
+                        <div class="rank-item clf">
+                            <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" class="rank-item-avatar">
+                            <div class="info">
+                                <p>
+                                    <span class="rank-item-name">1这是个名字</span>
+                                    <span class="rank-item-level"></span>
+                                    <span class="rank-item-authentication"></span>
+                                </p>
+                                <p>
+                                    <span class="rank-item-company">公司的名字</span>
+                                </p>
+                            </div>
+                            <div class="fr">
+                                <span class="rank-item-score">554条回答</span>
+                                <a href="" class="rank-item-link">咨询他</a>
+                            </div>
+                        </div>
+                        <div class="rank-item clf">
+                            <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" class="rank-item-avatar">
+                            <div class="info">
+                                <p>
+                                    <span class="rank-item-name">1这是个名字</span>
+                                    <span class="rank-item-level"></span>
+                                    <span class="rank-item-authentication"></span>
+                                </p>
+                                <p>
+                                    <span class="rank-item-company">公司的名字</span>
+                                </p>
+                            </div>
+                            <div class="fr">
+                                <span class="rank-item-score">554条回答</span>
+                                <a href="" class="rank-item-link">咨询他</a>
+                            </div>
+                        </div>
+                        <div class="rank-item clf">
+                            <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" class="rank-item-avatar">
+                            <div class="info">
+                                <p>
+                                    <span class="rank-item-name">1这是个名字</span>
+                                    <span class="rank-item-level"></span>
+                                    <span class="rank-item-authentication"></span>
+                                </p>
+                                <p>
+                                    <span class="rank-item-company">公司的名字</span>
+                                </p>
+                            </div>
+                            <div class="fr">
+                                <span class="rank-item-score">554条回答</span>
+                                <a href="" class="rank-item-link">咨询他</a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="rank-type rank-month fn-hidden">
+                        <div class="rank-item clf">
+                            <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" class="rank-item-avatar">
+                            <div class="info">
+                                <p>
+                                    <span class="rank-item-name">1这是个名字</span>
+                                    <span class="rank-item-level"></span>
+                                    <span class="rank-item-authentication"></span>
+                                </p>
+                                <p>
+                                    <span class="rank-item-company">公司的名字</span>
+                                </p>
+                            </div>
+                            <div class="fr">
+                                <span class="rank-item-score">554条回答</span>
+                                <a href="" class="rank-item-link">咨询他</a>
+                            </div>
+                        </div>
+                        <div class="rank-item clf">
+                            <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" class="rank-item-avatar">
+                            <div class="info">
+                                <p>
+                                    <span class="rank-item-name">1这是个名字</span>
+                                    <span class="rank-item-level"></span>
+                                    <span class="rank-item-authentication"></span>
+                                </p>
+                                <p>
+                                    <span class="rank-item-company">公司的名字</span>
+                                </p>
+                            </div>
+                            <div class="fr">
+                                <span class="rank-item-score">554条回答</span>
+                                <a href="" class="rank-item-link">咨询他</a>
+                            </div>
+                        </div>
+                        <div class="rank-item clf">
+                            <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" class="rank-item-avatar">
+                            <div class="info">
+                                <p>
+                                    <span class="rank-item-name">1这是个名字</span>
+                                    <span class="rank-item-level"></span>
+                                    <span class="rank-item-authentication"></span>
+                                </p>
+                                <p>
+                                    <span class="rank-item-company">公司的名字</span>
+                                </p>
+                            </div>
+                            <div class="fr">
+                                <span class="rank-item-score">554条回答</span>
+                                <a href="" class="rank-item-link">咨询他</a>
+                            </div>
+                        </div>
+                        <div class="rank-item clf">
+                            <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" class="rank-item-avatar">
+                            <div class="info">
+                                <p>
+                                    <span class="rank-item-name">1这是个名字</span>
+                                    <span class="rank-item-level"></span>
+                                    <span class="rank-item-authentication"></span>
+                                </p>
+                                <p>
+                                    <span class="rank-item-company">公司的名字</span>
+                                </p>
+                            </div>
+                            <div class="fr">
+                                <span class="rank-item-score">554条回答</span>
+                                <a href="" class="rank-item-link">咨询他</a>
+                            </div>
+                        </div>
+                        <div class="rank-item clf">
+                            <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" class="rank-item-avatar">
+                            <div class="info">
+                                <p>
+                                    <span class="rank-item-name">1这是个名字</span>
+                                    <span class="rank-item-level"></span>
+                                    <span class="rank-item-authentication"></span>
+                                </p>
+                                <p>
+                                    <span class="rank-item-company">公司的名字</span>
+                                </p>
+                            </div>
+                            <div class="fr">
+                                <span class="rank-item-score">554条回答</span>
+                                <a href="" class="rank-item-link">咨询他</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+{% block js %}
+    {% atmjs www/product:detail %}
+{% endblock %}

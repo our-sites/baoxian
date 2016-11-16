@@ -1,10 +1,10 @@
 /*面包屑导航*/
-@import "./crubms.css";
+@import url("./crubms.css?__inline");
 /*私人定制*/
-@import "./custom-box.css";
+@import url("./custom-box.css?__inline");
 /*活跃顾问*/
-@import "./lively-advisers.css";
+@import url("./lively-advisers.css?__inline");
 /*热心顾问  保险精英*/
-@import "./warmheart-advisers.css";
+@import url("./warmheart-advisers.css?__inline");
 /*活跃顾问*/
-@import "./underwriter-condition.css";
+@import url("./underwriter-condition.css?__inline");

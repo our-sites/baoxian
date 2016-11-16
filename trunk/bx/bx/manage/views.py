@@ -12,7 +12,7 @@ from  bx.myauth.models import *
 from bx.models import Area
 import  datetime
 from django.core.paginator import Paginator,EmptyPage
-from ..models import Consult
+from ..models import Consult,Company
 
 
 @staff_member_required
@@ -151,6 +151,12 @@ def user_proxy(request):
 @staff_member_required
 def user_proxy_detail(request,_id):
     myuser=MyUser.objects.get(usertype=2,uid=int(_id))
+    status_range=[1,2,3]
+    try:
+        myprofile=ProxyUserProfile.objects.get(uid=myuser.uid)
+    except:
+        myprofile=None
+    allcompany=Company.objects.all()
     if request.method=="POST":
         img=request.FILES.get("img")
         real_name=request.POST.get("real_name")
@@ -170,6 +176,16 @@ def user_proxy_detail(request,_id):
         myuser.qq=qq
         myuser.sex=sex
         myuser.save()
+        cid=int(request.POST.get("cid","0"))
+        myprofile.cid=cid
+        myprofile.my_ad=request.POST.get("my_ad","")
+        myprofile.certifi_num=request.POST.get("certifi_num","")
+        myprofile.practice_num=request.POST.get("practice_num","")
+        if request.POST.has_key("certifi_status"):
+            myprofile.certifi_status=int(request.POST.get("certifi_status"))
+            myprofile.certifi_message=request.POST["certifi_message"]
+        myprofile.weixin=request.POST["weixin"]
+        myprofile.save()
         return  HttpResponseRedirect(request.get_full_path())
     else:
         try:
@@ -222,7 +238,53 @@ def zixun_add(request):
 
 @staff_member_required
 def zixun_all(request):
+    if request.method=="POST":
+        _id=request.POST.get("input")
+        try:
+            _id=int(_id)
+        except:
+            allinfo=[]
+        else:
+            allinfo=Consult.objects.filter(zid=_id)
+        return  render_to_response("manage_zixun_all.html",locals(),
+                                   context_instance=RequestContext(request))
+    else:
+        page=request.GET.get("page","1")
+        page=int(page)
+        allinfo_paginator=Paginator(Consult.objects.filter(type__in=[1,2,3,4,5,6]).order_by("-addtime"),15)
+        try:
+            allinfo=allinfo_paginator.page(page)
+        except EmptyPage:
+            allinfo=allinfo_paginator.page(1)
+            page=1
+        allinfo.next_page_number()
+        allinfo.has_next()
+        #area_config=dict([(i["id"],i["shortname"]) for i in  Area.objects.filter(id__in=[i.province  for i in allinfo ]+[i.city for i in allinfo]).values("id","shortname") ])
+        for i in allinfo:
+            #i.province_info=area_config.get(i.province,"")
+            #i.city_info=area_config.get(i.city,"")
+            i.datetime=datetime.datetime.fromtimestamp(i.addtime).strftime("%Y-%m-%d %H:%M:%S")
     return  render_to_response("manage_zixun_all.html",locals(),context_instance=RequestContext(request))
+
+
+def zixun_detail(request,zid):
+    obj=Consult.objects.get(zid=int(zid))
+    if request.method=="POST":
+        title=request.POST.get("title")
+        _type=request.POST.get("type")
+        _type=int(_type)
+        writer=request.POST.get("writer")
+        content=request.POST.get("content")
+        keywords=request.POST.get("keywords")
+        description=request.POST.get("description")
+        obj=Consult(title=title,type=_type,writer=writer,_from=str(time.time()),addtime=int(time.time()),
+                content=content,status=1,keywords=keywords,description=description,
+                imghandle_tag=1)
+        obj.save()
+        return render_to_response("manage_zixun_add_success.html",locals(),context_instance=RequestContext(request))
+    else:
+        return  render_to_response("manage_zixun_detail.html",locals(),
+                                   context_instance=RequestContext(request))
 
 
 def logout(request):
