@@ -10,10 +10,10 @@
     <div id="productDetail" class="clf">
     <!--面包屑导航-->
     <div class="bx-crubms">
-        <a href="">保险管家</a> &gt;
-        <a href="">保险产品</a> &gt;
-        <a href="">{{ company.comname }}</a> &gt;
-        <a href="">{{ product.pro_name }}</a>
+        <a href="/">保险管家</a> &gt;
+        <a href="/product/">保险产品</a> &gt;
+        <a href="/product/search/0-0-{{ company.cid }}/">{{ company.comname }}</a> &gt;
+        <a href="#">{{ product.pro_name }}</a>
     </div>
 
     <div class="clf">
@@ -52,13 +52,52 @@
                 <div class="product-information-tabs">
                     <ul class="clf">
                         <li class="active">产品详情</li>
-                        <li>相关案例</li>
+{#                        <li>相关案例</li>#}
                         <li>理赔流程</li>
                     </ul>
                 </div>
                 <!--产品详情-->
                 <div class="product-info-detail">
-
+                    <div>
+                        <p>购买理由</p>
+                        <div>
+                            {{ product.pro_desc_reason|safe }}
+                        </div>
+                    </div>
+                    <div >
+                        <p>保障内容</p>
+                        <div>
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-bao">
+                                <tbody>
+                                <tr bgcolor="#f7fbf1">
+                                    <td width="120" align="center">保障利益</td>
+                                    <td width="100" align="center">保额</td>
+                                    <td align="center">保障内容</td>
+                                </tr>
+                            {% for i in product.desc_json_info  %}
+                                {% if i.0.1 != 0 %}
+                                <tr>
+                                    <td rowspan="{{ i.0.1 }}">{{ i.0.0 }}</td>
+                                    <td align="center">{{ i.1 }}</td>
+                                    <td>{{ i.2 }}</td>
+                                </tr>
+                                {% else %}
+                                <tr>
+                                    <td align="center">{{ i.1 }}</td>
+                                    <td>{{ i.2 }}</td>
+                                </tr>
+                                {% endif %}
+                            {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div>
+                        <p>免责声明</p>
+                        <div>
+                            {{ product.pro_desc_duty|safe }}
+                        </div>
+                    </div>
                 </div>
                 <!--相关案例-->
                 <div class="product-info-example"></div>
@@ -70,43 +109,44 @@
             <div class="relative-product">
                 <h3>相关产品</h3>
                 <div class="clf">
-
-                    <div class="relative-product-item">
+                    {% for i in other_products %}
+                    <div class="relative-product-item{% if forloop.counter == 4 %} last{% endif %}">
                         <div class="relative-product-item-img">
-                            <img src="" alt="" style="height: 100%;">
+                            <a href="/product/detail/{{ i.pid }}.html"><img src="{{ i.img.url }}" alt="{{ i.pro_name }}" style="height: 100%;"></a>
                         </div>
                         <div class="relative-product-item-word">
-                            <h4>国寿福升级版（终身版）</h4>
-                            <p>保障80种重疾和20种轻症，范围范围范围</p>
+                            <a href="/product/detail/{{ i.pid }}.html"><h4>{{ i.pro_name }}</h4></a>
+                            <p>{% for j in i.get_pro_desc_json|slice:":2" %}{{ j.0 }}{% if forloop.revcounter0 != 0 %},{% endif %}{% endfor %}</p>
                         </div>
                     </div>
-                    <div class="relative-product-item">
-                        <div class="relative-product-item-img">
-                            <img src="" alt="" style="height: 100%;">
-                        </div>
-                        <div class="relative-product-item-word">
-                            <h4>国寿福升级版（终身版）</h4>
-                            <p>保障80种重疾和20种轻症，范围范围范围</p>
-                        </div>
-                    </div>
-                    <div class="relative-product-item">
-                        <div class="relative-product-item-img">
-                            <img src="" alt="" style="height: 100%;">
-                        </div>
-                        <div class="relative-product-item-word">
-                            <h4>国寿福升级版（终身版）</h4>
-                            <p>保障80种重疾和20种轻症，范围范围范围</p>
-                        </div>
-                    </div>
-                    <div class="relative-product-item last">
-                        <div class="relative-product-item-img">
-                            <img src="" alt="" style="height: 100%;">
-                        </div>
-                        <div class="relative-product-item-word">
-                            <h4>国寿福升级版（终身版）</h4>
-                            <p>保障80种重疾和20种轻症，范围范围范围</p>
-                        </div>
-                    </div>
+                    {% endfor %}
+{#                    <div class="relative-product-item">#}
+{#                        <div class="relative-product-item-img">#}
+{#                            <img src="" alt="" style="height: 100%;">#}
+{#                        </div>#}
+{#                        <div class="relative-product-item-word">#}
+{#                            <h4>国寿福升级版（终身版）</h4>#}
+{#                            <p>保障80种重疾和20种轻症，范围范围范围</p>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="relative-product-item">#}
+{#                        <div class="relative-product-item-img">#}
+{#                            <img src="" alt="" style="height: 100%;">#}
+{#                        </div>#}
+{#                        <div class="relative-product-item-word">#}
+{#                            <h4>国寿福升级版（终身版）</h4>#}
+{#                            <p>保障80种重疾和20种轻症，范围范围范围</p>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="relative-product-item last">#}
+{#                        <div class="relative-product-item-img">#}
+{#                            <img src="" alt="" style="height: 100%;">#}
+{#                        </div>#}
+{#                        <div class="relative-product-item-word">#}
+{#                            <h4>国寿福升级版（终身版）</h4>#}
+{#                            <p>保障80种重疾和20种轻症，范围范围范围</p>#}
+{#                        </div>#}
+{#                    </div>#}
 
                 </div>
             </div>

@@ -17,6 +17,7 @@ class Dailiren(object):
       #      ("^%s$"%settings.LOGOUT_URL.lstrip("/"),views.logout),
                                ("^detail/(\d+)\.html",views.detail),
                                 ("^search/",views.search),
+                               ("^$",views.index),
             )
         return urlpatterns
     @property

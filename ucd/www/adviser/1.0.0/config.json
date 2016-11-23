@@ -1,7 +1,8 @@
 {
   "stable": true,
   "exports": {
-    "index": {}
+    "index": {},
+	"detail": {}
   },
   "packs": {
 	  "/pkg/adviser.js": [

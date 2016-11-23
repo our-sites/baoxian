@@ -17,6 +17,17 @@
           "js": "<script data-from=\"atmjs\" type=\"text/javascript\" id=\"atmjsnode\" src=\"{{host}}/debug?site=bx&id=www/adviser/1.0.0:index&isMod=true&type=js&domain={{host}}&timestamp={{timestamp}}\"></script><script data-from=\"atmjs\" type=\"text/javascript\">atmjs.use('www/adviser/1.0.0:index')</script>"
         },
         "trueId": "www/adviser/1.0.0:index"
+      },
+      "www/adviser:detail": {
+        "formal": {
+          "css": "<link data-from=\"atmjs\" type=\"text/css\" rel=\"stylesheet\" href=\"/static/atm/com/global/1.0.0/pkg/global_74ae046.css\" /><link data-from=\"atmjs\" type=\"text/css\" rel=\"stylesheet\" href=\"/static/atm/www/common/1.0.0/src/common_8c86e7c.css\" /><link data-from=\"atmjs\" type=\"text/css\" rel=\"stylesheet\" href=\"/static/atm/www/adviser/1.0.0/pkg/adviser_91e1dd5.css\" /><link data-from=\"atmjs\" type=\"text/css\" rel=\"stylesheet\" href=\"/static/atm/www/adviser/1.0.0/src/detail_80c4e05.css\" />",
+          "js": "<script id=\"atmjsnode\" data-from=\"atmjs\" type=\"text/javascript\" src=\"/static/atm/lib/parser/0.0.1/src/parser_3a54c10.js\"></script><script data-from=\"atmjs\" type=\"text/javascript\">atmjs.init({\"target\":\"product\",\"domain\":\"/static/atm\",\"version\":\"1.0.0\",\"alias\":{\"$\":\"com/global/1.0.0:dollar\",\"jquery\":\"lib/jquery/1.11.3:jquery\",\"global\":\"com/global/1.0.0:global\"},\"async\":{\"deps\":{\"1\":[0],\"2\":[1],\"4\":[3],\"5\":[2,4],\"6\":[1],\"8\":[5,2,6,7],\"10\":[8,9],\"12\":[10,11]},\"id\":[\"lib/jquery/1.11.3:origin/jquery\",\"lib/jquery/1.11.3:jquery\",\"com/global/1.0.0:dollar\",\"com/global/1.0.0:css/font-awesome.css\",\"com/global/1.0.0:global.css\",\"com/global/1.0.0:global\",\"com/tabs/1.0.0:tabs\",\"www/common/1.0.0:common.css\",\"www/common/1.0.0:common\",\"www/adviser/1.0.0:common.css\",\"www/adviser/1.0.0:common\",\"www/adviser/1.0.0:detail.css\",\"www/adviser/1.0.0:detail\"],\"type\":[1,1,1,0,0,1,1,0,1,0,1,0,1]}});</script><script data-from=\"atmjs\" type=\"text/javascript\" src=\"/static/atm/lib/jquery/1.11.3/pkg/jquery-1.11.3_76105f5.js\"></script><script data-from=\"atmjs\" type=\"text/javascript\" src=\"/static/atm/com/global/1.0.0/pkg/global_f5ab4f9.js\"></script><script data-from=\"atmjs\" type=\"text/javascript\" src=\"/static/atm/com/tabs/1.0.0/src/tabs_b5d0211.js\"></script><script data-from=\"atmjs\" type=\"text/javascript\" src=\"/static/atm/www/common/1.0.0/src/common_67b3084.js\"></script><script data-from=\"atmjs\" type=\"text/javascript\" src=\"/static/atm/www/adviser/1.0.0/pkg/adviser_f4ea0a5.js\"></script><script data-from=\"atmjs\" type=\"text/javascript\" src=\"/static/atm/www/adviser/1.0.0/src/detail_200055f.js\"></script><script id=\"atmjsuse\" data-from=\"atmjs\" type=\"text/javascript\">atmjs.use('www/adviser/1.0.0:detail');</script>"
+        },
+        "debug": {
+          "css": "<link data-from=\"atmjs\" rel=\"stylesheet\" type=\"text/css\" href=\"{{host}}/debug?site=bx&id=www/adviser/1.0.0:detail&type=css&domain={{host}}&timestamp={{timestamp}}\" />",
+          "js": "<script data-from=\"atmjs\" type=\"text/javascript\" id=\"atmjsnode\" src=\"{{host}}/debug?site=bx&id=www/adviser/1.0.0:detail&isMod=true&type=js&domain={{host}}&timestamp={{timestamp}}\"></script><script data-from=\"atmjs\" type=\"text/javascript\">atmjs.use('www/adviser/1.0.0:detail')</script>"
+        },
+        "trueId": "www/adviser/1.0.0:detail"
       }
     }
   }

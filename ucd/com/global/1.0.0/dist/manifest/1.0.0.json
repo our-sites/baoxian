@@ -29,6 +29,20 @@
         "com/global/1.0.0:global.css"
       ],
       "pkg": "com/global/1.0.0:p1"
+    },
+    "com/global/1.0.0:validator.css": {
+      "uri": "/com/global/1.0.0/src/validator.css",
+      "type": "css"
+    },
+    "com/global/1.0.0:validator": {
+      "uri": "/com/global/1.0.0/src/validator.js",
+      "type": "js",
+      "deps": [
+        "com/validator/0.10.3:validator",
+        "lib/jquery/1.11.3:jquery",
+        "com/qtip/1.0.0:qtip",
+        "com/global/1.0.0:validator.css"
+      ]
     }
   },
   "pkg": {

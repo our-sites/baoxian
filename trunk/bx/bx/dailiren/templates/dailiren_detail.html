@@ -1,0 +1,247 @@
+{% extends "base.html" %}
+{% block title %}
+    {{ info.pro_name }}保险代理人_保险管家
+{% endblock %}
+{% load atm %}
+{% block css %}
+    {% atmcss www/adviser:detail %}
+{% endblock %}
+{% block content %}
+<div id="adviserDetail" class="clf">
+    <!--概要-->
+    <div class="adviser-preview-wrap">
+        <div class="adviser-preview">
+            <h2>刘保险</h2>
+            <div class="clf">
+                <div class="adviser-preview-img">
+                    <img src="">
+                </div>
+                <div class="adviser-preview-basic">
+                    <p class="job">客户经理</p>
+                    <p class="company"><span>北京</span>平安保险</p>
+                    <p class="contact"><span>电话：13688888888</span>QQ：1234989</p>
+                    <a class="consult-btn" href="javascript:;">我要咨询</a>
+                </div>
+                <div class="adviser-preview-addition">
+                    <p>
+                        <span>保险销售执业证号：</span>02000511010880002014000978
+                    </p>
+                    <p>
+                        <span>保险代理资格证号：</span>20071011000000039907
+                    </p>
+                    <p>
+                        <span>从业时间：</span>17年
+                    </p>
+                    <p>
+                        <span>回答：</span>545条
+                        <span class="ml50">好评：</span>108
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--详情-->
+    <div class="adviser-details">
+        <!--tabs-->
+        <div class="adviser-details-tabs">
+            <a href="javascript:;" class="active">个人信息</a>
+            <a href="javascript:;">保险产品</a>
+        </div>
+        <!--个人信息-->
+        <div class="adviser-personal-info">
+            <!--个人介绍-->
+            <div class="clf intro">
+                <div class="fl">
+                    个人介绍
+                </div>
+                <div class="content">
+                    <p>
+                        我是个相信缘分的人，你我的相遇并非偶然，而是源于我们对保险有着相同的理解和信任。尊敬的客户您好，我是国寿谭伟，来自河南郑州。进入公司之后，我收获了很多。我身边经历了太多的悲欢离合，当风险发生（无论是疾病意外或者是自然灾害），我看到国寿给那些受难的家庭带去了温暖，让他们在精神失落的边缘拥有物质的依靠。
+                    </p>
+                </div>
+            </div>
+            <!--个人荣誉-->
+            <div class="clf honour">
+                <div class="fl">
+                    个人荣誉
+                </div>
+                <div class="content">
+                    <ul>
+                        <li>平安宁波高级个人客户经理</li>
+                        <li>1998年进入平安服务至今</li>
+                        <li>平安2008、2012年钻石峰会华东地区总会长</li>
+                        <li>2013年平安全国高峰会会长</li>
+                        <li>宁波十大杰出青年</li>
+                        <li>平安历届华东地区年度冠军</li>
+                    </ul>
+                </div>
+                <div class="unfold">
+                    <i class="fa fa-caret-down"></i>
+                </div>
+            </div>
+            <!--擅长险种-->
+            <div class="clf adept">
+                <div class="fl">
+                    擅长险种
+                </div>
+                <div class="content">
+                    <a href="" class="color">人寿险</a>
+                    <a href="" class="color">重疾险</a>
+                    <a href="" class="color">养老险</a>
+                </div>
+            </div>
+            <!--所在公司-->
+            <div class="clf company">
+                <div class="fl">
+                    所在公司
+                </div>
+                <div class="content">
+                    <p>
+                        中国人寿保险(集团)公司及其子公司构成了我国最大的商业保险集团，是中国资本市场最大的机构投资者之一。2013年，总保费收入达到3868亿元，境内寿险业务市场份额为31.6%，总资产达到2.4万亿元。中国人寿保险(集团)公司已连续12年入选《财富》全球500强企业，排名由2003年的290位跃升为2014年的98位;连续8年入选世界品牌500强，2014年位列第233位;所属寿险...
+                    </p>
+                </div>
+                <div class="unfold">
+                    <i class="fa fa-caret-down"></i>
+                </div>
+            </div>
+            <!--问答-->
+            <div class="clf qa">
+                <div class="fl">
+                    问答
+                </div>
+                <div class="content">
+                    <a href="" class="color">问：我想给私家车买保险，行车城市：郑州，购车时间：2016年11月，新车购置价：12万，上年未出险，驾驶多年，经常市...</a>
+                    <p>答：我在郑州联系我。</p>
+                    <a href="" class="color">问：我想给私家车买保险，行车城市：郑州，购车时间：2016年11月，新车购置价：12万，上年未出险，驾驶多年，经常市...</a>
+                    <p>答：我在郑州联系我。</p>
+                    <a href="" class="color">问：我想给私家车买保险，行车城市：郑州，购车时间：2016年11月，新车购置价：12万，上年未出险，驾驶多年，经常市...</a>
+                    <p>答：我在郑州联系我。</p>
+                    <a href="" class="color">问：我想给私家车买保险，行车城市：郑州，购车时间：2016年11月，新车购置价：12万，上年未出险，驾驶多年，经常市...</a>
+                    <p>答：我在郑州联系我。</p>
+                </div>
+                <div class="unfold">
+                    <i class="fa fa-caret-down"></i>
+                </div>
+            </div>
+            <!--保险产品-->
+            <div class="clf product">
+                <div class="fl">
+                    保险产品
+                </div>
+                <div class="content">
+                    <div class="clf">
+                        <div class="product-img">
+                            <img src="">
+                        </div>
+                        <div class="product-info">
+                            <h4>国寿福升级版（终身版）</h4>
+                            <p>高预定利率更稳定，高返还，年年领取；快返本，突破限制；双账户增值有道；收益稳，高保底快返本，突破限制；</p>
+                        </div>
+                    </div>
+                    <div class="clf">
+                        <div class="product-img">
+                            <img src="">
+                        </div>
+                        <div class="product-info">
+                            <h4>国寿福升级版（终身版）</h4>
+                            <p>高预定利率更稳定，高返还，年年领取；快返本，突破限制；双账户增值有道；收益稳，高保底快返本，突破限制；</p>
+                        </div>
+                    </div>
+                    <div class="clf">
+                        <div class="product-img">
+                            <img src="">
+                        </div>
+                        <div class="product-info">
+                            <h4>国寿福升级版（终身版）</h4>
+                            <p>高预定利率更稳定，高返还，年年领取；快返本，突破限制；双账户增值有道；收益稳，高保底快返本，突破限制；</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="unfold">
+                    <i class="fa fa-caret-down"></i>
+                </div>
+            </div>
+            <!--客户感言-->
+            <div class="clf client">
+                <div class="fl">
+                    客户感言
+                </div>
+                <div class="content">
+                    <div class="clf">
+                        <div class="client-name">
+                            来自投保客户：
+                        </div>
+                        <div class="client-word">
+                            咨询时回答的非常专业，不管什么问题都会帮助客户分析，可见买保险选业务员很重要，虽然我们是陌生人，
+                            但还是很耐心，必须好评，谢谢佻 ，祝您工作顺利!
+                        </div>
+                    </div>
+                    <div class="clf">
+                        <div class="client-name">
+                            来自投保客户：
+                        </div>
+                        <div class="client-word">
+                            咨询时回答的非常专业，不管什么问题都会帮助客户分析，可见买保险选业务员很重要，虽然我们是陌生人，
+                            但还是很耐心，必须好评，谢谢佻 ，祝您工作顺利!
+                        </div>
+                    </div>
+                    <div class="clf">
+                        <div class="client-name">
+                            来自投保客户：
+                        </div>
+                        <div class="client-word">
+                            咨询时回答的非常专业，不管什么问题都会帮助客户分析，可见买保险选业务员很重要，虽然我们是陌生人，
+                            但还是很耐心，必须好评，谢谢佻 ，祝您工作顺利!
+                        </div>
+                    </div>
+                    <div class="clf">
+                        <div class="client-name">
+                            来自投保客户：
+                        </div>
+                        <div class="client-word">
+                            咨询时回答的非常专业，不管什么问题都会帮助客户分析，可见买保险选业务员很重要，虽然我们是陌生人，
+                            但还是很耐心，必须好评，谢谢佻 ，祝您工作顺利!
+                        </div>
+                    </div>
+
+                </div>
+                <div class="unfold">
+                    <i class="fa fa-caret-down"></i>
+                </div>
+            </div>
+            <!--个人风采-->
+            <div class="clf pic">
+                <div class="fl">
+                    个人风采
+                </div>
+                <div class="content clf">
+                    <div class="pic-item">
+                        <img src="">
+                    </div>
+                    <div class="pic-item">
+                        <img src="">
+                    </div>
+                    <div class="pic-item">
+                        <img src="">
+                    </div>
+                    <div class="pic-item">
+                        <img src="">
+                    </div>
+                    <div class="pic-item">
+                        <img src="">
+                    </div>
+                </div>
+                <div class="unfold">
+                    <i class="fa fa-caret-down"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+{% block js %}
+    {% atmjs www/adviser:detail %}
+{% endblock %}
+

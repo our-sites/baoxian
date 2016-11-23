@@ -4,6 +4,7 @@
         <li><a href="http://192.168.12.48:2015/files/bx/www/info/1.0.0/html/index.html">首页</a></li>
         <li {% if request.path|slice:":5" == "/ask/" %}class="active" {% endif %}><a href="/ask/">问吧</a></li>
     <li {% if request.path|slice:":9" == "/product/" %}class="active" {% endif %}><a href="/product/">产品</a></li>
+    <li {% if request.path|slice:":10" == "/dailiren/" %}class="active" {% endif %}><a href="/dailiren/">代理人</a></li>
         <li {% if request.path|slice:":7" == "/zixun/" %}class="active" {% endif %}><a href="/zixun/">资讯</a></li>
     </ul>
 </div>

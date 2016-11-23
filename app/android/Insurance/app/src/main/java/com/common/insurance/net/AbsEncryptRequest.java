@@ -1,7 +1,5 @@
 package com.common.insurance.net;
 
-import android.content.Context;
-
 import com.common.insurance.utils.InsuranceLogger;
 import com.common.insurance.utils.InsuranceUtils;
 import com.common.insurance.utils.JsonUtil;
@@ -15,7 +13,6 @@ import java.util.Map;
 
 public abstract class AbsEncryptRequest implements IRequest {
 
-    protected Context mContext;
     protected int mMethod;
     protected String mUrl;
 
@@ -26,15 +23,14 @@ public abstract class AbsEncryptRequest implements IRequest {
     private boolean mShouldGZIP = false;//是否需要压缩
 
 
-    public AbsEncryptRequest(Context context, int method, String url) {
-        this.mContext = context;
+    public AbsEncryptRequest(int method, String url) {
         this.mMethod = method;
         this.mUrl = url;
 
     }
 
-    public AbsEncryptRequest(Context context, String url) {
-        this(context, Method.POST, url);
+    public AbsEncryptRequest(String url) {
+        this(Method.POST, url);
     }
 
 
@@ -69,7 +65,7 @@ public abstract class AbsEncryptRequest implements IRequest {
 
             String edata = jsonObj.toString();
 
-            InsuranceLogger.d("net",edata);
+            InsuranceLogger.d("net", edata);
 
             //预留对数据进行加密，压缩
             String encryptedData = gzipOrEncryptPostData(edata);

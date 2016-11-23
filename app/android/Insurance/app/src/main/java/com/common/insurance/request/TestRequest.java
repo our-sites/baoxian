@@ -17,20 +17,16 @@ import java.util.Map;
 public class TestRequest extends BaseBusinessRequest {
 
 
-    public TestRequest(Context context) {
-        super(context);
+    public TestRequest( Message message) {
+        super(message);
     }
 
-    public TestRequest(Context context, Message message) {
-        super(context, message);
+    public TestRequest(Map<String, String> params) {
+        super(params);
     }
 
-    public TestRequest(Context context, Map<String, String> params) {
-        super(context, params);
-    }
-
-    public TestRequest(Context context, Map<String, String> params, Message message) {
-        super(context, params, message);
+    public TestRequest( Map<String, String> params, Message message) {
+        super( params, message);
     }
 
     @Override

@@ -1,7 +1,5 @@
 package com.common.insurance.request;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Message;
 import android.text.TextUtils;
 
@@ -20,28 +18,27 @@ public abstract class BaseBusinessRequest {
 
     public static final int ACTION_FAIL = 1;
 
-    private final Context mContext;
     private final Message mMessage;
     protected Map<String, String> mParams;//请求参数
 
-    public BaseBusinessRequest(Context context) {
-        this(context, null, null);
+    public BaseBusinessRequest() {
+        this(null, null);
     }
 
-    public BaseBusinessRequest(Context context, Message message) {
-        this(context, null, message);
+    public BaseBusinessRequest(Message message) {
+        this(null, message);
     }
 
-    public BaseBusinessRequest(Context context, Map<String, String> params) {
-        this(context, params, null);
+    public BaseBusinessRequest(Map<String, String> params) {
+        this(params, null);
     }
 
-    public BaseBusinessRequest(Context context, Map<String, String> params,
+    public BaseBusinessRequest(Map<String, String> params,
                                Message message) {
-        this.mContext = context;
         this.mParams = params;
         this.mMessage = message;
     }
+
 
     private IResponseHandler responseHandler = new BaseBusinessResponseHandler() {
         @Override
@@ -88,7 +85,7 @@ public abstract class BaseBusinessRequest {
         IRequest request = null;
 
         if (shouldEncry()) {
-            request = new InsuranceEncryptRequest(mContext, getMethod(), urlPrefix + urlPostfix);
+            request = new InsuranceEncryptRequest( getMethod(), urlPrefix + urlPostfix);
             ((InsuranceEncryptRequest) request).addParams(mParams);
 
         } else {

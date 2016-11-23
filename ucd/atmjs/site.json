@@ -8,7 +8,8 @@
   "alias": {
     "$": "com/global:dollar",
     "jquery": "jquery:jquery",
-    "global": "com/global:global"
+    "global": "com/global:global",
+    "validator": "com/global:validator"
   },
   "formatTag": false,
   "async": false,

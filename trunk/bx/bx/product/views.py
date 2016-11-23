@@ -66,5 +66,21 @@ def search(request):
 def detail(request,pid):
     product=Product.objects.get(pid=int(pid))
     company=Company.objects.get(cid=product.cid)
+    jsoninfo=product.get_pro_desc_json()
+    desc_json_info=[]
+    for i in jsoninfo:
+        name=i[0]
+        for j in i[1:]:
+            if not desc_json_info:
+                desc_json_info.append([[name,len(i[1:])],j[0],j[1]])
+            else:
+                if desc_json_info[-1][0][0]==name:
+                    desc_json_info.append([[name,0],j[0],j[1]])
+                else:
+                    desc_json_info.append([[name,len(i[1:])],j[0],j[1]])
+    product.desc_json_info=desc_json_info
+    other_products=Product.objects.filter(pid__gt=int(pid))[:4]
+    if len(other_products)<4:
+        other_products=Product.objects.filter(pid__lt=int(pid))[:4]
     return   render_to_response("product_detail.html",locals(),
                                 context_instance=RequestContext(request))
