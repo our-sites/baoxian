@@ -29,27 +29,48 @@
         "com/global/1.0.0:global.css"
       ],
       "pkg": "com/global/1.0.0:p1"
+    },
+    "com/global/1.0.0:validator.css": {
+      "uri": "/com/global/1.0.0/src/validator_3d77440.css",
+      "type": "css",
+      "pkg": "com/global/1.0.0:p0"
+    },
+    "com/global/1.0.0:validator": {
+      "uri": "/com/global/1.0.0/src/validator_d919e72.js",
+      "type": "js",
+      "deps": [
+        "com/validator/0.10.3:validator",
+        "com/global/1.0.0:dollar",
+        "com/qtip/1.0.0:qtip",
+        "com/global/1.0.0:validator.css"
+      ],
+      "pkg": "com/global/1.0.0:p1"
     }
   },
   "pkg": {
     "com/global/1.0.0:p0": {
-      "uri": "/com/global/1.0.0/pkg/global_74ae046.css",
+      "uri": "/com/global/1.0.0/pkg/global_e65d1e8.css",
       "type": "css",
       "has": [
         "com/global/1.0.0:css/font-awesome.css",
-        "com/global/1.0.0:global.css"
+        "com/global/1.0.0:global.css",
+        "com/global/1.0.0:validator.css"
       ]
     },
     "com/global/1.0.0:p1": {
-      "uri": "/com/global/1.0.0/pkg/global_f5ab4f9.js",
+      "uri": "/com/global/1.0.0/pkg/global_7113ca4.js",
       "type": "js",
       "has": [
         "com/global/1.0.0:dollar",
-        "com/global/1.0.0:global"
+        "com/global/1.0.0:global",
+        "com/global/1.0.0:validator"
       ],
       "deps": [
         "lib/jquery/1.11.3:jquery",
-        "com/global/1.0.0:global.css"
+        "com/global/1.0.0:global.css",
+        "com/validator/0.10.3:validator",
+        "com/qtip/1.0.0:qtip",
+        "com/global/1.0.0:validator.css"
       ]
     }
   }

@@ -1,2 +1,3 @@
 var $ = require('./dollar.js');
-// @require './global.css';
+
+// @require ./global.css

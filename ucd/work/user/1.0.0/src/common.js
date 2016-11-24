@@ -1,3 +1,4 @@
+var $ = require('$');
 require('work/common:common');
 
-// @require './common.css';
+// @require ./common.css

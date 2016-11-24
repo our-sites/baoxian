@@ -1,16 +1,15 @@
 {
   "stable": true,
-  "exports": {
-    "css": {}
-  },
   "packs": {
 	  "/pkg/global.css": [
 		  "/src/css/font-awesome.css",
-		  "/src/global.css"
+		  "/src/global.css",
+		  "/src/validator.css"
 	  ],
 	  "/pkg/global.js": [
 		  "/src/dollar.js",
-		  "/src/global.js"
+		  "/src/global.js",
+		  "/src/validator.js"
 	  ]
   }
 }

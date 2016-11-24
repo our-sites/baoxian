@@ -1,0 +1,1 @@
+define("work/user/1.0.0:login",["com/global/1.0.0:dollar"],function(e){var o=e("com/global/1.0.0:dollar");e.async(["work/user/1.0.0:common"]),function(){var e=o("#Login"),r=e.find("form");if(r.length){var n=new Validator({element:r});n.addItem({element:"#username",required:!0}).addItem({element:"#password",required:!0})}}()});

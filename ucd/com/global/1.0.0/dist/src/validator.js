@@ -1,7 +1,7 @@
-define('com/global/1.0.0:validator', ['com/validator/0.10.3:validator', 'lib/jquery/1.11.3:jquery', 'com/qtip/1.0.0:qtip'], function(require, exports, module) {
+define('com/global/1.0.0:validator', ['com/validator/0.10.3:validator', 'com/global/1.0.0:dollar', 'com/qtip/1.0.0:qtip'], function(require, exports, module) {
 
   var Validator = require('com/validator/0.10.3:validator');
-  var $ = require('lib/jquery/1.11.3:jquery');
+  var $ = require('com/global/1.0.0:dollar');
   var qtip = require('com/qtip/1.0.0:qtip');
   module.exports = Validator.extend({
   
@@ -126,6 +126,6 @@ define('com/global/1.0.0:validator', ['com/validator/0.10.3:validator', 'lib/jqu
       }
   });
   
-  // @require 'com/global/1.0.0:validator.css'
+  // @require com/global/1.0.0:validator.css
 
 });

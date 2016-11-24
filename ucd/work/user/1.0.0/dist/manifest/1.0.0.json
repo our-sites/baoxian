@@ -9,6 +9,7 @@
       "uri": "/work/user/1.0.0/src/common.js",
       "type": "js",
       "deps": [
+        "com/global/1.0.0:dollar",
         "work/common/1.0.0:common",
         "work/user/1.0.0:common.css"
       ],
@@ -22,8 +23,13 @@
     "work/user/1.0.0:login": {
       "uri": "/work/user/1.0.0/src/login.js",
       "type": "js",
+      "extras": {
+        "async": [
+          "work/user/1.0.0:common"
+        ]
+      },
       "deps": [
-        "work/user/1.0.0:common",
+        "com/global/1.0.0:dollar",
         "work/user/1.0.0:login.css"
       ],
       "pkg": "work/user/1.0.0:p1"
@@ -63,10 +69,10 @@
         "work/user/1.0.0:register"
       ],
       "deps": [
+        "com/global/1.0.0:dollar",
         "work/common/1.0.0:common",
         "work/user/1.0.0:common.css",
         "work/user/1.0.0:login.css",
-        "com/global/1.0.0:dollar",
         "work/user/1.0.0:register.css"
       ]
     }

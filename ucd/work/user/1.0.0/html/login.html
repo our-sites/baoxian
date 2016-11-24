@@ -9,11 +9,19 @@
             <img src="{{ 'html/img/login-left.jpg' | uri('work/common') }}" alt="欢迎登录保险管家" width="320" height="320">
         </div>
         <div class="fr">
-            <form action="">
+            <form action="" class="ui-form">
                 <h2>登录保险管家</h2>
-                <input type="text" placeholder="手机/邮箱" class="error">
-                <div class="error-tip">手机格式不正确</div>
-                <input type="password" placeholder="密码">
+                <div class="ui-form-item">
+                    <input type="text" id="username" name="username" placeholder="手机/邮箱" class="ui-input" required />
+                    <div class="ui-form-explain"></div>
+                </div>
+                <div class="ui-form-item">
+                    <input type="password" id="password" name="password" placeholder="密码" class="ui-input" required />
+                    <div class="ui-form-explain"></div>
+                </div>
+                <!--<input type="text" placeholder="手机/邮箱" class="error">-->
+                <!--<div class="error-tip">手机格式不正确</div>-->
+                <!--<input type="password" placeholder="密码">-->
                 <div class="clf">
                     <label>
                         <input type="checkbox">

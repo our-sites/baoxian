@@ -1,2 +1,2 @@
 require('global');
-// @require './common.css';
+// @require ./common.css

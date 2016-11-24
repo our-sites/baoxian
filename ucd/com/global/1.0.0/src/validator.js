@@ -1,5 +1,5 @@
 var Validator = require('com/validator:validator');
-var $ = require('jquery');
+var $ = require('./dollar.js');
 var qtip = require('com/qtip:qtip');
 module.exports = Validator.extend({
 
@@ -124,4 +124,4 @@ module.exports = Validator.extend({
     }
 });
 
-// @require './validator.css'
+// @require ./validator.css

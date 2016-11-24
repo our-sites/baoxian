@@ -6,12 +6,12 @@
   },
   "loaderId": "parser:parser",
   "alias": {
-    "$": "com/global:dollar",
     "jquery": "jquery:jquery",
+    "$": "com/global:dollar",
     "global": "com/global:global",
     "validator": "com/global:validator"
   },
-  "formatTag": false,
+  "formatTag": true,
   "async": false,
   "together": false
 }

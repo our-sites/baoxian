@@ -1,0 +1,12 @@
+{
+  "res": {
+    "com/qtip/1.0.0:qtip": {
+      "uri": "/com/qtip/1.0.0/src/qtip_c42ab6b.js",
+      "type": "js",
+      "deps": [
+        "com/global/1.0.0:dollar"
+      ]
+    }
+  },
+  "pkg": {}
+}

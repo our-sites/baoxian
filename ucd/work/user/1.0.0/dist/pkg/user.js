@@ -1,18 +1,39 @@
 ;/*!work/user/1.0.0:common*/
-define('work/user/1.0.0:common', ['work/common/1.0.0:common'], function(require, exports, module) {
+define('work/user/1.0.0:common', ['com/global/1.0.0:dollar', 'work/common/1.0.0:common'], function(require, exports, module) {
 
+  var $ = require('com/global/1.0.0:dollar');
   require('work/common/1.0.0:common');
   
-  // @require 'work/user/1.0.0:common.css';
+  // @require work/user/1.0.0:common.css
   
 
 });
 
 ;/*!work/user/1.0.0:login*/
-define('work/user/1.0.0:login', ['work/user/1.0.0:common'], function(require, exports, module) {
+define('work/user/1.0.0:login', ['com/global/1.0.0:dollar'], function(require, exports, module) {
 
-  require('work/user/1.0.0:common');
-  // @require work/user/1.0.0:login.css
+  var $ = require('com/global/1.0.0:dollar');
+  require.async(['work/user/1.0.0:common']);
+  //var Validator = require('validator');
+  
+  (function () {
+      var $wrap = $('#Login');
+      var $form = $wrap.find('form');
+      if ($form.length) {
+          var validator = new Validator({
+              element: $form
+          });
+          validator.addItem({
+              element: '#username',
+              required: true
+          }).addItem({
+              element: '#password',
+              required: true
+          });
+      }
+  })();
+  
+   //@require work/user/1.0.0:login.css
   
 
 });
