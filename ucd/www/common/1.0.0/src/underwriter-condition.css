@@ -26,17 +26,11 @@
     color: #42bad0;
 }
 
-.underwriter-condition-item .fl {
+.underwriter-condition-item .ask-icon {
     width: 20px;
     height: 20px;
-    text-align: center;
     line-height: 20px;
-    color: #ffffff;
-    background-color: #42bad0;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
-    margin: 10px 10px 0 0;
+    margin-top: 10px;
 }
 
 .underwriter-condition-item p {

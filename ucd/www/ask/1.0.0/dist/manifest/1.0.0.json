@@ -14,6 +14,18 @@
       ],
       "pkg": "www/ask/1.0.0:p1"
     },
+    "www/ask/1.0.0:detail.css": {
+      "uri": "/www/ask/1.0.0/src/detail.css",
+      "type": "css"
+    },
+    "www/ask/1.0.0:detail": {
+      "uri": "/www/ask/1.0.0/src/detail.js",
+      "type": "js",
+      "deps": [
+        "www/ask/1.0.0:common",
+        "www/ask/1.0.0:detail.css"
+      ]
+    },
     "www/ask/1.0.0:list.css": {
       "uri": "/www/ask/1.0.0/src/list.css",
       "type": "css",

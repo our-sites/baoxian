@@ -1,98 +1,184 @@
 {{ atmjs.use(':list') }}
 {%include 'html/layouts/header.html' | path('www/common') %}
-<div id="askList" class="clf">
-    <div class="ask-list-left">
-        <!--提问-->
-        <div class="ask-box">
-            <textarea placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少..."></textarea>
-            <div class="float-layer">
-                <span>已解决保险疑问  34256条</span>
-                <a href="javascript:;">我要提问</a>
-            </div>
-        </div>
-
-        <!-- 列表-->
-        <div class="ask-list-item">
-            <h4><a href="" class="color">给4个月婴儿买，北京，主要报销医药费，医院门诊，哪种合适？</a></h4>
-            <p class="question-info">
-                <a href="">12条回答</a>问题来自： 2016-10-11 河南郑州
-            </p>
-            <div class="result-box clf">
-                <img class="result-author-avatar" src="{{ 'html/img/test-avatar.png' | uri('www/common') }}" width="47" height="47"/>
-                <div class="fr">
-                    <p class="result-info">
-                        <a href="" class="result-info-name">这是一个名字</a>
-                        <a href="" class="result-info-company">公司名称</a>
-                        <a href="" class="result-info-level"></a>
-                        <a href="" class="result-info-authentication"></a>
-                        <span class="result-info-date">1分钟前</span>
-                    </p>
-                    <div class="result-content">
-                        您好！华夏常青树在市场上是很有竞争力的，性价比高，保障全，保障范围是77种大病+33种轻症，
-                        保障期间是终身，轻症豁免保费，疾病终末期提前给付保额等诸多特点，疾病终末期提前给付保额等
-                        诸多特点，现在可以全国V信投保，有兴趣可以加我详聊，祝愉快！ <a href="" class="color">...查看全部</a>
-                    </div>
-                    <div class="result-ctrl">
-                        <label class="result-ctrl-favor active">
-                            <i class="fa fa-star-o"></i>
-                            收藏
-                        </label>
-                        <label class="result-ctrl-thank active">
-                            <i class="fa fa-heart-o"></i>
-                            感谢
-                        </label>
-                        <label class="result-ctrl-share">
-                            <i class="fa fa-share-alt"></i>
-                            分享
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="ask-list-item">
-            <h4><a href="" class="color">给4个月婴儿买，北京，主要报销医药费，医院门诊，哪种合适？</a></h4>
-            <p class="question-info">
-                <a href="">12条回答</a>问题来自： 2016-10-11 河南郑州
-            </p>
-            <div class="result-box clf">
-                <img class="result-author-avatar" src="{{ 'html/img/test-avatar.png' | uri('www/common') }}" width="47" height="47"/>
-                <div class="fr">
-                    <p class="result-info">
-                        <a href="" class="result-info-name">这是一个名字</a>
-                        <a href="" class="result-info-company">公司名称</a>
-                        <a href="" class="result-info-level"></a>
-                        <a href="" class="result-info-authentication"></a>
-                        <span class="result-info-date">1分钟前</span>
-                    </p>
-                    <div class="result-content">
-                        您好！华夏常青树在市场上是很有竞争力的，性价比高，保障全，保障范围是77种大病+33种轻症，
-                        保障期间是终身，轻症豁免保费，疾病终末期提前给付保额等诸多特点，疾病终末期提前给付保额等
-                        诸多特点，现在可以全国V信投保，有兴趣可以加我详聊，祝愉快！ <a href="" class="color">...查看全部</a>
-                    </div>
-                    <div class="result-ctrl">
-                        <label class="result-ctrl-favor">
-                            <i class="fa fa-star-o"></i>
-                            收藏
-                        </label>
-                        <label class="result-ctrl-thank">
-                            <i class="fa fa-heart-o"></i>
-                            感谢
-                        </label>
-                        <label class="result-ctrl-share">
-                            <i class="fa fa-share-alt"></i>
-                            分享
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!--翻页-->
-        {%include 'html/layouts/flip.html' | path('www/common') %}
+<div id="askList">
+    <!-- 面包屑 -->
+    <div class="bx-crubms">
+        <a href="">保险岛首页</a> &gt;
+        <a href="">问吧</a> &gt;
+        <a href="">问吧列表</a>
     </div>
-    <div class="fr">
-        {%include 'html/layouts/sections/热心顾问.html' | path('www/common') %}
+    <div class="clf">
+        <div class="ask-list-left">
+            <!--提问-->
+            <div class="ask-box clf">
+                <div class="ask-icon">
+                    问
+                </div>
+                <div class="fr">
+                    <textarea placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少..."></textarea>
+                    <div class="float-layer">0/200</div>
+                    <p>
+                        <a href="javascript:;" class="ask-btn">提交问题</a>
+                        <span>已解决保险疑问  <b class="q-number">34256条</b></span>
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- 列表-->
+            <div class="ask-list-item">
+                <div class="q-box clf">
+                    <div class="ask-icon">
+                        问
+                    </div>
+                    <div class="fl">
+                        <h4><a href="" class="color">给4个月婴儿买，北京，主要报销医药费，医院门诊，哪种合适？</a></h4>
+                        <p>
+                            问题来自： 2016-10-11 河南郑州
+                        </p>
+                    </div>
+                    <div class="answer-number">
+                        <span>156</span>条回答
+                    </div>
+                </div>
+
+                <div class="result-box clf">
+                    <img class="result-author-avatar" src="{{ 'html/img/test-avatar.png' | uri('www/common') }}"/>
+                    <div class="fl">
+                        <p class="result-info">
+                            <a href="" class="result-info-company">新华</a>
+                            <a href="" class="result-info-name">兴趣使然</a>
+                            <a href="" class="result-info-level"></a>
+                            <a href="" class="result-info-authentication"></a>
+                            <span class="result-info-answer">26条回答</span>
+                            <span class="result-info-thank">被感谢45次</span>
+                            <span class="result-info-date">1分钟前</span>
+                        </p>
+                        <div class="result-content">
+                            您好！华夏常青树在市场上是很有竞争力的，性价比高，保障全，保障范围是77种大病+33种轻症，
+                            保障期间是终身，轻症豁免保费，疾病终末期提前给付保额等诸多特点，疾病终末期提前给付保额等
+                            诸多特点，现在可以全国V信投保，有兴趣可以加我详聊，祝愉快！
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ask-list-item">
+                <div class="q-box clf">
+                    <div class="ask-icon">
+                        问
+                    </div>
+                    <div class="fl">
+                        <h4><a href="" class="color">给4个月婴儿买，北京，主要报销医药费，医院门诊，哪种合适？</a></h4>
+                        <p>
+                            问题来自： 2016-10-11 河南郑州
+                        </p>
+                    </div>
+                    <div class="answer-number">
+                        <span>156</span>条回答
+                    </div>
+                </div>
+
+                <div class="result-box clf">
+                    <img class="result-author-avatar" src="{{ 'html/img/test-avatar.png' | uri('www/common') }}"/>
+                    <div class="fl">
+                        <p class="result-info">
+                            <a href="" class="result-info-company">新华</a>
+                            <a href="" class="result-info-name">兴趣使然</a>
+                            <a href="" class="result-info-level"></a>
+                            <a href="" class="result-info-authentication"></a>
+                            <span class="result-info-answer">26条回答</span>
+                            <span class="result-info-thank">被感谢45次</span>
+                            <span class="result-info-date">1分钟前</span>
+                        </p>
+                        <div class="result-content">
+                            您好！华夏常青树在市场上是很有竞争力的，性价比高，保障全，保障范围是77种大病+33种轻症，
+                            保障期间是终身，轻症豁免保费，疾病终末期提前给付保额等诸多特点，疾病终末期提前给付保额等
+                            诸多特点，现在可以全国V信投保，有兴趣可以加我详聊，祝愉快！
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ask-list-item">
+                <div class="q-box clf">
+                    <div class="ask-icon">
+                        问
+                    </div>
+                    <div class="fl">
+                        <h4><a href="" class="color">给4个月婴儿买，北京，主要报销医药费，医院门诊，哪种合适？</a></h4>
+                        <p>
+                            问题来自： 2016-10-11 河南郑州
+                        </p>
+                    </div>
+                    <div class="answer-number">
+                        <span>156</span>条回答
+                    </div>
+                </div>
+
+                <div class="result-box clf">
+                    <img class="result-author-avatar" src="{{ 'html/img/test-avatar.png' | uri('www/common') }}"/>
+                    <div class="fl">
+                        <p class="result-info">
+                            <a href="" class="result-info-company">新华</a>
+                            <a href="" class="result-info-name">兴趣使然</a>
+                            <a href="" class="result-info-level"></a>
+                            <a href="" class="result-info-authentication"></a>
+                            <span class="result-info-answer">26条回答</span>
+                            <span class="result-info-thank">被感谢45次</span>
+                            <span class="result-info-date">1分钟前</span>
+                        </p>
+                        <div class="result-content">
+                            您好！华夏常青树在市场上是很有竞争力的，性价比高，保障全，保障范围是77种大病+33种轻症，
+                            保障期间是终身，轻症豁免保费，疾病终末期提前给付保额等诸多特点，疾病终末期提前给付保额等
+                            诸多特点，现在可以全国V信投保，有兴趣可以加我详聊，祝愉快！
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ask-list-item">
+                <div class="q-box clf">
+                    <div class="ask-icon">
+                        问
+                    </div>
+                    <div class="fl">
+                        <h4><a href="" class="color">给4个月婴儿买，北京，主要报销医药费，医院门诊，哪种合适？</a></h4>
+                        <p>
+                            问题来自： 2016-10-11 河南郑州
+                        </p>
+                    </div>
+                    <div class="answer-number">
+                        <span>156</span>条回答
+                    </div>
+                </div>
+
+                <div class="result-box clf">
+                    <img class="result-author-avatar" src="{{ 'html/img/test-avatar.png' | uri('www/common') }}"/>
+                    <div class="fl">
+                        <p class="result-info">
+                            <a href="" class="result-info-company">新华</a>
+                            <a href="" class="result-info-name">兴趣使然</a>
+                            <a href="" class="result-info-level"></a>
+                            <a href="" class="result-info-authentication"></a>
+                            <span class="result-info-answer">26条回答</span>
+                            <span class="result-info-thank">被感谢45次</span>
+                            <span class="result-info-date">1分钟前</span>
+                        </p>
+                        <div class="result-content">
+                            您好！华夏常青树在市场上是很有竞争力的，性价比高，保障全，保障范围是77种大病+33种轻症，
+                            保障期间是终身，轻症豁免保费，疾病终末期提前给付保额等诸多特点，疾病终末期提前给付保额等
+                            诸多特点，现在可以全国V信投保，有兴趣可以加我详聊，祝愉快！
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--翻页-->
+            {%include 'html/layouts/flip.html' | path('www/common') %}
+        </div>
+        <div class="fr">
+            {%include 'html/layouts/sections/私人定制.html' | path('www/common') %}
+            {%include 'html/layouts/sections/活跃顾问.html' | path('www/common') %}
+        </div>
     </div>
 
 </div>
