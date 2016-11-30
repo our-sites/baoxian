@@ -103,4 +103,4 @@ def register(request):
                               domain=".baoxiangj.com")
             return  result
 
-    return  render_to_response("register.html",locals(),context_instance=RequestContext(request))
+    return  render_to_response("register.html",locals(),context_instance=RequestContext(request)) #
