@@ -6,18 +6,6 @@
   "debugDomain": "/assets/bx/dev",
   "https": "dev.gcimg.net:2016",
   "maps": {
-    "1.0.0": {
-      "work/common:common": {
-        "formal": {
-          "css": "<link data-from=\"atmjs\" type=\"text/css\" rel=\"stylesheet\" href=\"/static/atm/com/global/1.0.0/pkg/global_e65d1e8.css\" />\n<link data-from=\"atmjs\" type=\"text/css\" rel=\"stylesheet\" href=\"/static/atm/work/common/1.0.0/src/common_d41d8cd.css\" />",
-          "js": "<script id=\"atmjsnode\" data-from=\"atmjs\" type=\"text/javascript\" src=\"/static/atm/lib/parser/0.0.1/src/parser_3a54c10.js\"></script>\n<script data-from=\"atmjs\" type=\"text/javascript\">\n    atmjs.init({\n        \"target\": \"product\",\n        \"domain\": \"/static/atm\",\n        \"version\": \"1.0.0\",\n        \"alias\": {\n            \"jquery\": \"lib/jquery/1.11.3:jquery\",\n            \"$\": \"com/global/1.0.0:dollar\",\n            \"global\": \"com/global/1.0.0:global\",\n            \"validator\": \"com/global/1.0.0:validator\"\n        },\n        \"async\": {\n            \"deps\": {\n                \"1\": [0],\n                \"2\": [1],\n                \"4\": [3],\n                \"5\": [2, 4],\n                \"7\": [5, 6]\n            },\n            \"id\": [\"lib/jquery/1.11.3:origin/jquery\", \"lib/jquery/1.11.3:jquery\", \"com/global/1.0.0:dollar\", \"com/global/1.0.0:css/font-awesome.css\", \"com/global/1.0.0:global.css\", \"com/global/1.0.0:global\", \"work/common/1.0.0:common.css\", \"work/common/1.0.0:common\"],\n            \"type\": [1, 1, 1, 0, 0, 1, 0, 1]\n        }\n    });\n</script>\n<script data-from=\"atmjs\" type=\"text/javascript\" src=\"/static/atm/lib/jquery/1.11.3/pkg/jquery-1.11.3_76105f5.js\"></script>\n<script data-from=\"atmjs\" type=\"text/javascript\" src=\"/static/atm/com/global/1.0.0/pkg/global_7113ca4.js\"></script>\n<script data-from=\"atmjs\" type=\"text/javascript\" src=\"/static/atm/work/common/1.0.0/src/common_c8616a7.js\"></script>\n<script id=\"atmjsuse\" data-from=\"atmjs\" type=\"text/javascript\">\n    atmjs.use('work/common/1.0.0:common');\n</script>"
-        },
-        "debug": {
-          "css": "<link data-from=\"atmjs\" rel=\"stylesheet\" type=\"text/css\" href=\"{{host}}/debug?site=bx&id=work/common/1.0.0:common&type=css&domain={{host}}&timestamp={{timestamp}}\" />",
-          "js": "<script data-from=\"atmjs\" type=\"text/javascript\" id=\"atmjsnode\" src=\"{{host}}/debug?site=bx&id=work/common/1.0.0:common&isMod=true&type=js&domain={{host}}&timestamp={{timestamp}}\"></script>\n<script data-from=\"atmjs\" type=\"text/javascript\">\n    atmjs.use('work/common/1.0.0:common')\n</script>"
-        },
-        "trueId": "work/common/1.0.0:common"
-      }
-    }
+    "1.0.0": {}
   }
 }

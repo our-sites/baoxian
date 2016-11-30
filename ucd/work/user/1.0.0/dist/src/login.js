@@ -1,8 +1,8 @@
-define('work/user/1.0.0:login', ['com/global/1.0.0:dollar'], function(require, exports, module) {
+define('work/user/1.0.0:login', ['com/global/1.0.0:dollar', 'work/user/1.0.0:common', 'com/global/1.0.0:validator'], function(require, exports, module) {
 
   var $ = require('com/global/1.0.0:dollar');
-  require.async(['work/user/1.0.0:common']);
-  //var Validator = require('validator');
+  require('work/user/1.0.0:common');
+  var Validator = require('com/global/1.0.0:validator');
   
   (function () {
       var $wrap = $('#Login');
@@ -13,15 +13,17 @@ define('work/user/1.0.0:login', ['com/global/1.0.0:dollar'], function(require, e
           });
           validator.addItem({
               element: '#username',
-              required: true
+              required: true,
+              display: '用户名'
           }).addItem({
               element: '#password',
-              required: true
+              required: true,
+              display: '密码'
           });
       }
   })();
   
-   //@require work/user/1.0.0:login.css
+  // @require work/user/1.0.0:login.css
   
 
 });

@@ -16,6 +16,7 @@ from models import Area
 from bx.utils.sms import send_dayysms_validnumber
 import random
 from gcutils.encrypt import  md5
+import  time
 
 @csrf_exempt
 def upload_img(request):
@@ -63,6 +64,8 @@ def send_sms_validnumer(request):
     try:
         result=send_dayysms_validnumber(phone=tel,content=numer)
         assert  result["alibaba_aliqin_fc_sms_num_send_response"]["result"]["success"]==True
+        request.session.setdefault("sms_validnumer",numer)
+        request.session.setdefault("sms_validtime",str(int(time.time())))
         _result={"status":True,"message":"success!","md5":md5(numer+"gc895316")}
     except:
         message="发送失败！稍后再试"

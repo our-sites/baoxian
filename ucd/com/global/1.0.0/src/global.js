@@ -1,3 +1,3 @@
-var $ = require('./dollar.js');
+var $ = require('jquery');
 
 // @require ./global.css

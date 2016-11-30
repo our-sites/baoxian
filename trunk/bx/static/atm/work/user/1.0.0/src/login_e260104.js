@@ -1,1 +1,0 @@
-define("work/user/1.0.0:login",[],function(){});

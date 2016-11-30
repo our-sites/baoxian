@@ -1,6 +1,6 @@
 var $ = require('$');
-require.async('./common.js');
-//var Validator = require('validator');
+require('./common.js');
+var Validator = require('validator');
 
 (function () {
     var $wrap = $('#Login');
@@ -11,12 +11,14 @@ require.async('./common.js');
         });
         validator.addItem({
             element: '#username',
-            required: true
+            required: true,
+            display: '用户名'
         }).addItem({
             element: '#password',
-            required: true
+            required: true,
+            display: '密码'
         });
     }
 })();
 
- //@require ./login.css
+// @require ./login.css

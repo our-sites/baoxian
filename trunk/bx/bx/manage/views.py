@@ -33,10 +33,12 @@ def user_buy(request):
                 allinfo=MyUser.objects.filter(usertype=1,phone=input)
         else:
             allinfo=MyUser.objects.filter(usertype=1,username=input)
-        area_config=dict([(i["id"],i["shortname"]) for i in  Area.objects.filter(id__in=[i.province  for i in allinfo ]+[i.city for i in allinfo]).values("id","shortname") ])
         for i in allinfo:
-            i.province_info=area_config.get(i.province,"")
-            i.city_info=area_config.get(i.city,"")
+            i.profile=i.get_profile()
+        area_config=dict([(i["id"],i["shortname"]) for i in  Area.objects.filter(id__in=[i.profile.province  for i in allinfo  if i.profile]+[i.profile.city for i in allinfo if i.profile ]).values("id","shortname") ])
+        for i in allinfo:
+            i.province_info=area_config.get(i.profile.province  if  i.profile else None  ,"")
+            i.city_info=area_config.get(  i.profile.city  if i.profile else None ,"")
             i.datetime=datetime.datetime.fromtimestamp(i.addtime).strftime("%Y-%m-%d %H:%M:%S")
         return  render_to_response("manage_user_buy.html",locals(),context_instance=RequestContext(request))
     else:
@@ -50,10 +52,12 @@ def user_buy(request):
             page=1
         allinfo.next_page_number()
         allinfo.has_next()
-        area_config=dict([(i["id"],i["shortname"]) for i in  Area.objects.filter(id__in=[i.province  for i in allinfo ]+[i.city for i in allinfo]).values("id","shortname") ])
         for i in allinfo:
-            i.province_info=area_config.get(i.province,"")
-            i.city_info=area_config.get(i.city,"")
+            i.profile=i.get_profile()
+        area_config=dict([(i["id"],i["shortname"]) for i in  Area.objects.filter(id__in=[i.profile.province  for i in allinfo  if i.profile]+[i.profile.city for i in allinfo if i.profile ]).values("id","shortname") ])
+        for i in allinfo:
+            i.province_info=area_config.get(i.profile.province  if  i.profile else None  ,"")
+            i.city_info=area_config.get(  i.profile.city  if i.profile else None ,"")
             i.datetime=datetime.datetime.fromtimestamp(i.addtime).strftime("%Y-%m-%d %H:%M:%S")
         return  render_to_response("manage_user_buy.html",locals(),context_instance=RequestContext(request))
 
@@ -81,18 +85,22 @@ def user_buy_detail(request,_id):
         myuser.save()
         return  HttpResponseRedirect(request.get_full_path())
     else:
-        try:
-            _t=Area.objects.get(level=1,id=myuser.province)
-        except Area.DoesNotExist:
-            myuser.province_info=""
+        profile=myuser.get_profile()
+        if profile:
+            try:
+                _t=Area.objects.get(level=1,id=profile.province)
+            except Area.DoesNotExist:
+                myuser.province_info=""
+            else:
+                myuser.province_info=_t.areaname
+            try:
+                _t=Area.objects.get(level=2,id=profile.city)
+            except Area.DoesNotExist:
+                myuser.city_info=""
+            else:
+                myuser.city_info=_t.areaname
         else:
-            myuser.province_info=_t.areaname
-        try:
-            _t=Area.objects.get(level=2,id=myuser.city)
-        except Area.DoesNotExist:
-            myuser.city_info=""
-        else:
-            myuser.city_info=_t.areaname
+            myuser.province_info="";myuser.city_info=""
         myuser.datetime=datetime.datetime.fromtimestamp(myuser.addtime).strftime("%Y-%m-%d %H:%M:%S")
         return  render_to_response("manage_user_buy_detail.html",locals(),context_instance=RequestContext(request))
 
@@ -124,10 +132,15 @@ def user_proxy(request):
                 allinfo=MyUser.objects.filter(usertype=2,phone=input)
         else:
             allinfo=MyUser.objects.filter(usertype=2,username=input)
-        area_config=dict([(i["id"],i["shortname"]) for i in  Area.objects.filter(id__in=[i.province  for i in allinfo ]+[i.city for i in allinfo]).values("id","shortname") ])
+
+        allprofile=ProxyUserProfile.objects.filter(uid__uid__in=[i.uid for i in allinfo])
+        print [i.uid  for i in allinfo],allprofile
+
+        allprofile_config=dict([(i.uid.uid,[i.province,i.city])  for i in allprofile])
+        area_config=dict([(i["id"],i["shortname"]) for i in  Area.objects.filter(id__in=[i.province  for i in allprofile ]+[i.city for i in allprofile]).values("id","shortname") ])
         for i in allinfo:
-            i.province_info=area_config.get(i.province,"")
-            i.city_info=area_config.get(i.city,"")
+            i.province_info=area_config.get(allprofile_config.get(i.uid,[None,None])[0]  ,"")
+            i.city_info=area_config.get(allprofile_config.get(i.uid,[None,None])[1],"")
             i.datetime=datetime.datetime.fromtimestamp(i.addtime).strftime("%Y-%m-%d %H:%M:%S")
         return  render_to_response("manage_user_proxy.html",locals(),context_instance=RequestContext(request))
     else:
@@ -141,10 +154,15 @@ def user_proxy(request):
             page=1
         allinfo.next_page_number()
         allinfo.has_next()
-        area_config=dict([(i["id"],i["shortname"]) for i in  Area.objects.filter(id__in=[i.province  for i in allinfo ]+[i.city for i in allinfo]).values("id","shortname") ])
+
+        allprofile=ProxyUserProfile.objects.filter(uid__uid__in=[i.uid for i in allinfo])
+        print [i.uid  for i in allinfo],allprofile
+
+        allprofile_config=dict([(i.uid.uid,[i.province,i.city])  for i in allprofile])
+        area_config=dict([(i["id"],i["shortname"]) for i in  Area.objects.filter(id__in=[i.province  for i in allprofile ]+[i.city for i in allprofile]).values("id","shortname") ])
         for i in allinfo:
-            i.province_info=area_config.get(i.province,"")
-            i.city_info=area_config.get(i.city,"")
+            i.province_info=area_config.get(allprofile_config.get(i.uid,[None,None])[0]  ,"")
+            i.city_info=area_config.get(allprofile_config.get(i.uid,[None,None])[1],"")
             i.datetime=datetime.datetime.fromtimestamp(i.addtime).strftime("%Y-%m-%d %H:%M:%S")
         return  render_to_response("manage_user_proxy.html",locals(),context_instance=RequestContext(request))
 
@@ -153,11 +171,14 @@ def user_proxy_detail(request,_id):
     myuser=MyUser.objects.get(usertype=2,uid=int(_id))
     status_range=[1,2,3]
     try:
-        myprofile=ProxyUserProfile.objects.get(uid=myuser.uid)
-    except:
+        myprofile=ProxyUserProfile.objects.get(uid__uid=myuser.uid)
+    except ProxyUserProfile.DoesNotExist:
         myprofile=None
     allcompany=Company.objects.all()
     if request.method=="POST":
+        if not myprofile:
+            myprofile=ProxyUserProfile(uid=myuser)
+            myprofile.save()
         img=request.FILES.get("img")
         real_name=request.POST.get("real_name")
         state=request.POST.get("state")
@@ -188,18 +209,21 @@ def user_proxy_detail(request,_id):
         myprofile.save()
         return  HttpResponseRedirect(request.get_full_path())
     else:
-        try:
-            _t=Area.objects.get(level=1,id=myuser.province)
-        except Area.DoesNotExist:
-            myuser.province_info=""
+        if myprofile:
+            try:
+                _t=Area.objects.get(level=1,id=myprofile.province)
+            except Area.DoesNotExist:
+                myuser.province_info=""
+            else:
+                myuser.province_info=_t.areaname
+            try:
+                _t=Area.objects.get(level=2,id=myprofile.city)
+            except Area.DoesNotExist:
+                myuser.city_info=""
+            else:
+                myuser.city_info=_t.areaname
         else:
-            myuser.province_info=_t.areaname
-        try:
-            _t=Area.objects.get(level=2,id=myuser.city)
-        except Area.DoesNotExist:
-            myuser.city_info=""
-        else:
-            myuser.city_info=_t.areaname
+            myuser.province_info="";myuser.city_info=""
         myuser.datetime=datetime.datetime.fromtimestamp(myuser.addtime).strftime("%Y-%m-%d %H:%M:%S")
         return  render_to_response("manage_user_proxy_detail.html",locals(),context_instance=RequestContext(request))
 

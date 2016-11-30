@@ -21,29 +21,27 @@
       "pkg": "work/user/1.0.0:p0"
     },
     "work/user/1.0.0:login": {
-      "uri": "/work/user/1.0.0/src/login_0300b6c.js",
+      "uri": "/work/user/1.0.0/src/login_4cd503c.js",
       "type": "js",
-      "extras": {
-        "async": [
-          "work/user/1.0.0:common"
-        ]
-      },
       "deps": [
         "com/global/1.0.0:dollar",
+        "work/user/1.0.0:common",
+        "com/global/1.0.0:validator",
         "work/user/1.0.0:login.css"
       ],
       "pkg": "work/user/1.0.0:p1"
     },
     "work/user/1.0.0:register.css": {
-      "uri": "/work/user/1.0.0/src/register_021dce1.css",
+      "uri": "/work/user/1.0.0/src/register_c2d57f1.css",
       "type": "css",
       "pkg": "work/user/1.0.0:p0"
     },
     "work/user/1.0.0:register": {
-      "uri": "/work/user/1.0.0/src/register_f747775.js",
+      "uri": "/work/user/1.0.0/src/register_94924ae.js",
       "type": "js",
       "deps": [
         "work/user/1.0.0:common",
+        "com/global/1.0.0:validator",
         "com/global/1.0.0:dollar",
         "work/user/1.0.0:register.css"
       ],
@@ -52,7 +50,7 @@
   },
   "pkg": {
     "work/user/1.0.0:p0": {
-      "uri": "/work/user/1.0.0/pkg/user_327c03d.css",
+      "uri": "/work/user/1.0.0/pkg/user_5f7f07b.css",
       "type": "css",
       "has": [
         "work/user/1.0.0:common.css",
@@ -61,7 +59,7 @@
       ]
     },
     "work/user/1.0.0:p1": {
-      "uri": "/work/user/1.0.0/pkg/user_2fb58d3.js",
+      "uri": "/work/user/1.0.0/pkg/user_c6a000a.js",
       "type": "js",
       "has": [
         "work/user/1.0.0:common",
@@ -72,6 +70,7 @@
         "com/global/1.0.0:dollar",
         "work/common/1.0.0:common",
         "work/user/1.0.0:common.css",
+        "com/global/1.0.0:validator",
         "work/user/1.0.0:login.css",
         "work/user/1.0.0:register.css"
       ]

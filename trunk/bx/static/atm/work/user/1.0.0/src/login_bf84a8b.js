@@ -1,1 +1,0 @@
-define("work/user/1.0.0:login",["work/user/1.0.0:common"],function(o){o("work/user/1.0.0:common")});

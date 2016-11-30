@@ -13,20 +13,7 @@ import  random
 from django.db import  models
 from ..manger import MyManager
 import time
-
-class ProxyUserProfile(models.Model):
-    id=models.AutoField(primary_key=True)
-    position=models.CharField(max_length=100,default='')
-    cid=models.IntegerField(default=0)
-    weixin=models.CharField(max_length=100)
-    my_ad=models.TextField()
-    uid=models.IntegerField()
-    certifi_num=models.CharField(max_length=50,unique=True) #资格证编号
-    certifi_status=models.IntegerField(default=0)   #1 待审核  2 审核通过  3 拘审
-    certifi_message=models.CharField(max_length=50)
-    practice_num=models.CharField(max_length=50)      #执业证编号
-    class Meta:
-        db_table="bx_proxyuser_profile"
+from ..models import Area,Company
 
 class MyUser(models.Model):
     uid=models.AutoField(primary_key=True)   # uid  主键
@@ -44,9 +31,6 @@ class MyUser(models.Model):
     sex=models.PositiveSmallIntegerField(default=0)  # sex tinyint(1) unsigned     性别  1男  2女
     birthday=models.CharField(default="",max_length=30)  # birthday int(11) unsigned   生日  20160101
     ip=models.CharField(max_length=15)  # ip vchar(15)   注册IP
-    province=models.PositiveIntegerField(default=0)  # province int(11) unsigned      省id
-    city=models.PositiveIntegerField(default=0)  # city int(11) unsigned     市id
-    zone=models.PositiveIntegerField(default=0)  # zone int(11) unsigned     区id
     usertype=models.PositiveSmallIntegerField(default=0)  # usertype tinyint(1) unsigned   用户类型  1 投保人  2 代理人
     addtime=models.PositiveIntegerField(default=lambda:int(time.time()))  #创建时间
     objects=MyManager(using="default")
@@ -79,4 +63,61 @@ class MyUser(models.Model):
 
     class Meta:
         db_table="bx_user"
+
+    def get_profile(self):
+        if self.usertype==1:
+            try:
+                return BuyUserProfile.objects.get(uid__uid=self.uid)
+            except:
+                return None
+        elif self.usertype==2:
+            try:
+                return  ProxyUserProfile.objects.get(uid__uid=self.uid)
+            except:
+                return None
+        else:
+            return    None
+
+class ProxyUserProfile(models.Model):
+    id=models.AutoField(primary_key=True)
+    position=models.CharField(max_length=100,default='')
+    cid=models.IntegerField(default=0)
+    weixin=models.CharField(max_length=100)
+    my_ad=models.TextField()
+    uid=models.ForeignKey(to=MyUser,db_column="uid")
+    certifi_num=models.CharField(max_length=50,unique=True) #资格证编号
+    certifi_status=models.IntegerField(default=0)   #1 待审核  2 审核通过  3 拘审
+    certifi_message=models.CharField(max_length=50)
+    practice_num=models.CharField(max_length=50)      #执业证编号
+    province=models.IntegerField(default=0)
+    city=models.IntegerField(default=0)
+    zone=models.IntegerField(default=0)
+    class Meta:
+        db_table="bx_proxyuser_profile"
+
+    def get_user(self):
+        return self.uid
+
+    def get_city_info(self):
+        try:
+            return Area.objects.get(id=self.city).shortname
+        except:
+            return  ''
+    def get_comname(self):
+        try:
+            return Company.objects.get(cid=self.cid).comname
+        except:
+            return ""
+
+class BuyUserProfile(models.Model):
+    id=models.AutoField(primary_key=True)
+    uid=models.ForeignKey(to=MyUser,db_column="uid")
+    province=models.IntegerField(default=0)
+    city=models.IntegerField(default=0)
+    zone=models.IntegerField(default=0)
+    class Meta:
+        db_table="bx_buyuser_profile"
+
+
+
 

@@ -9,15 +9,15 @@
             <img src="{{ 'html/img/login-left.jpg' | uri('work/common') }}" alt="欢迎登录保险管家" width="320" height="320">
         </div>
         <div class="fr">
-            <form class="ui-form">
+            <form class="ui-form" action="{{ 'html/data/提交失败' | uri }}">
                 <h2>登录保险管家</h2>
-                <div class="ui-form-item ui-form-item-error">
-                    <input class="ui-input" placeholder="手机/邮箱" type="text" />
-                    <div class="ui-form-explain">手机格式不正确</div>
+                <div class="ui-form-item">
+                    <input id="username" name="username" class="ui-input" placeholder="手机" type="text" />
+                    <div class="ui-form-explain"></div>
                 </div>
 
                 <div class="ui-form-item">
-                    <input type="password" class="ui-input" placeholder="密码" />
+                    <input id="password" name="password" type="password" class="ui-input" placeholder="密码" />
                     <div class="ui-form-explain"></div>
                 </div>
                 <div class="clf">

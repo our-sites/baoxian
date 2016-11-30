@@ -74,6 +74,14 @@ def register(request):
         phone=postinfo.get("phone")
         usertype=postinfo.get("usertype")
         usertype=int(usertype)
+        assert  usertype in (1,2)
+        if usertype==1:
+            #buy
+            pass
+        else:
+            #proxy
+            pass
+
         assert len(str(phone))==11
         assert  usertype in (1,2)
         phone=int(phone)

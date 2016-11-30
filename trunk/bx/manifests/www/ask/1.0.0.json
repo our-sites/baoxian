@@ -14,8 +14,20 @@
       ],
       "pkg": "www/ask/1.0.0:p1"
     },
+    "www/ask/1.0.0:detail.css": {
+      "uri": "/www/ask/1.0.0/src/detail_27688e1.css",
+      "type": "css"
+    },
+    "www/ask/1.0.0:detail": {
+      "uri": "/www/ask/1.0.0/src/detail_fb0566f.js",
+      "type": "js",
+      "deps": [
+        "www/ask/1.0.0:common",
+        "www/ask/1.0.0:detail.css"
+      ]
+    },
     "www/ask/1.0.0:list.css": {
-      "uri": "/www/ask/1.0.0/src/list_dbe2f0e.css",
+      "uri": "/www/ask/1.0.0/src/list_3aa2d5f.css",
       "type": "css",
       "pkg": "www/ask/1.0.0:p0"
     },
@@ -31,7 +43,7 @@
   },
   "pkg": {
     "www/ask/1.0.0:p0": {
-      "uri": "/www/ask/1.0.0/pkg/ask_b1a18cf.css",
+      "uri": "/www/ask/1.0.0/pkg/ask_fa4f5c3.css",
       "type": "css",
       "has": [
         "www/ask/1.0.0:common.css",

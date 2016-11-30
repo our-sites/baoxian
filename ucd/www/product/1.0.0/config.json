@@ -1,5 +1,5 @@
 {
-  "stable": false,
+  "stable": true,
   "exports": {
 	"index": {},
 	"detail": {}

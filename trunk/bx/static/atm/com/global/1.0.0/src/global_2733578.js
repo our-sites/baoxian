@@ -1,1 +1,0 @@
-define("com/global/1.0.0:global",["com/global/1.0.0:dollar"],function(l){l("com/global/1.0.0:dollar")});

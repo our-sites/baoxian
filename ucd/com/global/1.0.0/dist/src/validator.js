@@ -1,13 +1,11 @@
-define('com/global/1.0.0:validator', ['com/validator/0.10.3:validator', 'com/global/1.0.0:dollar', 'com/qtip/1.0.0:qtip'], function(require, exports, module) {
+define('com/global/1.0.0:validator', ['com/validator/0.10.3:validator', 'com/global/1.0.0:dollar', 'lib/toastr/2.1.3:toastr'], function(require, exports, module) {
 
   var Validator = require('com/validator/0.10.3:validator');
   var $ = require('com/global/1.0.0:dollar');
-  var qtip = require('com/qtip/1.0.0:qtip');
+  var toastr = require('lib/toastr/2.1.3:toastr');
   module.exports = Validator.extend({
   
       // 显示错误
-      // info.selector 要提示错误的selector
-      // info.message 错误信息
       showError: function (selector, msg) {
           var that = this;
           var item = that.query(selector);
@@ -15,16 +13,19 @@ define('com/global/1.0.0:validator', ['com/validator/0.10.3:validator', 'com/glo
           // 强制显示字段的错误信息
           item && that.get('showMessage').call(that, msg, item.element);
       },
+  
       // 显示默认错误
-      showErrors: function (arr) {
+      showErrors: function (errorFields) {
           var that = this;
-          if ($.isArray(arr)) {
-              for (var i in arr) {
-                  var obj = arr[i];
-                  that.showError(obj.selector, obj.msg);
+          if ($.isArray(errorFields)) {
+              for (var i in errorFields) {
+                  var errorField = errorFields[i];
+                  that.showError(errorField.selector, errorField.msg);
               }
           }
       },
+  
+      // 获取表单要提交的数据
       getSubmitData: function () {
           return this.element.serialize();
       },
@@ -39,59 +40,36 @@ define('com/global/1.0.0:validator', ['com/validator/0.10.3:validator', 'com/glo
           return data;
       },
   
-      // 返回数据失败时的回调
-      resErrorCallback: function (res) {
-          res.data = this.transformSelectors(res.data);
-          this.showErrors(res.data);
+      // 表单出错的处理
+      formErrorHandle: function (res) {
+          var formError = res.formError || {};
+          var errorFields = formError.fields || [];
+          if (errorFields.length) {
+              errorFields = this.transformSelectors(errorFields);
+              this.showErrors(errorFields);
+          }
       },
   
-      // 返回数据成功时的回调
-      resOkCallback: function (res) {
-  
-          var data = res.data || {};
-          var duration = data.duration || 0;
-  
-          if (res.url) {
-              if (!duration) {
-                  location.href = res.url;
-              } else {
-                  setTimeout(function () {
-                      location.href = res.url;
-                  }, duration);
-              }
-  
+      // 表单提交成功的处理
+      formSuccessHandle: function (res) {
+          var formSuccess = res.formSuccess || {};
+          var duration = formSuccess.duration || 5000;
+          if (formSuccess.tip !== false) {
+              toastr.success(formSuccess.msg || res.msg || '', {timeOut: duration});
           }
-  
-          if (data.msg) {
-              //popup.alert(data.msg, true, duration);
-              qtip({
-                  type: true,
-                  text: data.msg,
-                  delayTime: duration,
-                  fadeTime: 0
-              });
+          if (formSuccess.redirect) {
+              setTimeout(function () {
+                  location.href = formSuccess.redirect;
+              }, duration);
           }
-  
-  
       },
   
       // ajax提交后的回调函数
-      submitCallback: function (res) {
-          if (res.code === 200) {
-              this.resOkCallback(res);
+      formHandle: function (res) {
+          if (res.errorCode) {
+              this.formErrorHandle(res);
           } else {
-              if (res.needSafeCode) {
-                  var landerVeri = $('#lander-veri');
-                  landerVeri.show();
-                  var $img = $('#verify-img'),
-                      src = $img.attr('src');
-                  // 验证码点击
-                  $img.on('click', function () {
-                      $img.attr('src', src + '&timestamp=' + $.now())
-                  });
-  
-              }
-              this.resErrorCallback(res);
+              this.formSuccessHandle(res);
           }
       },
       attrs: {
@@ -99,8 +77,8 @@ define('com/global/1.0.0:validator', ['com/validator/0.10.3:validator', 'com/glo
           autoSubmit: false,
           failSilently: true,
           onFormValidated: function (error, result, element) {
-              // 如果element有data-unajax="true" 属性, 则跳出该函数
-              if (element.data('unajax')) {
+              // 如果element有data-formIsSubmitting="true" 属性, 则跳出该函数
+              if (element.data('form-is-submitting')) {
                   return;
               }
               if (!error) {
@@ -109,15 +87,17 @@ define('com/global/1.0.0:validator', ['com/validator/0.10.3:validator', 'com/glo
                   var url = element.data('url') || element.attr('action');
                   var method = element.data('method') || element.attr('method') || 'GET';
                   var dataType = element.data('type') || 'json';
-  
-  
+                  element.data('form-is-submitting', true);
                   $.ajax({
                       url: url,
                       type: method,
                       dataType: dataType,
                       data: that.getSubmitData(),
+                      complete: function () {
+                          element.data('form-is-submitting', false);
+                      },
                       success: function (res) {
-                          that.submitCallback(res);
+                          that.formHandle(res);
                       }
                   });
   

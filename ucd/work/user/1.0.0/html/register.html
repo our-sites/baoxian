@@ -5,42 +5,43 @@
         <div class="logo">
             <img src="{{ 'html/img/logo.png' | uri('work/common') }}" alt="logo" width="56" height="56">
         </div>
-        <form action=""  class="ui-form">
+        <form action="{{ 'html/data/提交成功' | uri }}" class="ui-form">
             <h2>注册保险管家账号</h2>
 
             <p class="role">
-                <label class="buyer active"><input type="radio" name="role" checked>我要买保险</label>
-                <label class="agency"><input type="radio" name="role">我是代理人</label>
+                <label class="buyer active"><input type="radio" name="role" checked value="0">我要买保险</label>
+                <label class="agency"><input type="radio" name="role" value="1">我是代理人</label>
             </p>
 
-            <div class="ui-form-item ui-form-item-error">
-                <input type="text" placeholder="手机" class="ui-input">
-                <div class="ui-form-explain">手机格式不正确</div>
-            </div>
-
             <div class="ui-form-item">
-                <input type="text" placeholder="验证码" class="ui-input code">
-                <span class="get-code">获取验证码</span>
-                <div class="ui-form-explain"></div>
-            </div>
-
-
-            <div class="ui-form-item">
-                <input type="text" placeholder="邮箱"  class="ui-input">
+                <input data-validate-url="{{ 'html/data/验证手机号?tel=' | uri }}" id="mobile" name="tel" type="text" placeholder="手机" class="ui-input" value="" >
                 <div class="ui-form-explain"></div>
             </div>
 
             <div class="ui-form-item">
-                <input type="password" placeholder="密码"  class="ui-input">
+                <input id="safe-code" name="safe-code" type="text" placeholder="验证码" class="ui-input code">
+                <span data-send-url="{{ 'html/data/发送验证码?tel=' | uri }}" id="get-code" class="get-code">获取验证码</span>
                 <div class="ui-form-explain"></div>
             </div>
+
+
+            <!--<div class="ui-form-item">-->
+                <!--<input id="email" name="email" type="text" placeholder="邮箱"  class="ui-input">-->
+                <!--<div class="ui-form-explain"></div>-->
+            <!--</div>-->
 
             <div class="ui-form-item">
-                <input type="password" placeholder="确认密码"  class="ui-input">
+                <input id="password" name="password" type="password" placeholder="密码"  class="ui-input">
                 <div class="ui-form-explain"></div>
             </div>
 
+            <!--<div class="ui-form-item">-->
+                <!--<input id="re-password" name="re-password" type="password" placeholder="确认密码"  class="ui-input">-->
+                <!--<div class="ui-form-explain"></div>-->
+            <!--</div>-->
 
+
+            <!--todo 地区组件-->
             <div class="ui-form-item">
                 <select class="ui-input">
                     <option value="0">所在地区</option>

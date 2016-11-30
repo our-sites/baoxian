@@ -23,13 +23,10 @@
     "work/user/1.0.0:login": {
       "uri": "/work/user/1.0.0/src/login.js",
       "type": "js",
-      "extras": {
-        "async": [
-          "work/user/1.0.0:common"
-        ]
-      },
       "deps": [
         "com/global/1.0.0:dollar",
+        "work/user/1.0.0:common",
+        "com/global/1.0.0:validator",
         "work/user/1.0.0:login.css"
       ],
       "pkg": "work/user/1.0.0:p1"
@@ -44,6 +41,7 @@
       "type": "js",
       "deps": [
         "work/user/1.0.0:common",
+        "com/global/1.0.0:validator",
         "com/global/1.0.0:dollar",
         "work/user/1.0.0:register.css"
       ],
@@ -72,6 +70,7 @@
         "com/global/1.0.0:dollar",
         "work/common/1.0.0:common",
         "work/user/1.0.0:common.css",
+        "com/global/1.0.0:validator",
         "work/user/1.0.0:login.css",
         "work/user/1.0.0:register.css"
       ]

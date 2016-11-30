@@ -2,6 +2,7 @@ var settings = {
     name: 'bx',                 // 站点名称(字母+数字+下划线组成,必须以字母开头)
     libName: 'lib',               // 开放项目的名称
     styleTimeout: 0,                        // 样式延迟多少毫秒后返回,主要用于调试
+    clear: true,                            // 在构建之前是否先清理之前构建过的文件
     targets: {                              // 目标配置
         dev: {                              // dev目标的配置
             color: 'green',                 // GUI中目标操作按钮的颜色,参考semantic-ui中的按钮颜色的class
@@ -44,3 +45,5 @@ var settings = {
     }
 };
 module.exports = settings;
+
+// 获取短信验证码接口：    http://www.baoxiangj.com/api/send_sms_validnumer?tel=18749679769 返回结果：{"status": true, "message": "success!", "md5": "342202ba59d821210e4b825672134c00"}        校验验证码接口： http://www.baoxiangj.com/api/valid_sms_validnumer?numer=123&md5=342202ba59d821210e4b825672134c00          返回结果：{"status": false}  或者{"status": true}   。   这两个接口均支持跨域。
