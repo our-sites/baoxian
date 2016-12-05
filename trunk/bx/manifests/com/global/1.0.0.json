@@ -30,6 +30,22 @@
       ],
       "pkg": "com/global/1.0.0:p1"
     },
+    "com/global/1.0.0:region": {
+      "uri": "/com/global/1.0.0/src/region_c8ff87f.js",
+      "type": "js",
+      "deps": [
+        "com/global/1.0.0:dollar",
+        "com/global/1.0.0:selects"
+      ]
+    },
+    "com/global/1.0.0:selects": {
+      "uri": "/com/global/1.0.0/src/selects_ae69222.js",
+      "type": "js",
+      "deps": [
+        "com/global/1.0.0:dollar",
+        "com/arale/1.2.0:widget"
+      ]
+    },
     "com/global/1.0.0:validator.css": {
       "uri": "/com/global/1.0.0/src/validator_3d77440.css",
       "type": "css",

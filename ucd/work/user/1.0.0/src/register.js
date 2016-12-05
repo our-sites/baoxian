@@ -1,5 +1,6 @@
 require('./common.js');
 var Validator = require('validator');
+
 var $ = require('$');
 var $wrap = $('#Register');
 var activeClass = 'active';
@@ -8,7 +9,6 @@ var $form = $wrap.find('form');
 var isCounting = false;
 
 var $getCode = $('#get-code');
-//var $safeCode = $('#safe-code');
 var $mobile = $('#mobile');
 Validator.addRule('checkMobile', function(options, commit) {
     $.getJSON($mobile.data('validate-url') + $mobile.val(), {}, function(res) {
@@ -18,6 +18,9 @@ Validator.addRule('checkMobile', function(options, commit) {
 var validator = new Validator({
     element: $form
 });
+// 初始化地区
+var Region = require('region');
+Region.initAll();
 
 var Register = {
     init: function () {
@@ -27,12 +30,12 @@ var Register = {
         $wrap.find('.role input[type="radio"]').on('change', function () {
             if($(this).prop('checked')){
                 var label = $(this).parent(),
-                    select = $wrap.find('select');
+                    agencyOnly = $wrap.find('.agency-only');
                 label.addClass('active').siblings('label').removeClass('active');
                 if(label.hasClass('agency')){
-                    select.show();
+                    agencyOnly.show();
                 }else{
-                    select.hide();
+                    agencyOnly.hide();
                 }
             }
         })

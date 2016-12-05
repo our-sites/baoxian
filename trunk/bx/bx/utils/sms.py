@@ -32,4 +32,4 @@ def send_dayysms_validnumber(phone,content):
     data=urllib2.urlopen(req,urllib.urlencode(_u)).read()
     return json.loads(data)
 
-#print send_dayysms_validnumber(15903992399,"123456")["alibaba_aliqin_fc_sms_num_send_response"]["result"]["success"]
+#print send_dayysms_validnumber(18749679769,"123456")["alibaba_aliqin_fc_sms_num_send_response"]["result"]["success"]

@@ -30,6 +30,22 @@
       ],
       "pkg": "com/global/1.0.0:p1"
     },
+    "com/global/1.0.0:region": {
+      "uri": "/com/global/1.0.0/src/region.js",
+      "type": "js",
+      "deps": [
+        "com/global/1.0.0:dollar",
+        "com/global/1.0.0:selects"
+      ]
+    },
+    "com/global/1.0.0:selects": {
+      "uri": "/com/global/1.0.0/src/selects.js",
+      "type": "js",
+      "deps": [
+        "com/global/1.0.0:dollar",
+        "com/arale/1.2.0:widget"
+      ]
+    },
     "com/global/1.0.0:validator.css": {
       "uri": "/com/global/1.0.0/src/validator.css",
       "type": "css",

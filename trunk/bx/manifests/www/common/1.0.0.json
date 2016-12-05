@@ -5,7 +5,7 @@
       "type": "css"
     },
     "www/common/1.0.0:custom-box.css": {
-      "uri": "/www/common/1.0.0/src/custom-box_6a20bac.css",
+      "uri": "/www/common/1.0.0/src/custom-box_76ff2b8.css",
       "type": "css"
     },
     "www/common/1.0.0:lively-advisers.css": {
@@ -25,16 +25,17 @@
       "type": "css"
     },
     "www/common/1.0.0:common.css": {
-      "uri": "/www/common/1.0.0/src/common_51edda6.css",
+      "uri": "/www/common/1.0.0/src/common_fc9aae0.css",
       "type": "css"
     },
     "www/common/1.0.0:common": {
-      "uri": "/www/common/1.0.0/src/common_67b3084.js",
+      "uri": "/www/common/1.0.0/src/common_20d98a0.js",
       "type": "js",
       "deps": [
         "com/global/1.0.0:global",
         "com/global/1.0.0:dollar",
         "com/tabs/1.0.0:tabs",
+        "com/global/1.0.0:region",
         "www/common/1.0.0:common.css"
       ]
     }

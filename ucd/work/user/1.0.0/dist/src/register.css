@@ -126,8 +126,12 @@
     background-color: #4bd3eb;
 }
 
-#Register .register-body select {
+#Register .agency-only {
     display: none;
+}
+
+#Register .register-body select {
+    /*display: none;*/
     width: 330px;
     height: 40px;
     line-height: 40px;

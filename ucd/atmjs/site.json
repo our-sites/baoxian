@@ -10,6 +10,8 @@
     "$": "com/global:dollar",
     "global": "com/global:global",
     "validator": "com/global:validator",
+    "selects": "com/global:selects",
+    "region": "com/global:region",
     "toastr": "toastr:toastr"
   },
   "formatTag": true,

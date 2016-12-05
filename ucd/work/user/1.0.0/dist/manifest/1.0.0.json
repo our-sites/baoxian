@@ -43,6 +43,7 @@
         "work/user/1.0.0:common",
         "com/global/1.0.0:validator",
         "com/global/1.0.0:dollar",
+        "com/global/1.0.0:region",
         "work/user/1.0.0:register.css"
       ],
       "pkg": "work/user/1.0.0:p1"
@@ -72,6 +73,7 @@
         "work/user/1.0.0:common.css",
         "com/global/1.0.0:validator",
         "work/user/1.0.0:login.css",
+        "com/global/1.0.0:region",
         "work/user/1.0.0:register.css"
       ]
     }

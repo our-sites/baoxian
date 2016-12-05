@@ -61,6 +61,11 @@
     height: 100%;
 }
 
+.custom-box .custom-content .form-control-ele.atm-region{
+    height: auto;
+    margin-bottom: 10px;
+}
+
 .custom-box .custom-content .form-control-ele select,
 .custom-box .custom-content .form-control-ele input {
     border: 1px solid #ebebeb;

@@ -46,3 +46,11 @@
 ### 注册页手机号交互方式
 *. 验证手机号是否被占用的地址, 从手机号字段的 `data-validate-url`属性获取,然后在该地址后面加上手机号进行验证
 *. 发送验证码的地址,从 获取验证码 按钮的`data-send-url`属性获取,然后在该地址后面加上手机号向服务器发送异步请求
+
+### 省市区组件
+
+
+* 给select外面的div增加 atm-region 的class
+* 默认值设置: data-defaults="410000,410100" 用逗号隔开
+* name设置: data-name="region" 则第一个select的name为region1, 第二级为region2,依次类推
+

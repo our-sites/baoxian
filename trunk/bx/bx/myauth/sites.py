@@ -14,7 +14,9 @@ class SelfAuth(object):
         urlpatterns = patterns('',
             ("^%s$"%settings.LOGIN_URL.lstrip("/"),views.login),
             ("^%s$"%settings.LOGOUT_URL.lstrip("/"),views.logout),
-                               (r"^register",views.register)
+                               (r"^register/",views.register),
+                               (r"^register_valid_phone/",views.register_valid_phone),
+                               (r"^register_send_sms/",views.register_send_sms)
             )
         return urlpatterns
     @property

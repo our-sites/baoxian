@@ -41,10 +41,11 @@ define('work/user/1.0.0:login', ['com/global/1.0.0:dollar', 'work/user/1.0.0:com
 });
 
 ;/*!work/user/1.0.0:register*/
-define('work/user/1.0.0:register', ['work/user/1.0.0:common', 'com/global/1.0.0:validator', 'com/global/1.0.0:dollar'], function(require, exports, module) {
+define('work/user/1.0.0:register', ['work/user/1.0.0:common', 'com/global/1.0.0:validator', 'com/global/1.0.0:dollar', 'com/global/1.0.0:region'], function(require, exports, module) {
 
   require('work/user/1.0.0:common');
   var Validator = require('com/global/1.0.0:validator');
+  
   var $ = require('com/global/1.0.0:dollar');
   var $wrap = $('#Register');
   var activeClass = 'active';
@@ -53,7 +54,6 @@ define('work/user/1.0.0:register', ['work/user/1.0.0:common', 'com/global/1.0.0:
   var isCounting = false;
   
   var $getCode = $('#get-code');
-  //var $safeCode = $('#safe-code');
   var $mobile = $('#mobile');
   Validator.addRule('checkMobile', function(options, commit) {
       $.getJSON($mobile.data('validate-url') + $mobile.val(), {}, function(res) {
@@ -63,6 +63,9 @@ define('work/user/1.0.0:register', ['work/user/1.0.0:common', 'com/global/1.0.0:
   var validator = new Validator({
       element: $form
   });
+  // 初始化地区
+  var Region = require('com/global/1.0.0:region');
+  Region.initAll();
   
   var Register = {
       init: function () {
@@ -72,12 +75,12 @@ define('work/user/1.0.0:register', ['work/user/1.0.0:common', 'com/global/1.0.0:
           $wrap.find('.role input[type="radio"]').on('change', function () {
               if($(this).prop('checked')){
                   var label = $(this).parent(),
-                      select = $wrap.find('select');
+                      agencyOnly = $wrap.find('.agency-only');
                   label.addClass('active').siblings('label').removeClass('active');
                   if(label.hasClass('agency')){
-                      select.show();
+                      agencyOnly.show();
                   }else{
-                      select.hide();
+                      agencyOnly.hide();
                   }
               }
           })
