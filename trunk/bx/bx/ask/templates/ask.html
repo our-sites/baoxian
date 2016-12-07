@@ -1,148 +1,111 @@
 {% extends "base.html" %}
 {% block title %}问吧首页_保险管家{% endblock %}
 {% load atm  %}
+{% load math %}
+{% load range %}
 {% block css %}{% atmcss www/ask:list %}{% endblock %}
 {% block content %}
-    <div id="askList" class="clf">
-        <div class="ask-list-left">
-            <!--提问-->
-            <div class="ask-box">
-                <textarea placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少..."></textarea>
-                <div class="float-layer">
-                    <span>已解决保险疑问  34256条</span>
-                    <a href="javascript:;">我要提问</a>
-                </div>
-            </div>
-
-            <!-- 列表-->
-            <div class="ask-list-item">
-                <h4><a href="" class="color">给4个月婴儿买，北京，主要报销医药费，医院门诊，哪种合适？</a></h4>
-                <p class="question-info">
-                    <a href="">12条回答</a>问题来自： 2016-10-11 河南郑州
-                </p>
-                <div class="result-box clf">
-                    <img class="result-author-avatar" src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" width="47" height="47" />
-                    <div class="fr">
-                        <p class="result-info">
-                            <a href="" class="result-info-name">这是一个名字</a>
-                            <a href="" class="result-info-company">公司名称</a>
-                            <a href="" class="result-info-level"></a>
-                            <a href="" class="result-info-authentication"></a>
-                            <span class="result-info-date">1分钟前</span>
+    <div id="askList">
+        <!-- 面包屑 -->
+        <div class="bx-crubms">
+            <a href="/">保险管家</a> &gt;
+            <a href="/ask/">问吧</a> &gt;
+            <a >问吧列表</a>
+        </div>
+        <div class="clf">
+            <div class="ask-list-left">
+                <!--提问-->
+                <div class="ask-box clf">
+                    <div class="ask-icon">
+                        问
+                    </div>
+                    <form class="fr" method="post" action="/ask/" id="ask">
+                        <textarea placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少..."
+                                  name="content" maxlength="200" required="required" id="content">{{ last_ask_info }}</textarea>
+                        {% csrf_token %}
+                        <div class="float-layer">0/200</div>
+                        <p>
+                            <button  type="submit"  class="submit ask-btn" >提交问题</button>
+                            <span>已解决保险疑问  <b class="q-number">{{ ask_paginator.count }}条</b></span>
                         </p>
-                        <div class="result-content">
-                            您好！华夏常青树在市场上是很有竞争力的，性价比高，保障全，保障范围是77种大病+33种轻症， 保障期间是终身，轻症豁免保费，疾病终末期提前给付保额等诸多特点，疾病终末期提前给付保额等 诸多特点，现在可以全国V信投保，有兴趣可以加我详聊，祝愉快！ <a href="" class="color">...查看全部</a>
+                    </form>
+
+                </div>
+
+                <!-- 列表-->
+                {% for i in allinfo %}
+                <div class="ask-list-item">
+                    <div class="q-box clf">
+                        <div class="ask-icon">
+                            问
                         </div>
-                        <div class="result-ctrl">
-                            <label class="result-ctrl-favor active">
-                            <i class="fa fa-star-o"></i>
-                            收藏
-                        </label>
-                            <label class="result-ctrl-thank active">
-                            <i class="fa fa-heart-o"></i>
-                            感谢
-                        </label>
-                            <label class="result-ctrl-share">
-                            <i class="fa fa-share-alt"></i>
-                            分享
-                        </label>
+                        <div class="fl">
+                            <h4>
+                                <a href="/ask/detail/{{ i.askid }}.html" class="color">{{ i.ask_content|slice:":30" }}{% if i.ask_content|length > 50 %}..{% endif %}</a></h4>
+                            <p>
+                                问题来自： {{ i.get_date }} {{ i.get_area_info }}
+                            </p>
+                        </div>
+                        <div class="answer-number">
+                            <span>{{ i.get_answer_count }}</span>条回答
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="ask-list-item">
-                <h4><a href="" class="color">给4个月婴儿买，北京，主要报销医药费，医院门诊，哪种合适？</a></h4>
-                <p class="question-info">
-                    <a href="">12条回答</a>问题来自： 2016-10-11 河南郑州
-                </p>
-                <div class="result-box clf">
-                    <img class="result-author-avatar" src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" width="47" height="47" />
-                    <div class="fr">
-                        <p class="result-info">
-                            <a href="" class="result-info-name">这是一个名字</a>
-                            <a href="" class="result-info-company">公司名称</a>
-                            <a href="" class="result-info-level"></a>
-                            <a href="" class="result-info-authentication"></a>
-                            <span class="result-info-date">1分钟前</span>
-                        </p>
-                        <div class="result-content">
-                            您好！华夏常青树在市场上是很有竞争力的，性价比高，保障全，保障范围是77种大病+33种轻症， 保障期间是终身，轻症豁免保费，疾病终末期提前给付保额等诸多特点，疾病终末期提前给付保额等 诸多特点，现在可以全国V信投保，有兴趣可以加我详聊，祝愉快！ <a href="" class="color">...查看全部</a>
-                        </div>
-                        <div class="result-ctrl">
-                            <label class="result-ctrl-favor">
-                            <i class="fa fa-star-o"></i>
-                            收藏
-                        </label>
-                            <label class="result-ctrl-thank">
-                            <i class="fa fa-heart-o"></i>
-                            感谢
-                        </label>
-                            <label class="result-ctrl-share">
-                            <i class="fa fa-share-alt"></i>
-                            分享
-                        </label>
+                    {% with ans=i.get_first_ans %}
+                        {% if ans %}
+                            {% with ans_user=ans.get_user ans_user_profile=ans.get_user_profile %}
+                    <div class="result-box clf">
+                        <img class="result-author-avatar" src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" />
+                        <div class="fl">
+                            <p class="result-info">
+                                <a href="" class="result-info-company">{{ ans_user_profile.get_short_comname }}</a>
+                                <a href="" class="result-info-name">
+                                    {% if  ans_user.real_name %}{{ ans_user.real_name }}
+                                    {% else %}
+                                        {{ ans_user.username|slice:":-2" }}**
+                                    {% endif %}</a>
+                                <a href="" class="result-info-level"></a>
+                                <a href="" class="result-info-authentication"></a>
+                                <span class="result-info-answer">{{ ans_user_profile.ans_num }}条回答</span>
+                                <span class="result-info-thank">被感谢xx次</span>
+                                <span class="result-info-date"></span>
+                            </p>
+                            <div class="result-content">
+                                {{ ans.ans_content }}
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                            {% endwith %}
+                        {% endif %}
+                {% endwith %}
 
-            <!--翻页-->
-            <div class="bx-list-flip">
-                <a href="" class="bx-list-flip-btn prev">&lt;</a>
-                <a href="" class="bx-list-flip-btn number active">1</a>
-                <a href="" class="bx-list-flip-btn number">2</a>
-                <a href="" class="bx-list-flip-btn number">3</a>
-                <a href="" class="bx-list-flip-btn number">4</a>
-                <a href="" class="bx-list-flip-btn number">5</a>
-                <a href="" class="bx-list-flip-btn next">&gt;</a>
+                </div>
+            {% endfor %}
+
+                <!--翻页-->
+            {% if allinfo.paginator.num_pages >= 2 %}
+                <div class="bx-list-flip clf">
+                    {% if allinfo.has_previous %}
+                    <a href="/ask/{{ allinfo.previous_page_number }}/" class="bx-list-flip-btn prev">&lt;</a>
+                        {% endif %}
+                    {% for t in allinfo.number|near:3 %}
+                        {% if t > 0 and t <= allinfo.paginator.num_pages %}
+                    <a href="/ask/{{ t }}/" class="bx-list-flip-btn number {% if t == allinfo.number %}active{% endif %}">{{ t }}</a>
+                        {% endif %}
+                    {% endfor %}
+                {% if allinfo.has_next %}
+                    <a href="/ask/{{ allinfo.next_page_number }}/" class="bx-list-flip-btn next">&gt;</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+            </div>
+            <div class="fr">
+                {% include "dingzhi_common.html" %}
+                <!-- 活跃顾问 -->
+                {% include "dailiren_common.html" %}
             </div>
         </div>
 
-        <!--热心顾问-->
-        <div class="ask-list-right">
-            <!--title-->
-            <h3 class="rank-title">
-                <b>热心顾问</b>
-                <div class="rank-title-tab">
-                    <a href="" class="active">今日</a>
-                    <a href="">本周</a>
-                    <a href="">本月</a>
-                </div>
-            </h3>
-            <!--list-->
-            <div class="rank-item">
-                <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" alt="" width="32" height="32" class="rank-item-avatar">
-                <span class="rank-item-name">这是个名字</span>
-                <span class="rank-item-company">公司的名字</span>
-                <span class="rank-item-level"></span>
-                <span class="rank-item-authentication"></span>
-                <span class="rank-item-score">554条回答</span>
-                <a href="" class="rank-item-link">咨询他</a>
-            </div>
-
-            <div class="rank-item">
-                <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" alt="" width="32" height="32" class="rank-item-avatar">
-                <span class="rank-item-name">这是个名字</span>
-                <span class="rank-item-company">公司的名字</span>
-                <span class="rank-item-level"></span>
-                <span class="rank-item-authentication"></span>
-                <span class="rank-item-score">554条回答</span>
-                <a href="" class="rank-item-link">咨询他</a>
-            </div>
-
-            <div class="rank-item">
-                <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" alt="" width="32" height="32" class="rank-item-avatar">
-                <span class="rank-item-name">这是个名字</span>
-                <span class="rank-item-company">公司的名字</span>
-                <span class="rank-item-level"></span>
-                <span class="rank-item-authentication"></span>
-                <span class="rank-item-score">554条回答</span>
-                <a href="" class="rank-item-link">咨询他</a>
-            </div>
-
-
-        </div>
     </div>
 {% endblock %}
 {% block js %}

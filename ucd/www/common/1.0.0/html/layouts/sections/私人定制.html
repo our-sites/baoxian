@@ -1,54 +1,71 @@
 <div class="custom-box">
     <h3>私人定制</h3>
     <div class="custom-content">
-        <form action="">
-            <div class="form-control clf">
-                <label for="year">
-                    出生年月
-                </label>
-                <div class="form-control-ele">
-                    <select name="year" id="year" class="small first">
-                        <option value="2016">2016</option>
-                    </select>
-                    <select name="month" id="month" class="small">
-                        <option value="1">1月</option>
-                    </select>
+        <form id="custom-form" class="ui-form" action="{{ 'html/data/提交成功' | uri('work/user') }}">
+            <div class="ui-form-item">
+                <div class="form-control clf">
+                    <label for="year">
+                        出生年月
+                    </label>
+                    <div class="form-control-ele">
+                        <select name="year" id="year" class="small first">
+                            <option value="2016">2016</option>
+                        </select>
+                        <select name="month" id="month" class="small">
+                            <option value="1">1月</option>
+                        </select>
+                    </div>
                 </div>
+                <div class="ui-form-explain"></div>
             </div>
-            <div class="form-control clf">
-                <label for="type">
-                    保险类型
-                </label>
-                <div class="form-control-ele">
-                    <select name="type" id="type">
-                        <option value="1">人寿险</option>
-                    </select>
+            <div class="ui-form-item">
+                <div class="form-control clf">
+                    <label for="type">
+                        保险类型
+                    </label>
+                    <div class="form-control-ele">
+                        <select name="type" id="type">
+                            <option value="1">人寿险</option>
+                        </select>
+                    </div>
                 </div>
+                <div class="ui-form-explain"></div>
             </div>
-            <div class="form-control clf">
-                <label for="money">
-                    价格区间
-                </label>
-                <div class="form-control-ele">
-                    <select name="money" id="money">
-                        <option value="1">0~300元</option>
-                    </select>
+            <div class="ui-form-item">
+                <div class="form-control clf">
+                    <label for="money">
+                        价格区间
+                    </label>
+                    <div class="form-control-ele">
+                        <select name="money" id="money">
+                            <option value="1">0~300元</option>
+                        </select>
+                    </div>
                 </div>
+                <div class="ui-form-explain"></div>
             </div>
-            <div class="form-control clf">
-                <label for="contact">
-                    联系电话
-                </label>
-                <div class="form-control-ele">
-                    <input type="text" id="contact" name="contact" placeholder="请填写">
+
+            <div class="ui-form-item">
+                <div class="form-control clf">
+                    <label for="contact">
+                        联系电话
+                    </label>
+                    <div class="form-control-ele">
+                        <input type="text" id="contact" name="contact" placeholder="请填写">
+                    </div>
                 </div>
+                <div class="ui-form-explain"></div>
             </div>
-            <div class="form-control clf">
-                <label>
-                    居住地区
-                </label>
-                <div class="form-control-ele atm-region" data-defaults="410000,410100"></div>
+            <div class="ui-form-item">
+                <div class="form-control clf">
+                    <label>
+                        居住地区
+                    </label>
+                    <div class="form-control-ele atm-region" data-defaults="410000,410100"></div>
+                </div>
+                <div class="ui-form-explain"></div>
             </div>
+
             <button type="submit" class="submit">提交</button>
         </form>
     </div>

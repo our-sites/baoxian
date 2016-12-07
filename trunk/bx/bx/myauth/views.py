@@ -13,53 +13,50 @@ import time
 import  datetime
 import  random
 from django.shortcuts import  render_to_response
-from models import  MyUser
+from models import  MyUser,ProxyUserProfile,BuyUserProfile
 from django.template.context import  RequestContext
 from django.db.models import  Q
 from bx.utils.sms import send_dayysms_validnumber
 from django.http import  HttpResponse
 import  json
 import  random
+from ..models import Area
 
 def login(request):
     post_data=request.POST
-    next=request.GET.get("next","")
-    next=next or  settings.LOGIN_REDIRECT_URL
+    next_to=request.GET.get("next","")
+    next_to=next_to or  settings.LOGIN_REDIRECT_URL
     if request.method=="POST":
         username=post_data["username"]
         password=post_data["password"]
+        auto=post_data.get("auto","")
         timestamp=int(time.time())
+
         try:
             _tel=int(username)
         except:
-            _tel=None
+            data={"errorCode":500,"formError":{"fields":[{"name":"username","msg":"手机号不合法！"}]}}
+            return HttpResponse(json.dumps(data),mimetype="application/javascript")
+
         try:
-            if _tel:
-                if "@" in username:
-                    user=MyUser.objects.get(Q(username=username)|Q(verifymobile=_tel)|Q(email=username))
-                else:
-                    user=MyUser.objects.get(Q(username=username)|Q(verifymobile=_tel))
-            else:
-                if "@" in username:
-                    user=MyUser.objects.get(username=username|Q(email=username))
-                else:
-                    user=MyUser.objects.get(username=username)
-        except Exception as e :
-            print username
-            print "Exception",e
-            message="该用户不存在！"
+            myuser=MyUser.objects.get(phone=_tel)
+        except:
+            data={"errorCode":500,"formError":{"fields":[{"name":"username","msg":"该手机号尚未注册！"}]}}
+            return HttpResponse(json.dumps(data),mimetype="application/javascript")
+        if myuser.state!=1:
+            data={"errorCode":500,"formError":{"fields":[{"name":"username","msg":"该用户状态异常！"}]}}
+            return HttpResponse(json.dumps(data),mimetype="application/javascript")
+        if md5(md5(password+myuser.salt))!=myuser.password:
+            data={"errorCode":500,"formError":{"fields":[{"name":"password","msg":"密码不正确！"}]}}
+            return HttpResponse(json.dumps(data),mimetype="application/javascript")
         else:
-            if user.state!=1:
-                message="该用户状态不正常！"
-            else:
-                if md5(md5(password)+user.salt)==user.password:
-                    result=HttpResponseRedirect(next)
-                    if isinstance(username,unicode):
-                        username=username.encode("utf-8")
-                    result.set_cookie("user_info",urllib.quote(
-                            phpcookie_encode("\t".join([str(user.uid), username,request.ip,str(timestamp)]),'gc895316')),
-                                      domain=".baoxiangj.com")
-                    return  result
+            data={"errorCode":0,"msg":"登录成功！","formSuccess":{"redirect":"/" if not next_to else next_to,
+                                                                 "duration":500},"data":{}}
+            response=HttpResponse(json.dumps(data),mimetype="application/javascript")
+            response.set_cookie("user_info",urllib.quote(
+                        phpcookie_encode("\t".join([str(myuser.uid), myuser.username,request.ip,str(timestamp)]),'gc895316')),
+                                  )
+            return  response
     return render_to_response(settings.LOGIN_TEMPLATE_NAME,locals(),context_instance=RequestContext(request))
 
 
@@ -129,6 +126,8 @@ def register_send_sms(request):
 
 def register(request):
     session=request.session
+    next_to=request.GET.get("next","")
+    role=request.GET.get("role")
     if request.method=="POST":
         postinfo=request.POST
         phone=postinfo.get("tel")
@@ -160,7 +159,10 @@ def register(request):
             else:
                 user=MyUser(username=str(phone),phone=phone,salt=salt,password=password,state=1,usertype=usertype,ip=request.ip)
                 user.save()
-                data={"errorCode":0,"msg":"注册成功！","formSuccess":{"redirect":"/zixun/","duration":3000},"data":{}}
+                user_profile=BuyUserProfile(uid=user.uid,province=request.province_id,city=request.city_id,zone=0)
+                user_profile.save()
+                data={"errorCode":0,"msg":"注册成功！","formSuccess":{"redirect":"/zixun/" if not next_to else next_to,
+                                                                 "duration":3000},"data":{}}
                 timestamp=int(time.time())
                 data=json.dumps(data)
                 result= HttpResponse(data,mimetype="application/javascript")
@@ -170,7 +172,119 @@ def register(request):
                 return  result
         else:
             #proxy
-            pass
+            passwd=postinfo.get("password")
+            salt=MyUser.make_salt()
+            password=MyUser.hashed_password(salt,passwd)
+            province_id=postinfo.get("region1","")
+            city_id=postinfo.get("region2","")
+            if province_id:
+                try:
+                    province_id=Area.objects.get(level=1,id=int(province_id)).id
+                except:
+                    province_id=0
+            else:
+                province_id=0
+
+            if city_id:
+                try:
+                    _=Area.objects.get(level=2,id=int(city_id))
+                    province_id=_.parentid;city_id=_.id
+                except:
+                    pass
+            else:
+                city_id=0
+
+            try:
+                _numer=session.get("register_valid_phone"+str(phone)+"_value")
+                print safe_code,_numer
+                assert safe_code==_numer
+            except:
+                data={"errorCode":500,"formError":{"fields":[{"name":"safe-code","msg":"验证码不正确！"}]}}
+                data=json.dumps(data)
+                return HttpResponse(data,mimetype="application/javascript")
+            try:
+                a=MyUser.objects.filter(Q(phone=str(phone))).count()
+                assert a==0
+            except:
+                data={"errorCode":500,"formError":{"fields":[{"name":"tel","msg":"该手机号已被注册！"}]}}
+                data=json.dumps(data)
+                return HttpResponse(data,mimetype="application/javascript")
+            else:
+                user=MyUser(username=str(phone),phone=phone,salt=salt,password=password,state=1,usertype=usertype,ip=request.ip)
+                user.save()
+                if province_id or city_id:
+                    myprofile=ProxyUserProfile(uid=user,province=province_id,city=city_id)
+                    myprofile.save()
+                else:
+                    myprofile=ProxyUserProfile(uid=user,province=request.province_id,city=request.city_id)
+                    myprofile.save()
+                data={"errorCode":0,"msg":"注册成功！","formSuccess":{"redirect":"/ask/" if not next_to else next_to,
+                                                                 "duration":900},"data":{}}
+                timestamp=int(time.time())
+                data=json.dumps(data)
+                result= HttpResponse(data,mimetype="application/javascript")
+                result.set_cookie("user_info",urllib.quote(
+                        phpcookie_encode("\t".join([str(user.uid), user.username,request.ip,str(timestamp)]),'gc895316')),
+                                  )
+                return  result
 
 
     return  render_to_response("register.html",locals(),context_instance=RequestContext(request)) #
+
+def forgotpwd_valid_phone(request):
+    phone=request.GET.get("tel")
+    try:
+        assert  phone
+        phone=int(phone)
+    except:
+        data={"errorCode":1,"msg":"手机号不合法！"}
+    else:
+        try:
+            MyUser.objects.get(phone=phone)
+        except MyUser.DoesNotExist:
+            data={"errorCode":1,"msg":"手机号正确"}
+        else:
+            data={"errorCode":0,"msg":"该手机号尚未注册！"}
+    data=json.dumps(data)
+    return HttpResponse(data ,mimetype="application/javascript")
+
+def forgotpwd(request):
+    session=request.session
+    postinfo=request.POST
+    if request.method=="POST":
+        tel=request.POST.get("tel","")
+        safe_code=request.POST.get("safe-code","")
+        try:
+            tel=int(tel)
+        except:
+            data={"errorCode":500,"formError":{"fields":[{"name":"tel","msg":"请输入正确的手机号！"}]}}
+            data=json.dumps(data)
+            return HttpResponse(data,mimetype="application/javascript")
+        try:
+            user=MyUser.objects.get(phone=tel)
+        except MyUser.DoesNotExist:
+            data={"errorCode":500,"formError":{"fields":[{"name":"tel","msg":"该手机号尚未注册！"}]}}
+            data=json.dumps(data)
+            return HttpResponse(data,mimetype="application/javascript")
+
+        try:
+            _numer=session.get("register_valid_phone"+str(tel)+"_value")
+            print safe_code,_numer
+            assert safe_code==_numer
+        except:
+            data={"errorCode":500,"formError":{"fields":[{"name":"safe-code","msg":"验证码不正确！"}]}}
+            data=json.dumps(data)
+            return HttpResponse(data,mimetype="application/javascript")
+        passwd=postinfo.get("password")
+        salt=user.salt
+        password=MyUser.hashed_password(salt,passwd)
+        user.password=password
+        user.save()
+        data={"errorCode":0,"msg":"密码重置成功！",
+              "formSuccess":{"redirect":"/login/" ,
+                            "duration":800},"data":{}}
+        data=json.dumps(data)
+        return HttpResponse(data,mimetype="application/javascript")
+
+    return  render_to_response("forgotpwd.html",locals(),
+                               context_instance=RequestContext(request))

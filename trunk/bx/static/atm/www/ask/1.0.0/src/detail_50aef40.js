@@ -1,0 +1,1 @@
+define("www/ask/1.0.0:detail",["com/global/1.0.0:dollar","www/ask/1.0.0:common"],function(o){o("com/global/1.0.0:dollar");o("www/ask/1.0.0:common")});

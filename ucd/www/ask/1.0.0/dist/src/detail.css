@@ -41,13 +41,14 @@
     padding: 12px;
     border: 1px solid #dbdbdb;
     resize: none;
-    margin: 25px 0 20px;
+    margin: 25px 0 5px;
 }
 
 
 #askDetail .ask-box .float-layer {
     position: absolute;
-    bottom: 75px;
+    /*bottom: 75px;*/
+    top: 110px;
     right: 13px;
     z-index: 2;
     display: inline-block;

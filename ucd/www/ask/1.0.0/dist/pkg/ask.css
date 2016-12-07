@@ -1,5 +1,16 @@
 /*!www/ask/1.0.0:common.css*/
 
+#ask{
+    position: relative;
+}
+
+#ask .ui-form-item-error .ui-form-explain{
+    margin: 0 0 10px;
+}
+
+#ask .ask-btn {
+    border: none;
+}
 /*!www/ask/1.0.0:list.css*/
 #askList {
     width: 1200px;
@@ -29,7 +40,7 @@
     padding: 12px;
     border: 1px solid #dbdbdb;
     resize: none;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 
 #askList .ask-box > .fr{

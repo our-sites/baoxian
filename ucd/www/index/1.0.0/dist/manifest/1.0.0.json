@@ -1,5 +1,9 @@
 {
   "res": {
+    "www/index/1.0.0:index.css": {
+      "uri": "/www/index/1.0.0/src/index.css",
+      "type": "css"
+    },
     "www/index/1.0.0:index": {
       "uri": "/www/index/1.0.0/src/index.js",
       "type": "js"

@@ -1,6 +1,7 @@
 .custom-box {
     width: 300px;
-    height: 331px;
+    /*height: 331px;*/
+    height: auto;
     margin-bottom: 25px;
 }
 
@@ -16,7 +17,8 @@
 
 .custom-box .custom-content {
     width: 298px;
-    height: 290px;
+    /*height: 290px;*/
+    height: auto;
     border: 1px solid #ebebeb;
     border-top: none;
     overflow: hidden;

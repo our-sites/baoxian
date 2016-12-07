@@ -15,12 +15,31 @@
                     问
                 </div>
                 <div class="fr">
-                    <textarea placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少..."></textarea>
-                    <div class="float-layer">0/200</div>
-                    <p>
-                        <a href="javascript:;" class="ask-btn">提交问题</a>
-                        <span>已解决保险疑问  <b class="q-number">34256条</b></span>
-                    </p>
+                    <!--<textarea placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少..."></textarea>-->
+                    <!--<div class="float-layer">0/200</div>-->
+                    <!--<p>-->
+                        <!--<a href="javascript:;" class="ask-btn">提交问题</a>-->
+                        <!--<span>已解决保险疑问  <b class="q-number">34256条</b></span>-->
+                    <!--</p>-->
+
+                    <form id="ask" class="ui-form" action="{{ 'html/data/提交成功' | uri('work/user') }}">
+                        <div class="ui-form-item">
+                            <textarea id="content" name="content" placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少..."></textarea>
+                            <div class="ui-form-explain"></div>
+                        </div>
+                        <div class="float-layer">
+                            <span class="current-length">0</span>
+                            /
+                            <span class="total-length">200</span>
+                        </div>
+
+                        <p>
+                            <!--<a href="javascript:;" class="ask-btn">提交回答</a>-->
+                            <input type="submit" value="提交回答" class="ask-btn"/>
+                            <i class="fa fa-exclamation-circle"></i>
+                            普通代理人每天最多只能回复一个保险疑问，<a href="" class="color">开通钻石</a>获取不限量权限
+                        </p>
+                    </form>
                 </div>
 
             </div>

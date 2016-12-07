@@ -20,22 +20,32 @@
                 <img src="/static/imgs/login-left.jpg" alt="欢迎登录保险管家" width="320" height="320">
             </div>
             <div class="fr">
-                <form action="">
+                <form class="ui-form" action="/login/{% if next_to %}?next={{ next_to|urlencode }}{% endif %}" method="post">
                     <h2>登录保险管家</h2>
-                    <input type="text" placeholder="手机/邮箱" class="error">
-                    <div class="error-tip">手机格式不正确</div>
-                    <input type="password" placeholder="密码">
+                    {% csrf_token %}
+                    <div class="ui-form-item">
+                        <input id="username" name="username" class="ui-input" placeholder="手机" type="text" />
+                        <div class="ui-form-explain"></div>
+                    </div>
+
+                    <div class="ui-form-item">
+                        <input id="password" name="password" type="password" class="ui-input" placeholder="密码" />
+                        <div class="ui-form-explain"></div>
+                    </div>
                     <div class="clf">
                         <label>
-                        <input type="checkbox">
+                        <input type="checkbox" name="auto">
                         自动登录
                     </label>
                         <div class="fr">
-                            <a href="./register.html" class="color">注册保险管家账号</a> |
-                            <a href="#" class="color">忘记密码？</a>
+                            <a href="/register/" class="color">注册保险管家账号</a> |
+                            <a href="/forgotpwd/" class="color">忘记密码？</a>
                         </div>
                     </div>
-                    <button type="submit">登录</button>
+
+                    <div class="ui-form-item">
+                        <button type="submit">登录</button>
+                    </div>
                 </form>
             </div>
         </div>

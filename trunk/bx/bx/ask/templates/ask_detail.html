@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% block title %}问吧详情_保险管家{% endblock %}
+{% load atm  %}
+{% load math %}
+{% load range %}
+{% block css %}{% atmcss www/ask:detail %}{% endblock %}
+{% block content %}
+   <div id="askDetail">
+        <!-- 面包屑 -->
+        <div class="bx-crubms">
+            <a href="/">保险管家</a> &gt;
+            <a href="/ask/">问吧</a> &gt;
+            <a >问吧列表</a>
+        </div>
+        <div class="clf">
+            <div class="ask-list-left">
+                <!--提问-->
+                <div class="ask-box clf">
+                    <div class="fl ask-icon">
+                        问
+                    </div>
+                    <form  class="fr" method="post" >
+                        <h2>
+                            {{ ask_obj.ask_content }}
+                        </h2>
+                        {% csrf_token %}
+                        <span class="muted">问题来自：  {{ ask_obj.get_date }}  {{ ask_obj.get_area_info }}      </span>
+                        <textarea placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少..."
+                                  name="content">{% if last_answer_info %}{{ last_answer_info }}{% endif %}</textarea>
+                        <div class="float-layer">0/200</div>
+                        <p>
+                            <button type="submit" class="submit ask-btn">提交回答</button>
+{#                            <i class="fa fa-exclamation-circle"></i> 普通代理人每天最多只能回复一个保险疑问，#}
+{#                            <a href="" class="color">开通钻石</a>获取不限量权限#}
+                        </p>
+                    </form>
+
+                </div>
+
+                <!-- 列表-->
+                <h2 class="ask-list-title">已经有{{ ask_obj.get_answer_count }}条回答</h2>
+
+                {% for i in allinfo  %}
+                <div class="ask-list-item">
+                    <div class="result-box">
+                        <div class="clf">
+                            <img class="result-author-avatar" src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" />
+                            <div class="result-info">
+                                <p>
+                                    <a href="" class="result-info-company">新华</a>
+                                    <a href="" class="result-info-name">兴趣使然</a>
+                                    <a href="" class="result-info-level"></a>
+                                    <a href="" class="result-info-authentication"></a>
+                                    <span class="result-info-answer">26条回答</span>
+                                    <span class="result-info-thank">被感谢45次</span>
+                                </p>
+                                <a href="" class="ask-btn">咨询他</a>
+                            </div>
+                            <div class="result-info-date">{{ i.get_date }}</div>
+                        </div>
+                    </div>
+                    <div class="result-content">
+{{ i.ans_content }}                    </div>
+                    <div class="result-ctrl">
+                        <label class="result-ctrl-favor active">
+                        <i class="fa fa-star-o"></i>
+                        收藏
+                    </label>
+                        <label class="result-ctrl-thank">
+                        <i class="fa fa-heart-o"></i>
+                        感谢
+                    </label>
+                        <label class="result-ctrl-share">
+                        <i class="fa fa-share-alt"></i>
+                        分享
+                    </label>
+                    </div>
+                </div>
+                {% endfor %}
+
+
+                <!--翻页-->
+            {% if allinfo.paginator.num_pages >= 2 %}
+                <div class="bx-list-flip clf">
+                    {% if allinfo.has_previous %}
+                    <a href="/ask/detail/{{ ask_id }}.html/{{ allinfo.previous_page_number }}/" class="bx-list-flip-btn prev">&lt;</a>
+                        {% endif %}
+                    {% for t in allinfo.number|near:3 %}
+                        {% if t > 0 and t <= allinfo.paginator.num_pages %}
+                    <a href="/ask/detail/{{ ask_id }}.html/{{ t }}/" class="bx-list-flip-btn number {% if t == allinfo.number %}active{% endif %}">{{ t }}</a>
+                        {% endif %}
+                    {% endfor %}
+                {% if allinfo.has_next %}
+                    <a href="/ask/detail/{{ ask_id }}.html/{{ allinfo.next_page_number }}/" class="bx-list-flip-btn next">&gt;</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+                <!--相关问答-->
+                <div class="related-faqs">
+                    <h3>相关问题</h3>
+                    {% for i in other_info %}
+                    <div class="related-faqs-item clf">
+                        <div class="ask-icon">问</div>
+                        <p>
+                            <a href="/ask/detail/{{ i.askid }}.html">
+                                {{ i.ask_content }}
+                        </a>
+                        </p>
+                    </div>
+                    {% endfor %}
+
+
+                </div>
+
+                <!--相关产品-->
+                <div class="relative-product">
+                    <h3>相关产品</h3>
+                    <div class="clf">
+                        {% for i in other_proinfo %}
+                    <div class="relative-product-item{% if forloop.counter == 4 %} last{% endif %}">
+                        <div class="relative-product-item-img">
+                            <a href="/product/detail/{{ i.pid }}.html"><img src="{{ i.img.url }}" alt="{{ i.pro_name }}" style="height: 100%;"></a>
+                        </div>
+                        <div class="relative-product-item-word">
+                            <a href="/product/detail/{{ i.pid }}.html"><h4>{{ i.pro_name }}</h4></a>
+                            <p>{% for j in i.get_pro_desc_json|slice:":2" %}{{ j.0 }}{% if forloop.revcounter0 != 0 %},{% endif %}{% endfor %}</p>
+                        </div>
+                    </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+            <div class="fr">
+            {% include "dingzhi_common.html" %}
+                <!-- 活跃顾问 -->
+                {% include "dailiren_common.html" %}
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+{% block js %}
+    {% atmjs www/ask:detail %}
+{% endblock %}

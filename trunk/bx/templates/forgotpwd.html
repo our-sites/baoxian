@@ -1,0 +1,48 @@
+{% load atm %}
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <title>重置密码_保险管家</title>
+    {% atmcss work/user:register %}
+</head>
+
+<body>
+    <div id="Register">
+        <div class="register-body">
+            <div class="logo">
+                <a href="/"><img src="/static/imgs/logo.png" alt="logo" width="56" height="56"></a>
+            </div>
+            <form action="/forgotpwd/" class="ui-form" method="post">
+                <h2>重置密码</h2>
+                {% csrf_token %}
+                <div class="ui-form-item">
+                    <input data-validate-url="/forgotpwd_valid_phone?tel=" id="mobile" name="tel" type="text" placeholder="手机" class="ui-input" value="">
+                    <div class="ui-form-explain"></div>
+                </div>
+
+                <div class="ui-form-item">
+                    <input id="safe-code" name="safe-code" type="text" placeholder="验证码" class="ui-input code">
+                    <span data-send-url="/register_send_sms/?tel=" id="get-code" class="get-code">获取验证码</span>
+                    <div class="ui-form-explain"></div>
+                </div>
+
+                <div class="ui-form-item">
+                    <input id="password" name="password" type="password" placeholder="密码" class="ui-input">
+                    <div class="ui-form-explain"></div>
+                </div>
+
+                <div class="ui-form-item">
+                    <button type="submit">确定</button>
+                </div>
+
+                <p class="login">
+                    如果您已拥有保险管家帐号，则可在此 <a href="/login/{% if next_to %}?next={{ next_to|urlencode }}{% endif %}" class="color">登录</a>
+                </p>
+            </form>
+        </div>
+        <div class="copyright">　© 2016 baoxianguanjia.com 豫ICP备13006688号</div>
+    </div>
+{% atmjs work/user:register %}
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "res": {
+    "www/index/1.0.0:index.css": {
+      "uri": "/www/index/1.0.0/src/index_d41d8cd.css",
+      "type": "css"
+    },
+    "www/index/1.0.0:index": {
+      "uri": "/www/index/1.0.0/src/index_1e34596.js",
+      "type": "js"
+    }
+  },
+  "pkg": {}
+}

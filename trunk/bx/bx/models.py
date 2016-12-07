@@ -13,6 +13,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 import  re
 import  json
 
+
 def filter_tags(htmlstr):
     s=re.sub("<[^<>]+>",'',htmlstr)
     return s
@@ -170,24 +171,7 @@ class Product(models.Model):
         return [i.type_name  for i in objs]
 
 
-class ProxyUserProfile(models.Model):
-    id=models.AutoField(primary_key=True)
-    position=models.CharField(max_length=30,verbose_name="职位")
-    cid=models.IntegerField(default=0,verbose_name="所属企业ID")
-    wenxin=models.CharField(max_length=100,verbose_name="微信号")
-    my_ad=models.TextField(verbose_name="个人介绍")
-    uid=models.IntegerField(unique=True,verbose_name="用户ID")
-    certifi_num=models.CharField(max_length=50,verbose_name="资格证编号",unique=True)
-    practice_num=models.CharField(max_length=50,verbose_name="执业证编号")
-    certifi_status=models.IntegerField(default=0,verbose_name="审核状态 ",help_text="1 待审核 2审核通过 3 拘审")
-    certifi_message=models.CharField(max_length=50,verbose_name="审核消息")
-    meta=models.CharField(max_length=100,verbose_name="额外的信息")
-    class Meta:
-        db_table="bx_proxyuser_profile"
-        verbose_name="代理人信息"
-        verbose_name_plural="所有代理人信息"
-    def __unicode__(self):
-        return  self.id
+
 
 class Ask(models.Model):
     askid=models.AutoField(primary_key=True)
@@ -195,6 +179,9 @@ class Ask(models.Model):
     ask_content=models.CharField(max_length=1000,verbose_name="内容")
     uid=models.IntegerField(default=0,verbose_name="提问者ID")
     ask_time=models.IntegerField(default= lambda :int(time.time()),verbose_name="提问时间")
+    mark=models.IntegerField(default=0)
+    province=models.IntegerField(default=0)
+    city=models.IntegerField(default=0)
     class Meta:
         db_table="bx_ask"
         verbose_name="提问"
@@ -202,22 +189,80 @@ class Ask(models.Model):
     def __unicode__(self):
         return  self.ask_title
 
+    def get_date(self):
+        "获取日期信息   2016-01-01"
+        return datetime.datetime.fromtimestamp(self.ask_time).strftime("%Y-%m-%d")
+
+    def get_answer_count(self):
+        "获取回答数"
+        return Answer.objects.filter(askid=self.askid).count()
+
+    def get_area_info(self):
+        "获取地域信息"
+        if self.city:
+            _= Area.objects.get(id=self.city)
+            _p=Area.objects.get(id=_.parentid)
+            return  _p.shortname+_.shortname
+        if self.province:
+            _=Area.objects.get(id=self.province)
+            return _.shortname
+        return  ""
+
+    def get_first_ans(self):
+        "获取第一个回答"
+        try:
+            return Answer.objects.filter(askid=self.askid).order_by("ans_time")[0]
+        except:
+            return None
+
+    def get_last_ans(self):
+        "获取最后一个回答"
+        try:
+            return Answer.objects.filter(askid=self.askid).order_by("-ans_time")[0]
+        except:
+            return None
+
 class Answer(models.Model):
     ansid=models.AutoField(primary_key=True)
     askid=models.PositiveIntegerField(default=0,verbose_name="问题ID")
     ans_content=models.CharField(max_length=1000,verbose_name="内容")
     uid=models.IntegerField(default=0,verbose_name="用户ID")
-    ans_time=models.PositiveIntegerField(default=0,verbose_name="回答时间")
+    ans_time=models.PositiveIntegerField(verbose_name="回答时间",default=lambda :int(time.time()))
     parent_ansid=models.PositiveIntegerField(default=0,verbose_name="父回答ID")
     class Meta:
         db_table="bx_answer"
         verbose_name="回答"
         verbose_name_plural="所有回答"
 
+    def get_date(self):
+        "获取日期信息   2016-01-01"
+        return datetime.datetime.fromtimestamp(self.ans_time).strftime("%Y-%m-%d")
+
+    def get_user(self):
+        from myauth.models import  MyUser,ProxyUserProfile
+        return MyUser.objects.get(uid=self.uid)
+
+    def get_user_profile(self):
+        from myauth.models import  MyUser,ProxyUserProfile
+        return ProxyUserProfile.objects.get(uid__uid =self.uid)
 
 
 
 
+class DingZhi(models.Model):
+    did=models.AutoField(primary_key=True)
+    birth_year=models.IntegerField(default=0)
+    birth_month=models.IntegerField(default=0)
+    min_price=models.IntegerField(default=0)
+    max_price=models.IntegerField(default=0)
+    contact=models.CharField(blank=False,default='',max_length=20)
+    province=models.IntegerField(default=0)
+    city=models.IntegerField(default=0)
+    uid=models.IntegerField(default=0)
+    addtime=models.IntegerField(default=lambda :int(time.time()))
+
+    class Meta:
+        db_table="bx_dingzhi"
 
 
 
