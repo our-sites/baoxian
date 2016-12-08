@@ -33,6 +33,7 @@
       "type": "js",
       "deps": [
         "www/product/1.0.0:common",
+        "com/global/1.0.0:dollar",
         "www/product/1.0.0:index.css"
       ]
     }
