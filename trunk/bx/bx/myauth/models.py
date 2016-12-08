@@ -85,13 +85,14 @@ class ProxyUserProfile(models.Model):
     weixin=models.CharField(max_length=100)
     my_ad=models.TextField()
     uid=models.ForeignKey(to=MyUser,db_column="uid")
-    certifi_num=models.CharField(max_length=50,unique=True) #资格证编号
+    certifi_num=models.CharField(max_length=50) #资格证编号
     certifi_status=models.IntegerField(default=0)   #1 待审核  2 审核通过  3 拘审
     certifi_message=models.CharField(max_length=50)
     practice_num=models.CharField(max_length=50)      #执业证编号
     province=models.IntegerField(default=0)
     city=models.IntegerField(default=0)
     zone=models.IntegerField(default=0)
+    ans_num=models.IntegerField(default=0)
     class Meta:
         db_table="bx_proxyuser_profile"
 
@@ -106,6 +107,11 @@ class ProxyUserProfile(models.Model):
     def get_comname(self):
         try:
             return Company.objects.get(cid=self.cid).comname
+        except:
+            return ""
+    def get_short_comname(self):
+        try:
+            return Company.objects.get(cid=self.cid).shortname
         except:
             return ""
 

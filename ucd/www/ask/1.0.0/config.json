@@ -1,7 +1,8 @@
 {
-  "stable": true,
+  "stable": false,
   "exports": {
-    "list": {}
+    "list": {},
+	"detail": {}
   },
   "packs": {
 	  "/pkg/ask.js": [

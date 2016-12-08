@@ -15,7 +15,8 @@ class Ask(object):
         urlpatterns = patterns('',
       #      ("^%s$"%settings.LOGIN_URL.lstrip("/"),views.login),
       #      ("^%s$"%settings.LOGOUT_URL.lstrip("/"),views.logout),
-                               ("^$",views.home)
+                               ("^detail/(\d+).html",views.detail),
+                               ("^",views.home)
             )
         return urlpatterns
     @property

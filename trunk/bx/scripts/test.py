@@ -27,6 +27,6 @@ import  urllib
 from gcutils.db import  MySQLMgr
 mgr=MySQLMgr("113.10.195.169",3306,"bx_abc","bx_user","gc895316")
 
-for uid,province,city,zone in mgr.runQuery("select uid,province,city,zone from bx_user where usertype=2",()):
-    mgr.runOperation("update bx_proxyuser_profile  set province=%s,city=%s,zone=%s WHERE  uid=%s",(province,city,zone,uid))
+for uid in mgr.runQuery("select uid from bx_user where usertype=2",()):
+    mgr.runOperation("insert ignore into  bx_proxyuser_profile(uid,province,city,zone) VALUES(%s,0,0,0)",(uid,))
     print uid

@@ -1,15 +1,21 @@
 <!--公用top-->
 <div class="bx-top">
     <div class="clf">
-        <span>关注{{ request.myuser.username }}</span>
+        <span>关注</span>
         <div class="fr">
             <!--未登录-->
+            {% if not request.myuser %}
             <div class="bx-top-not-login">
-                <a href="http://192.168.12.48:2015/files/bx/www/info/1.0.0/html/index.html" class="color">登录</a> |
-                <a href="http://192.168.12.48:2015/files/bx/www/info/1.0.0/html/index.html" class="color">注册</a>
+                <a href="/login/" class="color">登录</a> |
+                <a href="/register/" class="color">注册</a>
             </div>
+            {% else %}
             <!--已登录-->
-            <div class="bx-top-login"></div>
+            <div class="bx-top-login">
+                <a href="/work/" class="color">{{ request.myuser.username }}</a> |
+                <a href="/logout/" class="color">退出</a>
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>

@@ -285,6 +285,7 @@ a.color:hover {
 /* 公用部分 nav*/
 
 .bx-nav {
+    font-size: 14px;
     height: 40px;
     background-color: #42bad0;
 }

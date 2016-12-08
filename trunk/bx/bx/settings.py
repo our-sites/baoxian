@@ -111,7 +111,7 @@ MIDDLEWARE_CLASSES = (
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "bx.myauth.custom_middleware.SelfAuthMiddleware" , # self auth
-    "bx.ip_middleware.IpMiddleware"
+    "bx.ip_middleware.IpMiddleware",# ip info
 )
 
 ROOT_URLCONF = 'bx.urls'
@@ -177,7 +177,8 @@ TEMPLATE_CONTEXT_PROCESSORS = ('django.core.context_processors.debug',
                                'django.core.context_processors.static',
                                'django.core.context_processors.request',
                                'django.contrib.auth.context_processors.auth',
-                               "django.core.context_processors.csrf"
+                               "django.core.context_processors.csrf",
+                               "bx.dailiren.dailiren_processor.dailiren"
                                )
 ##################################
 ########### ckeditor  ############
