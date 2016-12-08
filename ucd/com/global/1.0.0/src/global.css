@@ -212,6 +212,8 @@ a.color:hover {
     background-color: #e9f2f4;
 }
 
+.bx-header .ui-form-item-error p {display: none;}
+
 .bx-header > .clf > .fl {
     margin: 38px 0;
 }

@@ -53,7 +53,10 @@ define('com/global/1.0.0:validator', ['com/validator/0.10.3:validator', 'com/glo
       // 表单提交成功的处理
       formSuccessHandle: function (res) {
           var formSuccess = res.formSuccess || {};
-          var duration = formSuccess.duration || 5000;
+          var duration = 5000;
+          if (typeof formSuccess.duration !== 'undefined') {
+              duration = parseInt(formSuccess.duration, 10) || 0;
+          }
           if (formSuccess.tip !== false) {
               toastr.success(formSuccess.msg || res.msg || '', {timeOut: duration});
           }

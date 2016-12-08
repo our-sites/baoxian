@@ -26,6 +26,7 @@
       "type": "js",
       "deps": [
         "lib/jquery/1.11.3:jquery",
+        "com/global/1.0.0:validator",
         "com/global/1.0.0:global.css"
       ],
       "pkg": "com/global/1.0.0:p1"
@@ -78,15 +79,15 @@
       "type": "js",
       "has": [
         "com/global/1.0.0:dollar",
-        "com/global/1.0.0:global",
-        "com/global/1.0.0:validator"
+        "com/global/1.0.0:validator",
+        "com/global/1.0.0:global"
       ],
       "deps": [
         "lib/jquery/1.11.3:jquery",
-        "com/global/1.0.0:global.css",
         "com/validator/0.10.3:validator",
         "lib/toastr/2.1.3:toastr",
-        "com/global/1.0.0:validator.css"
+        "com/global/1.0.0:validator.css",
+        "com/global/1.0.0:global.css"
       ]
     }
   }

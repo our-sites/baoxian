@@ -31,14 +31,19 @@
             <img src="{{ 'html/img/app-qrcode.png' | uri('www/common') }}" alt="">
             <p>保险管家APP</p>
         </div>
-        <div class="fr">
-            <div class="bx-header-search-box">
-                <input type="text" placeholder="请输入...">
-                <a href="javascript:;">搜索</a>
+        <form class="fr ui-form" method="post" action="{{ 'html/data/搜索成功' | uri('com/global') }}">
+            <div class="ui-form-item">
+                <div class="bx-header-search-box">
+                    <input name="keyword" id="search-kw" type="text" placeholder="请输入...">
+                    <a id="search-btn" href="javascript:;">搜索</a>
+                </div>
+                <div class="ui-form-explain"></div>
+                <p>热门搜索： <a href="">少儿</a> | <a href="">医疗</a> | <a href="">养老</a> | <a href="">少儿</a> | <a href="">医疗</a> |
+                    <a href="">养老</a></p>
             </div>
-            <p>热门搜索： <a href="">少儿</a> | <a href="">医疗</a> | <a href="">养老</a> | <a href="">少儿</a> | <a href="">医疗</a> |
-                <a href="">养老</a></p>
-        </div>
+
+
+        </form>
     </div>
 </div>
 <!--公用nav-->

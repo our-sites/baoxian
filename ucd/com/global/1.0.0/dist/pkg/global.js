@@ -6,16 +6,6 @@ define('com/global/1.0.0:dollar', ['lib/jquery/1.11.3:jquery'], function(require
 
 });
 
-;/*!com/global/1.0.0:global*/
-define('com/global/1.0.0:global', ['lib/jquery/1.11.3:jquery'], function(require, exports, module) {
-
-  var $ = require('lib/jquery/1.11.3:jquery');
-  
-  // @require com/global/1.0.0:global.css
-  
-
-});
-
 ;/*!com/global/1.0.0:validator*/
 define('com/global/1.0.0:validator', ['com/validator/0.10.3:validator', 'com/global/1.0.0:dollar', 'lib/toastr/2.1.3:toastr'], function(require, exports, module) {
 
@@ -72,7 +62,10 @@ define('com/global/1.0.0:validator', ['com/validator/0.10.3:validator', 'com/glo
       // 表单提交成功的处理
       formSuccessHandle: function (res) {
           var formSuccess = res.formSuccess || {};
-          var duration = formSuccess.duration || 5000;
+          var duration = 5000;
+          if (typeof formSuccess.duration !== 'undefined') {
+              duration = parseInt(formSuccess.duration, 10) || 0;
+          }
           if (formSuccess.tip !== false) {
               toastr.success(formSuccess.msg || res.msg || '', {timeOut: duration});
           }
@@ -126,5 +119,28 @@ define('com/global/1.0.0:validator', ['com/validator/0.10.3:validator', 'com/glo
   });
   
   // @require com/global/1.0.0:validator.css
+
+});
+
+;/*!com/global/1.0.0:global*/
+define('com/global/1.0.0:global', ['lib/jquery/1.11.3:jquery', 'com/global/1.0.0:validator'], function(require, exports, module) {
+
+  var $ = require('lib/jquery/1.11.3:jquery');
+  var Validator = require('com/global/1.0.0:validator');
+  var $form = $('.bx-header form.ui-form');
+  $form.on('click', '.bx-header-search-box a', function (e) {
+      e.preventDefault();
+      $form.trigger('submit');
+  });
+  var validator = new Validator({
+      element: $form
+  });
+  validator.addItem({
+      element: '#search-kw',
+      required: true,
+      display: '搜索内容'
+  });
+  // @require com/global/1.0.0:global.css
+  
 
 });
