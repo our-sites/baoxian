@@ -1,0 +1,43 @@
+#Index{
+    background-color: #e9f2f4
+}
+
+#Index .index-container{
+    width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+#Index h2{
+    font-size: 24px;
+    line-height: 56px;
+    margin-top: 24px;
+}
+#Index .left{
+    float: left;
+    width: 280px;
+    height: 481px;
+    position: relative;
+}
+
+#Index .left .feature{
+    text-indent: -9999px;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+}
+
+#Index .left .links{
+    position: absolute;
+    left: 0;
+    bottom: 41px;
+    padding: 0 40px;
+}
+
+#Index .left .links-btn{
+    display: inline-block;
+    width: 98px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    margin-bottom: 4px;
+
+}
