@@ -68,12 +68,21 @@
     margin-bottom: 10px;
 }
 
-.custom-box .custom-content .form-control-ele select,
-.custom-box .custom-content .form-control-ele input {
+.custom-box .custom-content select,
+.custom-box .custom-content input {
     border: 1px solid #ebebeb;
     height: 30px;
     width: 202px;
     padding: 0 8px;
+}
+
+.custom-box .custom-content select[name="province"],
+.custom-box .custom-content select[name="city"]{
+    width: 98px;
+}
+
+.custom-box select[name="province"]{
+    margin-right: 6px;
 }
 
 .custom-box .custom-content .form-control-ele input{

@@ -1,82 +1,82 @@
 {{ atmjs.use(':detail') }}
 {%include 'html/layouts/header.html' | path('www/common') %}
-<div id="productDetail" class="clf">
-    <!--面包屑导航-->
-    <div class="bx-crubms">
-        <a href="">保险岛首页</a> &gt;
-        <a href="">保险产品</a> &gt;
-        <a href="">少儿重大疾病险</a> &gt;
-        <a href="">民生人寿保险股份有限公司</a> &gt;
-        <a href="">民生如意鑫康终身重大疾病保险</a>
-    </div>
+<div id="productDetail">
+    <div class="grid clf">
+        <!--面包屑导航-->
+        <div class="bx-crubms">
+            <a href="">保险岛首页</a> &gt;
+            <a href="">保险产品</a> &gt;
+            <a href="">少儿重大疾病险</a> &gt;
+            <a href="">民生人寿保险股份有限公司</a> &gt;
+            <a href="">民生如意鑫康终身重大疾病保险</a>
+        </div>
 
-    <div class="clf">
-        <div class="fl">
-            <!--概览-->
-            <div class="product-preview clf">
-                <div class="product-preview-pic">
-                    <div class="product-preview-img-box">
-                        <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}">
+        <div class="clf">
+            <div class="fl">
+                <!--概览-->
+                <div class="product-preview clf">
+                    <div class="product-preview-pic">
+                        <div class="product-preview-img-box">
+                            <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}">
+                        </div>
                     </div>
-                </div>
-                <div class="product-preview-word">
-                    <h2>民生如意鑫康终身重大疾病保险</h2>
-                    <p class="product-preview-feature">
-                        <span>特色</span>
-                        终身健康保障产品，100种重疾+35种轻症，重疾可赔付2次，轻症可赔付3
-                        次，重疾以及轻症皆可豁免保费
-                    </p>
-                    <div class="product-preview-label clf">
+                    <div class="product-preview-word">
+                        <h2>民生如意鑫康终身重大疾病保险</h2>
+                        <p class="product-preview-feature">
+                            <span>特色</span>
+                            终身健康保障产品，100种重疾+35种轻症，重疾可赔付2次，轻症可赔付3
+                            次，重疾以及轻症皆可豁免保费
+                        </p>
+                        <div class="product-preview-label clf">
                         <span class="fl">
                             标签：
                         </span>
-                        <p>
-                            民生人寿保险股份有限公司  |  少儿重大疾病险  |  婴儿重大疾病险  |  青年重大疾病险
-                        人寿险  |  中年人重大疾病险  |  中年人寿险  |  老年人重大疾病险
-                        </p>
+                            <p>
+                                民生人寿保险股份有限公司  |  少儿重大疾病险  |  婴儿重大疾病险  |  青年重大疾病险
+                                人寿险  |  中年人重大疾病险  |  中年人寿险  |  老年人重大疾病险
+                            </p>
+                        </div>
+                        <ul>
+                            <li><span>承保年龄：</span>28天-60周岁</li>
+                            <li><span>保障期限：</span>终身</li>
+                            <li><span>缴费方式：</span>趸交、10年、15年、20年、30年</li>
+                        </ul>
                     </div>
-                    <ul>
-                        <li><span>承保年龄：</span>28天-60周岁</li>
-                        <li><span>保障期限：</span>终身</li>
-                        <li><span>缴费方式：</span>趸交、10年、15年、20年、30年</li>
-                    </ul>
                 </div>
-            </div>
-            <!--所有信息-->
-            <div class="product-information">
-                <!--tabs-->
-                <div class="product-information-tabs">
-                    <ul class="clf">
-                        <li class="active">产品详情</li>
-                        <li>相关案例</li>
-                        <li>理赔流程</li>
-                    </ul>
-                </div>
-                <!--产品详情-->
-                <div class="product-info-detail">
+                <!--所有信息-->
+                <div class="product-information">
+                    <!--tabs-->
+                    <div class="product-information-tabs">
+                        <ul class="clf">
+                            <li class="active">产品详情</li>
+                            <li>相关案例</li>
+                            <li>理赔流程</li>
+                        </ul>
+                    </div>
+                    <!--产品详情-->
+                    <div class="product-info-detail">
 
+                    </div>
+                    <!--相关案例-->
+                    <div class="product-info-example"></div>
+                    <!--理赔流程-->
+                    <div class="product-info-process"></div>
                 </div>
-                <!--相关案例-->
-                <div class="product-info-example"></div>
-                <!--理赔流程-->
-                <div class="product-info-process"></div>
+
+                <!--相关产品-->
+                {%include 'html/layouts/sections/相关产品.html' | path('www/common') %}
             </div>
 
-            <!--相关产品-->
-            {%include 'html/layouts/sections/相关产品.html' | path('www/common') %}
+
+            <div class="fr">
+                <!--私人定制-->
+                {%include 'html/layouts/sections/私人定制.html' | path('www/common') %}
+                <!--活跃顾问-->
+                {%include 'html/layouts/sections/活跃顾问.html' | path('www/common') %}
+            </div>
+
         </div>
-
-
-        <div class="fr">
-            <!--私人定制-->
-            {%include 'html/layouts/sections/私人定制.html' | path('www/common') %}
-            <!--活跃顾问-->
-            {%include 'html/layouts/sections/活跃顾问.html' | path('www/common') %}
-        </div>
-
     </div>
-
-
 </div>
 
 {%include 'html/layouts/footer.html' | path('www/common') %}

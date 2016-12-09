@@ -13,9 +13,7 @@
 }
 /*!www/ask/1.0.0:list.css*/
 #askList {
-    width: 1200px;
-    margin: 30px auto 0;
-    overflow: hidden;
+    background-color: #fff;
 }
 
 /* 左侧*/

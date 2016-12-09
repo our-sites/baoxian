@@ -1,434 +1,434 @@
 {{ atmjs.use(':index') }}
 {%include 'html/layouts/header.html' | path('www/common') %}
-<div id="adviserList" class="clf">
-    <!--面包屑导航-->
-    <div class="bx-crubms">
-        <a href="">保险顾问</a> &gt;
-        <a href="">保险产品</a>
-    </div>
+<div id="adviserList">
+    <div class="grid clf">
+        <!--面包屑导航-->
+        <div class="bx-crubms">
+            <a href="">保险顾问</a> &gt;
+            <a href="">保险产品</a>
+        </div>
 
-    <!-- 条件筛选-->
-    <div class="adviser-condition">
-        <!--地区-->
-        <div class="area clf">
+        <!-- 条件筛选-->
+        <div class="adviser-condition">
+            <!--地区-->
+            <div class="area clf">
+                <div class="fl">
+                    地区：
+                </div>
+                <div class="content">
+                    <a href="javascript:;" class="single">全部</a>
+                    <a href="javascript:;" class="single">北京</a>
+                    <a href="javascript:;" class="single">天津</a>
+                    <a href="javascript:;" class="single">上海</a>
+                    <a href="javascript:;" class="single">深圳</a>
+                    <a href="javascript:;" class="single">重庆</a>
+                    <a href="javascript:;" class="single">河北</a>
+                    <a href="javascript:;" class="single">河南</a>
+                </div>
+                <div class="fr">
+                    <a href="javascript:;" class="more">更多</a>
+                </div>
+            </div>
+            <!--保险公司-->
+            <div class="company clf">
+                <div class="fl">
+                    保险公司：
+                </div>
+                <div class="content">
+                    <div class="grapheme-box">
+                        <a href="javascript:;" class="single active">全部</a>
+                        <div class="grapheme">
+                            <a href="" class="single-grapheme">A</a>
+                            <a href="" class="single-grapheme">B</a>
+                            <a href="" class="single-grapheme">C</a>
+                            <a href="" class="single-grapheme">D</a>
+                            <a href="" class="single-grapheme">E</a>
+                            <a href="" class="single-grapheme">F</a>
+                            <a href="" class="single-grapheme">G</a>
+                            <a href="" class="single-grapheme">H</a>
+                            <a href="" class="single-grapheme">I</a>
+                            <a href="" class="single-grapheme">J</a>
+                            <a href="" class="single-grapheme">K</a>
+                            <a href="" class="single-grapheme">L</a>
+                            <a href="" class="single-grapheme">M</a>
+                            <a href="" class="single-grapheme">N</a>
+                            <a href="" class="single-grapheme">O</a>
+                            <a href="" class="single-grapheme">P</a>
+                            <a href="" class="single-grapheme">Q</a>
+                            <a href="" class="single-grapheme">R</a>
+                            <a href="" class="single-grapheme">S</a>
+                            <a href="" class="single-grapheme">T</a>
+                            <a href="" class="single-grapheme">U</a>
+                            <a href="" class="single-grapheme">V</a>
+                            <a href="" class="single-grapheme">W</a>
+                            <a href="" class="single-grapheme">X</a>
+                            <a href="" class="single-grapheme">Y</a>
+                            <a href="" class="single-grapheme">Z</a>
+                        </div>
+                    </div>
+                    <div class="sub-content">
+                        <a href="javascript:;" class="single">平安</a>
+                        <a href="javascript:;" class="single">国寿</a>
+                        <a href="javascript:;" class="single">太平洋</a>
+                        <a href="javascript:;" class="single">新华</a>
+                        <a href="javascript:;" class="single">泰康</a>
+                        <a href="javascript:;" class="single">太平</a>
+                        <a href="javascript:;" class="single">人保寿险</a>
+                        <a href="javascript:;" class="single">阳光保险</a>
+                    </div>
+
+                </div>
+                <div class="fr">
+                    <a href="javascript:;" class="more">更多</a>
+                </div>
+            </div>
+        </div>
+        <!--已选条件-->
+        <div class="chose-condition clf">
             <div class="fl">
-                地区：
-            </div>
-            <div class="content">
-                <a href="javascript:;" class="single">全部</a>
-                <a href="javascript:;" class="single">北京</a>
-                <a href="javascript:;" class="single">天津</a>
-                <a href="javascript:;" class="single">上海</a>
-                <a href="javascript:;" class="single">深圳</a>
-                <a href="javascript:;" class="single">重庆</a>
-                <a href="javascript:;" class="single">河北</a>
-                <a href="javascript:;" class="single">河南</a>
-            </div>
-            <div class="fr">
-                <a href="javascript:;" class="more">更多</a>
+                条件：
             </div>
         </div>
-        <!--保险公司-->
-        <div class="company clf">
+
+        <!--排序-->
+        <div class="adviser-list-sort-wrap">
+            <div class="adviser-list-sort clf">
+                <a href="javascript:;" class="active">默认</a>
+                <a href="javascript:;">从业时间</a>
+                <a href="javascript:;">活跃度</a>
+                <a href="javascript:;">VIP等级</a>
+            </div>
+        </div>
+
+        <div class="clf">
             <div class="fl">
-                保险公司：
-            </div>
-            <div class="content">
-                <div class="grapheme-box">
-                    <a href="javascript:;" class="single active">全部</a>
-                    <div class="grapheme">
-                        <a href="" class="single-grapheme">A</a>
-                        <a href="" class="single-grapheme">B</a>
-                        <a href="" class="single-grapheme">C</a>
-                        <a href="" class="single-grapheme">D</a>
-                        <a href="" class="single-grapheme">E</a>
-                        <a href="" class="single-grapheme">F</a>
-                        <a href="" class="single-grapheme">G</a>
-                        <a href="" class="single-grapheme">H</a>
-                        <a href="" class="single-grapheme">I</a>
-                        <a href="" class="single-grapheme">J</a>
-                        <a href="" class="single-grapheme">K</a>
-                        <a href="" class="single-grapheme">L</a>
-                        <a href="" class="single-grapheme">M</a>
-                        <a href="" class="single-grapheme">N</a>
-                        <a href="" class="single-grapheme">O</a>
-                        <a href="" class="single-grapheme">P</a>
-                        <a href="" class="single-grapheme">Q</a>
-                        <a href="" class="single-grapheme">R</a>
-                        <a href="" class="single-grapheme">S</a>
-                        <a href="" class="single-grapheme">T</a>
-                        <a href="" class="single-grapheme">U</a>
-                        <a href="" class="single-grapheme">V</a>
-                        <a href="" class="single-grapheme">W</a>
-                        <a href="" class="single-grapheme">X</a>
-                        <a href="" class="single-grapheme">Y</a>
-                        <a href="" class="single-grapheme">Z</a>
-                    </div>
-                </div>
-                <div class="sub-content">
-                    <a href="javascript:;" class="single">平安</a>
-                    <a href="javascript:;" class="single">国寿</a>
-                    <a href="javascript:;" class="single">太平洋</a>
-                    <a href="javascript:;" class="single">新华</a>
-                    <a href="javascript:;" class="single">泰康</a>
-                    <a href="javascript:;" class="single">太平</a>
-                    <a href="javascript:;" class="single">人保寿险</a>
-                    <a href="javascript:;" class="single">阳光保险</a>
-                </div>
+                <!--筛选结果-->
+                <div class="adviser-list clf">
 
+                    <div class="adviser-item">
+                        <div class="adviser-item-resume clf">
+                            <div class="adviser-item-resume-img">
+                                <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}">
+                            </div>
+                            <div class="adviser-item-resume-word">
+                                <h4>刘保险</h4>
+                                <p>
+                                    <span class="area">北京</span>
+                                    <span class="company">阳光保险</span>
+                                </p>
+                                <p>
+                                    从业时间：17年
+                                </p>
+                                <p>
+                                    回答：545条
+                                </p>
+                            </div>
+                        </div>
+                        <div class="adviser-item-detail">
+                            大家好，我是中国平安人寿蒲大伟，是平安的
+                            一名综合金融客户经理（我的工号是1321508
+                            864）。我曾经从事过医药行业，可...
+                        </div>
+                        <div class="adviser-item-speciality">
+                            <p>擅长险种：</p>
+                            <p>
+                                <a href="" class="color">人寿险</a>
+                                <a href="" class="color">重疾险</a>
+                                <a href="" class="color">养老险</a>
+                            </p>
+                        </div>
+                        <a href="" class="adviser-item-consult">我要咨询</a>
+                    </div>
+                    <div class="adviser-item">
+                        <div class="adviser-item-resume clf">
+                            <div class="adviser-item-resume-img">
+                                <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}">
+                            </div>
+                            <div class="adviser-item-resume-word">
+                                <h4>刘保险</h4>
+                                <p>
+                                    <span class="area">北京</span>
+                                    <span class="company">阳光保险</span>
+                                </p>
+                                <p>
+                                    从业时间：17年
+                                </p>
+                                <p>
+                                    回答：545条
+                                </p>
+                            </div>
+                        </div>
+                        <div class="adviser-item-detail">
+                            大家好，我是中国平安人寿蒲大伟，是平安的
+                            一名综合金融客户经理（我的工号是1321508
+                            864）。我曾经从事过医药行业，可...
+                        </div>
+                        <div class="adviser-item-speciality">
+                            <p>擅长险种：</p>
+                            <p>
+                                <a href="" class="color">人寿险</a>
+                                <a href="" class="color">重疾险</a>
+                                <a href="" class="color">养老险</a>
+                            </p>
+                        </div>
+                        <a href="" class="adviser-item-consult">我要咨询</a>
+                    </div>
+                    <div class="adviser-item right">
+                        <div class="adviser-item-resume clf">
+                            <div class="adviser-item-resume-img">
+                                <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}">
+                            </div>
+                            <div class="adviser-item-resume-word">
+                                <h4>刘保险</h4>
+                                <p>
+                                    <span class="area">北京</span>
+                                    <span class="company">阳光保险</span>
+                                </p>
+                                <p>
+                                    从业时间：17年
+                                </p>
+                                <p>
+                                    回答：545条
+                                </p>
+                            </div>
+                        </div>
+                        <div class="adviser-item-detail">
+                            大家好，我是中国平安人寿蒲大伟，是平安的
+                            一名综合金融客户经理（我的工号是1321508
+                            864）。我曾经从事过医药行业，可...
+                        </div>
+                        <div class="adviser-item-speciality">
+                            <p>擅长险种：</p>
+                            <p>
+                                <a href="" class="color">人寿险</a>
+                                <a href="" class="color">重疾险</a>
+                                <a href="" class="color">养老险</a>
+                            </p>
+                        </div>
+                        <a href="" class="adviser-item-consult">我要咨询</a>
+                    </div>
+
+                    <div class="adviser-item">
+                        <div class="adviser-item-resume clf">
+                            <div class="adviser-item-resume-img">
+                                <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}">
+                            </div>
+                            <div class="adviser-item-resume-word">
+                                <h4>刘保险</h4>
+                                <p>
+                                    <span class="area">北京</span>
+                                    <span class="company">阳光保险</span>
+                                </p>
+                                <p>
+                                    从业时间：17年
+                                </p>
+                                <p>
+                                    回答：545条
+                                </p>
+                            </div>
+                        </div>
+                        <div class="adviser-item-detail">
+                            大家好，我是中国平安人寿蒲大伟，是平安的
+                            一名综合金融客户经理（我的工号是1321508
+                            864）。我曾经从事过医药行业，可...
+                        </div>
+                        <div class="adviser-item-speciality">
+                            <p>擅长险种：</p>
+                            <p>
+                                <a href="" class="color">人寿险</a>
+                                <a href="" class="color">重疾险</a>
+                                <a href="" class="color">养老险</a>
+                            </p>
+                        </div>
+                        <a href="" class="adviser-item-consult">我要咨询</a>
+                    </div>
+                    <div class="adviser-item">
+                        <div class="adviser-item-resume clf">
+                            <div class="adviser-item-resume-img">
+                                <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}">
+                            </div>
+                            <div class="adviser-item-resume-word">
+                                <h4>刘保险</h4>
+                                <p>
+                                    <span class="area">北京</span>
+                                    <span class="company">阳光保险</span>
+                                </p>
+                                <p>
+                                    从业时间：17年
+                                </p>
+                                <p>
+                                    回答：545条
+                                </p>
+                            </div>
+                        </div>
+                        <div class="adviser-item-detail">
+                            大家好，我是中国平安人寿蒲大伟，是平安的
+                            一名综合金融客户经理（我的工号是1321508
+                            864）。我曾经从事过医药行业，可...
+                        </div>
+                        <div class="adviser-item-speciality">
+                            <p>擅长险种：</p>
+                            <p>
+                                <a href="" class="color">人寿险</a>
+                                <a href="" class="color">重疾险</a>
+                                <a href="" class="color">养老险</a>
+                            </p>
+                        </div>
+                        <a href="" class="adviser-item-consult">我要咨询</a>
+                    </div>
+                    <div class="adviser-item right">
+                        <div class="adviser-item-resume clf">
+                            <div class="adviser-item-resume-img">
+                                <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}">
+                            </div>
+                            <div class="adviser-item-resume-word">
+                                <h4>刘保险</h4>
+                                <p>
+                                    <span class="area">北京</span>
+                                    <span class="company">阳光保险</span>
+                                </p>
+                                <p>
+                                    从业时间：17年
+                                </p>
+                                <p>
+                                    回答：545条
+                                </p>
+                            </div>
+                        </div>
+                        <div class="adviser-item-detail">
+                            大家好，我是中国平安人寿蒲大伟，是平安的
+                            一名综合金融客户经理（我的工号是1321508
+                            864）。我曾经从事过医药行业，可...
+                        </div>
+                        <div class="adviser-item-speciality">
+                            <p>擅长险种：</p>
+                            <p>
+                                <a href="" class="color">人寿险</a>
+                                <a href="" class="color">重疾险</a>
+                                <a href="" class="color">养老险</a>
+                            </p>
+                        </div>
+                        <a href="" class="adviser-item-consult">我要咨询</a>
+                    </div>
+
+                    <div class="adviser-item">
+                        <div class="adviser-item-resume clf">
+                            <div class="adviser-item-resume-img">
+                                <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}">
+                            </div>
+                            <div class="adviser-item-resume-word">
+                                <h4>刘保险</h4>
+                                <p>
+                                    <span class="area">北京</span>
+                                    <span class="company">阳光保险</span>
+                                </p>
+                                <p>
+                                    从业时间：17年
+                                </p>
+                                <p>
+                                    回答：545条
+                                </p>
+                            </div>
+                        </div>
+                        <div class="adviser-item-detail">
+                            大家好，我是中国平安人寿蒲大伟，是平安的
+                            一名综合金融客户经理（我的工号是1321508
+                            864）。我曾经从事过医药行业，可...
+                        </div>
+                        <div class="adviser-item-speciality">
+                            <p>擅长险种：</p>
+                            <p>
+                                <a href="" class="color">人寿险</a>
+                                <a href="" class="color">重疾险</a>
+                                <a href="" class="color">养老险</a>
+                            </p>
+                        </div>
+                        <a href="" class="adviser-item-consult">我要咨询</a>
+                    </div>
+                    <div class="adviser-item">
+                        <div class="adviser-item-resume clf">
+                            <div class="adviser-item-resume-img">
+                                <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}">
+                            </div>
+                            <div class="adviser-item-resume-word">
+                                <h4>刘保险</h4>
+                                <p>
+                                    <span class="area">北京</span>
+                                    <span class="company">阳光保险</span>
+                                </p>
+                                <p>
+                                    从业时间：17年
+                                </p>
+                                <p>
+                                    回答：545条
+                                </p>
+                            </div>
+                        </div>
+                        <div class="adviser-item-detail">
+                            大家好，我是中国平安人寿蒲大伟，是平安的
+                            一名综合金融客户经理（我的工号是1321508
+                            864）。我曾经从事过医药行业，可...
+                        </div>
+                        <div class="adviser-item-speciality">
+                            <p>擅长险种：</p>
+                            <p>
+                                <a href="" class="color">人寿险</a>
+                                <a href="" class="color">重疾险</a>
+                                <a href="" class="color">养老险</a>
+                            </p>
+                        </div>
+                        <a href="" class="adviser-item-consult">我要咨询</a>
+                    </div>
+                    <div class="adviser-item right">
+                        <div class="adviser-item-resume clf">
+                            <div class="adviser-item-resume-img">
+                                <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}">
+                            </div>
+                            <div class="adviser-item-resume-word">
+                                <h4>刘保险</h4>
+                                <p>
+                                    <span class="area">北京</span>
+                                    <span class="company">阳光保险</span>
+                                </p>
+                                <p>
+                                    从业时间：17年
+                                </p>
+                                <p>
+                                    回答：545条
+                                </p>
+                            </div>
+                        </div>
+                        <div class="adviser-item-detail">
+                            大家好，我是中国平安人寿蒲大伟，是平安的
+                            一名综合金融客户经理（我的工号是1321508
+                            864）。我曾经从事过医药行业，可...
+                        </div>
+                        <div class="adviser-item-speciality">
+                            <p>擅长险种：</p>
+                            <p>
+                                <a href="" class="color">人寿险</a>
+                                <a href="" class="color">重疾险</a>
+                                <a href="" class="color">养老险</a>
+                            </p>
+                        </div>
+                        <a href="" class="adviser-item-consult">我要咨询</a>
+                    </div>
+
+                </div>
+                <!--翻页-->
+                {%include 'html/layouts/flip.html' | path('www/common') %}
             </div>
+
+
             <div class="fr">
-                <a href="javascript:;" class="more">更多</a>
+                <!--保险精英-->
+                {%include 'html/layouts/sections/保险精英.html' | path('www/common') %}
+                <!--保险人动态-->
+                {%include 'html/layouts/sections/保险人动态.html' | path('www/common') %}
             </div>
+
         </div>
     </div>
-    <!--已选条件-->
-    <div class="chose-condition clf">
-        <div class="fl">
-            条件：
-        </div>
-    </div>
-
-    <!--排序-->
-    <div class="adviser-list-sort-wrap">
-        <div class="adviser-list-sort clf">
-            <a href="javascript:;" class="active">默认</a>
-            <a href="javascript:;">从业时间</a>
-            <a href="javascript:;">活跃度</a>
-            <a href="javascript:;">VIP等级</a>
-        </div>
-    </div>
-
-    <div class="clf">
-        <div class="fl">
-            <!--筛选结果-->
-            <div class="adviser-list clf">
-
-                <div class="adviser-item">
-                    <div class="adviser-item-resume clf">
-                        <div class="adviser-item-resume-img">
-                            <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}">
-                        </div>
-                        <div class="adviser-item-resume-word">
-                            <h4>刘保险</h4>
-                            <p>
-                                <span class="area">北京</span>
-                                <span class="company">阳光保险</span>
-                            </p>
-                            <p>
-                                从业时间：17年
-                            </p>
-                            <p>
-                                回答：545条
-                            </p>
-                        </div>
-                    </div>
-                    <div class="adviser-item-detail">
-                        大家好，我是中国平安人寿蒲大伟，是平安的
-                        一名综合金融客户经理（我的工号是1321508
-                        864）。我曾经从事过医药行业，可...
-                    </div>
-                    <div class="adviser-item-speciality">
-                        <p>擅长险种：</p>
-                        <p>
-                            <a href="" class="color">人寿险</a>
-                            <a href="" class="color">重疾险</a>
-                            <a href="" class="color">养老险</a>
-                        </p>
-                    </div>
-                    <a href="" class="adviser-item-consult">我要咨询</a>
-                </div>
-                <div class="adviser-item">
-                    <div class="adviser-item-resume clf">
-                        <div class="adviser-item-resume-img">
-                            <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}">
-                        </div>
-                        <div class="adviser-item-resume-word">
-                            <h4>刘保险</h4>
-                            <p>
-                                <span class="area">北京</span>
-                                <span class="company">阳光保险</span>
-                            </p>
-                            <p>
-                                从业时间：17年
-                            </p>
-                            <p>
-                                回答：545条
-                            </p>
-                        </div>
-                    </div>
-                    <div class="adviser-item-detail">
-                        大家好，我是中国平安人寿蒲大伟，是平安的
-                        一名综合金融客户经理（我的工号是1321508
-                        864）。我曾经从事过医药行业，可...
-                    </div>
-                    <div class="adviser-item-speciality">
-                        <p>擅长险种：</p>
-                        <p>
-                            <a href="" class="color">人寿险</a>
-                            <a href="" class="color">重疾险</a>
-                            <a href="" class="color">养老险</a>
-                        </p>
-                    </div>
-                    <a href="" class="adviser-item-consult">我要咨询</a>
-                </div>
-                <div class="adviser-item right">
-                    <div class="adviser-item-resume clf">
-                        <div class="adviser-item-resume-img">
-                            <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}">
-                        </div>
-                        <div class="adviser-item-resume-word">
-                            <h4>刘保险</h4>
-                            <p>
-                                <span class="area">北京</span>
-                                <span class="company">阳光保险</span>
-                            </p>
-                            <p>
-                                从业时间：17年
-                            </p>
-                            <p>
-                                回答：545条
-                            </p>
-                        </div>
-                    </div>
-                    <div class="adviser-item-detail">
-                        大家好，我是中国平安人寿蒲大伟，是平安的
-                        一名综合金融客户经理（我的工号是1321508
-                        864）。我曾经从事过医药行业，可...
-                    </div>
-                    <div class="adviser-item-speciality">
-                        <p>擅长险种：</p>
-                        <p>
-                            <a href="" class="color">人寿险</a>
-                            <a href="" class="color">重疾险</a>
-                            <a href="" class="color">养老险</a>
-                        </p>
-                    </div>
-                    <a href="" class="adviser-item-consult">我要咨询</a>
-                </div>
-
-                <div class="adviser-item">
-                    <div class="adviser-item-resume clf">
-                        <div class="adviser-item-resume-img">
-                            <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}">
-                        </div>
-                        <div class="adviser-item-resume-word">
-                            <h4>刘保险</h4>
-                            <p>
-                                <span class="area">北京</span>
-                                <span class="company">阳光保险</span>
-                            </p>
-                            <p>
-                                从业时间：17年
-                            </p>
-                            <p>
-                                回答：545条
-                            </p>
-                        </div>
-                    </div>
-                    <div class="adviser-item-detail">
-                        大家好，我是中国平安人寿蒲大伟，是平安的
-                        一名综合金融客户经理（我的工号是1321508
-                        864）。我曾经从事过医药行业，可...
-                    </div>
-                    <div class="adviser-item-speciality">
-                        <p>擅长险种：</p>
-                        <p>
-                            <a href="" class="color">人寿险</a>
-                            <a href="" class="color">重疾险</a>
-                            <a href="" class="color">养老险</a>
-                        </p>
-                    </div>
-                    <a href="" class="adviser-item-consult">我要咨询</a>
-                </div>
-                <div class="adviser-item">
-                    <div class="adviser-item-resume clf">
-                        <div class="adviser-item-resume-img">
-                            <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}">
-                        </div>
-                        <div class="adviser-item-resume-word">
-                            <h4>刘保险</h4>
-                            <p>
-                                <span class="area">北京</span>
-                                <span class="company">阳光保险</span>
-                            </p>
-                            <p>
-                                从业时间：17年
-                            </p>
-                            <p>
-                                回答：545条
-                            </p>
-                        </div>
-                    </div>
-                    <div class="adviser-item-detail">
-                        大家好，我是中国平安人寿蒲大伟，是平安的
-                        一名综合金融客户经理（我的工号是1321508
-                        864）。我曾经从事过医药行业，可...
-                    </div>
-                    <div class="adviser-item-speciality">
-                        <p>擅长险种：</p>
-                        <p>
-                            <a href="" class="color">人寿险</a>
-                            <a href="" class="color">重疾险</a>
-                            <a href="" class="color">养老险</a>
-                        </p>
-                    </div>
-                    <a href="" class="adviser-item-consult">我要咨询</a>
-                </div>
-                <div class="adviser-item right">
-                    <div class="adviser-item-resume clf">
-                        <div class="adviser-item-resume-img">
-                            <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}">
-                        </div>
-                        <div class="adviser-item-resume-word">
-                            <h4>刘保险</h4>
-                            <p>
-                                <span class="area">北京</span>
-                                <span class="company">阳光保险</span>
-                            </p>
-                            <p>
-                                从业时间：17年
-                            </p>
-                            <p>
-                                回答：545条
-                            </p>
-                        </div>
-                    </div>
-                    <div class="adviser-item-detail">
-                        大家好，我是中国平安人寿蒲大伟，是平安的
-                        一名综合金融客户经理（我的工号是1321508
-                        864）。我曾经从事过医药行业，可...
-                    </div>
-                    <div class="adviser-item-speciality">
-                        <p>擅长险种：</p>
-                        <p>
-                            <a href="" class="color">人寿险</a>
-                            <a href="" class="color">重疾险</a>
-                            <a href="" class="color">养老险</a>
-                        </p>
-                    </div>
-                    <a href="" class="adviser-item-consult">我要咨询</a>
-                </div>
-
-                <div class="adviser-item">
-                    <div class="adviser-item-resume clf">
-                        <div class="adviser-item-resume-img">
-                            <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}">
-                        </div>
-                        <div class="adviser-item-resume-word">
-                            <h4>刘保险</h4>
-                            <p>
-                                <span class="area">北京</span>
-                                <span class="company">阳光保险</span>
-                            </p>
-                            <p>
-                                从业时间：17年
-                            </p>
-                            <p>
-                                回答：545条
-                            </p>
-                        </div>
-                    </div>
-                    <div class="adviser-item-detail">
-                        大家好，我是中国平安人寿蒲大伟，是平安的
-                        一名综合金融客户经理（我的工号是1321508
-                        864）。我曾经从事过医药行业，可...
-                    </div>
-                    <div class="adviser-item-speciality">
-                        <p>擅长险种：</p>
-                        <p>
-                            <a href="" class="color">人寿险</a>
-                            <a href="" class="color">重疾险</a>
-                            <a href="" class="color">养老险</a>
-                        </p>
-                    </div>
-                    <a href="" class="adviser-item-consult">我要咨询</a>
-                </div>
-                <div class="adviser-item">
-                    <div class="adviser-item-resume clf">
-                        <div class="adviser-item-resume-img">
-                            <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}">
-                        </div>
-                        <div class="adviser-item-resume-word">
-                            <h4>刘保险</h4>
-                            <p>
-                                <span class="area">北京</span>
-                                <span class="company">阳光保险</span>
-                            </p>
-                            <p>
-                                从业时间：17年
-                            </p>
-                            <p>
-                                回答：545条
-                            </p>
-                        </div>
-                    </div>
-                    <div class="adviser-item-detail">
-                        大家好，我是中国平安人寿蒲大伟，是平安的
-                        一名综合金融客户经理（我的工号是1321508
-                        864）。我曾经从事过医药行业，可...
-                    </div>
-                    <div class="adviser-item-speciality">
-                        <p>擅长险种：</p>
-                        <p>
-                            <a href="" class="color">人寿险</a>
-                            <a href="" class="color">重疾险</a>
-                            <a href="" class="color">养老险</a>
-                        </p>
-                    </div>
-                    <a href="" class="adviser-item-consult">我要咨询</a>
-                </div>
-                <div class="adviser-item right">
-                    <div class="adviser-item-resume clf">
-                        <div class="adviser-item-resume-img">
-                            <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}">
-                        </div>
-                        <div class="adviser-item-resume-word">
-                            <h4>刘保险</h4>
-                            <p>
-                                <span class="area">北京</span>
-                                <span class="company">阳光保险</span>
-                            </p>
-                            <p>
-                                从业时间：17年
-                            </p>
-                            <p>
-                                回答：545条
-                            </p>
-                        </div>
-                    </div>
-                    <div class="adviser-item-detail">
-                        大家好，我是中国平安人寿蒲大伟，是平安的
-                        一名综合金融客户经理（我的工号是1321508
-                        864）。我曾经从事过医药行业，可...
-                    </div>
-                    <div class="adviser-item-speciality">
-                        <p>擅长险种：</p>
-                        <p>
-                            <a href="" class="color">人寿险</a>
-                            <a href="" class="color">重疾险</a>
-                            <a href="" class="color">养老险</a>
-                        </p>
-                    </div>
-                    <a href="" class="adviser-item-consult">我要咨询</a>
-                </div>
-
-            </div>
-            <!--翻页-->
-            {%include 'html/layouts/flip.html' | path('www/common') %}
-        </div>
-
-
-        <div class="fr">
-            <!--保险精英-->
-            {%include 'html/layouts/sections/保险精英.html' | path('www/common') %}
-            <!--保险人动态-->
-            {%include 'html/layouts/sections/保险人动态.html' | path('www/common') %}
-        </div>
-
-    </div>
-
-
 </div>
 
 {%include 'html/layouts/footer.html' | path('www/common') %}

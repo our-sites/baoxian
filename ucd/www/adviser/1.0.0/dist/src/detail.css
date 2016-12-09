@@ -1,3 +1,8 @@
+#adviserDetail{
+    background-color: #fff;
+    padding-bottom: 80px;
+}
+
 #adviserDetail .adviser-preview-wrap {
     width: 100%;
     height: 252px;
@@ -96,7 +101,6 @@
 /*所有信息*/
 #adviserDetail .adviser-details {
     overflow: hidden;
-    margin-bottom: 20px;
 }
 
 /*tabs*/

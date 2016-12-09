@@ -2,9 +2,7 @@
 
 /*!www/adviser/1.0.0:index.css*/
 #adviserList {
-    width: 1200px;
-    margin: 20px auto 0;
-    overflow: hidden;
+    background-color: #fff;
 }
 
 /*条件筛选*/

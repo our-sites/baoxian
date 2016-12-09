@@ -1,10 +1,6 @@
-body{
-    background-color: #e9f2f4
-}
-
 #Index .index-container{
     width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto 80px;
     overflow: hidden;
 }
 #Index h2{
