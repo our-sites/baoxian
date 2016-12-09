@@ -89,9 +89,7 @@
 
 #askList .ask-list-item .q-box{
     position: relative;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #ebebeb;
-    margin-bottom: 20px;
+
 }
 
 #askList .ask-list-item .q-box h4 {
@@ -128,6 +126,12 @@
     height: 62px;
     border: 1px solid #efefef;
     margin-right: 20px;
+}
+
+#askList .ask-list-item .result-box{
+    padding-top: 20px;
+    margin-top: 15px;
+    border-top: 1px solid #ebebeb;
 }
 
 #askList .ask-list-item .result-box > .fl {
