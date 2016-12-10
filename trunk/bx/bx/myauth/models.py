@@ -78,13 +78,25 @@ class MyUser(models.Model):
         else:
             return    None
 
+    def get_messages(self,is_read=None):
+        if is_read:
+            args={"is_read":is_read}
+        else:
+            args={}
+        return Msg.objects.filter(uid=self.uid,**args)
+
+    def send_message(self,subject,message):
+        _=Msg(subject=subject,message=message,uid=self.uid,addtime=int(time.time()))
+        _.save()
+        return _.msgid
+
 class ProxyUserProfile(models.Model):
     id=models.AutoField(primary_key=True)
     position=models.CharField(max_length=100,default='')
     cid=models.IntegerField(default=0)
     weixin=models.CharField(max_length=100)
     my_ad=models.TextField()
-    uid=models.ForeignKey(to=MyUser,db_column="uid")
+    uid=models.ForeignKey(to=MyUser,db_column="uid",unique=True)
     certifi_num=models.CharField(max_length=50) #资格证编号
     certifi_status=models.IntegerField(default=0)   #1 待审核  2 审核通过  3 拘审
     certifi_message=models.CharField(max_length=50)
@@ -117,7 +129,7 @@ class ProxyUserProfile(models.Model):
 
 class BuyUserProfile(models.Model):
     id=models.AutoField(primary_key=True)
-    uid=models.ForeignKey(to=MyUser,db_column="uid")
+    uid=models.ForeignKey(to=MyUser,db_column="uid",unique=True)
     province=models.IntegerField(default=0)
     city=models.IntegerField(default=0)
     zone=models.IntegerField(default=0)
@@ -125,5 +137,15 @@ class BuyUserProfile(models.Model):
         db_table="bx_buyuser_profile"
 
 
+class Msg(models.Model):
+    msgid=models.AutoField(primary_key=True)
+    subject=models.CharField(max_length=100)
+    message=models.TextField()
+    uid=models.IntegerField(default=0)
+    is_read=models.IntegerField(default=0)
+    addtime=models.IntegerField(default=lambda:int(time.time()))
+    state=models.IntegerField(default=0)
 
-
+    class Meta:
+        db_table="bx_user_msg"
+        ordering=["-addtime"]

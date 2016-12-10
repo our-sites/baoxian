@@ -25,8 +25,24 @@ import  urllib
 # #  filename 为这个文件在服务器中的文件名
 # print a.read()
 from gcutils.db import  MySQLMgr
+from itertools import groupby
 mgr=MySQLMgr("113.10.195.169",3306,"bx_abc","bx_user","gc895316")
 
-for uid in mgr.runQuery("select uid from bx_user where usertype=2",()):
-    mgr.runOperation("insert ignore into  bx_proxyuser_profile(uid,province,city,zone) VALUES(%s,0,0,0)",(uid,))
-    print uid
+# result= mgr.runQuery("select bx_type from bx_product ",())
+# data=[]
+# for i in result:
+#     _=i[0].split(",")
+#     print _
+#     for  j  in _:
+#         try:
+#             data.append(int(j))
+#         except:
+#             pass
+# data.sort()
+# print data
+# for t,k in groupby(data):
+#     print t,len([_  for _ in k ])
+result=mgr.runQuery("select cid,count(*) as num  from bx_proxyuser_profile group by cid  order by num desc ",())
+for i ,j in result:
+    print i,j
+    mgr.runOperation("update bx_company set dailiren_weight =%s WHERE cid=%s",(j,i))

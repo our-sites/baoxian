@@ -131,15 +131,15 @@
             {% if allinfo.paginator.num_pages >= 2 %}
                 <div class="bx-list-flip clf">
                     {% if allinfo.has_previous %}
-                    <a href="/product/search/{{ people_id }}-{{ cate_id }}-{{ c_id }}/{{ allinfo.previous_page_number }}.html" class="bx-list-flip-btn prev">&lt;</a>
+                    <a href="/product/search/{{ people_id }}-{{ cate_id }}-{{ c_id }}/{{ allinfo.previous_page_number }}.html{% if keyword %}?keyword={{ keyword|urlencode }}{% endif %}" class="bx-list-flip-btn prev">&lt;</a>
                         {% endif %}
                     {% for t in allinfo.number|near:3 %}
                         {% if t > 0 and t <= allinfo.paginator.num_pages %}
-                    <a href="/product/search/{{ people_id }}-{{ cate_id }}-{{ c_id }}/{{ t }}.html" class="bx-list-flip-btn number {% if t == allinfo.number %}active{% endif %}">{{ t }}</a>
+                    <a href="/product/search/{{ people_id }}-{{ cate_id }}-{{ c_id }}/{{ t }}.html{% if keyword %}?keyword={{ keyword|urlencode }}{% endif %}" class="bx-list-flip-btn number {% if t == allinfo.number %}active{% endif %}">{{ t }}</a>
                         {% endif %}
                     {% endfor %}
                 {% if allinfo.has_next %}
-                    <a href="/product/search/{{ people_id }}-{{ cate_id }}-{{ c_id }}/{{ allinfo.next_page_number }}.html" class="bx-list-flip-btn next">&gt;</a>
+                    <a href="/product/search/{{ people_id }}-{{ cate_id }}-{{ c_id }}/{{ allinfo.next_page_number }}.html{% if keyword %}?keyword={{ keyword|urlencode }}{% endif %}" class="bx-list-flip-btn next">&gt;</a>
                     {% endif %}
                 </div>
             {% endif %}

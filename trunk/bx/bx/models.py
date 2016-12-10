@@ -96,6 +96,8 @@ class Company(models.Model):
     comname=models.CharField(max_length=100,verbose_name="企业名",unique=True)
     shortname=models.CharField(max_length=100,verbose_name="企业名简写")
     img=models.ImageField(max_length=200,upload_to="company_img",verbose_name="企业图片")
+    product_weight=models.IntegerField(default=0)   #权重
+    dailiren_weight=models.IntegerField(default=0)    #权重
     class Meta:
         db_table="bx_company"
         verbose_name="保险企业"
@@ -260,6 +262,9 @@ class DingZhi(models.Model):
     city=models.IntegerField(default=0)
     uid=models.IntegerField(default=0)
     addtime=models.IntegerField(default=lambda :int(time.time()))
+    start_hour=models.IntegerField(default=0)
+    end_hour=models.IntegerField(default=0)
+    realname=models.CharField(max_length=50,default='')
 
     class Meta:
         db_table="bx_dingzhi"

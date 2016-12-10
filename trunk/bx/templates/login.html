@@ -20,7 +20,8 @@
                 <img src="/static/imgs/login-left.jpg" alt="欢迎登录保险管家" width="320" height="320">
             </div>
             <div class="fr">
-                <form class="ui-form" action="/login/{% if next_to %}?next={{ next_to|urlencode }}{% endif %}" method="post">
+                <form class="ui-form"
+                      action="/login/?next={% if next_to %}{{ next_to|urlencode }}{% endif %}{% if role %}&role={{ role }}{% endif %}" method="post">
                     <h2>登录保险管家</h2>
                     {% csrf_token %}
                     <div class="ui-form-item">
@@ -38,7 +39,7 @@
                         自动登录
                     </label>
                         <div class="fr">
-                            <a href="/register/" class="color">注册保险管家账号</a> |
+                            <a href="/register/{% if role == "proxy" %}?role=proxy{% endif %}" class="color">注册保险管家账号</a> |
                             <a href="/forgotpwd/" class="color">忘记密码？</a>
                         </div>
                     </div>

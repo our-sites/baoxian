@@ -6,13 +6,14 @@ __author__ = 'admin'
 from django.shortcuts import  render_to_response
 from django.template.context import  RequestContext
 from ..models import  UserType,CateType,Company,Product
-from django.core.paginator import  Paginator
+from django.core.paginator import  Paginator,EmptyPage
 import  re
 
 #
 def search(request):
     path=request.path
-    page=re.search(r"(\d)\.html",path)
+    page=re.search(r"/(\d+)\.html",path)
+    keyword=request.GET.get("keyword","")
     if page:
         page=int(page.groups()[0])
     else:
@@ -46,14 +47,21 @@ def search(request):
     user_type_list=UserType.objects.all()
     cate_type_list=CateType.objects.all()
     company_list=Company.objects.all()
-
-    if querystring:
-        _u=Product.objects.raw("select  * from bx_product WHERE "+querystring)
-        _u=[i for i in _u]
-        product_paginator=Paginator(_u,9)
+    if not  keyword:
+        if querystring:
+            _u=Product.objects.raw("select  * from bx_product WHERE "+querystring)
+            _u=[i for i in _u]
+            product_paginator=Paginator(_u,9)
+        else:
+            product_paginator=Paginator(Product.objects.all(),9)
     else:
-        product_paginator=Paginator(Product.objects.all(),9)
-    allinfo=product_paginator.page(page)
+        product_paginator=Paginator(Product.objects.filter(pro_name__contains=keyword),9)
+
+    try:
+        allinfo=product_paginator.page(page)
+    except EmptyPage:
+        page=1
+        allinfo=product_paginator.page(page)
     allinfo.previous_page_number()
     cid_list=[i.cid  for i in allinfo]
     cid_objs=Company.objects.filter(cid__in=cid_list).values("cid","comname")

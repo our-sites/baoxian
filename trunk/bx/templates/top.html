@@ -1,7 +1,7 @@
 <!--公用top-->
 <div class="bx-top">
     <div class="clf">
-        <span>关注</span>
+        <span>关注我们</span>
         <div class="fr">
             <!--未登录-->
             {% if not request.myuser %}
@@ -12,8 +12,8 @@
             {% else %}
             <!--已登录-->
             <div class="bx-top-login">
-                <a href="/work/" class="color">{{ request.myuser.username }}</a> |
-                <a href="/logout/" class="color">退出</a>
+                欢迎来到保险管家，<a href="/work/" class="color">{{ request.myuser.username }}</a> |
+                [<a href="/logout/" class="color">退出</a>]
             </div>
             {% endif %}
         </div>

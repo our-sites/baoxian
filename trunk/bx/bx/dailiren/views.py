@@ -15,7 +15,7 @@ def index(request):
 def search(request):
     company_list=Company.objects.all()
     path=request.path
-    page=re.search(r"(\d)\.html",path)
+    page=re.search(r"/(\d+)\.html",path)
     if page:
         page=int(page.groups()[0])
     else:

@@ -151,7 +151,7 @@
                     <a href="/dailiren/search/{{ city_id }}-{{ c_id }}/{{ allinfo.previous_page_number }}.html" class="bx-list-flip-btn prev">&lt;</a>
                         {% endif %}
                     {% for t in allinfo.number|near:3 %}
-                        {% if t > 0 %}
+                        {% if t > 0 and t <= allinfo.paginator.num_pages %}
                     <a href="/dailiren/search/{{ city_id }}-{{ c_id }}/{{ t }}.html" class="bx-list-flip-btn number {% if t == allinfo.number %}active{% endif %}">{{ t }}</a>
                         {% endif %}
                     {% endfor %}
@@ -166,6 +166,7 @@
 
         <div class="fr">
             <!--保险精英-->
+            {% include "dingzhi_common.html" %}
 
             <!--保险人动态-->
 

@@ -26,3 +26,18 @@ def login_required(func):
             return  HttpResponseRedirect(_url_next(next=request.get_full_path()))
     return fun
 
+def proxyuser_login_required(func):
+    def fun(request):
+        if request.myuser!=None and request.myuser.usertype==2:
+            return func(request)
+        else:
+            return  HttpResponseRedirect(_url_next(next=request.get_full_path())+"&role=proxy")
+    return fun
+
+def buyuser_login_required(func):
+    def fun(request):
+        if request.myuser!=None and request.myuser.usertype==1:
+            return func(request)
+        else:
+            return  HttpResponseRedirect(_url_next(next=request.get_full_path())+"&role=buy")
+    return fun

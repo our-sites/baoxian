@@ -25,6 +25,7 @@ from ..models import Area
 def login(request):
     post_data=request.POST
     next_to=request.GET.get("next","")
+    role=request.GET.get("role","")
     next_to=next_to or  settings.LOGIN_REDIRECT_URL
     if request.method=="POST":
         username=post_data["username"]
@@ -46,6 +47,17 @@ def login(request):
         if myuser.state!=1:
             data={"errorCode":500,"formError":{"fields":[{"name":"username","msg":"该用户状态异常！"}]}}
             return HttpResponse(json.dumps(data),mimetype="application/javascript")
+
+        if role=="proxy" and myuser.usertype!=2:
+            data={"errorCode":500,"formError":{"fields":[{"name":"username","msg":"该用户不是代理人账户！"}]
+                                               },"msg":"该用户不是代理人账户！"}
+
+            return HttpResponse(json.dumps(data),mimetype="application/javascript")
+
+        if role=="buy" and myuser.usertype!=1:
+            data={"errorCode":500,"formError":{"fields":[{"name":"username","msg":"该用户不是投保人账户！"}]},
+                  "msg":"该用户不是投保人账户！"}
+            return HttpResponse(json.dumps(data),mimetype="application/javascript")
         if md5(md5(password+myuser.salt))!=myuser.password:
             data={"errorCode":500,"formError":{"fields":[{"name":"password","msg":"密码不正确！"}]}}
             return HttpResponse(json.dumps(data),mimetype="application/javascript")
@@ -65,7 +77,7 @@ def logout(request):
     if request.myuser==None:
         pass
     else:
-        result.delete_cookie("user_info",domain=".baoxiangj.com")
+        result.delete_cookie("user_info")
     return  result
 
 

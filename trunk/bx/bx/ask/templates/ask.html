@@ -19,16 +19,36 @@
                     <div class="ask-icon">
                         问
                     </div>
-                    <form class="fr" method="post" action="/ask/" id="ask">
-                        <textarea placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少..."
-                                  name="content" maxlength="200" required="required" id="content">{{ last_ask_info }}</textarea>
+
+
+                    <form id="ask" class="ui-form" action="/ask/" method="post">
                         {% csrf_token %}
-                        <div class="float-layer">0/200</div>
+                        <div class="ui-form-item">
+                            <textarea id="content" name="content"
+                                      placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少...">{{ last_ask_info }}</textarea>
+                            <div class="ui-form-explain"></div>
+                        </div>
+                        <div class="float-layer">
+                            <span class="current-length">0</span>/<span class="total-length">200</span>
+                        </div>
+
                         <p>
-                            <button  type="submit"  class="submit ask-btn" >提交问题</button>
-                            <span>已解决保险疑问  <b class="q-number">{{ ask_paginator.count }}条</b></span>
+                            <input type="submit" value="提交回答" class="ask-btn"/>
+{#                            <i class="fa fa-exclamation-circle"></i>#}
+{#                            普通代理人每天最多只能回复一个保险疑问，<a href="" class="color">开通钻石</a>获取不限量权限#}
                         </p>
                     </form>
+{#                    <form class="ui-form" action="/ask/"  id="ask">#}
+{#                        <textarea#}
+{#                                placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少..."#}
+{#                                  name="content" maxlength="200" required="required" id="content">{{ last_ask_info }}</textarea>#}
+{#                        {% csrf_token %}#}
+{#                        <div class="float-layer">0/200</div>#}
+{#                        <p>#}
+{#                            <input value="提交问题"  type="submit"  class="ask-btn" >#}
+{#                            <span>已解决保险疑问  <b class="q-number">{{ ask_paginator.count }}条</b></span>#}
+{#                        </p>#}
+{#                    </form>#}
 
                 </div>
 
