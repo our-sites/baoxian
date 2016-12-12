@@ -38,6 +38,7 @@
 
 #productList .product-condition .content {
     display: inline-block;
+    width: 908px;
 }
 
 #productList .product-condition a.active {
