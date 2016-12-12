@@ -17,6 +17,7 @@ class Product(object):
       #      ("^%s$"%settings.LOGIN_URL.lstrip("/"),views.login),
       #      ("^%s$"%settings.LOGOUT_URL.lstrip("/"),views.logout),
                                ("^$",lambda x:HttpResponseRedirect("/product/search/")),
+                               ("^search/redirect/$",views.search_redirect),
                                ("^detail/(\d+)\.html",views.detail),
                                 ("^search/",views.search),
             )

@@ -1,5 +1,7 @@
 {
   "stable": false,
-  "exports": {},
+  "exports": {
+    "index": {}
+  },
   "packs": {}
 }

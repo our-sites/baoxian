@@ -8,8 +8,17 @@ from django.template.context import  RequestContext
 from ..models import  UserType,CateType,Company,Product
 from django.core.paginator import  Paginator,EmptyPage
 import  re
+from django.http import  HttpResponse
+import  json
 
 #
+def search_redirect(request):
+    keyword=request.POST.get("keyword")
+    data={"errorCode":0,"formSuccess":{"redirect":"/product/search/?keyword="+keyword,
+                                                                 "duration":50},"data":{}}
+
+    return  HttpResponse(json.dumps(data),mimetype="application/javascript")
+
 def search(request):
     path=request.path
     page=re.search(r"/(\d+)\.html",path)

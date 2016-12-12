@@ -6,12 +6,27 @@
                 <img src="/static/imgs/app-qrcode.png" alt="">
                 <p>保险管家APP</p>
             </div>
-            <div class="fr">
-                <div class="bx-header-search-box">
-                    <input type="text" placeholder="寿险">
-                    <a href="javascript:;">搜索</a>
-                </div>
+<form class="fr ui-form" method="post" action="/product/search/redirect/" novalidate="novalidate" data-widget-cid="widget-0">
+    {% csrf_token %}
+                <div class="ui-form-item ui-form-item-error">
+                    <div class="bx-header-search-box">
+                        <input name="keyword" id="search-kw" type="text" placeholder="请输入" data-widget-cid="widget-1" data-explain="" >
+                        <a id="search-btn" href="javascript:;">搜索</a>
+                    </div>
+                    <div class="ui-form-explain">请输入搜索内容</div>
                 <p>热门搜索： <a href="/product/search/0-25-0/">定期寿险</a> | <a href="/product/search/0-26-0/">终身寿险</a> | <a href="/product/search/0-27-0/">旅游保险</a> | <a href="/product/search/0-28-0/">健康保险</a> | <a href="/product/search/0-30-0/">万能保险</a>
-            </div>
+                </p>
+                </div>
+
+
+            </form>
+{#            <div class="fr">#}
+{#                <div class="bx-header-search-box">#}
+{#                    <input type="text" placeholder="寿险">#}
+{#                    <a href="javascript:;">搜索</a>#}
+{#                </div>#}
+{#                <p>热门搜索： <a href="/product/search/0-25-0/">定期寿险</a> | <a href="/product/search/0-26-0/">终身寿险</a> | <a href="/product/search/0-27-0/">旅游保险</a> | <a href="/product/search/0-28-0/">健康保险</a> | <a href="/product/search/0-30-0/">万能保险</a>#}
+{#                </p>#}
+{#            </div>#}
         </div>
     </div>
