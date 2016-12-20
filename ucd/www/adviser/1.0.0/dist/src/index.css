@@ -38,6 +38,7 @@
 
 #adviserList .adviser-condition .content {
     display: inline-block;
+    width: 908px;
 }
 
 #adviserList .adviser-condition a.active {
@@ -54,7 +55,7 @@
 }
 
 #adviserList .adviser-condition .company {
-    height: 60px;
+    /*height: 60px;*/
     border-bottom: none;
 }
 

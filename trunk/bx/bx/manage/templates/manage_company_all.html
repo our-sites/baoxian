@@ -1,0 +1,107 @@
+{% extends "manage_base.html" %}
+{% block style %}
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            background: #f7f7f7;
+        }
+
+        .main-container {
+            padding-top: 60px;
+            font-family: "microsoft yahei", arial, sans serif;
+            background: #fff;
+            min-height: 100%;
+            box-sizing: border-box;
+        }
+
+        .col-md-10,
+        .col-md-12,
+        .col-md-2 {
+            padding: 8px 15px;
+        }
+
+        .btn-primary {
+            width: 120px;
+        }
+
+        .hd {
+            padding: 6px 0 6px 10px;
+            border-left: 2px solid #337ab7;
+            margin-bottom: 20px;
+        }
+    </style>
+        <script type="text/javascript" src="/static/admin/js/jquery.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js"></script>
+<script type="text/javascript" src="/static/ckeditor/jquery.min.js"></script>
+<script type="text/javascript" src="/static/ckeditor/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/static/ckeditor/ckeditor-init.js"></script>
+{% endblock %}
+{% block content %}
+
+    <div class="container main-container">
+
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="hd">所有企业</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>CID</th>
+                    <th>产品名</th>
+                    <th>缩写名</th>
+                    <th>产品权重</th>
+                    <th>代理人权重</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in allinfo %}
+
+                <tr>
+                    <td>{{ i.cid }}</td>
+                    <td>{{ i.comname }}</td>
+                    <td>{{ i.shortname }}</td>
+                    <td>{{ i.product_weight }}</td>
+                    <td>{{ i.dailiren_weight }}</td>
+                    <td><a href="/manage/company/detail/{{ i.cid }}.html">修改</a>
+                    /<a href="/manage/company/detail/delete/{{ i.cid }}.html" target="_blank">删除</a></td>
+                </tr>
+
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% if allinfo_paginator.num_pages >= 2 %}
+        {% load range %}
+        <div class="row">
+            <div style="text-align: center">
+                <ul class="pagination">
+                    <li>
+                        <a href="{{ request.path }}?page=1">首页</a>
+                    </li>
+                    {% for i in page|near:4 %}
+                        {% if i > 0 and i <= allinfo_paginator.num_pages %}
+                    <li {% if i == page %}class="active" {% endif %}>
+                        <a href="{{ request.path }}?page={{ i }}" >{{ i }}</a>
+                    </li>{% endif %}{% endfor %}
+                {% if allinfo.has_next %}
+                    <li><a title="下一页"
+                           href="{{ request.path }}?page={{ allinfo.next_page_number }}">
+                        &gt;&gt;</a></li>{% endif %}
+                    <li>
+                        <a href="{{ request.path }}?page={{ allinfo_paginator.num_pages }}">尾页</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+     </div>
+{% endblock %}

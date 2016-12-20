@@ -1,0 +1,121 @@
+{% extends "manage_base.html" %}
+{% block style %}
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            background: #f7f7f7;
+        }
+
+        .main-container {
+            padding-top: 60px;
+            font-family: "microsoft yahei", arial, sans serif;
+            background: #fff;
+            min-height: 100%;
+            box-sizing: border-box;
+        }
+
+        .col-md-10,
+        .col-md-12,
+        .col-md-2 {
+            padding: 8px 15px;
+        }
+
+        .btn-primary {
+            width: 120px;
+        }
+
+        .hd {
+            padding: 6px 0 6px 10px;
+            border-left: 2px solid #337ab7;
+            margin-bottom: 20px;
+        }
+            textarea.form-control{
+            height: 100px;
+        }
+    </style>
+        <script type="text/javascript" src="/static/admin/js/jquery.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js"></script>
+<script type="text/javascript" src="/static/ckeditor/jquery.min.js"></script>
+<script type="text/javascript" src="/static/ckeditor/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/static/ckeditor/ckeditor-init.js"></script>
+{% endblock %}
+{% block content %}
+
+    <div class="container main-container">
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="hd">增加企业</h3>
+            </div>
+        </div>
+    {% if error_msg %}
+        <div class="row">
+            <div style="padding-bottom: 10px">
+                <label class="label label-danger">Error：</label>
+            </div>
+
+            <pre><span class="text-warning">{{ error_msg }}</span> </pre>
+        </div>
+    {% endif %}
+        <div class="row" style="padding-top: 15px">
+            <form class="form-horizontal" role="form" method="post" id="xxxxx" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="oldpwd" class="col-sm-1 control-label ">企业名：</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="oldpwd" name="comname" placeholder="请输入企业名"
+                               required="required"  {% if comname %}value="{{ comname }}" {% endif %}>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="oldpwd" class="col-sm-1 control-label ">企业主图：</label>
+                    <div class="col-sm-3">
+                        <input type="file"  name="img"
+                               required="required"  id="oldpwd">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="oldpwd" class="col-sm-1 control-label ">缩写名：</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="oldpwd" name="shortname" placeholder="请输入缩写名"
+                               required="required"  {% if shortname %}value="{{ shortname }}" {% endif %}>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="oldpwdd" class="col-sm-1 control-label ">产品权重：</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="oldpwdd" name="product_weight" placeholder="int..."
+                               required="required" value="{% if product_weight %}{{ product_weight }}{% else %}0{% endif %}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="oldpwdd" class="col-sm-1 control-label ">代理人权重：</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="oldpwdd" name="dailiren_weight" placeholder="int..."
+                               required="required" value="{% if dailiren_weight %}{{ dailiren_weight }}{% else %}0{% endif %}" >
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="lastname" class="col-sm-1 control-label">企业介绍：</label>
+                    <div class="col-sm-5">
+                        <textarea rows="4" cols="40" name="content" class="form-control">{% if content %}{{ content }}{% endif %}</textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-1 col-sm-2">
+                        <button type="submit" class="btn btn-info btn-block" id="_submit">确定</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+     </div>
+{% endblock %}

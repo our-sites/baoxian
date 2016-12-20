@@ -1,7 +1,289 @@
-@import "./module/common.css";
-@import "./module/adviser.css";
-@import "./module/demand.css";
-@import "./module/news.css";
-@import "./module/ask.css";
-@import "./module/product.css";
-@import "./module/banner-menu.css";
+#Index .index-container{
+    width: 1200px;
+    margin: 0 auto 80px;
+    overflow: hidden;
+}
+#Index h2{
+    font-size: 24px;
+    line-height: 56px;
+    margin-top: 24px;
+}
+#Index .left{
+    float: left;
+    width: 280px;
+    height: 481px;
+    position: relative;
+}
+
+#Index .left .feature{
+    text-indent: -9999px;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+}
+
+#Index .left .links{
+    position: absolute;
+    left: 0;
+    bottom: 41px;
+    padding: 0 40px;
+}
+
+#Index .left .links-btn{
+    display: inline-block;
+    width: 98px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    margin-bottom: 4px;
+
+}
+
+.index-adviser .left{
+    background: url("/assets/bx/dev/www/index/1.0.0/src/img/index-adviser-left-bg.png") repeat-x 0 0;
+}
+.index-adviser .left .feature{
+    height: 153px;
+    background-image: url('/assets/bx/dev/www/index/1.0.0/src/img/index-adviser-left-feature.png');
+}
+.index-adviser .left .links-btn{
+    color: #ffffff;
+    background-color: #91cc9a;
+    float: left;
+}
+.index-adviser .left .links-btn:nth-child(2n-1){
+    margin-right: 4px;
+}
+.index-adviser .right{
+    float: right;
+    width: 920px;
+    overflow: hidden;
+}
+
+.index-adviser .right-item{
+    float: left;
+    width: 210px;
+    height: 240px;
+    margin-left: 20px;
+    background-color: #ffffff;
+    text-align: center;
+}
+.index-adviser .right-item:nth-child(1),
+.index-adviser .right-item:nth-child(2),
+.index-adviser .right-item:nth-child(3),
+.index-adviser .right-item:nth-child(4){
+    margin-bottom: 1px;
+}
+
+.index-adviser .right-item img{
+    display: block;
+    width: 118px;
+    height: 118px;
+    border-radius: 50%;
+    border: 1px solid #dbddde;
+    margin: 20px auto;
+}
+.index-adviser .right-item h4{
+    font-size: 18px;
+    line-height: 2;
+}
+.index-adviser .right-item p{
+    font-size: 14px;
+    line-height: 2;
+    color: #808080;
+}
+.index-new-demand{
+    float: left;
+    width: 820px;
+    height: 537px;
+    margin-top: 24px;
+}
+
+#Index .index-new-demand h2{
+    margin-top: 0;
+}
+
+.index-new-demand .left{
+    background: url("/assets/bx/dev/www/index/1.0.0/src/img/index-demand-left-bg.png") repeat-x 0 0;
+}
+.index-new-demand .left .feature{
+    height: 176px;
+    background-image: url('/assets/bx/dev/www/index/1.0.0/src/img/index-demand-left-feature.png');
+}
+.index-new-demand .left .links-btn{
+    color: #ffffff;
+    background-color: #8fcbd6;
+    float: left;
+}
+.index-new-demand .right{
+    float: left;
+    width: 540px;
+    height: 481px;
+    overflow: hidden;
+    font-size: 14px;
+    background-color: #fff;
+}
+.index-new-demand .right-item{
+    display: block;
+    padding: 20px 40px;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-bottom: 1px solid #eaf1f3;
+}
+.index-new-demand .right-item .ask-icon{
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+}
+
+.index-new-demand .right-other{
+    padding: 40px 40px 0 0;
+    text-align: right;
+}
+.index-news{
+    float: right;
+    width: 360px;
+    height: 537px;
+    margin-top: 24px;
+}
+
+#Index .index-news h2{
+    margin-top: 0;
+}
+
+.index-news-list{
+    height: 481px;
+    padding: 0 20px;
+    background-color: #fff;
+    font-size: 14px;
+}
+
+.index-news-item{
+    display: block;
+    padding: 20px 0;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-bottom: 1px solid #eaf1f3;
+    text-indent: 1.8em;
+    background: transparent no-repeat 11px 28px url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA4hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpjMjU0ZjMyMC04MmNkLTQ2NzMtOWY4Mi1jYjJmMDgyZGExMTgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDQ2ODA2MThBNjUwMTFFNjk3QTQ4NjExNzI4Rjk5RTQiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDQ2ODA2MTdBNjUwMTFFNjk3QTQ4NjExNzI4Rjk5RTQiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjAzMjViMzYyLWRiYWMtNGM2Yy04NjgxLWZlYjU2YzYyMTIxNyIgc3RSZWY6ZG9jdW1lbnRJRD0iYWRvYmU6ZG9jaWQ6cGhvdG9zaG9wOmIwMGM1ZjUxLWQyYTEtMTE3OS1hMWY1LWE5YjZhZjA5ZjYwYSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PtmDJDIAAAA3SURBVHjaYnz27efs2895WZlTVCRZtjx5e/DlBwYGBklONiagGAMY8LAws3hLC0M49uICAAEGAN7JDEKDj2P0AAAAAElFTkSuQmCC");
+}
+.index-ask .left{
+    background: url("/assets/bx/dev/www/index/1.0.0/src/img/index-ask-left-bg.png") repeat-x 0 0;
+}
+.index-ask .left .feature{
+    height: 153px;
+    background-image: url('/assets/bx/dev/www/index/1.0.0/src/img/index-ask-left-feature.png');
+}
+#Index .index-ask .left .links-btn{
+    display: block;
+    color: #ffffff;
+    background-color: #91cc9a;
+}
+
+.index-ask .right{
+    float: right;
+    width: 639px;
+    height: 454px;
+    padding: 14px 0 13px 281px;
+    background: #fff url('/assets/bx/dev/www/index/1.0.0/src/img/index-ask-right-bg.png') no-repeat 0 0;
+    overflow: hidden;
+}
+.index-ask .right-item{
+    height: 60px;
+    padding: 15px 39px;
+    line-height: 30px;
+    font-size: 14px;
+    border-bottom: 1px solid #eaf1f3;
+    position: relative;
+}
+
+.index-ask .right-item:last-child{
+    border-bottom: none;
+}
+
+.index-ask .right-item .ask-icon{
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    margin-top: 3px;
+}
+
+.index-ask .right-item h4,
+.index-ask .right-item p{
+    width: 420px;
+    height: 30px;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.index-ask .right-item-answer{
+    color: #9e9e9e;
+}
+
+.index-ask .right-item .answer-number{
+    position: absolute;
+    right: 39px;
+    top: 17px;
+    width: 48px;
+    height: 48px;
+    background-color: #ffd84f;
+    color: #808080;
+    font-size: 12px;
+    line-height: 17px;
+    text-align: center;
+}
+.index-ask .right-item .answer-number b{
+    display: block;
+    font-size: 18px;
+    margin-top: 8px;
+}
+.index-product .left{
+    background: url("/assets/bx/dev/www/index/1.0.0/src/img/index-product-left-bg.png") repeat-x 0 0;
+}
+.index-product .left .feature{
+    height: 178px;
+    background-image: url('/assets/bx/dev/www/index/1.0.0/src/img/index-product-left-feature.png');
+}
+#Index .index-product .left .links-btn{
+    float: left;
+    color: #ffffff;
+    background-color: #bf9a63;
+}
+.index-product .left .links-btn:nth-child(2n-1){
+    margin-right: 4px;
+}
+
+.index-product .right{
+    float: right;
+    width: 639px;
+    height: 481px;
+    padding-left: 281px;
+    background: url('/assets/bx/dev/www/index/1.0.0/src/img/index-product-right-bg.png') no-repeat 0 0;
+    overflow: hidden;
+}
+
+.index-product .right-item{
+    display: block;
+    float: left;
+    width: 318px;
+    height: 240px;
+    margin-right: 1px;
+}
+
+.index-product .right-item:nth-child(1),
+.index-product .right-item:nth-child(2){
+    margin-bottom: 1px;
+}
+
+.index-banner-menu{
+    height: 480px;
+    background: url("/assets/bx/dev/www/index/1.0.0/src/img/index-banner-bg.png") no-repeat center top;
+}

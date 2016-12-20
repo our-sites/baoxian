@@ -15,7 +15,7 @@
       "pkg": "www/adviser/1.0.0:p1"
     },
     "www/adviser/1.0.0:detail.css": {
-      "uri": "/www/adviser/1.0.0/src/detail_80c4e05.css",
+      "uri": "/www/adviser/1.0.0/src/detail_cfbfd48.css",
       "type": "css"
     },
     "www/adviser/1.0.0:detail": {
@@ -27,7 +27,7 @@
       ]
     },
     "www/adviser/1.0.0:index.css": {
-      "uri": "/www/adviser/1.0.0/src/index_e478f9f.css",
+      "uri": "/www/adviser/1.0.0/src/index_7e6d5a8.css",
       "type": "css",
       "pkg": "www/adviser/1.0.0:p0"
     },
@@ -43,7 +43,7 @@
   },
   "pkg": {
     "www/adviser/1.0.0:p0": {
-      "uri": "/www/adviser/1.0.0/pkg/adviser_91e1dd5.css",
+      "uri": "/www/adviser/1.0.0/pkg/adviser_506d85f.css",
       "type": "css",
       "has": [
         "www/adviser/1.0.0:common.css",

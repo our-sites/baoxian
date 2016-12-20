@@ -1,13 +1,7 @@
 package com.common.insurance.request;
 
-import android.content.Context;
-import android.os.Message;
-
-import com.common.insurance.model.ResultModel;
+import com.common.insurance.model.WeatherInfo;
 import com.common.insurance.utils.InsuranceConstans;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.util.Map;
 
@@ -17,16 +11,8 @@ import java.util.Map;
 public class TestRequest extends BaseBusinessRequest {
 
 
-    public TestRequest( Message message) {
-        super(message);
-    }
-
-    public TestRequest(Map<String, String> params) {
-        super(params);
-    }
-
-    public TestRequest( Map<String, String> params, Message message) {
-        super( params, message);
+    public TestRequest(Map<String, String> params, LoadCallback callback) {
+        super(params, callback);
     }
 
     @Override
@@ -39,35 +25,10 @@ public class TestRequest extends BaseBusinessRequest {
         return null;
     }
 
+
     @Override
-    protected Object parseResponse(Object data) {
+    protected Class getParseClass() {
 
-        ResultModel resultModel = null;
-
-        try {
-            JSONObject json = new JSONObject(data.toString());
-
-            if (json.has("result")) {
-                JSONArray result = json.getJSONArray("result");
-//
-//                GsonBuilder builder = new GsonBuilder();
-//                // 不转换没有 @Expose 注解的字段
-//                builder.excludeFieldsWithoutExposeAnnotation();
-//                Gson gson = builder.create();
-//                @SuppressWarnings("unchecked")
-//                ArrayList<GoodsCategory> items = gson
-//                        .fromJson(result.toString(),
-//                                new TypeToken<ArrayList<GoodsCategory>>() {
-//                                }.getType());
-
-//                resultModel.mObj = items;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return resultModel;
-
+        return WeatherInfo.class;
     }
-
-
 }

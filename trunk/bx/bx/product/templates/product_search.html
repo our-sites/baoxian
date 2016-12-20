@@ -5,11 +5,13 @@
 {% load atm %}
 {% load math %}
 {% load range  %}
+{% load pinyin %}
 {% block css %}
     {% atmcss www/product:index %}
 {% endblock %}
 {% block content %}
     <div id="productList" class="clf">
+    <div class="grid clf">
         <!--面包屑导航-->
         <div class="bx-crubms">
             <a href="/">保险管家</a> &gt;
@@ -37,61 +39,38 @@
                 </div>
                 <div class="content">
                 <a href="/product/search/{{ people_id }}-0-{{ c_id }}/{{ page }}.html" class="single {% if cate_id == 0  %}active{% endif %}">全部</a>
-                    {% for i in cate_type_list|slice:":6" %}
+                    {% for i in cate_type_list %}
                     <a href="/product/search/{{ people_id }}-{{ i.id }}-{{ c_id }}/" class="single {% if cate_id == i.id  %}active{% endif %}">{{ i.type_name }}</a>
                     {% endfor %}
                 </div>
-                <div class="fr">
-                    <a href="javascript:;" class="more">更多</a>
-                </div>
+{#                <div class="fr">#}
+{#                    <a href="javascript:;" class="more">更多</a>#}
+{#                </div>#}
             </div>
             <!--保险公司-->
             <div class="company clf">
                 <div class="fl">
                     保险公司：
                 </div>
-                <div class="content">
+                <div class="content letter-filter">
                     <div class="grapheme-box">
                         <a href="/product/search/{{ people_id }}-{{ cate_id }}-0/" class="single {% if c_id == 0 %}active{% endif %}">全部</a>
                         <div class="grapheme">
-                            <a href="" class="single-grapheme">A</a>
-                            <a href="" class="single-grapheme">B</a>
-                            <a href="" class="single-grapheme">C</a>
-                            <a href="" class="single-grapheme">D</a>
-                            <a href="" class="single-grapheme">E</a>
-                            <a href="" class="single-grapheme">F</a>
-                            <a href="" class="single-grapheme">G</a>
-                            <a href="" class="single-grapheme">H</a>
-                            <a href="" class="single-grapheme">I</a>
-                            <a href="" class="single-grapheme">J</a>
-                            <a href="" class="single-grapheme">K</a>
-                            <a href="" class="single-grapheme">L</a>
-                            <a href="" class="single-grapheme">M</a>
-                            <a href="" class="single-grapheme">N</a>
-                            <a href="" class="single-grapheme">O</a>
-                            <a href="" class="single-grapheme">P</a>
-                            <a href="" class="single-grapheme">Q</a>
-                            <a href="" class="single-grapheme">R</a>
-                            <a href="" class="single-grapheme">S</a>
-                            <a href="" class="single-grapheme">T</a>
-                            <a href="" class="single-grapheme">U</a>
-                            <a href="" class="single-grapheme">V</a>
-                            <a href="" class="single-grapheme">W</a>
-                            <a href="" class="single-grapheme">X</a>
-                            <a href="" class="single-grapheme">Y</a>
-                            <a href="" class="single-grapheme">Z</a>
+                            {% for tt in "ABCDEFGHIGKLMNOPQRSTUVWXYZ"|make_list %}
+                            <a href class="single-grapheme" data-key="{{ tt }}">{{ tt }}</a>
+                            {% endfor %}
                         </div>
                     </div>
                     <div class="sub-content">
-                        {% for i in company_list|slice:":8" %}
-                        <a href="/product/search/{{ people_id }}-{{ cate_id }}-{{ i.cid }}/" class="single {% if c_id == i.cid %}active{% endif %}">{{ i.shortname }}</a>
+                        {% for i in company_list %}
+                        <a data-belong="{{ i.shortname|first_letter|upper }}" href="/product/search/{{ people_id }}-{{ cate_id }}-{{ i.cid }}/" class="single {% if c_id == i.cid %}active{% endif %}">{{ i.shortname }}</a>
                         {% endfor %}
                     </div>
 
                 </div>
-                <div class="fr">
-                    <a href="javascript:;" class="more">更多</a>
-                </div>
+{#                <div class="fr">#}
+{#                    <a href="javascript:;" class="more">更多</a>#}
+{#                </div>#}
             </div>
         </div>
         <!--已选条件-->
@@ -156,6 +135,7 @@
             </div>
 
         </div>
+    </div>
     </div>
 {% endblock %}
 {% block js %}

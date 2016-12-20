@@ -5,11 +5,13 @@
 {% load atm %}
 {% load math %}
 {% load range %}
+{% load pinyin %}
 {% block css %}
     {% atmcss www/adviser:index %}
 {% endblock %}
 {% block content %}
-<div id="adviserList" class="clf">
+<div id="adviserList">
+<div class="grid clf">
     <!--面包屑导航-->
     <div class="bx-crubms">
         <a href="">保险管家</a> &gt;
@@ -18,72 +20,27 @@
 
     <!-- 条件筛选-->
     <div class="adviser-condition">
-        <!--地区-->
-{#        <div class="area clf">#}
-{#            <div class="fl">#}
-{#                地区：#}
-{#            </div>#}
-{#            <div class="content">#}
-{#                <a href="javascript:;" class="single">全部</a>#}
-{#                <a href="javascript:;" class="single">北京</a>#}
-{#                <a href="javascript:;" class="single">天津</a>#}
-{#                <a href="javascript:;" class="single">上海</a>#}
-{#                <a href="javascript:;" class="single">深圳</a>#}
-{#                <a href="javascript:;" class="single">重庆</a>#}
-{#                <a href="javascript:;" class="single">河北</a>#}
-{#                <a href="javascript:;" class="single">河南</a>#}
-{#            </div>#}
-{#            <div class="fr">#}
-{#                <a href="javascript:;" class="more">更多</a>#}
-{#            </div>#}
-{#        </div>#}
         <!--保险公司-->
         <div class="company clf">
             <div class="fl">
                 保险公司：
             </div>
-            <div class="content">
-                <div class="grapheme-box">
-                    <a href="javascript:;" class="single active">全部</a>
-                    <div class="grapheme">
-                        <a href="" class="single-grapheme">A</a>
-                        <a href="" class="single-grapheme">B</a>
-                        <a href="" class="single-grapheme">C</a>
-                        <a href="" class="single-grapheme">D</a>
-                        <a href="" class="single-grapheme">E</a>
-                        <a href="" class="single-grapheme">F</a>
-                        <a href="" class="single-grapheme">G</a>
-                        <a href="" class="single-grapheme">H</a>
-                        <a href="" class="single-grapheme">I</a>
-                        <a href="" class="single-grapheme">J</a>
-                        <a href="" class="single-grapheme">K</a>
-                        <a href="" class="single-grapheme">L</a>
-                        <a href="" class="single-grapheme">M</a>
-                        <a href="" class="single-grapheme">N</a>
-                        <a href="" class="single-grapheme">O</a>
-                        <a href="" class="single-grapheme">P</a>
-                        <a href="" class="single-grapheme">Q</a>
-                        <a href="" class="single-grapheme">R</a>
-                        <a href="" class="single-grapheme">S</a>
-                        <a href="" class="single-grapheme">T</a>
-                        <a href="" class="single-grapheme">U</a>
-                        <a href="" class="single-grapheme">V</a>
-                        <a href="" class="single-grapheme">W</a>
-                        <a href="" class="single-grapheme">X</a>
-                        <a href="" class="single-grapheme">Y</a>
-                        <a href="" class="single-grapheme">Z</a>
+            <div class="content letter-filter">
+                    <div class="grapheme-box">
+                        <a href="/dailiren/search/0-0/" class="single {% if c_id == 0 %}active{% endif %}">全部</a>
+                        <div class="grapheme">
+                            {% for tt in "ABCDEFGHIGKLMNOPQRSTUVWXYZ"|make_list %}
+                            <a href class="single-grapheme" data-key="{{ tt }}">{{ tt }}</a>
+                            {% endfor %}
+                        </div>
                     </div>
-                </div>
                     <div class="sub-content">
-                        {% for i in company_list|slice:":8" %}
-                        <a href="/dailiren/search/0-{{ i.cid }}/" class="single {% if c_id == i.cid %}active{% endif %}">{{ i.shortname }}</a>
+                        {% for i in company_list %}
+                        <a data-belong="{{ i.shortname|first_letter|upper }}" href="/dailiren/search/0-{{ i.cid }}/" class="single {% if c_id == i.cid %}active{% endif %}">{{ i.shortname }}</a>
                         {% endfor %}
                     </div>
 
-            </div>
-            <div class="fr">
-                <a href="javascript:;" class="more">更多</a>
-            </div>
+                </div>
         </div>
     </div>
     <!--已选条件-->
@@ -93,15 +50,6 @@
         </div>
     </div>
 
-    <!--排序-->
-{#    <div class="adviser-list-sort-wrap">#}
-{#        <div class="adviser-list-sort clf">#}
-{#            <a href="javascript:;" class="active">默认</a>#}
-{#            <a href="javascript:;">从业时间</a>#}
-{#            <a href="javascript:;">活跃度</a>#}
-{#            <a href="javascript:;">VIP等级</a>#}
-{#        </div>#}
-{#    </div>#}
     <div class="clf">
         <div class="fl">
             <!--筛选结果-->
@@ -123,7 +71,7 @@
                                 从业时间：x年
                             </p>
                             <p>
-                                回答：x条
+                                回答：{{ i.ans_num }}条
                             </p>
                         </div>
                     </div>
@@ -176,6 +124,7 @@
 
 
 </div>
+    </div>
 {% endblock %}
 {% block js %}
     {% atmjs www/adviser:index %}

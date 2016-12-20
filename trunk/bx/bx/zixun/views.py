@@ -9,12 +9,12 @@ from ..models import *
 from django.template.context import  RequestContext
 
 def index(request):
-    baike_info=Consult.objects.filter(type=1,status=1).order_by("-addtime")[:6]
-    anli_info=Consult.objects.filter(type=2,status=1).order_by("-addtime")[:6]
-    guahua_info=Consult.objects.filter(type=3,status=1).order_by("-addtime")[:6]
-    xinwen_info=Consult.objects.filter(type=4,status=1).order_by("-addtime")[:6]
-    dongtai_info=Consult.objects.filter(type=5,status=1).order_by("-addtime")[:6]
-    citiao_info=Consult.objects.filter(type=6,status=1).order_by("-addtime")[:6]
+    baike_info=Consult.objects.filter(type=1,status=1).order_by("-addtime")[:8]
+    anli_info=Consult.objects.filter(type=2,status=1).order_by("-addtime")[:8]
+    guahua_info=Consult.objects.filter(type=3,status=1).order_by("-addtime")[:8]
+    xinwen_info=Consult.objects.filter(type=4,status=1).order_by("-addtime")[:8]
+    dongtai_info=Consult.objects.filter(type=5,status=1).order_by("-addtime")[:8]
+    citiao_info=Consult.objects.filter(type=6,status=1).order_by("-addtime")[:8]
     return  render_to_response("zixun_index.html",locals(),context_instance=RequestContext(request))
 
 

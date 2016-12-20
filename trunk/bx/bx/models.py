@@ -98,6 +98,7 @@ class Company(models.Model):
     img=models.ImageField(max_length=200,upload_to="company_img",verbose_name="企业图片")
     product_weight=models.IntegerField(default=0)   #权重
     dailiren_weight=models.IntegerField(default=0)    #权重
+    content=models.TextField()  #企业介绍
     class Meta:
         db_table="bx_company"
         verbose_name="保险企业"
@@ -152,6 +153,7 @@ class Product(models.Model):
         db_table="bx_product"
         verbose_name="产品"
         verbose_name_plural="所有产品"
+        ordering=["-addtime"]
 
     def __unicode__(self):
         return  self.pro_name
@@ -172,6 +174,35 @@ class Product(models.Model):
         objs=CateType.objects.filter(id__in=t_list)
         return [i.type_name  for i in objs]
 
+    def get_type_id_list(self):
+        t_list=[]
+        for i in self.bx_type.split(","):
+            try:
+                t_list.append(int(i))
+            except:
+                pass
+        objs=CateType.objects.filter(id__in=t_list)
+        return [i.id   for i in objs]
+
+    def get_comname(self):
+        try:
+            return Company.objects.get(cid=self.cid).comname
+        except:
+            return None
+
+    def get_short_comname(self):
+        try:
+            return Company.objects.get(cid=self.cid).shortname
+        except:
+            return None
+
+
+class ProductImgCache(models.Model):
+    id=models.AutoField(primary_key=True)
+    img=models.ImageField(max_length=200,upload_to="pro_imgs",verbose_name="产品图片")
+
+    class Meta:
+        db_table="bx_product_img_cache"
 
 
 

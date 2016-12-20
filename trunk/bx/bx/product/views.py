@@ -54,8 +54,11 @@ def search(request):
         querystring+=" cid = %s "%c_id
 
     user_type_list=UserType.objects.all()
-    cate_type_list=CateType.objects.all()
-    company_list=Company.objects.all()
+    if not people_id:
+        cate_type_list=CateType.objects.all()[:6]
+    else:
+        cate_type_list=CateType.objects.filter(usertype_id=int(people_id))
+    company_list=Company.objects.filter(product_weight__gt=0).order_by("-product_weight")
     if not  keyword:
         if querystring:
             _u=Product.objects.raw("select  * from bx_product WHERE "+querystring)

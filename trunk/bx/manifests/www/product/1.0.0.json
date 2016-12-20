@@ -17,19 +17,20 @@
       "type": "css"
     },
     "www/product/1.0.0:detail": {
-      "uri": "/www/product/1.0.0/src/detail_9b85fee.js",
+      "uri": "/www/product/1.0.0/src/detail_6d80f8a.js",
       "type": "js",
       "deps": [
         "www/product/1.0.0:common",
+        "com/global/1.0.0:dollar",
         "www/product/1.0.0:detail.css"
       ]
     },
     "www/product/1.0.0:index.css": {
-      "uri": "/www/product/1.0.0/src/index_f957d13.css",
+      "uri": "/www/product/1.0.0/src/index_13c9e88.css",
       "type": "css"
     },
     "www/product/1.0.0:index": {
-      "uri": "/www/product/1.0.0/src/index_b7f98e8.js",
+      "uri": "/www/product/1.0.0/src/index_037ab34.js",
       "type": "js",
       "deps": [
         "www/product/1.0.0:common",

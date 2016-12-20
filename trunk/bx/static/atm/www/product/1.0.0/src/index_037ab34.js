@@ -1,0 +1,1 @@
+define("www/product/1.0.0:index",["www/product/1.0.0:common","com/global/1.0.0:dollar"],function(o){o("www/product/1.0.0:common");o("com/global/1.0.0:dollar")});

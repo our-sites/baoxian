@@ -62,6 +62,7 @@
 }
 
 .lively-advisers .rank-item-score {
+    display: block;
     color: #424242;
     font-weight: bold;
 }

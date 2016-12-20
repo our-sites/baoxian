@@ -36,16 +36,24 @@
                     <li><a href="/manage/zixun/all/">所有资讯</a> </li>
                 </ul>
             </li>
-{#            <li class="dropdown gct" >#}
-{#                <a  href="#" class="droptown-toggle" data-toggle="dropdown">产品管理<b class="caret"></b> </a>#}
-{#                <ul class="dropdown-menu">#}
-{#                    <li><a href="/manage/product/all/">所有产品</a> </li>#}
-{#                </ul>#}
-{#            </li>#}
+            <li class="dropdown gct" >
+                <a  href="#" class="droptown-toggle" data-toggle="dropdown">产品管理<b class="caret"></b> </a>
+                <ul class="dropdown-menu">
+                    <li><a href="/manage/product/add/">新增产品</a> </li>
+                    <li><a href="/manage/product/all/">所有产品</a> </li>
+                </ul>
+            </li>
+            <li class="dropdown gct" >
+                <a  href="#" class="droptown-toggle" data-toggle="dropdown">保险企业<b class="caret"></b> </a>
+                <ul class="dropdown-menu">
+                    <li><a href="/manage/company/add/">新增</a> </li>
+                    <li><a href="/manage/company/all/">所有</a> </li>
+                </ul>
+            </li>
 
         </ul>
         <div >
-            <p class="navbar-text navbar-right">欢迎：<b style="color: #ffffff">{{ user.username }}</b>
+            <p class="navbar-text navbar-right">欢迎：[<b style="color: #ffffff">{{ user.username }}</b>]
                 / <a href="/manage/logout/" class="navbar-link">注销</a>
             </p>
         </div>

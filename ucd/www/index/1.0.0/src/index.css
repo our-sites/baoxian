@@ -1,7 +1,7 @@
-@import "./module/common.css";
-@import "./module/adviser.css";
-@import "./module/demand.css";
-@import "./module/news.css";
-@import "./module/ask.css";
-@import "./module/product.css";
-@import "./module/banner-menu.css";
+@import url("./module/common.css?__inline");
+@import url("./module/adviser.css?__inline");
+@import url("./module/demand.css?__inline");
+@import url("./module/news.css?__inline");
+@import url("./module/ask.css?__inline");
+@import url("./module/product.css?__inline");
+@import url("./module/banner-menu.css?__inline");

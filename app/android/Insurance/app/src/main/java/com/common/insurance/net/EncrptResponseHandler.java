@@ -2,7 +2,6 @@ package com.common.insurance.net;
 
 import android.text.TextUtils;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.ByteArrayInputStream;
@@ -12,55 +11,44 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.zip.GZIPInputStream;
 
-public class EncrptResponseHandler extends JsonResponseHandler {
+public abstract class EncrptResponseHandler extends JsonResponseHandler {
 
 
-    public void onSuccess(IRequest request, JSONObject response) {
-    }
-
-    public void onSuccess(IRequest request, JSONArray response) {
-    }
-
-    public void onFailure(final IRequest request) {
-    }
+    protected abstract void onSuccess(IRequest request, JSONObject response);
 
 
-    private void onRequestSuccess(final IRequest request, final JSONArray response) {
+    public abstract void onFailure(final IRequest request, RequestError error);
 
-
-        onSuccess(request, response);
-    }
-
-    private void onRequestSuccess(final IRequest request, final JSONObject response) {
-
-        onSuccess(request, response);
-    }
-
-
-    public final void onRequestFailure(final IRequest request, String responseBody) {
-
-
-        onFailure(request);
-
-    }
 
     @Override
-    public final void onFailure(IRequest request, int statusCode, String responseBody, Throwable error) {
-
-        onRequestFailure(request, responseBody);
+    public final void onFailure(IRequest request, int statusCode, String responseBody, Throwable throwable) {
+        RequestError error = new RequestError();
+        onFailure(request, error);
     }
 
 
     @Override
     public final void onSuccess(IRequest request, int statusCode, JSONObject jsonObj) {
 
+        RequestError error = new RequestError();
         try {
-            //// TODO: 16/10/28 处理业务相应信息
+            // // TODO: 16/12/19  处理业务请求
 
-            onRequestSuccess(request, jsonObj);
+            JSONObject status = jsonObj.getJSONObject("status");
+            String status_code = status.getString("status_code");
+            if ("0".equals(status_code)) {
+                JSONObject result = jsonObj.getJSONObject("result");
+                onSuccess(request, result);
+
+            } else {
+                //发生业务错误
+                error.erro_reason = status.getString("status_reason");
+                error.erro_code = status.getString("status_code");
+                onFailure(request, error);
+            }
 
         } catch (Exception e) {
-            onRequestFailure(request, jsonObj == null ? "" : jsonObj.toString());
+            onFailure(request, error);
         }
     }
 

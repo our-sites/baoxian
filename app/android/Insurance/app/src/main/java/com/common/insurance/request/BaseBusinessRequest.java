@@ -1,32 +1,37 @@
 package com.common.insurance.request;
 
-import android.os.Message;
 import android.text.TextUtils;
 
+import com.alibaba.fastjson.JSON;
+import com.common.insurance.net.EncrptResponseHandler;
 import com.common.insurance.net.HttpClientManager;
 import com.common.insurance.net.IRequest;
 import com.common.insurance.net.IResponseHandler;
 import com.common.insurance.net.InsuranceEncryptRequest;
+import com.common.insurance.net.RequestError;
+
+import org.json.JSONObject;
 
 import java.util.Map;
 
 /**
  * Created by wangyongchao on 16/10/19.
  */
-public abstract class BaseBusinessRequest {
+public abstract class BaseBusinessRequest<T> {
     public static final int ACTION_SUCCESS = 0;
 
     public static final int ACTION_FAIL = 1;
 
-    private final Message mMessage;
     protected Map<String, String> mParams;//请求参数
+
+    protected LoadCallback mCallback;//请求回调
 
     public BaseBusinessRequest() {
         this(null, null);
     }
 
-    public BaseBusinessRequest(Message message) {
-        this(null, message);
+    public BaseBusinessRequest(LoadCallback callback) {
+        this(null, callback);
     }
 
     public BaseBusinessRequest(Map<String, String> params) {
@@ -34,31 +39,37 @@ public abstract class BaseBusinessRequest {
     }
 
     public BaseBusinessRequest(Map<String, String> params,
-                               Message message) {
+                               LoadCallback callback) {
         this.mParams = params;
-        this.mMessage = message;
+        this.mCallback = callback;
     }
 
 
-    private IResponseHandler responseHandler = new BaseBusinessResponseHandler() {
+    private IResponseHandler responseHandler = new EncrptResponseHandler() {
         @Override
-        protected void onRequestSuccess(Object jsonObj) {
+        protected void onSuccess(IRequest request, JSONObject response) {
 
-            BaseBusinessRequest.this.onSuccess(jsonObj);
+            T t = JSON.parseObject(response.toString(), getParseClass());
+            if (mCallback != null) {
+                mCallback.onLoadSuccess(t);
+            }
+
+
         }
 
         @Override
-        protected void onRequestFail() {
+        public void onFailure(IRequest request, RequestError error) {
+            if (mCallback != null) {
+                mCallback.onLoadFail(error);
+            }
 
-            BaseBusinessRequest.this.onFail();
-        }
-
-        @Override
-        protected Object parseResponse(Object jsonObj) throws Exception {
-
-            return BaseBusinessRequest.this.parseResponse(jsonObj);
         }
     };
+
+    protected Class<T> getParseClass() {
+        return null;
+    }
+
 
     /**
      * 执行请求
@@ -85,7 +96,7 @@ public abstract class BaseBusinessRequest {
         IRequest request = null;
 
         if (shouldEncry()) {
-            request = new InsuranceEncryptRequest( getMethod(), urlPrefix + urlPostfix);
+            request = new InsuranceEncryptRequest(getMethod(), urlPrefix + urlPostfix);
             ((InsuranceEncryptRequest) request).addParams(mParams);
 
         } else {
@@ -109,28 +120,6 @@ public abstract class BaseBusinessRequest {
      */
     protected abstract String createRequestHostPostfix();
 
-    protected abstract Object parseResponse(Object data);
-
-    public void onFail() {
-        sendResponseMessage(ACTION_FAIL, "");
-    }
-
-    /**
-     * 成功
-     *
-     * @param response
-     */
-    public void onSuccess(Object response) {
-        sendResponseMessage(ACTION_SUCCESS, response);
-    }
-
-    private void sendResponseMessage(int result, Object response) {
-        if (mMessage != null) {
-            mMessage.arg1 = result;
-            mMessage.obj = response;
-            mMessage.sendToTarget();
-        }
-    }
 
     /**
      * 是否加密

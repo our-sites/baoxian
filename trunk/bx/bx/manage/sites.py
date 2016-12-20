@@ -24,6 +24,16 @@ class Manage(object):
                                (r"^zixun/add/",views.zixun_add),
                                (r"^zixun/all/",views.zixun_all),
                                (r"zixun/detail/(\d+)\.html",views.zixun_detail),
+                               (r"product/add/",views.product_add),
+                               (r"product/all/",views.product_all),
+                               (r"product/detail/(\d+)\.html",views.product_detail),
+                               (r"product/detail/delete/(\d+)\.html",views.product_delete),
+                               (r"product/detail/delete/do/",views.product_delete_do),
+                               (r"company/add/",views.company_add),
+                               (r"company/all/",views.company_all),
+                               (r"company/detail/(\d+).html",views.company_detail),
+                               (r"company/detail/delete/(\d+)\.html",views.company_delete),
+                               (r"company/detail/delete/do/",views.company_delete_do),
                                (r"logout/",views.logout)
             )
         return urlpatterns

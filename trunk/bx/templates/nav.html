@@ -1,7 +1,7 @@
 <!--公用nav-->
 <div class="bx-nav">
     <ul class="clf">
-        <li><a href="/">首页</a></li>
+        <li {% if request.path == "/" %}class="active" {% endif %}><a href="/">首页</a></li>
         <li {% if request.path|slice:":5" == "/ask/" %}class="active" {% endif %}><a href="/ask/">问吧</a></li>
     <li {% if request.path|slice:":9" == "/product/" %}class="active" {% endif %}><a href="/product/">产品</a></li>
     <li {% if request.path|slice:":10" == "/dailiren/" %}class="active" {% endif %}><a href="/dailiren/">代理人</a></li>

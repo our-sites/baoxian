@@ -1,0 +1,62 @@
+{% extends "manage_base.html" %}
+{% block style %}
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            background: #f7f7f7;
+        }
+
+        .main-container {
+            padding-top: 60px;
+            font-family: "microsoft yahei", arial, sans serif;
+            background: #fff;
+            min-height: 100%;
+            box-sizing: border-box;
+        }
+
+        .col-md-10,
+        .col-md-12,
+        .col-md-2 {
+            padding: 8px 15px;
+        }
+
+        .btn-primary {
+            width: 120px;
+        }
+
+        .hd {
+            padding: 6px 0 6px 10px;
+            border-left: 2px solid #337ab7;
+            margin-bottom: 20px;
+        }
+    </style>
+        <script type="text/javascript" src="/static/admin/js/jquery.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js"></script>
+<script type="text/javascript" src="/static/ckeditor/jquery.min.js"></script>
+<script type="text/javascript" src="/static/ckeditor/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/static/ckeditor/ckeditor-init.js"></script>
+{% endblock %}
+{% block content %}
+    <div class="container main-container">
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="hd">删除产品</h3>
+            </div>
+        </div>
+                <div class="row ">
+                <pre><span class="text-info">产品名：{{ pro_obj.pro_name }}</span> </pre>
+        </div>
+        <div class="row">
+            <div   class="col-md-6" style="padding-top: 25px">
+                            <a href="/manage/product/detail/delete/do/?pid={{ pro_obj.pid }}"  class="btn btn-primary">确定删除</a>
+                <a href="/manage/product/detail/{{ pro_obj.pid }}.html"  class="btn btn-primary">修改此产品</a>
+            <a href="/product/detail/{{ pro_obj.pid }}.html" class="btn btn-primary" target="_blank">预览</a>
+                <a href="/manage/product/all/" class="btn btn-primary" >产看全部</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -28,7 +28,7 @@ def search(request):
     else:
         city_id=0
         c_id=0
-    company_list=Company.objects.all()
+    company_list=Company.objects.all().order_by("-dailiren_weight")[:25]
     params={}
     if c_id:
         params["cid"]=c_id

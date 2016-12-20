@@ -1,0 +1,283 @@
+{% extends "manage_base.html" %}
+{% block style %}
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            background: #f7f7f7;
+        }
+
+        .main-container {
+            padding-top: 60px;
+            font-family: "microsoft yahei", arial, sans serif;
+            background: #fff;
+            min-height: 100%;
+            box-sizing: border-box;
+        }
+
+        .col-md-10,
+        .col-md-12,
+        .col-md-2 {
+            padding: 8px 15px;
+        }
+
+        .btn-primary {
+            width: 120px;
+        }
+
+        .hd {
+            padding: 6px 0 6px 10px;
+            border-left: 2px solid #337ab7;
+            margin-bottom: 20px;
+        }
+            textarea.form-control{
+            height: 100px;
+        }
+    </style>
+        <script type="text/javascript" src="/static/admin/js/jquery.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js"></script>
+<script type="text/javascript" src="/static/ckeditor/jquery.min.js"></script>
+<script type="text/javascript" src="/static/ckeditor/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/static/ckeditor/ckeditor-init.js"></script>
+{% endblock %}
+{% block content %}
+
+    <div class="container main-container">
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="hd">增加产品</h3>
+            </div>
+        </div>
+    {% if error_msg %}
+        <div class="row">
+            <div style="padding-bottom: 10px">
+                <label class="label label-danger">Error：</label>
+            </div>
+
+            <pre><span class="text-warning">{{ error_msg }}</span> </pre>
+        </div>
+    {% endif %}
+        <div class="row" style="padding-top: 15px">
+            <form class="form-horizontal" role="form" method="post" id="xxxxx" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="oldpwd" class="col-sm-1 control-label ">产品名：</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="oldpwd" name="pro_name" placeholder="请输入产品名"
+                               required="required"  {% if pro_name %}value="{{ pro_name }}" {% endif %}>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="oldpwd" class="col-sm-1 control-label ">产品主图：</label>
+                    <div class="col-sm-3">
+                        <input type="file"  name="img"
+                               required="required"  id="oldpwd">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="firstname" class="col-sm-1 control-label ">企业名：</label>
+                    <div class="col-sm-3">
+                        <select name="cid" class="form-control" style="width: 150px" id="projselect">
+
+                            {% for i in all_company %}
+                                <option value="{{ i.cid }}" {% if cid == i.cid %}selected{% endif %}>{{ i.shortname }}</option>
+                            {% endfor %}
+                                            </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="firstname" class="col-sm-1 control-label ">类型：</label>
+                    <div class="col-sm-3">
+                        <select name="type" class="form-control" style="width: 150px" id="projselect" multiple="multiple" size="10">
+                            {% for i in all_cate_type %}
+                                <option value="{{ i.id }}" {% if i.id in type_list %}selected{% endif %}>{{ i.type_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="oldpwdd" class="col-sm-1 control-label ">产品特色：</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="oldpwdd" name="feature" placeholder="string..."
+                               required="required" {% if feature %}value="{{ feature }}" {% endif %}>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="oldpwddd" class="col-sm-1 control-label ">开始年龄：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="oldpwdd" name="star_age" placeholder="int..."
+                               required="required" {% if star_age %}value="{{ star_age }}" {% endif %}>
+                    </div>
+                    <div class="col-sm-3">
+                        <select name="star_age_type" class="form-control" style="width: 150px" id="projselect" >
+                                <option value="0" {% if star_age_type == "0" %}selected{% endif %}>岁</option>
+                                <option value="1" {% if star_age_type == "1" %}selected{% endif %}>天</option>
+                                            </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="oldpwddd" class="col-sm-1 control-label ">结束年龄：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="oldpwdd" name="end_age" placeholder="int..."
+                               required="required" {% if end_age %}value="{{ end_age }}" {% endif %}>
+                    </div>
+                    <div class="col-sm-3">
+                        <select name="end_age_type" class="form-control" style="width: 150px" id="projselect" >
+                                <option value="0" {% if end_age_type == "0" %}selected{% endif %}>岁</option>
+                                <option value="1" {% if end_age_type == "1" %}selected{% endif %}>天</option>
+                                            </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="oldpwdd" class="col-sm-1 control-label ">保障年限：</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="oldpwdd" name="timelimit" placeholder="string..."
+                               required="required" {% if timelimit %}value="{{ timelimit }}" {% endif %}>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="oldpwdd" class="col-sm-1 control-label ">缴费方式：</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="oldpwdd" name="paytype" placeholder="string..."
+                               required="required" {% if paytype %}value="{{ paytype }}" {% endif %}>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="oldpwdd" class="col-sm-1 control-label ">参保年龄：</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="oldpwdd" name="agelimit" placeholder="string..."
+                               required="required" {% if agelimit %}value="{{ agelimit }}" {% endif %}>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="oldpwdd" class="col-sm-1 control-label ">最低价格：</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="oldpwdd" name="minprice" placeholder="int..."
+                               required="required" {% if minprice %}value="{{ minprice }}" {% endif %}>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-1 control-lebel">保障内容：</label>
+                    <div class="col-sm-9">
+<table class="table table-bordered">
+    {% load range %}
+  <thead>
+    <tr>
+      <th >保障利益</th>
+      <th >保额</th>
+      <th >基本内容</th>
+    </tr>
+  </thead>
+    <tbody>
+
+    <tr>
+      <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="a_0" placeholder="string..." {% if a_0 %}value="{{ a_0 }}" {% endif %}></td>
+      <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="b_0" placeholder="sring..." {% if b_0 %}value="{{ b_0 }}" {% endif %}></td>
+      <td class="col-sm-6">                        <textarea class="form-control" id="oldpwdd" name="c_0" placeholder="string...">{% if c_0 %}{{ c_0 }}{% endif %}</textarea></td>
+    </tr>
+
+    <tr>
+      <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="a_1" placeholder="string..." {% if a_1 %}value="{{ a_1 }}" {% endif %}></td>
+      <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="b_1" placeholder="sring..." {% if b_1 %}value="{{ b_1 }}" {% endif %}></td>
+      <td class="col-sm-6">                        <textarea class="form-control" id="oldpwdd" name="c_1" placeholder="string...">{% if c_1 %}{{ c_1 }}{% endif %}</textarea></td>
+    </tr>
+
+    <tr>
+      <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="a_2" placeholder="string..." {% if a_2 %}value="{{ a_2 }}" {% endif %}></td>
+      <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="b_2" placeholder="sring..." {% if b_2 %}value="{{ b_2 }}" {% endif %}></td>
+      <td class="col-sm-6">                        <textarea class="form-control" id="oldpwdd" name="c_2" placeholder="string...">{% if c_2 %}value="{{ c_2 }}" {% endif %}</textarea></td>
+    </tr>
+
+    <tr>
+      <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="a_3" placeholder="string..." {% if a_3 %}value="{{ a_3 }}" {% endif %}></td>
+      <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="b_3" placeholder="sring..." {% if b_3 %}value="{{ b_3 }}" {% endif %}></td>
+      <td class="col-sm-6">                        <textarea class="form-control" id="oldpwdd" name="c_3" placeholder="string...">{% if c_3 %}value="{{ c_3 }}" {% endif %}</textarea></td>
+    </tr>
+
+    <tr>
+      <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="a_4" placeholder="string..." {% if a_4 %}value="{{ a_4 }}" {% endif %}></td>
+      <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="b_4" placeholder="sring..." {% if b_4 %}value="{{ b_4 }}" {% endif %}></td>
+      <td class="col-sm-6">                        <textarea class="form-control" id="oldpwdd" name="c_4" placeholder="string...">{% if c_4 %}value="{{ c_4 }}" {% endif %}</textarea></td>
+    </tr>
+
+    <tr>
+      <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="a_5" placeholder="string..." {% if a_5 %}value="{{ a_5 }}" {% endif %}></td>
+      <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="b_5" placeholder="sring..." {% if b_5 %}value="{{ b_5 }}" {% endif %}></td>
+      <td class="col-sm-6">                        <textarea class="form-control" id="oldpwdd" name="c_5" placeholder="string...">{% if c_5 %}value="{{ c_5 }}" {% endif %}</textarea></td>
+    </tr>
+
+    <tr>
+      <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="a_6" placeholder="string..." {% if a_6 %}value="{{ a_6 }}" {% endif %}></td>
+      <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="b_6" placeholder="sring..." {% if b_6 %}value="{{ b_6 }}" {% endif %}></td>
+      <td class="col-sm-6">                        <textarea class="form-control" id="oldpwdd" name="c_6" placeholder="string...">{% if c_6 %}value="{{ c_6 }}" {% endif %}</textarea></td>
+    </tr>
+
+    <tr>
+      <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="a_7" placeholder="string..." {% if a_7 %}value="{{ a_7 }}" {% endif %}></td>
+      <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="b_7" placeholder="sring..." {% if b_7 %}value="{{ b_7 }}" {% endif %}></td>
+      <td class="col-sm-6">                        <textarea class="form-control" id="oldpwdd" name="c_7" placeholder="string...">{% if c_7 %}value="{{ c_7 }}" {% endif %}</textarea></td>
+    </tr>
+
+    <tr>
+      <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="a_8" placeholder="string..." {% if a_8 %}value="{{ a_8 }}" {% endif %}></td>
+      <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="b_8" placeholder="sring..." {% if b_8 %}value="{{ b_8 }}" {% endif %}></td>
+      <td class="col-sm-6">                        <textarea class="form-control" id="oldpwdd" name="c_8" placeholder="string...">{% if c_8 %}value="{{ c_8 }}" {% endif %}</textarea></td>
+    </tr>
+
+    <tr>
+      <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="a_9" placeholder="string..." {% if a_9 %}value="{{ a_9 }}" {% endif %}></td>
+      <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="b_9" placeholder="sring..." {% if b_9 %}value="{{ b_9 }}" {% endif %}></td>
+      <td class="col-sm-6">                        <textarea class="form-control" id="oldpwdd" name="c_9" placeholder="string...">{% if c_9 %}value="{{ c_9 }}" {% endif %}</textarea></td>
+    </tr>
+
+  </tbody>
+{#  <tbody>#}
+{#  {% for i in 10|range %}#}
+{#    <tr>#}
+{#      <td class="col-sm-3" >                        <input type="text" class="form-control" id="oldpwdd" name="a_{{ i }}"#}
+{#                               placeholder="string..." {% if a_{{ i }} %}{% endif %}></td>#}
+{#      <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="b_{{ i }}"#}
+{#                               placeholder="sring..."></td>#}
+{#      <td class="col-sm-6">                        <textarea  class="form-control" id="oldpwdd" name="c_{{ i }}"#}
+{#                               placeholder="int..."></textarea></td>#}
+{#    </tr>#}
+{#    {% endfor %}#}
+{#  </tbody>#}
+</table>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastname" class="col-sm-1 control-label">购买案例：</label>
+                    <div class="col-sm-9">
+  <textarea id="id_content" rows="10" cols="40" name="case" data-processed="0" data-config='{"filebrowserWindowWidth": 940, "toolbar_Basic": [["Source", "-", "Bold", "Italic"]], "language": "en-us", "toolbar_Full": [["Styles", "Format", "Bold", "Italic", "Underline", "Strike", "SpellChecker", "Undo", "Redo"], ["Link", "Unlink", "Anchor"], ["Image", "Flash", "Table", "HorizontalRule"], ["TextColor", "BGColor"], ["Smiley", "SpecialChar"], ["Source"]], "filebrowserUploadUrl": "/ckeditor/upload/", "height": 350, "width": 900, "filebrowserBrowseUrl": "/ckeditor/browse/", "skin": "moono", "filebrowserWindowHeight": 725, "toolbar": [["div", "Source", "-", "Save", "NewPage", "Preview", "-", "Templates"], ["Cut", "Copy", "Paste", "PasteText", "PasteFromWord", "-", "Print", "SpellChecker", "Scayt"], ["Undo", "Redo", "-", "Find", "Replace", "-", "SelectAll", "RemoveFormat"], ["Form", "Checkbox", "Radio", "TextField", "Textarea", "Select", "Button", "ImageButton", "HiddenField"], ["Bold", "Italic", "Underline", "Strike", "-", "Subscript", "Superscript"], ["NumberedList", "BulletedList", "-", "Outdent", "Indent", "Blockquote"], ["JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock"], ["Link", "Unlink", "Anchor"], ["Image", "Flash", "Table", "HorizontalRule", "Smiley", "SpecialChar", "PageBreak"], ["Styles", "Format", "Font", "FontSize"], ["TextColor", "BGColor"], ["Maximize", "ShowBlocks", "-", "About", "pbckcode"]]}' data-external-plugin-resources='[]' data-id="id_content" data-type="ckeditortype">
+{% if case %}{{ case|safe  }}{% endif %}</textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastname" class="col-sm-1 control-label">购买理由：</label>
+                    <div class="col-sm-9">
+  <textarea id="id_content1" rows="10" cols="40" name="reason" data-processed="0" data-config='{"filebrowserWindowWidth": 940, "toolbar_Basic": [["Source", "-", "Bold", "Italic"]], "language": "en-us", "toolbar_Full": [["Styles", "Format", "Bold", "Italic", "Underline", "Strike", "SpellChecker", "Undo", "Redo"], ["Link", "Unlink", "Anchor"], ["Image", "Flash", "Table", "HorizontalRule"], ["TextColor", "BGColor"], ["Smiley", "SpecialChar"], ["Source"]], "filebrowserUploadUrl": "/ckeditor/upload/", "height": 350, "width": 900, "filebrowserBrowseUrl": "/ckeditor/browse/", "skin": "moono", "filebrowserWindowHeight": 725, "toolbar": [["div", "Source", "-", "Save", "NewPage", "Preview", "-", "Templates"], ["Cut", "Copy", "Paste", "PasteText", "PasteFromWord", "-", "Print", "SpellChecker", "Scayt"], ["Undo", "Redo", "-", "Find", "Replace", "-", "SelectAll", "RemoveFormat"], ["Form", "Checkbox", "Radio", "TextField", "Textarea", "Select", "Button", "ImageButton", "HiddenField"], ["Bold", "Italic", "Underline", "Strike", "-", "Subscript", "Superscript"], ["NumberedList", "BulletedList", "-", "Outdent", "Indent", "Blockquote"], ["JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock"], ["Link", "Unlink", "Anchor"], ["Image", "Flash", "Table", "HorizontalRule", "Smiley", "SpecialChar", "PageBreak"], ["Styles", "Format", "Font", "FontSize"], ["TextColor", "BGColor"], ["Maximize", "ShowBlocks", "-", "About", "pbckcode"]]}' data-external-plugin-resources='[]' data-id="id_content" data-type="ckeditortype">
+{% if reason %}{{ reason|safe  }}{% endif %}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastname" class="col-sm-1 control-label">免责声明：</label>
+                    <div class="col-sm-9">
+  <textarea id="id_content2" rows="10" cols="40" name="duty" data-processed="0" data-config='{"filebrowserWindowWidth": 940, "toolbar_Basic": [["Source", "-", "Bold", "Italic"]], "language": "en-us", "toolbar_Full": [["Styles", "Format", "Bold", "Italic", "Underline", "Strike", "SpellChecker", "Undo", "Redo"], ["Link", "Unlink", "Anchor"], ["Image", "Flash", "Table", "HorizontalRule"], ["TextColor", "BGColor"], ["Smiley", "SpecialChar"], ["Source"]], "filebrowserUploadUrl": "/ckeditor/upload/", "height": 350, "width": 900, "filebrowserBrowseUrl": "/ckeditor/browse/", "skin": "moono", "filebrowserWindowHeight": 725, "toolbar": [["div", "Source", "-", "Save", "NewPage", "Preview", "-", "Templates"], ["Cut", "Copy", "Paste", "PasteText", "PasteFromWord", "-", "Print", "SpellChecker", "Scayt"], ["Undo", "Redo", "-", "Find", "Replace", "-", "SelectAll", "RemoveFormat"], ["Form", "Checkbox", "Radio", "TextField", "Textarea", "Select", "Button", "ImageButton", "HiddenField"], ["Bold", "Italic", "Underline", "Strike", "-", "Subscript", "Superscript"], ["NumberedList", "BulletedList", "-", "Outdent", "Indent", "Blockquote"], ["JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock"], ["Link", "Unlink", "Anchor"], ["Image", "Flash", "Table", "HorizontalRule", "Smiley", "SpecialChar", "PageBreak"], ["Styles", "Format", "Font", "FontSize"], ["TextColor", "BGColor"], ["Maximize", "ShowBlocks", "-", "About", "pbckcode"]]}' data-external-plugin-resources='[]' data-id="id_content" data-type="ckeditortype">
+{% if duty %}{{ duty|safe  }}{% endif %}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-1 col-sm-2">
+                        <button type="submit" class="btn btn-info btn-block" id="_submit">确定</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+     </div>
+{% endblock %}
