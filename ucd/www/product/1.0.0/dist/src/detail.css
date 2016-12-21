@@ -118,10 +118,39 @@
 
 /*产品详情*/
 #productDetail .product-info-detail {
+    font-size: 14px;
+    color: #808080;
+    line-height: 2;
+}
+
+#productDetail .product-info-detail-item{
+    padding: 30px;
+    border-bottom: 1px solid #ebebeb;
+}
+#productDetail .product-info-detail-item:last-child{
+    margin-bottom: -1px;
+}
+
+#productDetail .product-info-detail-item-title{
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #42bad0;
+}
+
+#productDetail .product-info-detail-header-table{
+    font-size: 12px;
 
 }
 
+#productDetail .product-info-detail-header-table td,
+#productDetail .product-info-detail-header-table th{
+    border: 1px solid #ebebeb;
+    padding: 7px;
+}
+#productDetail .product-info-detail-header-table thead{
+    background-color: #e9f2f4;
 
+}
 
 
 
