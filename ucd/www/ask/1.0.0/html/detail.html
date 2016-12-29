@@ -12,9 +12,7 @@
             <div class="ask-list-left">
                 <!--提问-->
                 <div class="ask-box clf">
-                    <div class="fl ask-icon">
-                        问
-                    </div>
+                    <div class="answer-icon-big"></div>
                     <div class="fr">
                         <h2>
                             我想给儿子买保险，目前有社保，想咨询一下关于重疾保险这方面怎么买合适，预算是：1万~3万，请帮忙解答一下。
@@ -33,33 +31,33 @@
                             </div>
 
                             <p>
-                                <!--<a href="javascript:;" class="ask-btn">提交回答</a>-->
-                                <input type="submit" value="提交回答" class="ask-btn"/>
+                                <button type="submit" class="ask-btn">提交回答</button>
                                 <i class="fa fa-exclamation-circle"></i>
                                 普通代理人每天最多只能回复一个保险疑问，<a href="" class="color">开通钻石</a>获取不限量权限
                             </p>
                         </form>
+                        <!--当前时间-->
+                        <div class="current-time">
+                            2016-10-11
+                        </div>
 
                     </div>
 
                 </div>
 
                 <!-- 列表-->
-                <h2 class="ask-list-title">已经有59条回答</h2>
+                <div class="ask-list-title">↓ 59条回答 ↓</div>
                 <div class="ask-list-item">
                     <div class="result-box">
                         <div class="clf">
                             <img class="result-author-avatar" src="{{ 'html/img/test-avatar.png' | uri('www/common') }}"/>
                             <div class="result-info">
                                 <p>
-                                    <a href="" class="result-info-company">新华</a>
-                                    <a href="" class="result-info-name">兴趣使然</a>
+                                    <a href="" class="result-info-company">新华</a>，<a href="" class="result-info-name">兴趣使然</a>
                                     <a href="" class="result-info-level"></a>
                                     <a href="" class="result-info-authentication"></a>
-                                    <span class="result-info-answer">26条回答</span>
-                                    <span class="result-info-thank">被感谢45次</span>
+                                    <a href="" class="ask-btn"><img src="{{ 'html/img/rank-item-consult-icon.png' | uri('www/ask')}}" alt="">咨询</a>
                                 </p>
-                                <a href="" class="ask-btn">咨询他</a>
                             </div>
                             <div class="result-info-date">1分钟前</div>
                         </div>
@@ -68,7 +66,7 @@
                         您好！华夏常青树在市场上是很有竞争力的，性价比高，保障全，保障范围是77种大病+33种轻症，保障期间是终身，轻症豁免保费，疾病终末期提前给付保额等诸多特点，疾病终末期提前给付保额等诸多特点，现在可以全国V信投保，有兴趣可以加我详聊，祝愉快！
                     </div>
                     <div class="result-ctrl">
-                        <label class="result-ctrl-favor active">
+                       <!-- <label class="result-ctrl-favor active">
                             <i class="fa fa-star-o"></i>
                             收藏
                         </label>
@@ -79,6 +77,15 @@
                         <label class="result-ctrl-share">
                             <i class="fa fa-share-alt"></i>
                             分享
+                        </label>-->
+                        <label class="result-ctrl-favor">
+                            <i class="fa fa-reply"></i>
+                            回复
+                        </label>
+                        <label class="result-ctrl-favor active">
+                            <i class="fa fa-thumbs-o-up"></i>
+                            <span class="zan-state">已赞</span>
+                            <span class="zan-number"></span>
                         </label>
                     </div>
                 </div>
@@ -88,14 +95,11 @@
                             <img class="result-author-avatar" src="{{ 'html/img/test-avatar.png' | uri('www/common') }}"/>
                             <div class="result-info">
                                 <p>
-                                    <a href="" class="result-info-company">新华</a>
-                                    <a href="" class="result-info-name">兴趣使然</a>
+                                    <a href="" class="result-info-company">新华</a>，<a href="" class="result-info-name">兴趣使然</a>
                                     <a href="" class="result-info-level"></a>
                                     <a href="" class="result-info-authentication"></a>
-                                    <span class="result-info-answer">26条回答</span>
-                                    <span class="result-info-thank">被感谢45次</span>
+                                    <a href="" class="ask-btn"><img src="{{ 'html/img/rank-item-consult-icon.png' | uri('www/ask')}}" alt="">咨询</a>
                                 </p>
-                                <a href="" class="ask-btn">咨询他</a>
                             </div>
                             <div class="result-info-date">1分钟前</div>
                         </div>
@@ -104,17 +108,26 @@
                         您好！华夏常青树在市场上是很有竞争力的，性价比高，保障全，保障范围是77种大病+33种轻症，保障期间是终身，轻症豁免保费，疾病终末期提前给付保额等诸多特点，疾病终末期提前给付保额等诸多特点，现在可以全国V信投保，有兴趣可以加我详聊，祝愉快！
                     </div>
                     <div class="result-ctrl">
-                        <label class="result-ctrl-favor active">
-                            <i class="fa fa-star-o"></i>
-                            收藏
+                        <!-- <label class="result-ctrl-favor active">
+                             <i class="fa fa-star-o"></i>
+                             收藏
+                         </label>
+                         <label class="result-ctrl-thank">
+                             <i class="fa fa-heart-o"></i>
+                             感谢
+                         </label>
+                         <label class="result-ctrl-share">
+                             <i class="fa fa-share-alt"></i>
+                             分享
+                         </label>-->
+                        <label class="result-ctrl-favor">
+                            <i class="fa fa-reply"></i>
+                            回复
                         </label>
-                        <label class="result-ctrl-thank">
-                            <i class="fa fa-heart-o"></i>
-                            感谢
-                        </label>
-                        <label class="result-ctrl-share">
-                            <i class="fa fa-share-alt"></i>
-                            分享
+                        <label class="result-ctrl-favor">
+                            <i class="fa fa-thumbs-o-up"></i>
+                            <span class="zan-state">点赞</span>
+                            <span class="zan-number"></span>
                         </label>
                     </div>
                 </div>
@@ -124,14 +137,11 @@
                             <img class="result-author-avatar" src="{{ 'html/img/test-avatar.png' | uri('www/common') }}"/>
                             <div class="result-info">
                                 <p>
-                                    <a href="" class="result-info-company">新华</a>
-                                    <a href="" class="result-info-name">兴趣使然</a>
+                                    <a href="" class="result-info-company">新华</a>，<a href="" class="result-info-name">兴趣使然</a>
                                     <a href="" class="result-info-level"></a>
                                     <a href="" class="result-info-authentication"></a>
-                                    <span class="result-info-answer">26条回答</span>
-                                    <span class="result-info-thank">被感谢45次</span>
+                                    <a href="" class="ask-btn"><img src="{{ 'html/img/rank-item-consult-icon.png' | uri('www/ask')}}" alt="">咨询</a>
                                 </p>
-                                <a href="" class="ask-btn">咨询他</a>
                             </div>
                             <div class="result-info-date">1分钟前</div>
                         </div>
@@ -140,67 +150,42 @@
                         您好！华夏常青树在市场上是很有竞争力的，性价比高，保障全，保障范围是77种大病+33种轻症，保障期间是终身，轻症豁免保费，疾病终末期提前给付保额等诸多特点，疾病终末期提前给付保额等诸多特点，现在可以全国V信投保，有兴趣可以加我详聊，祝愉快！
                     </div>
                     <div class="result-ctrl">
-                        <label class="result-ctrl-favor active">
-                            <i class="fa fa-star-o"></i>
-                            收藏
+                        <!-- <label class="result-ctrl-favor active">
+                             <i class="fa fa-star-o"></i>
+                             收藏
+                         </label>
+                         <label class="result-ctrl-thank">
+                             <i class="fa fa-heart-o"></i>
+                             感谢
+                         </label>
+                         <label class="result-ctrl-share">
+                             <i class="fa fa-share-alt"></i>
+                             分享
+                         </label>-->
+                        <label class="result-ctrl-favor">
+                            <i class="fa fa-reply"></i>
+                            回复
                         </label>
-                        <label class="result-ctrl-thank">
-                            <i class="fa fa-heart-o"></i>
-                            感谢
-                        </label>
-                        <label class="result-ctrl-share">
-                            <i class="fa fa-share-alt"></i>
-                            分享
+                        <label class="result-ctrl-favor">
+                            <i class="fa fa-thumbs-o-up"></i>
+                            <span class="zan-state"></span>
+                            <span class="zan-number">65</span>
                         </label>
                     </div>
                 </div>
-
 
                 <!--翻页-->
                 {%include 'html/layouts/flip.html' | path('www/common') %}
-
-                <!--相关问答-->
-                <div class="related-faqs">
-                    <h3>相关问答</h3>
-                    <div class="related-faqs-item clf">
-                        <div class="ask-icon">问</div>
-                        <p>
-                            <a href="">
-                                我想给儿子买保险，目前有社保，想咨询一下关于重疾保险这方面怎么买合适，预算是：1万~3万，请帮忙解答一下
-                                我想给儿子买保险，目前有社保，想咨询一下关于重疾保险这方面怎么买合适，预算是：1万~3万，请帮忙解答一下
-                            </a>
-                        </p>
-                    </div>
-                    <div class="related-faqs-item clf">
-                        <div class="ask-icon">问</div>
-                        <p>
-                            <a href="">
-                                我想给儿子买保险，目前有社保，想咨询一下关于重疾保险这方面怎么买合适，预算是：1万~3万，请帮忙解答一下
-                                我想给儿子买保险，目前有社保，想咨询一下关于重疾保险这方面怎么买合适，预算是：1万~3万，请帮忙解答一下
-                            </a>
-                        </p>
-                    </div>
-                    <div class="related-faqs-item clf">
-                        <div class="ask-icon">问</div>
-                        <p>
-                            <a href="">
-                                我想给儿子买保险，目前有社保，想咨询一下关于重疾保险这方面怎么买合适，预算是：1万~3万，请帮忙解答一下
-                                我想给儿子买保险，目前有社保，想咨询一下关于重疾保险这方面怎么买合适，预算是：1万~3万，请帮忙解答一下
-                            </a>
-                        </p>
-                    </div>
-
-                </div>
-
-                <!--相关产品-->
-                {%include 'html/layouts/sections/相关产品.html' | path('www/common') %}
             </div>
             <div class="fr">
-                {%include 'html/layouts/sections/私人定制.html' | path('www/common') %}
+                {%include 'html/layouts/sections/量身定制.html' | path('www/common') %}
                 {%include 'html/layouts/sections/活跃顾问.html' | path('www/common') %}
             </div>
         </div>
-
+        <!--相关问答-->
+        {%include 'html/layouts/sections/相关问答.html' | path('www/common') %}
+        <!--相关产品-->
+        {%include 'html/layouts/sections/相关产品.html' | path('www/common') %}
     </div>
 
 </div>

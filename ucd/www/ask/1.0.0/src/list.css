@@ -1,34 +1,40 @@
 #askList {
-    background-color: #fff;
+    background-color: #f5f5f5;
 }
 
 /* 左侧*/
 
 #askList .ask-list-left {
     float: left;
-    width: 886px;
+    width: 876px;
 }
 
 /*提问框*/
 #askList .ask-list-left .ask-box {
     position: relative;
-    width: 826px;
+    width: 815px;
     height: 166px;
     padding: 30px;
-    background-color: #e9f2f4;
+    background-color: #fff;
+    border-top: 4px solid #ffbc3e;
+    border-bottom: 1px solid #ebebeb;
+    border-right: 1px solid #fefaf4;
+    margin-bottom: 23px;
+}
+
+#askList .ask-box > .fr {
+    position: relative;
+    width: 739px;
+    height: 166px;
 }
 
 #askList .ask-box textarea {
-    width: 764px;
+    width: 595px;
     height: 80px;
     padding: 12px;
     border: 1px solid #dbdbdb;
     resize: none;
     margin-bottom: 5px;
-}
-
-#askList .ask-box > .fr{
-    position: relative;
 }
 
 #askList .ask-box .float-layer {
@@ -39,7 +45,8 @@
     display: inline-block;
     color: #9e9e9e;
 }
-#askList .ask-box p{
+
+#askList .ask-box p {
     height: 40px;
     line-height: 40px;
     font-size: 14px;
@@ -51,77 +58,126 @@
     height: 40px;
     text-align: center;
     color: #ffffff;
-    background-color: #42bad0;
+    background-color: #ffbc3e;
     margin-right: 30px;
+    cursor: pointer;
 }
 
 #askList .ask-box .ask-btn:hover {
-    background-color: #4bd3eb;
+    background-color: #ffc965;
 }
 
-#askList .ask-box .q-number{
+#askList .ask-box .q-number {
     color: #4bd3eb;
     margin-left: 6px;
     font-weight: normal;
 }
 
+#askList .ask-box .current-time {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 118px;
+    height: 106px;
+    color: #9e9e9e;
+    text-align: right;
+}
+
 /*列表*/
 
+/*头部*/
+#askList .ask-list-header {
+    background-color: #fff;
+    height: 56px;
+    border-bottom: 1px solid #ebebeb;
+    padding-left: 20px;
+}
+
+#askList .ask-list-header-tab{
+    float: left;
+    display: inline-block;
+    height: 52px;
+    line-height: 50px;
+    border-bottom: 4px solid transparent;
+    margin-right: 28px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#askList .ask-list-header-tab.active,
+#askList .ask-list-header-tab:hover{
+    border-bottom-color: #42bad0;
+    color: #42bad0;
+}
+
+#askList .ask-list-type{
+    background-color: #fff;
+}
+
+/*项*/
+/*问*/
 #askList .ask-list-left .ask-list-item {
-    padding: 30px;
-    border: 1px solid #ebebeb;
-    margin-top: 30px;
+    padding: 30px 30px 25px;
+    border-bottom: 1px solid #ebebeb;
 }
 
-#askList .ask-list-item .q-box{
+#askList .ask-list-item .q-box {
     position: relative;
-
 }
+
+#askList .ask-list-item .q-box-content{
+    float: left;
+    width: 620px;
+}
+
 
 #askList .ask-list-item .q-box h4 {
     font-size: 14px;
+    width: 620px;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 6px;
 }
 
 #askList .ask-list-item .q-box p {
     color: #9e9e9e;
 }
 
-#askList .ask-list-item .q-box .answer-number{
-    position: absolute;
-    right: 0;
-    top: -10px;
-    z-index: 2;
-    width: 58px;
-    height: 48px;
-    background-color: #faca57;
-    font-size: 13px;
-    text-align: center;
-    line-height: 14px;
+#askList .ask-list-item .q-box .answer-number {
+    float: right;
+    display: inline-block;
+    padding: 5px 9px;
+    color: #42bad0;
+    border: 2px solid #42bad0;
+    -webkit-border-radius: 22px;
+    -moz-border-radius: 22px;
+    border-radius: 22px;
 }
 
-#askList .ask-list-item .q-box .answer-number span{
-    display: block;
-    font-size: 20px;
-    line-height: 25px;
-    margin-top: 5px;
+/*答*/
+
+
+#askList .ask-list-item .result-box {
+    padding-top: 20px;
+    border-top: 1px solid #ebebeb;
+    width: 620px;
+    margin-left: 85px;
 }
 
 #askList .ask-list-item .result-author-avatar {
     float: left;
-    width: 46px;
-    height: 62px;
-    border: 1px solid #efefef;
-    margin-right: 20px;
-}
-
-#askList .ask-list-item .result-box{
-    padding-top: 20px;
-    margin-top: 15px;
-    border-top: 1px solid #ebebeb;
+    width: 32px;
+    height: 32px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    margin-right: 10px;
 }
 
 #askList .ask-list-item .result-box > .fl {
-    width: 755px;
+    width: 578px;
 }
 
 #askList .ask-list-item .result-box .result-info {
@@ -137,12 +193,8 @@
 #askList .ask-list-item .result-box .result-info a:hover {
     color: #4bd3eb;
 }
-
-#askList .ask-list-item .result-box .result-info-name{
-    margin: 0 20px 0 15px;
-}
-#askList .ask-list-item .result-box .result-info-answer{
-    margin: 0 15px 0 20px;
+#askList .ask-list-item .result-box .result-info-answer {
+    margin: 0 5px 0 20px;
 }
 
 #askList .ask-list-item .result-box .result-info-level {

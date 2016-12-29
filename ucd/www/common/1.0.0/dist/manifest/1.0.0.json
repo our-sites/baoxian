@@ -8,6 +8,10 @@
       "uri": "/www/common/1.0.0/src/custom-box.css",
       "type": "css"
     },
+    "www/common/1.0.0:customized-box.css": {
+      "uri": "/www/common/1.0.0/src/customized-box.css",
+      "type": "css"
+    },
     "www/common/1.0.0:lively-advisers.css": {
       "uri": "/www/common/1.0.0/src/lively-advisers.css",
       "type": "css"
@@ -22,6 +26,10 @@
     },
     "www/common/1.0.0:related-products.css": {
       "uri": "/www/common/1.0.0/src/related-products.css",
+      "type": "css"
+    },
+    "www/common/1.0.0:related-faqs.css": {
+      "uri": "/www/common/1.0.0/src/related-faqs.css",
       "type": "css"
     },
     "www/common/1.0.0:common.css": {

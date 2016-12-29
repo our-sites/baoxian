@@ -2,58 +2,53 @@
     width: 300px;
 }
 
-.lively-advisers .rank-title {
-    position: relative;
+.lively-advisers h3 {
     width: 100%;
-    height: 26px;
-    line-height: 26px;
-    border-bottom: 1px solid #ebebeb;
+    height: 40px;
+    line-height: 40px;
+    text-indent: 20px;
+    font-size: 16px;
+    background-color: #dbe9eb;
+    font-weight: bold;
 }
 
 .lively-advisers .rank-title b {
     font-size: 14px;
 }
 
-.lively-advisers .rank-title-tab {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100px;
-    height: 26px;
-}
-
-.lively-advisers .rank-title-tab a {
-    display: inline-block;
-    border-bottom: 1px solid transparent;
-    margin-right: 5px;
-}
-
-.lively-advisers .rank-title-tab a:hover,
-.lively-advisers .rank-title-tab a.active {
-    border-color: #42bad0;
+.lively-advisers .rank-list {
+    background-color: #fff;
 }
 
 .lively-advisers .rank-item {
-    padding: 10px 8px;
-    height: 64px;
-    line-height: 28px;
+    padding: 12px 20px;
+    height: 48px;
     border-bottom: 1px solid #ebebeb;
 }
 
 .lively-advisers .rank-item:hover {
-    background-color: #fafafa;
+    background-color: #f4feff;
 }
 
-.lively-advisers .rank-item .fr{
+.lively-advisers .rank-item .fr {
     width: 72px;
     padding: 2px 8px 2px 0;
     text-align: right;
 }
 
-.lively-advisers .rank-item .info{
+.lively-advisers .rank-item .info {
     display: inline-block;
+    line-height: 20px;
+}
+
+.lively-advisers h4 {
+    max-width: 130px;
     overflow: hidden;
-    padding: 2px 0;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: bold;
+    margin-bottom: 4px;
 }
 
 .lively-advisers .rank-item-link {
@@ -68,27 +63,20 @@
 }
 
 .lively-advisers .rank-item-avatar {
-    width: 46px;
-    height: 62px;
-    border: 1px solid #eee;
-}
-
-.lively-advisers .rank-item-name {
+    float: left;
+    width: 48px;
+    height: 48px;
     margin-right: 10px;
-    color: #616161;
+    border-radius: 50%;
 }
 
-.lively-advisers .rank-item-company {
-    color: #616161;
-}
+
 
 .lively-advisers .rank-item-level,
 .lively-advisers .rank-item-authentication {
     display: inline-block;
     width: 20px;
     height: 20px;
-    position: relative;
-    top: 5px;
 }
 
 .lively-advisers .rank-item-level {
@@ -100,3 +88,16 @@
     background: url("/assets/bx/dev/www/common/1.0.0/src/img/author-authentication.png") no-repeat 0 0;
 }
 
+.lively-advisers .rank-item-consult {
+    float: right;
+    width: 61px;
+    height: 24px;
+    line-height: 22px;
+    margin-top: 12px;
+    color: #42bad0;
+    background: url("/assets/bx/dev/www/common/1.0.0/src/img/rank-item-consult-icon.png") no-repeat 0 0;
+    text-align: right;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}

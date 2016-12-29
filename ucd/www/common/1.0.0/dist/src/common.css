@@ -112,63 +112,141 @@
 .custom-box .custom-content .form-control-ele select.small.first{
     margin-right: 6px;
 }
+/*量身定制*/
+.customized-box {
+    width: 300px;
+    /*height: 331px;*/
+    height: auto;
+    margin-bottom: 25px;
+}
+
+.customized-box h3 {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-indent: 20px;
+    font-size: 16px;
+    background-color: #dbe9eb;
+    font-weight: bold;
+}
+
+.customized-box .customized-content {
+    width: 300px;
+    height: auto;
+    background-color: #fff;
+    overflow: hidden;
+
+}
+
+.customized-box .customized-content form {
+    margin: 20px;
+}
+
+.customized-box .customized-content .submit {
+    width: 258px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin-top: 10px;
+    color: #ffffff;
+    background-color: #42bad0;
+    border: 0;
+    cursor: pointer;
+}
+
+.customized-box .customized-content .submit:hover {
+    background-color: #4bd3eb;
+}
+
+.customized-box .customized-content .form-control {
+    height: 32px;
+    line-height: 32px;
+    margin-bottom: 10px;
+}
+
+.customized-box .customized-content .form-control label {
+    float: left;
+    width: 56px;
+    height: 100%;
+    color: #616161;
+}
+
+.customized-box .customized-content .form-control-ele {
+    float: left;
+    width: 202px;
+    height: 100%;
+}
+
+.customized-box .customized-content .form-control-ele.atm-region{
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.customized-box .customized-content select,
+.customized-box .customized-content input {
+    border: 1px solid #ebebeb;
+    height: 30px;
+    width: 202px;
+    padding: 0 8px;
+}
+
+
+.customized-box .customized-content .form-control-ele input{
+    width: 184px;
+}
+
 /*活跃顾问*/
 .lively-advisers {
     width: 300px;
 }
 
-.lively-advisers .rank-title {
-    position: relative;
+.lively-advisers h3 {
     width: 100%;
-    height: 26px;
-    line-height: 26px;
-    border-bottom: 1px solid #ebebeb;
+    height: 40px;
+    line-height: 40px;
+    text-indent: 20px;
+    font-size: 16px;
+    background-color: #dbe9eb;
+    font-weight: bold;
 }
 
 .lively-advisers .rank-title b {
     font-size: 14px;
 }
 
-.lively-advisers .rank-title-tab {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100px;
-    height: 26px;
-}
-
-.lively-advisers .rank-title-tab a {
-    display: inline-block;
-    border-bottom: 1px solid transparent;
-    margin-right: 5px;
-}
-
-.lively-advisers .rank-title-tab a:hover,
-.lively-advisers .rank-title-tab a.active {
-    border-color: #42bad0;
+.lively-advisers .rank-list {
+    background-color: #fff;
 }
 
 .lively-advisers .rank-item {
-    padding: 10px 8px;
-    height: 64px;
-    line-height: 28px;
+    padding: 12px 20px;
+    height: 48px;
     border-bottom: 1px solid #ebebeb;
 }
 
 .lively-advisers .rank-item:hover {
-    background-color: #fafafa;
+    background-color: #f4feff;
 }
 
-.lively-advisers .rank-item .fr{
+.lively-advisers .rank-item .fr {
     width: 72px;
     padding: 2px 8px 2px 0;
     text-align: right;
 }
 
-.lively-advisers .rank-item .info{
+.lively-advisers .rank-item .info {
     display: inline-block;
+    line-height: 20px;
+}
+
+.lively-advisers h4 {
+    max-width: 130px;
     overflow: hidden;
-    padding: 2px 0;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: bold;
+    margin-bottom: 4px;
 }
 
 .lively-advisers .rank-item-link {
@@ -183,27 +261,20 @@
 }
 
 .lively-advisers .rank-item-avatar {
-    width: 46px;
-    height: 62px;
-    border: 1px solid #eee;
-}
-
-.lively-advisers .rank-item-name {
+    float: left;
+    width: 48px;
+    height: 48px;
     margin-right: 10px;
-    color: #616161;
+    border-radius: 50%;
 }
 
-.lively-advisers .rank-item-company {
-    color: #616161;
-}
+
 
 .lively-advisers .rank-item-level,
 .lively-advisers .rank-item-authentication {
     display: inline-block;
     width: 20px;
     height: 20px;
-    position: relative;
-    top: 5px;
 }
 
 .lively-advisers .rank-item-level {
@@ -215,6 +286,19 @@
     background: url("/assets/bx/dev/www/common/1.0.0/src/img/author-authentication.png") no-repeat 0 0;
 }
 
+.lively-advisers .rank-item-consult {
+    float: right;
+    width: 61px;
+    height: 24px;
+    line-height: 22px;
+    margin-top: 12px;
+    color: #42bad0;
+    background: url("/assets/bx/dev/www/common/1.0.0/src/img/rank-item-consult-icon.png") no-repeat 0 0;
+    text-align: right;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
 /*热心顾问  保险精英*/
 .warmheart-advisers {
@@ -375,6 +459,7 @@
 }
 /*相关产品*/
 .relative-product {
+    width: 886px;
     margin-bottom: 20px;
 }
 
@@ -388,10 +473,12 @@
 
 .relative-product-item {
     float: left;
+    display: block;
     width: 200px;
     height: 263px;
     border: 1px solid #ebebeb;
     margin-right: 26px;
+    background-color: #fff;
 }
 
 .relative-product-item.last {
@@ -431,9 +518,43 @@
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+/*相关产品*/
+/*相关问答*/
+.related-faqs{
+    width: 886px;
+    margin: 60px 0 30px;
+    font-size: 14px;
+}
 
+.related-faqs .ask-icon{
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    font-size: 12px;
+}
 
-.ask-icon{
+.related-faqs h3 {
+    font-size: 16px;
+    line-height: 35px;
+    border-bottom: 1px solid #ebebeb;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.related-faqs-item{
+    margin-bottom: 10px;
+}
+
+.related-faqs-item p{
+    width: 856px;
+    overflow: hidden;
+    display: inline-block;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ask-icon {
     float: left;
     display: inline-block;
     width: 24px;
@@ -445,4 +566,22 @@
     text-align: center;
     background-color: #42bad0;
     margin-right: 10px;
+}
+
+.ask-icon-big,
+.answer-icon-big {
+    float: left;
+    display: inline-block;
+    width: 56px;
+    height: 56px;
+    background: no-repeat 0 0;
+    margin-right: 20px;
+}
+
+.ask-icon-big {
+    background-image: url("/assets/bx/dev/www/common/1.0.0/src/img/ask-icon-big.png");
+}
+
+.answer-icon-big {
+    background-image: url("/assets/bx/dev/www/common/1.0.0/src/img/answer-icon-big.png");
 }

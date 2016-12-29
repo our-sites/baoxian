@@ -1,4 +1,5 @@
 .relative-product {
+    width: 886px;
     margin-bottom: 20px;
 }
 
@@ -12,10 +13,12 @@
 
 .relative-product-item {
     float: left;
+    display: block;
     width: 200px;
     height: 263px;
     border: 1px solid #ebebeb;
     margin-right: 26px;
+    background-color: #fff;
 }
 
 .relative-product-item.last {

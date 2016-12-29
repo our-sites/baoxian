@@ -410,6 +410,7 @@ a.color:hover {
     margin-right: 10px;
     font-size: 14px;
     color: #616161;
+    background-color: #fff;
 }
 
 .bx-list-flip-btn.active,
