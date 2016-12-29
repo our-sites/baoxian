@@ -1,7 +1,7 @@
 {
   "res": {
     "www/ask/1.0.0:common.css": {
-      "uri": "/www/ask/1.0.0/src/common_0f93466.css",
+      "uri": "/www/ask/1.0.0/src/common_92627da.css",
       "type": "css",
       "pkg": "www/ask/1.0.0:p0"
     },
@@ -17,7 +17,7 @@
       "pkg": "www/ask/1.0.0:p1"
     },
     "www/ask/1.0.0:detail.css": {
-      "uri": "/www/ask/1.0.0/src/detail_c9d5549.css",
+      "uri": "/www/ask/1.0.0/src/detail_a8e8071.css",
       "type": "css"
     },
     "www/ask/1.0.0:detail": {
@@ -30,7 +30,7 @@
       ]
     },
     "www/ask/1.0.0:list.css": {
-      "uri": "/www/ask/1.0.0/src/list_eb46e74.css",
+      "uri": "/www/ask/1.0.0/src/list_39bad40.css",
       "type": "css",
       "pkg": "www/ask/1.0.0:p0"
     },
@@ -46,7 +46,7 @@
   },
   "pkg": {
     "www/ask/1.0.0:p0": {
-      "uri": "/www/ask/1.0.0/pkg/ask_1135f14.css",
+      "uri": "/www/ask/1.0.0/pkg/ask_ad9e132.css",
       "type": "css",
       "has": [
         "www/ask/1.0.0:common.css",

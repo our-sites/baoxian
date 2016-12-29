@@ -26,7 +26,7 @@ import  urllib
 # print a.read()
 from gcutils.db import  MySQLMgr
 from itertools import groupby
-mgr=MySQLMgr("113.10.195.169",3306,"bx_abc","bx_user","gc895316")
+# mgr=MySQLMgr("113.10.195.169",3306,"bx_abc","bx_user","gc895316")
 
 # result= mgr.runQuery("select bx_type from bx_product ",())
 # data=[]
@@ -42,7 +42,13 @@ mgr=MySQLMgr("113.10.195.169",3306,"bx_abc","bx_user","gc895316")
 # print data
 # for t,k in groupby(data):
 #     print t,len([_  for _ in k ])
-result=mgr.runQuery("select cid,count(*) as num  from bx_proxyuser_profile group by cid  order by num desc ",())
-for i ,j in result:
-    print i,j
-    mgr.runOperation("update bx_company set dailiren_weight =%s WHERE cid=%s",(j,i))
+# result=mgr.runQuery("select cid,count(*) as num  from bx_proxyuser_profile group by cid  order by num desc ",())
+# for i ,j in result:
+#     print i,j
+#     mgr.runOperation("update bx_company set dailiren_weight =%s WHERE cid=%s",(j,i))
+mgr=MySQLMgr("192.168.8.94",3306,"shuili","root","gc895316")
+print mgr.runQuery('''SELECT title,author,source,publist_date,source_database,quote_times,
+download_times,teacher,author_info,abstract,abstract_en,keyword,
+keyword_en,network_publisher,network_publish_date,cate_num,from_url from zhiwang_article_shuishabianhua WHERE title
+like \'%%黄河%%\'''',()).__len__()
+

@@ -139,7 +139,9 @@ INSTALLED_APPS = (
     "bx.zixun",
     "bx.manage",
     "bx.product",
-    "bx.dailiren"
+    "bx.dailiren",
+    "bx.work_buy",
+    "bx.work_proxy"
 )
 
 # A sample logging configuration. The only tangible logging

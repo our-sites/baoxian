@@ -15,7 +15,8 @@ from django.core.paginator import Paginator,EmptyPage
 from ..models import Consult,Company,Product,CateType
 from itertools import  groupby
 import  json
-
+import decimal
+import  traceback
 
 @staff_member_required
 def home(request):
@@ -342,8 +343,14 @@ def product_all(request):
 @staff_member_required
 def product_add(request):
     "新增产品"
-    all_company=Company.objects.all()
+    all_company=Company.objects.all().order_by("-product_weight")
     all_cate_type=CateType.objects.all()
+    cid=request.GET.get("cid")
+    if cid:
+        try:
+            cid=int(cid)
+        except:
+            pass
     error_msg=""
     if request.method=="POST":
         post_info=request.POST
@@ -381,6 +388,7 @@ def product_add(request):
         case=post_info.get("case")
         reason=post_info.get("reason")
         duty=post_info.get("duty")
+        from_url=post_info.get("from_url")
         if not pro_name:
             error_msg="请输入产品名！"
         if not  img:
@@ -417,9 +425,13 @@ def product_add(request):
             minprice="请填写最低价格信息！"
         else:
             try:
-                minprice=int(minprice)
+                minprice=float(minprice)
+                minprice=decimal.Decimal(str(minprice))
             except:
-                error_msg="最低价格信息必须为整数！"
+                traceback.print_exc()
+                error_msg="最低价格信息必须为整数或浮点数！"
+        if not from_url:
+            from_url="请填写来源URL！"
         if not error_msg:
             pro_obj=Product(pro_name=pro_name,
                             cid=int(cid),
@@ -431,7 +443,7 @@ def product_add(request):
                             pro_desc_case=case,
                             pro_desc_reason=reason,
                             pro_desc_duty=duty,
-                            from_url=str(time.time()),
+                            from_url=from_url,
                             img=img,
                             meta="",
                             min_price=minprice,
@@ -451,7 +463,7 @@ def product_add(request):
 @staff_member_required
 def product_detail(request,_id):
     "产品详情"
-    all_company=Company.objects.all()
+    all_company=Company.objects.all().order_by("-product_weight")
     all_cate_type=CateType.objects.all()
     pid=int(_id)
     pro_obj=Product.objects.get(pid=pid)
@@ -465,7 +477,8 @@ def product_detail(request,_id):
     timelimit=pro_obj.insurance_timelimit
     paytype=pro_obj.insurance_paytype
     agelimit=pro_obj.insurance_agelimit
-    minprice=pro_obj.min_price
+    from_url=pro_obj.from_url
+    minprice = pro_obj.min_price
     a_0,a_1,a_2,a_3,a_4,a_5,a_6,a_7,a_8,a_9=("",)*10
     b_0,b_1,b_2,b_3,b_4,b_5,b_6,b_7,b_8,b_9=("",)*10
     c_0,c_1,c_2,c_3,c_4,c_5,c_6,c_7,c_7,c_9=("",)*10
@@ -485,6 +498,7 @@ def product_detail(request,_id):
     case=pro_obj.pro_desc_case
     reason=pro_obj.pro_desc_reason
     duty=pro_obj.pro_desc_duty
+    img = pro_obj.img
     error_msg=""
     if request.method=="POST":
         post_info=request.POST
@@ -503,6 +517,7 @@ def product_detail(request,_id):
         _paytype=post_info.get("paytype")
         _agelimit=post_info.get("agelimit")
         _minprice=post_info.get("minprice")
+        _from_url=post_info.get("from_url")
 
         _a_0,_a_1,_a_2,_a_3,_a_4,_a_5,_a_6,_a_7,_a_8,_a_9=tuple([post_info.get("a_%s"%i)   for i in range(0,10)])
         _b_0,_b_1,_b_2,_b_3,_b_4,_b_5,_b_6,_b_7,_b_8,_b_9=tuple([post_info.get("b_%s"%i)   for i in range(0,10)])
@@ -558,9 +573,13 @@ def product_detail(request,_id):
             error_msg="请填写最低价格信息！"
         else:
             try:
-                _minprice=int(_minprice)
+                _minprice=float(_minprice)
+                _minprice=decimal.Decimal(str(_minprice))
             except:
-                error_msg="最低价格信息必须为整数！"
+                traceback.print_exc()
+                error_msg="最低价格信息必须为整数或浮点数！"
+        if not _from_url:
+            error_msg = "请填写来源URL！"
         if not error_msg:
             _t=",".join([str(i) for i in _type_list]) if _type_list else ""
             _star_age=_star_age if _star_age_type=="0" else -_star_age
@@ -570,11 +589,11 @@ def product_detail(request,_id):
             pro_obj.bx_feature=_feature
             pro_obj.star_age=_star_age
             pro_obj.end_age=_end_age if _end_age_type=="0" else  -_end_age
-            pro_obj.pro_desc_content=json.dumps(_content_list)
+            pro_obj.pro_desc_content=json.dumps(content_list)
             pro_obj.pro_desc_case=_case
             pro_obj.pro_desc_reason=_reason
             pro_obj.pro_desc_duty=_duty
-            pro_obj.from_url=str(time.time())
+            pro_obj.from_url=_from_url
             pro_obj.img=_img or img
             pro_obj.meta=""
             pro_obj.min_price=_minprice
@@ -726,9 +745,25 @@ def company_detail(request,_id):
     return render_to_response("manage_company_detail.html",locals(),context_instance=RequestContext(request))
 
 
-def company_delete(request):
-    pass
+def company_delete(request,_id):
+    com_obj=Company.objects.get(cid=int(_id))
+    return  render_to_response("manage_company_delete.html",locals(),context_instance=RequestContext(request))
+
 
 
 def company_delete_do(request):
-    pass
+    cid=request.GET.get("cid")
+    cid=int(cid)
+    error_msg=""
+    if Product.objects.filter(cid=cid).count()!=0:
+        error_msg="该企业下属还有产品， 禁止删除！，请先删除相关产品。"
+    else:
+        try:
+            com_obj=Company.objects.get(cid=cid)
+            comname=com_obj.comname
+        except Product.DoesNotExist:
+            error_msg="企业不存在!"
+        else:
+            com_obj.delete()
+    return  render_to_response("manage_company_delete_success.html",locals(),context_instance=RequestContext(request)
+                               )

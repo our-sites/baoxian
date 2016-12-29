@@ -60,51 +60,56 @@
                 </div>
                 <!--产品详情-->
                 <div class="product-info-detail">
-                    <div>
-                        <p>购买理由</p>
-                        <div>
-                            {{ product.pro_desc_reason|safe }}
-                        </div>
-                    </div>
-                    <div >
-                        <p>保障内容</p>
-                        <div>
-                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-bao">
-                                <tbody>
-                                <tr bgcolor="#f7fbf1">
-                                    <td width="120" align="center">保障利益</td>
-                                    <td width="100" align="center">保额</td>
-                                    <td align="center">保障内容</td>
-                                </tr>
-                            {% for i in product.desc_json_info  %}
-                                {% if i.0.1 != 0 %}
-                                <tr>
-                                    <td rowspan="{{ i.0.1 }}">{{ i.0.0 }}</td>
-                                    <td align="center">{{ i.1 }}</td>
-                                    <td>{{ i.2 }}</td>
-                                </tr>
-                                {% else %}
-                                <tr>
-                                    <td align="center">{{ i.1 }}</td>
-                                    <td>{{ i.2 }}</td>
-                                </tr>
-                                {% endif %}
-                            {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div>
-                        <p>免责声明</p>
-                        <div>
-                            {{ product.pro_desc_duty|safe }}
-                        </div>
-                    </div>
+ <div class="product-info-detail-item">
+    <h3 class="product-info-detail-item-title">购买理由</h3>
+    <div class="product-info-detail-item-content">
+        {{ product.pro_desc_reason|safe }}
+    </div>
+</div>
+<div class="product-info-detail-item">
+    <h3 class="product-info-detail-item-title">保障内容</h3>
+    <div class="product-info-detail-item-content">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="product-info-detail-header-table">
+            <thead>
+                <tr>
+                    <th width="160">保障利益</th>
+                    <th width="160">保额</th>
+                    <th>保障内容</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in product.desc_json_info %} {% if i.0.1 != 0 %}
+                <tr>
+                    <td>{{ i.0.0 }}</td>
+                    <td>{{ i.1 }}</td>
+                    <td>{{ i.2 }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td>{{ i.1 }}</td>
+                    <td></td>
+                    <td>{{ i.2 }}</td>
+                </tr>
+                {% endif %} {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="product-info-detail-item">
+    <h3 class="product-info-detail-item-title">免责声明</h3>
+    <div class="product-info-detail-item-content">
+        {{ product.pro_desc_duty|safe }}
+    </div>
+</div>
                 </div>
                 <!--相关案例-->
-                <div class="product-info-example"></div>
+                <div class="product-info-example" style="display: none;">
+                    {{ product.pro_desc_reason|safe  }}
+                </div>
                 <!--理赔流程-->
-                <div class="product-info-process"></div>
+                <div class="product-info-process" style="display: none">
+                    <img src="/static/imgs/bxlc.jpg" style="width: 100%">
+                </div>
             </div>
 
             <!--相关产品-->

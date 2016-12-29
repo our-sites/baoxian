@@ -48,7 +48,10 @@ class Consult(models.Model):
     description=models.CharField(max_length=100,default="",blank=True,verbose_name="SEO-描述")
     content=RichTextUploadingField(verbose_name="内容")
     status=models.PositiveSmallIntegerField(verbose_name="资讯状态",default=1,help_text="1代表正常 其他值代表异常")
-    imghandle_tag=models.PositiveIntegerField(default=0)
+    cid=models.IntegerField(default=0,verbose_name="CID")
+    good_num=models.IntegerField(default=0,verbose_name="赞次数")
+    see_num=models.IntegerField(default=0,verbose_name="浏览次数")
+    # imghandle_tag=models.PositiveIntegerField(default=0)
     class Meta:
         db_table="bx_consult"
         ordering=["-addtime"]
@@ -134,7 +137,7 @@ class Product(models.Model):
     pro_name=models.CharField(max_length=100,verbose_name="产品名")
     cid=models.PositiveIntegerField(default=0,verbose_name="企业ID")
     bx_type=models.CharField(max_length=30,verbose_name="产品类型")
-    min_price=models.IntegerField(verbose_name="最低价格",default=0)
+    min_price=models.DecimalField(verbose_name="最低价格",default=0.000,max_digits=10,decimal_places=3)
     bx_feature=models.CharField(max_length=300,verbose_name="产品特色")
     insurance_timelimit=models.CharField(max_length=200,verbose_name="保障期限")
     insurance_paytype=models.CharField(max_length=200,verbose_name="缴费方式")

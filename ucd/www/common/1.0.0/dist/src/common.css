@@ -585,3 +585,8 @@
 .answer-icon-big {
     background-image: url("/assets/bx/dev/www/common/1.0.0/src/img/answer-icon-big.png");
 }
+
+.fn-fixed {
+    position: fixed !important;
+    top: 2px;
+}

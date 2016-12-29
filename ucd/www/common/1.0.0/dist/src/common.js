@@ -27,6 +27,27 @@ define('www/common/1.0.0:common', ['com/global/1.0.0:global', 'com/global/1.0.0:
       });
   }
   
+  
+  // 量身订制模块的验证
+  var $form2 = $('#customized-form');
+  if ($form2.length) {
+      var validator = new Validator({
+          element: $form2
+      });
+      validator.addItem({
+          element: '#name',
+          required: true
+      });
+      validator.addItem({
+          element: '#cellphone',
+          required: true
+      });
+      validator.addItem({
+          element: '#time-frame',
+          required: true
+      });
+  }
+  
   // 条件筛选
   $('.letter-filter').each(function () {
       var $filterWrap = $(this);
@@ -54,7 +75,20 @@ define('www/common/1.0.0:common', ['com/global/1.0.0:global', 'com/global/1.0.0:
   });
   
   
-  
+  // 活跃顾问悬浮效果
+  var $fixedArea = $('.lively-advisers');
+  if ($fixedArea.length) {
+      var top = $fixedArea.offset().top;
+      var $window = $(window);
+      $window.on('load scroll resize', function () {
+          var scrollTop = $window.scrollTop();
+          if (scrollTop - top > 1) {
+              $fixedArea.addClass('fn-fixed');
+          } else {
+              $fixedArea.removeClass('fn-fixed');
+          }
+      });
+  }
   // @require 'www/common/1.0.0:common.css';
   
 
