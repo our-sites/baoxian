@@ -36,8 +36,6 @@
     height: 52px;
     padding: 14px 20px;
     background-color: #42bbd0;
-    -webkit-border-radius: 5px 5px 0 0;
-    -moz-border-radius: 5px 5px 0 0;
     border-radius: 5px 5px 0 0;
 }
 
@@ -46,8 +44,6 @@
     width: 48px;
     height: 48px;
     border: 2px solid #fff;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
     border-radius: 50%;
     margin-right: 8px;
 }
@@ -110,10 +106,7 @@
 #chat-online .chat-online-item-avatar {
     width: 32px;
     height: 32px;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
     border-radius: 50%;
-
 }
 
 #chat-online .chat-online-item-content {
@@ -125,8 +118,6 @@
     line-height: 16px;
     color: #1f1f1f;
     font-size: 12px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
     border-radius: 5px;
 }
 
@@ -155,8 +146,6 @@
     height: 60px;
     padding: 20px;
     background-color: #fff;
-    -webkit-border-radius: 0 0 5px 5px;
-    -moz-border-radius: 0 0 5px 5px;
     border-radius: 0 0 5px 5px;
 }
 
@@ -181,7 +170,5 @@
     text-align: center;
     line-height: 30px;
     color: #ffffff;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
     border-radius: 5px;
 }
