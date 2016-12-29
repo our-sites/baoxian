@@ -166,6 +166,13 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="oldpwdd" class="col-sm-1 control-label ">来源URL:</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="oldpwdd" name="from_url" placeholder="string..."
+                               required="required" {% if from_url %}value="{{ from_url }}" {% endif %}>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-sm-1 control-lebel">保障内容：</label>
                     <div class="col-sm-9">
 <table class="table table-bordered">
@@ -194,49 +201,49 @@
     <tr>
       <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="a_2" placeholder="string..." {% if a_2 %}value="{{ a_2 }}" {% endif %}></td>
       <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="b_2" placeholder="sring..." {% if b_2 %}value="{{ b_2 }}" {% endif %}></td>
-      <td class="col-sm-6">                        <textarea class="form-control" id="oldpwdd" name="c_2" placeholder="string...">{% if c_2 %}value="{{ c_2 }}" {% endif %}</textarea></td>
+      <td class="col-sm-6">                        <textarea class="form-control" id="oldpwdd" name="c_2" placeholder="string...">{% if c_2 %}{{ c_2 }}{% endif %}</textarea></td>
     </tr>
 
     <tr>
       <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="a_3" placeholder="string..." {% if a_3 %}value="{{ a_3 }}" {% endif %}></td>
       <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="b_3" placeholder="sring..." {% if b_3 %}value="{{ b_3 }}" {% endif %}></td>
-      <td class="col-sm-6">                        <textarea class="form-control" id="oldpwdd" name="c_3" placeholder="string...">{% if c_3 %}value="{{ c_3 }}" {% endif %}</textarea></td>
+      <td class="col-sm-6">                        <textarea class="form-control" id="oldpwdd" name="c_3" placeholder="string...">{% if c_3 %}{{ c_3 }}" {% endif %}</textarea></td>
     </tr>
 
     <tr>
       <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="a_4" placeholder="string..." {% if a_4 %}value="{{ a_4 }}" {% endif %}></td>
       <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="b_4" placeholder="sring..." {% if b_4 %}value="{{ b_4 }}" {% endif %}></td>
-      <td class="col-sm-6">                        <textarea class="form-control" id="oldpwdd" name="c_4" placeholder="string...">{% if c_4 %}value="{{ c_4 }}" {% endif %}</textarea></td>
+      <td class="col-sm-6">                        <textarea class="form-control" id="oldpwdd" name="c_4" placeholder="string...">{% if c_4 %}{{ c_4 }}" {% endif %}</textarea></td>
     </tr>
 
     <tr>
       <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="a_5" placeholder="string..." {% if a_5 %}value="{{ a_5 }}" {% endif %}></td>
       <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="b_5" placeholder="sring..." {% if b_5 %}value="{{ b_5 }}" {% endif %}></td>
-      <td class="col-sm-6">                        <textarea class="form-control" id="oldpwdd" name="c_5" placeholder="string...">{% if c_5 %}value="{{ c_5 }}" {% endif %}</textarea></td>
+      <td class="col-sm-6">                        <textarea class="form-control" id="oldpwdd" name="c_5" placeholder="string...">{% if c_5 %}{{ c_5 }}" {% endif %}</textarea></td>
     </tr>
 
     <tr>
       <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="a_6" placeholder="string..." {% if a_6 %}value="{{ a_6 }}" {% endif %}></td>
       <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="b_6" placeholder="sring..." {% if b_6 %}value="{{ b_6 }}" {% endif %}></td>
-      <td class="col-sm-6">                        <textarea class="form-control" id="oldpwdd" name="c_6" placeholder="string...">{% if c_6 %}value="{{ c_6 }}" {% endif %}</textarea></td>
+      <td class="col-sm-6">                        <textarea class="form-control" id="oldpwdd" name="c_6" placeholder="string...">{% if c_6 %}{{ c_6 }}" {% endif %}</textarea></td>
     </tr>
 
     <tr>
       <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="a_7" placeholder="string..." {% if a_7 %}value="{{ a_7 }}" {% endif %}></td>
       <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="b_7" placeholder="sring..." {% if b_7 %}value="{{ b_7 }}" {% endif %}></td>
-      <td class="col-sm-6">                        <textarea class="form-control" id="oldpwdd" name="c_7" placeholder="string...">{% if c_7 %}value="{{ c_7 }}" {% endif %}</textarea></td>
+      <td class="col-sm-6">                        <textarea class="form-control" id="oldpwdd" name="c_7" placeholder="string...">{% if c_7 %}{{ c_7 }}" {% endif %}</textarea></td>
     </tr>
 
     <tr>
       <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="a_8" placeholder="string..." {% if a_8 %}value="{{ a_8 }}" {% endif %}></td>
       <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="b_8" placeholder="sring..." {% if b_8 %}value="{{ b_8 }}" {% endif %}></td>
-      <td class="col-sm-6">                        <textarea class="form-control" id="oldpwdd" name="c_8" placeholder="string...">{% if c_8 %}value="{{ c_8 }}" {% endif %}</textarea></td>
+      <td class="col-sm-6">                        <textarea class="form-control" id="oldpwdd" name="c_8" placeholder="string...">{% if c_8 %}{{ c_8 }}" {% endif %}</textarea></td>
     </tr>
 
     <tr>
       <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="a_9" placeholder="string..." {% if a_9 %}value="{{ a_9 }}" {% endif %}></td>
       <td class="col-sm-3">                        <input type="text" class="form-control" id="oldpwdd" name="b_9" placeholder="sring..." {% if b_9 %}value="{{ b_9 }}" {% endif %}></td>
-      <td class="col-sm-6">                        <textarea class="form-control" id="oldpwdd" name="c_9" placeholder="string...">{% if c_9 %}value="{{ c_9 }}" {% endif %}</textarea></td>
+      <td class="col-sm-6">                        <textarea class="form-control" id="oldpwdd" name="c_9" placeholder="string...">{% if c_9 %}{{ c_9 }}" {% endif %}</textarea></td>
     </tr>
 
   </tbody>
