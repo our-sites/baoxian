@@ -1,0 +1,72 @@
+{
+  "res": {
+    "www/info/1.0.0:common.css": {
+      "uri": "/www/info/1.0.0/src/common_d41d8cd.css",
+      "type": "css",
+      "pkg": "www/info/1.0.0:p0"
+    },
+    "www/info/1.0.0:common": {
+      "uri": "/www/info/1.0.0/src/common_23a4c89.js",
+      "type": "js",
+      "deps": [
+        "www/common/1.0.0:common",
+        "www/info/1.0.0:common.css"
+      ],
+      "pkg": "www/info/1.0.0:p1"
+    },
+    "www/info/1.0.0:detail.css": {
+      "uri": "/www/info/1.0.0/src/detail_42c867f.css",
+      "type": "css",
+      "pkg": "www/info/1.0.0:p0"
+    },
+    "www/info/1.0.0:detail": {
+      "uri": "/www/info/1.0.0/src/detail_55ce601.js",
+      "type": "js",
+      "deps": [
+        "www/info/1.0.0:common",
+        "www/info/1.0.0:detail.css"
+      ],
+      "pkg": "www/info/1.0.0:p1"
+    },
+    "www/info/1.0.0:index.css": {
+      "uri": "/www/info/1.0.0/src/index_aa412e7.css",
+      "type": "css",
+      "pkg": "www/info/1.0.0:p0"
+    },
+    "www/info/1.0.0:index": {
+      "uri": "/www/info/1.0.0/src/index_faff8c3.js",
+      "type": "js",
+      "deps": [
+        "www/info/1.0.0:common",
+        "www/info/1.0.0:index.css"
+      ],
+      "pkg": "www/info/1.0.0:p1"
+    }
+  },
+  "pkg": {
+    "www/info/1.0.0:p0": {
+      "uri": "/www/info/1.0.0/pkg/info_7019227.css",
+      "type": "css",
+      "has": [
+        "www/info/1.0.0:common.css",
+        "www/info/1.0.0:index.css",
+        "www/info/1.0.0:detail.css"
+      ]
+    },
+    "www/info/1.0.0:p1": {
+      "uri": "/www/info/1.0.0/pkg/info_5ae8d78.js",
+      "type": "js",
+      "has": [
+        "www/info/1.0.0:common",
+        "www/info/1.0.0:index",
+        "www/info/1.0.0:detail"
+      ],
+      "deps": [
+        "www/common/1.0.0:common",
+        "www/info/1.0.0:common.css",
+        "www/info/1.0.0:index.css",
+        "www/info/1.0.0:detail.css"
+      ]
+    }
+  }
+}

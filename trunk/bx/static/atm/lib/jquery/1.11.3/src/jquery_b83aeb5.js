@@ -1,0 +1,1 @@
+define("lib/jquery/1.11.3:jquery",["lib/jquery/1.11.3:origin/jquery"],function(e,i,r){window.jQuery=r.exports=e("lib/jquery/1.11.3:origin/jquery")});

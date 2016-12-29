@@ -1,0 +1,8 @@
+{
+  "stable": false,
+  "exports": {
+	"index": {},
+	"detail": {}
+  },
+  "packs": {}
+}

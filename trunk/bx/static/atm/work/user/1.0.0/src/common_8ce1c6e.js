@@ -1,0 +1,1 @@
+define("work/user/1.0.0:common",["com/global/1.0.0:dollar","work/common/1.0.0:common"],function(o){o("com/global/1.0.0:dollar");o("work/common/1.0.0:common")});

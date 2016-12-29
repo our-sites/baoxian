@@ -1,0 +1,45 @@
+{
+  "res": {
+    "www/index/1.0.0:module/common.css": {
+      "uri": "/www/index/1.0.0/src/module/common_e293b62.css",
+      "type": "css"
+    },
+    "www/index/1.0.0:module/adviser.css": {
+      "uri": "/www/index/1.0.0/src/module/adviser_3bfaa59.css",
+      "type": "css"
+    },
+    "www/index/1.0.0:module/demand.css": {
+      "uri": "/www/index/1.0.0/src/module/demand_bbab9d5.css",
+      "type": "css"
+    },
+    "www/index/1.0.0:module/news.css": {
+      "uri": "/www/index/1.0.0/src/module/news_e855695.css",
+      "type": "css"
+    },
+    "www/index/1.0.0:module/ask.css": {
+      "uri": "/www/index/1.0.0/src/module/ask_d6c1482.css",
+      "type": "css"
+    },
+    "www/index/1.0.0:module/product.css": {
+      "uri": "/www/index/1.0.0/src/module/product_215244a.css",
+      "type": "css"
+    },
+    "www/index/1.0.0:module/banner-menu.css": {
+      "uri": "/www/index/1.0.0/src/module/banner-menu_1f0adf6.css",
+      "type": "css"
+    },
+    "www/index/1.0.0:index.css": {
+      "uri": "/www/index/1.0.0/src/index_5266e38.css",
+      "type": "css"
+    },
+    "www/index/1.0.0:index": {
+      "uri": "/www/index/1.0.0/src/index_2f29772.js",
+      "type": "js",
+      "deps": [
+        "www/common/1.0.0:common",
+        "www/index/1.0.0:index.css"
+      ]
+    }
+  },
+  "pkg": {}
+}

@@ -1,0 +1,17 @@
+{
+  "res": {
+    "work/common/1.0.0:common.css": {
+      "uri": "/work/common/1.0.0/src/common.css",
+      "type": "css"
+    },
+    "work/common/1.0.0:common": {
+      "uri": "/work/common/1.0.0/src/common.js",
+      "type": "js",
+      "deps": [
+        "com/global/1.0.0:global",
+        "work/common/1.0.0:common.css"
+      ]
+    }
+  },
+  "pkg": {}
+}

@@ -1,0 +1,45 @@
+{
+  "res": {
+    "www/common/1.0.0:crubms.css": {
+      "uri": "/www/common/1.0.0/src/crubms_abc7967.css",
+      "type": "css"
+    },
+    "www/common/1.0.0:custom-box.css": {
+      "uri": "/www/common/1.0.0/src/custom-box_2cf6af2.css",
+      "type": "css"
+    },
+    "www/common/1.0.0:lively-advisers.css": {
+      "uri": "/www/common/1.0.0/src/lively-advisers_78fa496.css",
+      "type": "css"
+    },
+    "www/common/1.0.0:warmheart-advisers.css": {
+      "uri": "/www/common/1.0.0/src/warmheart-advisers_dbce5d7.css",
+      "type": "css"
+    },
+    "www/common/1.0.0:underwriter-condition.css": {
+      "uri": "/www/common/1.0.0/src/underwriter-condition_b987280.css",
+      "type": "css"
+    },
+    "www/common/1.0.0:related-products.css": {
+      "uri": "/www/common/1.0.0/src/related-products_8f45857.css",
+      "type": "css"
+    },
+    "www/common/1.0.0:common.css": {
+      "uri": "/www/common/1.0.0/src/common_85b908d.css",
+      "type": "css"
+    },
+    "www/common/1.0.0:common": {
+      "uri": "/www/common/1.0.0/src/common_a7663c4.js",
+      "type": "js",
+      "deps": [
+        "com/global/1.0.0:global",
+        "com/global/1.0.0:dollar",
+        "com/tabs/1.0.0:tabs",
+        "com/global/1.0.0:region",
+        "com/global/1.0.0:validator",
+        "www/common/1.0.0:common.css"
+      ]
+    }
+  },
+  "pkg": {}
+}

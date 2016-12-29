@@ -1,0 +1,187 @@
+#chat-online.chat-online-wrap {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#chat-online .chat-online-mask {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    opacity: .5;
+    background-color: #000;
+    filter: Alpha(opacity=50);
+}
+
+#chat-online .chat-online-box {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    z-index: 1002;
+    width: 560px;
+    height: 400px;
+    margin: -200px 0 0 -280px;
+}
+
+#chat-online .chat-online-header {
+    position: relative;
+    height: 52px;
+    padding: 14px 20px;
+    background-color: #42bbd0;
+    -webkit-border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+}
+
+#chat-online .chat-online-header .chat-online-avatar {
+    float: left;
+    width: 48px;
+    height: 48px;
+    border: 2px solid #fff;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+#chat-online .chat-online-header .chat-online-info {
+    float: left;
+    color: #ffffff;
+    line-height: 2;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#chat-online .chat-online-header p {
+    margin: 0;
+    padding: 0;
+}
+
+#chat-online .chat-online-header p span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: no-repeat 0 0;
+    vertical-align: middle;
+
+}
+
+#chat-online .chat-online-header .chat-online-info-level {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpCMTNEN0YyRDk1MDkxMUU2QTAwRkJDQTMzQjM4QzE0MCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpCMTNEN0YyRTk1MDkxMUU2QTAwRkJDQTMzQjM4QzE0MCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkIxM0Q3RjJCOTUwOTExRTZBMDBGQkNBMzNCMzhDMTQwIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkIxM0Q3RjJDOTUwOTExRTZBMDBGQkNBMzNCMzhDMTQwIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+x17J2QAAAflJREFUeNqkVUsvQ0EYnbZXKb2LVrxatdGExBILEWvbCpr4D2w1/oB4LFiwt9Z4pSsrCxELhEhESDdeqUcQjyBXie+MGZk77o3iJCf33plvzveYb+Z6MjOHzAF+YkKwjRghWsRT4jZxgbgkxmwwHMS6iGPEuIOTRsE+YpaYIs6rRl7l3UccFQZx9jNgMyfW+JwiHCYOst9DrkmpEfboYpV1pczwe5k+Zob9bqI9UhAWE7bCklBTewWLxINcQApH6k03QWASWrDsJdaqMw2t5V8CLZ01LFxdwr9frXdmhopZiL5BLYMoMWmI1rBFh9QONq7Zw43Fv2/PX77mETXmgfXMmR5lAoKt6kieothbu+IpA8+Peba5nOPjRSSOucvjJ7e0WyBYrY9igeG/ZpWxMrazcsGjRO1KggZPGU7gAE8NNR46Kff0YqqjHd0xW32QOgQhgChlGeBMg4UIc7rg6twJrxM2BYuQPsSQrmwfzDkghzB23QqCSLAJgaBRaJNvwnJRNqWKUFWApxkRwX82dZS/w4HLxixCME0c0XvRUHYUfYlNONq/43NhcqafIgJ6KO0R1xeae5b9D0kISjeIcvwfYuNCw3Z9DRGn/iA2LdZ+uw/fiANig7IFCGVFqfrFWtcbG5dmRhjj9m4WB18Wfkv8AtJOv4APAQYAp22TbjeEVuMAAAAASUVORK5CYII=");
+}
+
+#chat-online .chat-online-header .chat-online-info-authentication {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpEMENDNzM1Nzk1MDkxMUU2OTY0NjkwNTM0NUVCMDZBNCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpEMENDNzM1ODk1MDkxMUU2OTY0NjkwNTM0NUVCMDZBNCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkQwQ0M3MzU1OTUwOTExRTY5NjQ2OTA1MzQ1RUIwNkE0IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkQwQ0M3MzU2OTUwOTExRTY5NjQ2OTA1MzQ1RUIwNkE0Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+cTCgkwAAAgxJREFUeNqUlUkvQ1EUx89rn04xlGpQEkMaQ4khSoIlG1YkSKzsrFiw0PgCYliw8SVqnpYSsSBmETSiEsQclJra0sS5cp/0vXcvcZJf0txzzr/3nnvPeUL/gRsYpkPqKRWIDQkh58g2MolM0zWZiQyxBmQAsTP+JJfSgngRFzIRGaSJ+K1F+mmAHf42EjNOc7SsHfYi3fB/k3JckYKNLDGLPhYqLHlgMyaAIAhw6D+HlXsPBMMfLNF1ZEyktRlSRphEPbRm1oAo/JwGyi05UGjOBPfZElwHfMqUYWSG1LAJSVN6C+IyZGKSGbQ6qE4uYR09FWnW0KehstgoE7doMaKR56ongmUsTyAc4gq+fgZ4LicRTGZ57oPPXMHTt1ueK0XDeu3EEvGGuVmGeK6PCF6xHL7QCzfpLujnua6I4C7Ls/d0AjfqpwHvWNuFmx2e4AYRnOJ5l+88qrXNh6PfumaKCI7SKaKyo+cL8H+8yda2fF6e2AXRki6lixelfNwCf3edSFCaNmSXg7Lbwt6tTir+bsFIq7WVgUmrV4oNUg3ZtOlBjNgh7cXmLHDEpTO7xR5tgzZ7HXj8Z7DjO8aLexyhuarxFa5KdHRUWh2LAgh9v81EnUaEInOWF+nZfzodm79cU09sZ0I2VFnzgQ7NWTo0yPQupY0vFX6TfgLIEUP5eBLcAMxdrn4HfAkwAPIqgzE5vHlIAAAAAElFTkSuQmCC");
+}
+
+#chat-online .chat-online-header .chat-online-close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 2;
+    width: 20px;
+    height: 20px;
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpGMkVEM0VGQkNEQTIxMUU2QjhFNjhDMEE3RTkyNTJBQiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpGMkVEM0VGQ0NEQTIxMUU2QjhFNjhDMEE3RTkyNTJBQiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkYyRUQzRUY5Q0RBMjExRTZCOEU2OEMwQTdFOTI1MkFCIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkYyRUQzRUZBQ0RBMjExRTZCOEU2OEMwQTdFOTI1MkFCIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+IgUCSgAAAbJJREFUeNqklc9KAlEUxo86ltJKqRYVtDAC1616iMJAfYraJr1AUC5qUQ9RUpm+RRRCi6RQKPojaDgQVINj1HfqXrozc3VKP/jgcM65P2buPXMncPDySRqNwCnhRXgK7sAPcAU+gU9FzqGABrgCb8Nz1F81OAcfq8mgEofgLdHgByPRcyTWhGTSUBo24XX6v+SanPqE6QFhKjQtgXwAO2r1zbap8tQkq9v1rOQc17jHpV1mMTADz6iV65ZJZ/cNKl/VybJ/oRxzjmvc49I0nA2K0XAoORGnWDRC7XeLytUf6DcMMee4xj0apXhsbhHMel4NgBIAJgBxAFgStpRMUDRs6IB3DLQQjOqqKpTlA2N1grppd0y+Kw74HDcDG72eTt0zuaelqvOgXGow8NIPtozXZHNs9oeeM7DozlZbbQcsgj1jq1Du0ajIh8KDXVdn8bVj082zScnJOEUMwzPY1Wab5sdjNDYSVkuPcELeNjzchzScsnBBfssFOD8ELC8YjutrA94bALYv1nruww94TdwatT+AamKrVsXanje2/AVkxO29ID58ufEX4hdQ0H0UXwIMAPy1yFfV/WOkAAAAAElFTkSuQmCC") no-repeat 0 0;
+    cursor: pointer;
+}
+
+#chat-online .chat-online-body {
+    padding: 30px;
+    height: 159px;
+    overflow: auto;
+    overflow-x: hidden;
+    background-color: #fafafa;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+#chat-online .chat-online-item {
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+#chat-online .chat-online-item-avatar {
+    width: 32px;
+    height: 32px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+
+}
+
+#chat-online .chat-online-item-content {
+    display: inline-block;
+    max-width: 378px;
+    overflow: hidden;
+    padding: 12px 10px;
+    min-height: 16px;
+    line-height: 16px;
+    color: #1f1f1f;
+    font-size: 12px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#chat-online .chat-online-item.left .chat-online-item-avatar {
+    float: left;
+    margin-right: 10px;
+
+}
+#chat-online .chat-online-item.left .chat-online-item-content {
+    float: left;
+    background-color: #e6e6e6;
+
+}
+
+#chat-online .chat-online-item.right .chat-online-item-avatar {
+    float: right;
+    margin-left: 10px;
+}
+#chat-online .chat-online-item.right .chat-online-item-content {
+    float: right;
+    background-color: #99e0ea;
+}
+
+#chat-online .chat-online-footer {
+    position: relative;
+    height: 60px;
+    padding: 20px;
+    background-color: #fff;
+    -webkit-border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
+}
+
+#chat-online .chat-online-footer textarea {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    resize: none;
+    outline: 0;
+    font-size: 14px;
+    color: #1f1f1f;
+}
+
+#chat-online .chat-online-footer .send-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2;
+    width: 72px;
+    height: 32px;
+    background-color: #42bbd0;
+    text-align: center;
+    line-height: 30px;
+    color: #ffffff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}

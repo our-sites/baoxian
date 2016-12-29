@@ -1,0 +1,97 @@
+.custom-box {
+    width: 300px;
+    /*height: 331px;*/
+    height: auto;
+    margin-bottom: 25px;
+}
+
+.custom-box h3 {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-indent: 20px;
+    color: #42bad0;
+    background-color: #e9f2f4;
+    font-weight: bold;
+}
+
+.custom-box .custom-content {
+    width: 298px;
+    /*height: 290px;*/
+    height: auto;
+    border: 1px solid #ebebeb;
+    border-top: none;
+    overflow: hidden;
+
+}
+
+.custom-box .custom-content form {
+    margin: 20px;
+}
+
+.custom-box .custom-content .submit {
+    width: 258px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #ffffff;
+    background-color: #42bad0;
+    border: 0;
+    cursor: pointer;
+}
+
+.custom-box .custom-content .submit:hover {
+    background-color: #4bd3eb;
+}
+
+.custom-box .custom-content .form-control {
+    height: 32px;
+    line-height: 32px;
+    margin-bottom: 10px;
+}
+
+.custom-box .custom-content .form-control label {
+    float: left;
+    width: 56px;
+    height: 100%;
+    color: #616161;
+}
+
+.custom-box .custom-content .form-control-ele {
+    float: left;
+    width: 202px;
+    height: 100%;
+}
+
+.custom-box .custom-content .form-control-ele.atm-region{
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.custom-box .custom-content select,
+.custom-box .custom-content input {
+    border: 1px solid #ebebeb;
+    height: 30px;
+    width: 202px;
+    padding: 0 8px;
+}
+
+.custom-box .custom-content select[name="province"],
+.custom-box .custom-content select[name="city"]{
+    width: 98px;
+}
+
+.custom-box select[name="province"]{
+    margin-right: 6px;
+}
+
+.custom-box .custom-content .form-control-ele input{
+    width: 184px;
+}
+
+.custom-box .custom-content .form-control-ele select.small {
+    width: 96px;
+}
+.custom-box .custom-content .form-control-ele select.small.first{
+    margin-right: 6px;
+}

@@ -1,0 +1,17 @@
+{
+  "res": {
+    "lib/toastr/2.1.3:toastr.css": {
+      "uri": "/lib/toastr/2.1.3/src/toastr_06209ab.css",
+      "type": "css"
+    },
+    "lib/toastr/2.1.3:toastr": {
+      "uri": "/lib/toastr/2.1.3/src/toastr_ccf4002.js",
+      "type": "js",
+      "deps": [
+        "lib/jquery/1.11.3:jquery",
+        "lib/toastr/2.1.3:toastr.css"
+      ]
+    }
+  },
+  "pkg": {}
+}

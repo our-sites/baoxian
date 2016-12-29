@@ -1,0 +1,94 @@
+{
+  "res": {
+    "com/global/1.0.0:css/font-awesome.css": {
+      "uri": "/com/global/1.0.0/src/css/font-awesome.css",
+      "type": "css",
+      "pkg": "com/global/1.0.0:p0"
+    },
+    "com/global/1.0.0:dollar": {
+      "uri": "/com/global/1.0.0/src/dollar.js",
+      "type": "js",
+      "deps": [
+        "lib/jquery/1.11.3:jquery"
+      ],
+      "pkg": "com/global/1.0.0:p1"
+    },
+    "com/global/1.0.0:global.css": {
+      "uri": "/com/global/1.0.0/src/global.css",
+      "type": "css",
+      "deps": [
+        "com/global/1.0.0:css/font-awesome.css"
+      ],
+      "pkg": "com/global/1.0.0:p0"
+    },
+    "com/global/1.0.0:global": {
+      "uri": "/com/global/1.0.0/src/global.js",
+      "type": "js",
+      "deps": [
+        "lib/jquery/1.11.3:jquery",
+        "com/global/1.0.0:validator",
+        "com/global/1.0.0:global.css"
+      ],
+      "pkg": "com/global/1.0.0:p1"
+    },
+    "com/global/1.0.0:region": {
+      "uri": "/com/global/1.0.0/src/region.js",
+      "type": "js",
+      "deps": [
+        "com/global/1.0.0:dollar",
+        "com/global/1.0.0:selects"
+      ]
+    },
+    "com/global/1.0.0:selects": {
+      "uri": "/com/global/1.0.0/src/selects.js",
+      "type": "js",
+      "deps": [
+        "com/global/1.0.0:dollar",
+        "com/arale/1.2.0:widget"
+      ]
+    },
+    "com/global/1.0.0:validator.css": {
+      "uri": "/com/global/1.0.0/src/validator.css",
+      "type": "css",
+      "pkg": "com/global/1.0.0:p0"
+    },
+    "com/global/1.0.0:validator": {
+      "uri": "/com/global/1.0.0/src/validator.js",
+      "type": "js",
+      "deps": [
+        "com/validator/0.10.3:validator",
+        "com/global/1.0.0:dollar",
+        "lib/toastr/2.1.3:toastr",
+        "com/global/1.0.0:validator.css"
+      ],
+      "pkg": "com/global/1.0.0:p1"
+    }
+  },
+  "pkg": {
+    "com/global/1.0.0:p0": {
+      "uri": "/com/global/1.0.0/pkg/global.css",
+      "type": "css",
+      "has": [
+        "com/global/1.0.0:css/font-awesome.css",
+        "com/global/1.0.0:global.css",
+        "com/global/1.0.0:validator.css"
+      ]
+    },
+    "com/global/1.0.0:p1": {
+      "uri": "/com/global/1.0.0/pkg/global.js",
+      "type": "js",
+      "has": [
+        "com/global/1.0.0:dollar",
+        "com/global/1.0.0:validator",
+        "com/global/1.0.0:global"
+      ],
+      "deps": [
+        "lib/jquery/1.11.3:jquery",
+        "com/validator/0.10.3:validator",
+        "lib/toastr/2.1.3:toastr",
+        "com/global/1.0.0:validator.css",
+        "com/global/1.0.0:global.css"
+      ]
+    }
+  }
+}

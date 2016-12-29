@@ -1,0 +1,192 @@
+{{ atmjs.use(':detail') }}
+{%include 'html/layouts/header.html' | path('www/common') %}
+<div id="askDetail">
+    <div class="grid clf">
+        <!-- 面包屑 -->
+        <div class="bx-crubms">
+            <a href="">保险岛首页</a> &gt;
+            <a href="">问吧</a> &gt;
+            <a href="">问吧详情</a>
+        </div>
+        <div class="clf">
+            <div class="ask-list-left">
+                <!--提问-->
+                <div class="ask-box clf">
+                    <div class="answer-icon-big"></div>
+                    <div class="fr">
+                        <h2>
+                            我想给儿子买保险，目前有社保，想咨询一下关于重疾保险这方面怎么买合适，预算是：1万~3万，请帮忙解答一下。
+                        </h2>
+                        <span class="muted">问题来自：  2016-10-11  河南郑州      </span>
+
+                        <form id="ask" class="ui-form" action="{{ 'html/data/提交成功' | uri('work/user') }}">
+                            <div class="ui-form-item">
+                                <textarea id="content" name="content" placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少..."></textarea>
+                                <div class="ui-form-explain"></div>
+                            </div>
+                            <div class="float-layer">
+                                <span class="current-length">0</span>
+                                /
+                                <span class="total-length">200</span>
+                            </div>
+
+                            <p>
+                                <button type="submit" class="ask-btn">提交回答</button>
+                                <i class="fa fa-exclamation-circle"></i>
+                                普通代理人每天最多只能回复一个保险疑问，<a href="" class="color">开通钻石</a>获取不限量权限
+                            </p>
+                        </form>
+                        <!--当前时间-->
+                        <div class="current-time">
+                            2016-10-11
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- 列表-->
+                <div class="ask-list-title">↓ 59条回答 ↓</div>
+                <div class="ask-list-item">
+                    <div class="result-box">
+                        <div class="clf">
+                            <img class="result-author-avatar" src="{{ 'html/img/test-avatar.png' | uri('www/common') }}"/>
+                            <div class="result-info">
+                                <p>
+                                    <a href="" class="result-info-company">新华</a>，<a href="" class="result-info-name">兴趣使然</a>
+                                    <a href="" class="result-info-level"></a>
+                                    <a href="" class="result-info-authentication"></a>
+                                    <a href="" class="ask-btn"><img src="{{ 'html/img/rank-item-consult-icon.png' | uri('www/ask')}}" alt="">咨询</a>
+                                </p>
+                            </div>
+                            <div class="result-info-date">1分钟前</div>
+                        </div>
+                    </div>
+                    <div class="result-content">
+                        您好！华夏常青树在市场上是很有竞争力的，性价比高，保障全，保障范围是77种大病+33种轻症，保障期间是终身，轻症豁免保费，疾病终末期提前给付保额等诸多特点，疾病终末期提前给付保额等诸多特点，现在可以全国V信投保，有兴趣可以加我详聊，祝愉快！
+                    </div>
+                    <div class="result-ctrl">
+                       <!-- <label class="result-ctrl-favor active">
+                            <i class="fa fa-star-o"></i>
+                            收藏
+                        </label>
+                        <label class="result-ctrl-thank">
+                            <i class="fa fa-heart-o"></i>
+                            感谢
+                        </label>
+                        <label class="result-ctrl-share">
+                            <i class="fa fa-share-alt"></i>
+                            分享
+                        </label>-->
+                        <label class="result-ctrl-favor">
+                            <i class="fa fa-reply"></i>
+                            回复
+                        </label>
+                        <label class="result-ctrl-favor active">
+                            <i class="fa fa-thumbs-o-up"></i>
+                            <span class="zan-state">已赞</span>
+                            <span class="zan-number"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="ask-list-item">
+                    <div class="result-box">
+                        <div class="clf">
+                            <img class="result-author-avatar" src="{{ 'html/img/test-avatar.png' | uri('www/common') }}"/>
+                            <div class="result-info">
+                                <p>
+                                    <a href="" class="result-info-company">新华</a>，<a href="" class="result-info-name">兴趣使然</a>
+                                    <a href="" class="result-info-level"></a>
+                                    <a href="" class="result-info-authentication"></a>
+                                    <a href="" class="ask-btn"><img src="{{ 'html/img/rank-item-consult-icon.png' | uri('www/ask')}}" alt="">咨询</a>
+                                </p>
+                            </div>
+                            <div class="result-info-date">1分钟前</div>
+                        </div>
+                    </div>
+                    <div class="result-content">
+                        您好！华夏常青树在市场上是很有竞争力的，性价比高，保障全，保障范围是77种大病+33种轻症，保障期间是终身，轻症豁免保费，疾病终末期提前给付保额等诸多特点，疾病终末期提前给付保额等诸多特点，现在可以全国V信投保，有兴趣可以加我详聊，祝愉快！
+                    </div>
+                    <div class="result-ctrl">
+                        <!-- <label class="result-ctrl-favor active">
+                             <i class="fa fa-star-o"></i>
+                             收藏
+                         </label>
+                         <label class="result-ctrl-thank">
+                             <i class="fa fa-heart-o"></i>
+                             感谢
+                         </label>
+                         <label class="result-ctrl-share">
+                             <i class="fa fa-share-alt"></i>
+                             分享
+                         </label>-->
+                        <label class="result-ctrl-favor">
+                            <i class="fa fa-reply"></i>
+                            回复
+                        </label>
+                        <label class="result-ctrl-favor">
+                            <i class="fa fa-thumbs-o-up"></i>
+                            <span class="zan-state">点赞</span>
+                            <span class="zan-number"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="ask-list-item">
+                    <div class="result-box">
+                        <div class="clf">
+                            <img class="result-author-avatar" src="{{ 'html/img/test-avatar.png' | uri('www/common') }}"/>
+                            <div class="result-info">
+                                <p>
+                                    <a href="" class="result-info-company">新华</a>，<a href="" class="result-info-name">兴趣使然</a>
+                                    <a href="" class="result-info-level"></a>
+                                    <a href="" class="result-info-authentication"></a>
+                                    <a href="" class="ask-btn"><img src="{{ 'html/img/rank-item-consult-icon.png' | uri('www/ask')}}" alt="">咨询</a>
+                                </p>
+                            </div>
+                            <div class="result-info-date">1分钟前</div>
+                        </div>
+                    </div>
+                    <div class="result-content">
+                        您好！华夏常青树在市场上是很有竞争力的，性价比高，保障全，保障范围是77种大病+33种轻症，保障期间是终身，轻症豁免保费，疾病终末期提前给付保额等诸多特点，疾病终末期提前给付保额等诸多特点，现在可以全国V信投保，有兴趣可以加我详聊，祝愉快！
+                    </div>
+                    <div class="result-ctrl">
+                        <!-- <label class="result-ctrl-favor active">
+                             <i class="fa fa-star-o"></i>
+                             收藏
+                         </label>
+                         <label class="result-ctrl-thank">
+                             <i class="fa fa-heart-o"></i>
+                             感谢
+                         </label>
+                         <label class="result-ctrl-share">
+                             <i class="fa fa-share-alt"></i>
+                             分享
+                         </label>-->
+                        <label class="result-ctrl-favor">
+                            <i class="fa fa-reply"></i>
+                            回复
+                        </label>
+                        <label class="result-ctrl-favor">
+                            <i class="fa fa-thumbs-o-up"></i>
+                            <span class="zan-state"></span>
+                            <span class="zan-number">65</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!--翻页-->
+                {%include 'html/layouts/flip.html' | path('www/common') %}
+            </div>
+            <div class="fr">
+                {%include 'html/layouts/sections/量身定制.html' | path('www/common') %}
+                {%include 'html/layouts/sections/活跃顾问.html' | path('www/common') %}
+            </div>
+        </div>
+        <!--相关问答-->
+        {%include 'html/layouts/sections/相关问答.html' | path('www/common') %}
+        <!--相关产品-->
+        {%include 'html/layouts/sections/相关产品.html' | path('www/common') %}
+    </div>
+
+</div>
+{%include 'html/layouts/footer.html' | path('www/common') %}

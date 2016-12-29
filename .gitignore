@@ -1,0 +1,7 @@
+.idea
+.svn
+ucd/temporary/
+ucd/static/
+ucd/maps/
+ucd/manifests/
+ucd/bx/**/dist/

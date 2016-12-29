@@ -1,0 +1,94 @@
+{
+  "res": {
+    "com/global/1.0.0:css/font-awesome.css": {
+      "uri": "/com/global/1.0.0/src/css/font-awesome_4a450cb.css",
+      "type": "css",
+      "pkg": "com/global/1.0.0:p0"
+    },
+    "com/global/1.0.0:dollar": {
+      "uri": "/com/global/1.0.0/src/dollar_2b4ff2c.js",
+      "type": "js",
+      "deps": [
+        "lib/jquery/1.11.3:jquery"
+      ],
+      "pkg": "com/global/1.0.0:p1"
+    },
+    "com/global/1.0.0:global.css": {
+      "uri": "/com/global/1.0.0/src/global_4ec5eaa.css",
+      "type": "css",
+      "deps": [
+        "com/global/1.0.0:css/font-awesome.css"
+      ],
+      "pkg": "com/global/1.0.0:p0"
+    },
+    "com/global/1.0.0:global": {
+      "uri": "/com/global/1.0.0/src/global_ce94c25.js",
+      "type": "js",
+      "deps": [
+        "lib/jquery/1.11.3:jquery",
+        "com/global/1.0.0:validator",
+        "com/global/1.0.0:global.css"
+      ],
+      "pkg": "com/global/1.0.0:p1"
+    },
+    "com/global/1.0.0:region": {
+      "uri": "/com/global/1.0.0/src/region_c8ff87f.js",
+      "type": "js",
+      "deps": [
+        "com/global/1.0.0:dollar",
+        "com/global/1.0.0:selects"
+      ]
+    },
+    "com/global/1.0.0:selects": {
+      "uri": "/com/global/1.0.0/src/selects_ae69222.js",
+      "type": "js",
+      "deps": [
+        "com/global/1.0.0:dollar",
+        "com/arale/1.2.0:widget"
+      ]
+    },
+    "com/global/1.0.0:validator.css": {
+      "uri": "/com/global/1.0.0/src/validator_3d77440.css",
+      "type": "css",
+      "pkg": "com/global/1.0.0:p0"
+    },
+    "com/global/1.0.0:validator": {
+      "uri": "/com/global/1.0.0/src/validator_c757ff6.js",
+      "type": "js",
+      "deps": [
+        "com/validator/0.10.3:validator",
+        "com/global/1.0.0:dollar",
+        "lib/toastr/2.1.3:toastr",
+        "com/global/1.0.0:validator.css"
+      ],
+      "pkg": "com/global/1.0.0:p1"
+    }
+  },
+  "pkg": {
+    "com/global/1.0.0:p0": {
+      "uri": "/com/global/1.0.0/pkg/global_d605179.css",
+      "type": "css",
+      "has": [
+        "com/global/1.0.0:css/font-awesome.css",
+        "com/global/1.0.0:global.css",
+        "com/global/1.0.0:validator.css"
+      ]
+    },
+    "com/global/1.0.0:p1": {
+      "uri": "/com/global/1.0.0/pkg/global_1f6ced7.js",
+      "type": "js",
+      "has": [
+        "com/global/1.0.0:dollar",
+        "com/global/1.0.0:validator",
+        "com/global/1.0.0:global"
+      ],
+      "deps": [
+        "lib/jquery/1.11.3:jquery",
+        "com/validator/0.10.3:validator",
+        "lib/toastr/2.1.3:toastr",
+        "com/global/1.0.0:validator.css",
+        "com/global/1.0.0:global.css"
+      ]
+    }
+  }
+}

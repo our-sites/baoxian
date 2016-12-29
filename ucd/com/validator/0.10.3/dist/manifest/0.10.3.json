@@ -1,0 +1,78 @@
+{
+  "res": {
+    "com/validator/0.10.3:async": {
+      "uri": "/com/validator/0.10.3/src/async.js",
+      "type": "js",
+      "pkg": "com/validator/0.10.3:p0"
+    },
+    "com/validator/0.10.3:core": {
+      "uri": "/com/validator/0.10.3/src/core.js",
+      "type": "js",
+      "deps": [
+        "lib/jquery/1.11.3:jquery",
+        "com/validator/0.10.3:async",
+        "com/arale/1.2.0:widget",
+        "com/validator/0.10.3:utils",
+        "com/validator/0.10.3:item",
+        "com/validator/0.10.3:rule"
+      ],
+      "pkg": "com/validator/0.10.3:p0"
+    },
+    "com/validator/0.10.3:item": {
+      "uri": "/com/validator/0.10.3/src/item.js",
+      "type": "js",
+      "deps": [
+        "lib/jquery/1.11.3:jquery",
+        "com/validator/0.10.3:utils",
+        "com/arale/1.2.0:widget",
+        "com/validator/0.10.3:async",
+        "com/validator/0.10.3:rule"
+      ],
+      "pkg": "com/validator/0.10.3:p0"
+    },
+    "com/validator/0.10.3:rule": {
+      "uri": "/com/validator/0.10.3/src/rule.js",
+      "type": "js",
+      "deps": [
+        "lib/jquery/1.11.3:jquery"
+      ],
+      "pkg": "com/validator/0.10.3:p0"
+    },
+    "com/validator/0.10.3:utils": {
+      "uri": "/com/validator/0.10.3/src/utils.js",
+      "type": "js",
+      "deps": [
+        "lib/jquery/1.11.3:jquery",
+        "com/validator/0.10.3:rule"
+      ],
+      "pkg": "com/validator/0.10.3:p0"
+    },
+    "com/validator/0.10.3:validator": {
+      "uri": "/com/validator/0.10.3/src/validator.js",
+      "type": "js",
+      "deps": [
+        "com/validator/0.10.3:core",
+        "lib/jquery/1.11.3:jquery"
+      ],
+      "pkg": "com/validator/0.10.3:p0"
+    }
+  },
+  "pkg": {
+    "com/validator/0.10.3:p0": {
+      "uri": "/com/validator/0.10.3/pkg/validator.js",
+      "type": "js",
+      "has": [
+        "com/validator/0.10.3:async",
+        "com/validator/0.10.3:rule",
+        "com/validator/0.10.3:utils",
+        "com/validator/0.10.3:item",
+        "com/validator/0.10.3:core",
+        "com/validator/0.10.3:validator"
+      ],
+      "deps": [
+        "lib/jquery/1.11.3:jquery",
+        "com/arale/1.2.0:widget"
+      ]
+    }
+  }
+}

@@ -1,0 +1,81 @@
+.customized-box {
+    width: 300px;
+    /*height: 331px;*/
+    height: auto;
+    margin-bottom: 25px;
+}
+
+.customized-box h3 {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-indent: 20px;
+    font-size: 16px;
+    background-color: #dbe9eb;
+    font-weight: bold;
+}
+
+.customized-box .customized-content {
+    width: 300px;
+    height: auto;
+    background-color: #fff;
+    overflow: hidden;
+
+}
+
+.customized-box .customized-content form {
+    margin: 20px;
+}
+
+.customized-box .customized-content .submit {
+    width: 258px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin-top: 10px;
+    color: #ffffff;
+    background-color: #42bad0;
+    border: 0;
+    cursor: pointer;
+}
+
+.customized-box .customized-content .submit:hover {
+    background-color: #4bd3eb;
+}
+
+.customized-box .customized-content .form-control {
+    height: 32px;
+    line-height: 32px;
+    margin-bottom: 10px;
+}
+
+.customized-box .customized-content .form-control label {
+    float: left;
+    width: 56px;
+    height: 100%;
+    color: #616161;
+}
+
+.customized-box .customized-content .form-control-ele {
+    float: left;
+    width: 202px;
+    height: 100%;
+}
+
+.customized-box .customized-content .form-control-ele.atm-region{
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.customized-box .customized-content select,
+.customized-box .customized-content input {
+    border: 1px solid #ebebeb;
+    height: 30px;
+    width: 202px;
+    padding: 0 8px;
+}
+
+
+.customized-box .customized-content .form-control-ele input{
+    width: 184px;
+}

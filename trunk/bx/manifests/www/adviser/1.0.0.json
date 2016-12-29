@@ -1,0 +1,67 @@
+{
+  "res": {
+    "www/adviser/1.0.0:common.css": {
+      "uri": "/www/adviser/1.0.0/src/common_d41d8cd.css",
+      "type": "css",
+      "pkg": "www/adviser/1.0.0:p0"
+    },
+    "www/adviser/1.0.0:common": {
+      "uri": "/www/adviser/1.0.0/src/common_754857e.js",
+      "type": "js",
+      "deps": [
+        "www/common/1.0.0:common",
+        "www/adviser/1.0.0:common.css"
+      ],
+      "pkg": "www/adviser/1.0.0:p1"
+    },
+    "www/adviser/1.0.0:detail.css": {
+      "uri": "/www/adviser/1.0.0/src/detail_cfbfd48.css",
+      "type": "css"
+    },
+    "www/adviser/1.0.0:detail": {
+      "uri": "/www/adviser/1.0.0/src/detail_200055f.js",
+      "type": "js",
+      "deps": [
+        "www/adviser/1.0.0:common",
+        "www/adviser/1.0.0:detail.css"
+      ]
+    },
+    "www/adviser/1.0.0:index.css": {
+      "uri": "/www/adviser/1.0.0/src/index_7e6d5a8.css",
+      "type": "css",
+      "pkg": "www/adviser/1.0.0:p0"
+    },
+    "www/adviser/1.0.0:index": {
+      "uri": "/www/adviser/1.0.0/src/index_1b39eef.js",
+      "type": "js",
+      "deps": [
+        "www/adviser/1.0.0:common",
+        "www/adviser/1.0.0:index.css"
+      ],
+      "pkg": "www/adviser/1.0.0:p1"
+    }
+  },
+  "pkg": {
+    "www/adviser/1.0.0:p0": {
+      "uri": "/www/adviser/1.0.0/pkg/adviser_506d85f.css",
+      "type": "css",
+      "has": [
+        "www/adviser/1.0.0:common.css",
+        "www/adviser/1.0.0:index.css"
+      ]
+    },
+    "www/adviser/1.0.0:p1": {
+      "uri": "/www/adviser/1.0.0/pkg/adviser_f4ea0a5.js",
+      "type": "js",
+      "has": [
+        "www/adviser/1.0.0:common",
+        "www/adviser/1.0.0:index"
+      ],
+      "deps": [
+        "www/common/1.0.0:common",
+        "www/adviser/1.0.0:common.css",
+        "www/adviser/1.0.0:index.css"
+      ]
+    }
+  }
+}

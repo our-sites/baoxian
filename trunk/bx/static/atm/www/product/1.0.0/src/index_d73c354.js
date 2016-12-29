@@ -1,0 +1,1 @@
+define("www/product/1.0.0:index",["www/product/1.0.0:common"],function(w){w("www/product/1.0.0:common")});

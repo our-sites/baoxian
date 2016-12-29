@@ -1,0 +1,1 @@
+define("www/adviser/1.0.0:index",["www/adviser/1.0.0:common"],function(w){w("www/adviser/1.0.0:common")});

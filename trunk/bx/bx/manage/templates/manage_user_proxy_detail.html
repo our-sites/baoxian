@@ -1,0 +1,202 @@
+{% extends "manage_base.html" %}
+{% block style %}
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            background: #f7f7f7;
+        }
+
+        .main-container {
+            padding-top: 60px;
+            font-family: "microsoft yahei", arial, sans serif;
+            background: #fff;
+            min-height: 100%;
+            box-sizing: border-box;
+        }
+
+        .col-md-10,
+        .col-md-12,
+        .col-md-2 {
+            padding: 8px 15px;
+        }
+
+        .btn-primary {
+            width: 120px;
+        }
+
+        .hd {
+            padding: 6px 0 6px 10px;
+            border-left: 2px solid #337ab7;
+            margin-bottom: 20px;
+        }
+    </style>
+{% endblock %}
+{% block title %}投保人详情{% endblock %}
+{% block content %}
+    <div class="container main-container">
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="hd">投保人详情</h3>
+            </div>
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-2">
+                <a href="/manage/user/proxy/resetpwd/{{ myuser.uid }}.html" role="button" class="btn btn-primary" style="float: right;margin-top: 30px;">密码重置</a>
+            </div>
+        </div>
+        <div class="row">
+
+        <table class="table">
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
+            <tbody
+            ><tr>
+                <th style="width:40%;">选项</th>
+                <th>内容</th>
+            </tr>
+            <tr>
+                <td>用户名</td>
+                <td>{{ myuser.username }}</td>
+            </tr>
+            <tr>
+                <td>头像</td>
+                <td>
+                    {% if myuser.imgurl %}<img src="{{ myuser.imgurl.url|safe  }}" style="width: 130px;height: 130px">{% else %}<label class="label label-warning">暂无</label>{% endif %}
+                  <div class="form-group">
+    <label for="inputfile">选择新图片</label>
+    <input type="file" id="inputfile" name="img">
+        </div>
+                </td>
+            </tr>
+            <tr>
+                <td>真实姓名</td>
+                <td><input type="text" class="form-control" id="real_name" placeholder="请输入名字" value="{{ myuser.real_name }}" style="width: 200px" name="real_name"></td>
+            </tr>
+            <tr>
+                <td>状态</td>
+                <td>
+                  <label class="checkbox-inline">
+                <input type="radio" name="state" id="optionsRadios3" value="1" {% if myuser.state == 1 %}checked{% endif %}>正常
+              </label>
+              <label class="checkbox-inline">
+                <input type="radio" name="state" id="optionsRadios4" value="2" {% if myuser.state != 1 %}checked{% endif %}>禁用
+              </label>
+                </td>
+            </tr>
+            <tr>
+                <td>手机号</td>
+                <td>{{ myuser.phone }}</td>
+            </tr>
+            <tr>
+                <td>电话号</td>
+                <td><input type="text" class="form-control" id="tel"  value="{{ myuser.tel }}" style="width: 200px" name="tel"></td>
+            </tr>
+            <tr>
+                <td>邮箱</td>
+                <td><input type="text" class="form-control" id="email"  value="{{ myuser.email }}" style="width: 200px" name="email"></td>
+            </tr>
+            <tr>
+                <td>QQ</td>
+                <td><input type="text" class="form-control" id="qq"  value="{{ myuser.qq }}" style="width: 200px" name="qq"></td>
+            </tr>
+            <tr>
+                <td>性别</td>
+                <td>
+                              <label class="checkbox-inline">
+                <input type="radio" name="sex" id="optionsRadiosfds" value="2" {% if myuser.sex == 0 %}checked{% endif %}>未知
+              </label>
+                                     <label class="checkbox-inline">
+                <input type="radio" name="sex" id="optionsRadiosfds" value="1" {% if myuser.sex == 1 %}checked{% endif %}>男
+              </label>
+              <label class="checkbox-inline">
+                <input type="radio" name="sex" id="optionsRadiosfds" value="2" {% if myuser.sex == 2 %}checked{% endif %}>女
+              </label>
+                </td>
+            </tr>
+            <tr>
+                <td>生日</td>
+                <td>{{ myuser.birthday }}</td>
+            </tr>
+            <tr>
+                <td>IP</td>
+                <td>{{ myuser.ip }}</td>
+            </tr>
+            <tr>
+                <td>省份</td>
+                <td>{{ myuser.province_info }}</td>
+            </tr>
+            <tr>
+                <td>城市</td>
+                <td>{{ myuser.city_info }}</td>
+            </tr>
+            <tr>
+                <td>创建时间</td>
+                <td>{{ myuser.datetime }}</td>
+            </tr>
+            <tr>
+                <td>职位</td>
+                <td>{{ myuser.xx }}</td>
+            </tr>
+            <tr>
+                <td>所属保险公司</td>
+                <td><select class="form-control" name="cid" style="width: 200px">
+                    <option value="0">无</option>
+                    {% for i in allcompany %}
+                        <option value="{{ i.cid }}" {% if myprofile %}{% if myprofile.cid == i.cid %}selected{% endif %}{% endif %}>{{ i.shortname }}</option>
+                    {% endfor %}
+
+                </select></td>
+            </tr>
+            <tr>
+                <td>微信号</td>
+                <td><input type="text" class="form-control" id="fdsfdddscdf"  value="{{ myprofile.weixin }}" style="width: 200px" name="weixin"></td>
+            </tr>
+            <tr>
+                <td>个人简介</td>
+                <td><textarea type="text" class="form-control" id="dvdaer"   style="width: 400px" name="my_ad" >{% if myprofile %}{{ myprofile.my_ad }}{% endif %}</textarea></td>
+            </tr>
+            <tr>
+                <td>资格证编号</td>
+                <td><input type="text" class="form-control" id="fdsfdsc"  value="{% if myprofile %}{{ myprofile.certifi_num }}{% endif %}" style="width: 200px" name="certifi_num">
+                </td>
+            </tr>
+            <tr>
+                <td>执业证编号</td>
+                <td><input type="text" class="form-control" id="fdsfddsc"  value="{% if myprofile %}{{ myprofile.practice_num }}{% endif %}" style="width: 320px" name="practice_num"></td>
+            </tr>
+                        <tr>
+                <td>元信息</td>
+                <td>{% if myprofile %}<label class="label label-info">{{ myprofile.meta }}</label>{% endif %}</td>
+            </tr>
+            {% if myprofile.certifi_status in  status_range %}
+                        <tr>
+                <td>认证状态</td>
+                <td>
+                    <label class="checkbox-inline">
+                        <input type="radio" name="certifi_status" id="optionsRadifdosfds" value="1" {% if myprofile.certifi_status == 1 %}checked{% endif %}>待审核
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="radio" name="certifi_status" id="optionsRadiosfdsdfds" value="2" {% if myprofile.certifi_status == 2 %}checked{% endif %}>审核通过
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="radio" name="certifi_status" id="optionsRadiosfdsdfds" value="3" {% if myprofile.certifi_status == 3 %}checked{% endif %}>拘审
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>认证通知</td>
+                <td><input type="text" class="form-control" id="fdsfddscdf"  value="{{ myprofile.certifi_message }}" style="width: 300px" name="certifi_message"></td>
+            </tr>
+            {% endif %}
+                        <tr>
+                <td>操作</td>
+                <td><button type="submit" class="btn btn-primary btn-sm">提交</button></td>
+            </tr>
+        </tbody>
+</form>
+        </table>
+        </div>
+    </div>
+{% endblock %}

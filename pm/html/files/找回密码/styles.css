@@ -1,0 +1,143 @@
+﻿body {
+  margin:0px;
+  background-image:none;
+  position:static;
+  left:auto;
+  width:1248px;
+  margin-left:0;
+  margin-right:0;
+  text-align:left;
+}
+#base {
+  position:absolute;
+  z-index:0;
+}
+#u0 {
+  position:absolute;
+  left:-62px;
+  top:610px;
+  width:1312px;
+  height:502px;
+}
+#u0_img {
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:1312px;
+  height:502px;
+}
+#u1 {
+  position:absolute;
+  left:2px;
+  top:243px;
+  width:1308px;
+  visibility:hidden;
+  word-wrap:break-word;
+}
+#u2 {
+  position:absolute;
+  left:58px;
+  top:40px;
+  width:356px;
+  height:71px;
+}
+#u2_img {
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:356px;
+  height:71px;
+}
+#u3 {
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:356px;
+  white-space:nowrap;
+}
+#u4 {
+  position:absolute;
+  left:310px;
+  top:378px;
+  width:200px;
+  height:25px;
+}
+#u4_input {
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:200px;
+  height:25px;
+  font-family:'ArialMT', 'Arial';
+  font-weight:400;
+  font-style:normal;
+  font-size:13px;
+  text-decoration:none;
+  color:#000000;
+  text-align:left;
+}
+#u5 {
+  position:absolute;
+  left:-48px;
+  top:119px;
+  width:1358px;
+  height:543px;
+}
+#u5_img {
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:1358px;
+  height:543px;
+}
+#u6 {
+  position:absolute;
+  left:2px;
+  top:264px;
+  width:1354px;
+  visibility:hidden;
+  word-wrap:break-word;
+}
+#u7 {
+  position:absolute;
+  left:200px;
+  top:390px;
+  width:439px;
+  height:73px;
+}
+#u7_img {
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:439px;
+  height:73px;
+}
+#u8 {
+  position:absolute;
+  left:2px;
+  top:28px;
+  width:435px;
+  visibility:hidden;
+  word-wrap:break-word;
+}
+#u9 {
+  position:absolute;
+  left:250px;
+  top:848px;
+  width:200px;
+  height:25px;
+}
+#u9_input {
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:200px;
+  height:25px;
+  font-family:'ArialMT', 'Arial';
+  font-weight:400;
+  font-style:normal;
+  font-size:13px;
+  text-decoration:none;
+  color:#000000;
+  text-align:left;
+}

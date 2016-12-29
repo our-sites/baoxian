@@ -1,0 +1,72 @@
+{
+  "res": {
+    "www/ask/1.0.0:common.css": {
+      "uri": "/www/ask/1.0.0/src/common.css",
+      "type": "css",
+      "pkg": "www/ask/1.0.0:p0"
+    },
+    "www/ask/1.0.0:common": {
+      "uri": "/www/ask/1.0.0/src/common.js",
+      "type": "js",
+      "deps": [
+        "www/common/1.0.0:common",
+        "com/global/1.0.0:dollar",
+        "com/global/1.0.0:validator",
+        "www/ask/1.0.0:common.css"
+      ],
+      "pkg": "www/ask/1.0.0:p1"
+    },
+    "www/ask/1.0.0:detail.css": {
+      "uri": "/www/ask/1.0.0/src/detail.css",
+      "type": "css"
+    },
+    "www/ask/1.0.0:detail": {
+      "uri": "/www/ask/1.0.0/src/detail.js",
+      "type": "js",
+      "deps": [
+        "com/global/1.0.0:dollar",
+        "www/ask/1.0.0:common",
+        "www/ask/1.0.0:detail.css"
+      ]
+    },
+    "www/ask/1.0.0:list.css": {
+      "uri": "/www/ask/1.0.0/src/list.css",
+      "type": "css",
+      "pkg": "www/ask/1.0.0:p0"
+    },
+    "www/ask/1.0.0:list": {
+      "uri": "/www/ask/1.0.0/src/list.js",
+      "type": "js",
+      "deps": [
+        "www/ask/1.0.0:common",
+        "www/ask/1.0.0:list.css"
+      ],
+      "pkg": "www/ask/1.0.0:p1"
+    }
+  },
+  "pkg": {
+    "www/ask/1.0.0:p0": {
+      "uri": "/www/ask/1.0.0/pkg/ask.css",
+      "type": "css",
+      "has": [
+        "www/ask/1.0.0:common.css",
+        "www/ask/1.0.0:list.css"
+      ]
+    },
+    "www/ask/1.0.0:p1": {
+      "uri": "/www/ask/1.0.0/pkg/ask.js",
+      "type": "js",
+      "has": [
+        "www/ask/1.0.0:common",
+        "www/ask/1.0.0:list"
+      ],
+      "deps": [
+        "www/common/1.0.0:common",
+        "com/global/1.0.0:dollar",
+        "com/global/1.0.0:validator",
+        "www/ask/1.0.0:common.css",
+        "www/ask/1.0.0:list.css"
+      ]
+    }
+  }
+}

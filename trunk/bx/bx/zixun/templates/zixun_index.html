@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+{% load atm %}
+{% block css %}
+    {% atmcss www/info:index %}
+{% endblock %}
+{% block content %}
+    <div id="informationList" >
+    <div class="grid clf">
+        <div class="left">
+            <h3 class="clf">
+                <b>保险百科</b>
+                <a class="color" href="http://192.168.12.48:2015/files/bx/www/info/1.0.0/html/index.html">更多</a>
+            </h3>
+        <div class="information-list">
+
+            {% for i in baike_info %}
+{#            <div class="information-list-item">#}
+{#                <h4><a href="/zixun/detail/{{ i.zid }}.html" class="color">{{ i.title }}</a></h4>#}
+{#                <p class="info">#}
+{#{{   i.get_simple_content|slice:":100" }}                </p>#}
+{#                <p class="more">#}
+{#                    <span class="time">{{ i.get_date }}</span>#}
+{#                    <span class="author">来源：{{ i.writer }}</span>#}
+{#                </p>#}
+{#            </div>#}
+                <div class="information-list-item">
+                        <h4 class="clf">
+                            <a href="/zixun/detail/{{ i.zid }}.html" class="color">{{ i.title }}</a>
+                            <div class="more">
+                                <span class="time">{{ i.get_date }}</span>
+                                <span class="author">来源：{{ i.writer }}</span>
+                            </div>
+                        </h4>
+                        <p class="info">
+                            {{   i.get_simple_content|slice:":100" }}
+                        </p>
+
+                    </div>
+            {% endfor %}
+        </div>
+        </div>
+        <div>
+            <h3 class="clf">
+                <b>社会案例</b>
+                <a class="color" href="http://192.168.12.48:2015/files/bx/www/info/1.0.0/html/index.html">更多</a>
+            </h3>
+        <div class="information-list">
+            {% for i in anli_info %}
+                <div class="information-list-item">
+                        <h4 class="clf">
+                            <a href="/zixun/detail/{{ i.zid }}.html" class="color">{{ i.title }}</a>
+                            <div class="more">
+                                <span class="time">{{ i.get_date }}</span>
+                                <span class="author">来源：{{ i.writer }}</span>
+                            </div>
+                        </h4>
+                        <p class="info">
+                            {{   i.get_simple_content|slice:":100" }}
+                        </p>
+
+                    </div>
+            {% endfor %}
+</div>
+        </div>
+
+        <div class="left">
+            <h3 class="clf">
+                <b>保险规划</b>
+                <a class="color" href="http://192.168.12.48:2015/files/bx/www/info/1.0.0/html/index.html">更多</a>
+            </h3>
+<div class="information-list">
+            {% for i in guahua_info %}
+                <div class="information-list-item">
+                        <h4 class="clf">
+                            <a href="/zixun/detail/{{ i.zid }}.html" class="color">{{ i.title }}</a>
+                            <div class="more">
+                                <span class="time">{{ i.get_date }}</span>
+                                <span class="author">来源：{{ i.writer }}</span>
+                            </div>
+                        </h4>
+                        <p class="info">
+                            {{   i.get_simple_content|slice:":100" }}
+                        </p>
+
+                    </div>
+            {% endfor %}
+</div>
+        </div>
+        <div>
+            <h3 class="clf">
+                <b>保险新闻</b>
+                <a class="color" href="http://192.168.12.48:2015/files/bx/www/info/1.0.0/html/index.html">更多</a>
+            </h3>
+        <div class="information-list">
+            {% for i in xinwen_info %}
+                <div class="information-list-item">
+                        <h4 class="clf">
+                            <a href="/zixun/detail/{{ i.zid }}.html" class="color">{{ i.title }}</a>
+                            <div class="more">
+                                <span class="time">{{ i.get_date }}</span>
+                                <span class="author">来源：{{ i.writer }}</span>
+                            </div>
+                        </h4>
+                        <p class="info">
+                            {{   i.get_simple_content|slice:":100" }}
+                        </p>
+
+                    </div>
+            {% endfor %}
+        </div>
+        </div>
+
+        <div class="left">
+            <h3 class="clf">
+                <b>监管动态</b>
+                <a class="color" href="http://192.168.12.48:2015/files/bx/www/info/1.0.0/html/index.html">更多</a>
+            </h3>
+<div class="information-list">
+            {% for i in dongtai_info %}
+                <div class="information-list-item">
+                        <h4 class="clf">
+                            <a href="/zixun/detail/{{ i.zid }}.html" class="color">{{ i.title }}</a>
+                            <div class="more">
+                                <span class="time">{{ i.get_date }}</span>
+                                <span class="author">来源：{{ i.writer }}</span>
+                            </div>
+                        </h4>
+                        <p class="info">
+                            {{   i.get_simple_content|slice:":100" }}
+                        </p>
+
+                    </div>
+            {% endfor %}
+</div>
+        </div>
+        <div>
+            <h3 class="clf">
+                <b>保险词条</b>
+                <a class="color" href="http://192.168.12.48:2015/files/bx/www/info/1.0.0/html/index.html">更多</a>
+            </h3>
+        <div class="information-list">
+            {% for i in citiao_info %}
+                <div class="information-list-item">
+                        <h4 class="clf">
+                            <a href="/zixun/detail/{{ i.zid }}.html" class="color">{{ i.title }}</a>
+                            <div class="more">
+                                <span class="time">{{ i.get_date }}</span>
+                                <span class="author">来源：{{ i.writer }}</span>
+                            </div>
+                        </h4>
+                        <p class="info">
+                            {{   i.get_simple_content|slice:":100" }}
+                        </p>
+
+                    </div>
+            {% endfor %}
+        </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
+{% block js %}
+    {% atmjs www/info:index %}
+{% endblock %}

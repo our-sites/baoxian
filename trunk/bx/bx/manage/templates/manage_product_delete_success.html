@@ -1,0 +1,64 @@
+{% extends "manage_base.html" %}
+{% block style %}
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            background: #f7f7f7;
+        }
+
+        .main-container {
+            padding-top: 60px;
+            font-family: "microsoft yahei", arial, sans serif;
+            background: #fff;
+            min-height: 100%;
+            box-sizing: border-box;
+        }
+
+        .col-md-10,
+        .col-md-12,
+        .col-md-2 {
+            padding: 8px 15px;
+        }
+
+        .btn-primary {
+            width: 120px;
+        }
+
+        .hd {
+            padding: 6px 0 6px 10px;
+            border-left: 2px solid #337ab7;
+            margin-bottom: 20px;
+        }
+    </style>
+        <script type="text/javascript" src="/static/admin/js/jquery.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js"></script>
+<script type="text/javascript" src="/static/ckeditor/jquery.min.js"></script>
+<script type="text/javascript" src="/static/ckeditor/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/static/ckeditor/ckeditor-init.js"></script>
+{% endblock %}
+{% block content %}
+    <div class="container main-container">
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="hd">删除产品</h3>
+            </div>
+            <div   class="col-md-offset-4 col-md-2" style="padding-top: 25px">
+                <a href="/manage/product/all/" class="btn btn-primary" >查看全部</a>
+            </div>
+        </div>
+        {% if not error_msg %}
+        <div class="row ">
+                <pre><span class="text-info">删除产品{{ pro_name }}成功!</span> </pre>
+        </div>
+    {% else %}
+        <div class="row ">
+                <pre><span class="text-info">删除产品失败! 原因：{{ error_msg }}</span> </pre>
+        </div>
+    {% endif %}
+
+    </div>
+{% endblock %}

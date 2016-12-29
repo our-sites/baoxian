@@ -1,0 +1,53 @@
+{
+  "res": {
+    "www/common/1.0.0:crubms.css": {
+      "uri": "/www/common/1.0.0/src/crubms.css",
+      "type": "css"
+    },
+    "www/common/1.0.0:custom-box.css": {
+      "uri": "/www/common/1.0.0/src/custom-box.css",
+      "type": "css"
+    },
+    "www/common/1.0.0:customized-box.css": {
+      "uri": "/www/common/1.0.0/src/customized-box.css",
+      "type": "css"
+    },
+    "www/common/1.0.0:lively-advisers.css": {
+      "uri": "/www/common/1.0.0/src/lively-advisers.css",
+      "type": "css"
+    },
+    "www/common/1.0.0:warmheart-advisers.css": {
+      "uri": "/www/common/1.0.0/src/warmheart-advisers.css",
+      "type": "css"
+    },
+    "www/common/1.0.0:underwriter-condition.css": {
+      "uri": "/www/common/1.0.0/src/underwriter-condition.css",
+      "type": "css"
+    },
+    "www/common/1.0.0:related-products.css": {
+      "uri": "/www/common/1.0.0/src/related-products.css",
+      "type": "css"
+    },
+    "www/common/1.0.0:related-faqs.css": {
+      "uri": "/www/common/1.0.0/src/related-faqs.css",
+      "type": "css"
+    },
+    "www/common/1.0.0:common.css": {
+      "uri": "/www/common/1.0.0/src/common.css",
+      "type": "css"
+    },
+    "www/common/1.0.0:common": {
+      "uri": "/www/common/1.0.0/src/common.js",
+      "type": "js",
+      "deps": [
+        "com/global/1.0.0:global",
+        "com/global/1.0.0:dollar",
+        "com/tabs/1.0.0:tabs",
+        "com/global/1.0.0:region",
+        "com/global/1.0.0:validator",
+        "www/common/1.0.0:common.css"
+      ]
+    }
+  },
+  "pkg": {}
+}

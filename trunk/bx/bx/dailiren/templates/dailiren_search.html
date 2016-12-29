@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% block title %}
+    {{ info.pro_name }}保险代理人_保险管家
+{% endblock %}
+{% load atm %}
+{% load math %}
+{% load range %}
+{% load pinyin %}
+{% block css %}
+    {% atmcss www/adviser:index %}
+{% endblock %}
+{% block content %}
+<div id="adviserList">
+<div class="grid clf">
+    <!--面包屑导航-->
+    <div class="bx-crubms">
+        <a href="">保险管家</a> &gt;
+        <a href="">保险代理人</a>
+    </div>
+
+    <!-- 条件筛选-->
+    <div class="adviser-condition">
+        <!--保险公司-->
+        <div class="company clf">
+            <div class="fl">
+                保险公司：
+            </div>
+            <div class="content letter-filter">
+                    <div class="grapheme-box">
+                        <a href="/dailiren/search/0-0/" class="single {% if c_id == 0 %}active{% endif %}">全部</a>
+                        <div class="grapheme">
+                            {% for tt in "ABCDEFGHIGKLMNOPQRSTUVWXYZ"|make_list %}
+                            <a href class="single-grapheme" data-key="{{ tt }}">{{ tt }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="sub-content">
+                        {% for i in company_list %}
+                        <a data-belong="{{ i.shortname|first_letter|upper }}" href="/dailiren/search/0-{{ i.cid }}/" class="single {% if c_id == i.cid %}active{% endif %}">{{ i.shortname }}</a>
+                        {% endfor %}
+                    </div>
+
+                </div>
+        </div>
+    </div>
+    <!--已选条件-->
+    <div class="chose-condition clf">
+        <div class="fl">
+            条件：
+        </div>
+    </div>
+
+    <div class="clf">
+        <div class="fl">
+            <!--筛选结果-->
+            <div class="adviser-list clf">
+                {% for i in info %}
+                <div class="adviser-item {% if forloop.counter|mod:3 == 0 %}right{% endif %}">
+                {% with myuser=i.get_user comname=i.get_comname %}
+                    <div class="adviser-item-resume clf">
+                        <div class="adviser-item-resume-img">
+                            <a href="/dailiren/detail/{{ myuser.uid }}.html"><img src="{{ myuser.imgurl.url }}"></a>
+                        </div>
+                        <div class="adviser-item-resume-word">
+                            <a href="/dailiren/detail/{{ myuser.uid }}.html"><h4>{{ myuser.real_name }}</h4></a>
+                            <p>
+                                <span class="area">{{ i.get_city_info }}</span>
+                                <span class="company">{{ comname }}</span>
+                            </p>
+                            <p>
+                                从业时间：x年
+                            </p>
+                            <p>
+                                回答：{{ i.ans_num }}条
+                            </p>
+                        </div>
+                    </div>
+                    <div class="adviser-item-detail">
+                        {% if i.my_ad %}{{ i.my_ad }}{% else %}现隶属于{{ comname }}。{% endif %}
+                    </div>
+                    <div class="adviser-item-speciality">
+                        <p>擅长险种：</p>
+                        <p>
+                            <a href="" class="color">人寿险</a>
+                            <a href="" class="color">重疾险</a>
+                            <a href="" class="color">健康险</a>
+                            <a href="" class="color">养老险</a>
+                        </p>
+                    </div>
+                    <a href="/ask/" class="adviser-item-consult">我要咨询</a>
+                {% endwith %}
+                </div>
+                {% endfor %}
+            </div>
+            <!--翻页-->
+            {% if allinfo.paginator.num_pages >= 2 %}
+                <div class="bx-list-flip clf">
+                    {% if allinfo.has_previous %}
+                    <a href="/dailiren/search/{{ city_id }}-{{ c_id }}/{{ allinfo.previous_page_number }}.html" class="bx-list-flip-btn prev">&lt;</a>
+                        {% endif %}
+                    {% for t in allinfo.number|near:3 %}
+                        {% if t > 0 and t <= allinfo.paginator.num_pages %}
+                    <a href="/dailiren/search/{{ city_id }}-{{ c_id }}/{{ t }}.html" class="bx-list-flip-btn number {% if t == allinfo.number %}active{% endif %}">{{ t }}</a>
+                        {% endif %}
+                    {% endfor %}
+                {% if allinfo.has_next %}
+                    <a href="/dailiren/search/{{ city_id }}-{{ c_id }}/{{ allinfo.next_page_number }}.html" class="bx-list-flip-btn next">&gt;</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+        </div>
+
+
+        <div class="fr">
+            <!--保险精英-->
+            {% include "dingzhi_common.html" %}
+
+            <!--保险人动态-->
+
+        </div>
+
+    </div>
+
+
+</div>
+    </div>
+{% endblock %}
+{% block js %}
+    {% atmjs www/adviser:index %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{
+  "stable": false,
+  "exports": {
+    "list": {},
+	"detail": {}
+  },
+  "packs": {
+	  "/pkg/ask.js": [
+		  "/src/common.js",
+		  "/src/list.js"
+	  ],
+	  "/pkg/ask.css": [
+		  "/src/common.css",
+		  "/src/list.css"
+	  ]
+  }
+}

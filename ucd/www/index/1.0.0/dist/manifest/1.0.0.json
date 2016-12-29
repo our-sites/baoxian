@@ -1,0 +1,45 @@
+{
+  "res": {
+    "www/index/1.0.0:module/common.css": {
+      "uri": "/www/index/1.0.0/src/module/common.css",
+      "type": "css"
+    },
+    "www/index/1.0.0:module/adviser.css": {
+      "uri": "/www/index/1.0.0/src/module/adviser.css",
+      "type": "css"
+    },
+    "www/index/1.0.0:module/demand.css": {
+      "uri": "/www/index/1.0.0/src/module/demand.css",
+      "type": "css"
+    },
+    "www/index/1.0.0:module/news.css": {
+      "uri": "/www/index/1.0.0/src/module/news.css",
+      "type": "css"
+    },
+    "www/index/1.0.0:module/ask.css": {
+      "uri": "/www/index/1.0.0/src/module/ask.css",
+      "type": "css"
+    },
+    "www/index/1.0.0:module/product.css": {
+      "uri": "/www/index/1.0.0/src/module/product.css",
+      "type": "css"
+    },
+    "www/index/1.0.0:module/banner-menu.css": {
+      "uri": "/www/index/1.0.0/src/module/banner-menu.css",
+      "type": "css"
+    },
+    "www/index/1.0.0:index.css": {
+      "uri": "/www/index/1.0.0/src/index.css",
+      "type": "css"
+    },
+    "www/index/1.0.0:index": {
+      "uri": "/www/index/1.0.0/src/index.js",
+      "type": "js",
+      "deps": [
+        "www/common/1.0.0:common",
+        "www/index/1.0.0:index.css"
+      ]
+    }
+  },
+  "pkg": {}
+}

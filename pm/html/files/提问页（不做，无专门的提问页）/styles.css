@@ -1,0 +1,37 @@
+﻿body {
+  margin:0px;
+  background-image:none;
+  position:static;
+  left:auto;
+  width:940px;
+  margin-left:0;
+  margin-right:0;
+  text-align:left;
+}
+#base {
+  position:absolute;
+  z-index:0;
+}
+#u0 {
+  position:absolute;
+  left:120px;
+  top:80px;
+  width:820px;
+  height:33px;
+  font-family:'STHeitiSC-Medium', 'Heiti SC Medium', 'Heiti SC';
+  font-style:normal;
+}
+#u0_img {
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:820px;
+  height:33px;
+}
+#u1 {
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:820px;
+  word-wrap:break-word;
+}

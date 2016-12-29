@@ -1,0 +1,111 @@
+{% extends "manage_base.html" %}
+{% block style %}
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            background: #f7f7f7;
+        }
+
+        .main-container {
+            padding-top: 60px;
+            font-family: "microsoft yahei", arial, sans serif;
+            background: #fff;
+            min-height: 100%;
+            box-sizing: border-box;
+        }
+
+        .col-md-10,
+        .col-md-12,
+        .col-md-2 {
+            padding: 8px 15px;
+        }
+
+        .btn-primary {
+            width: 120px;
+        }
+
+        .hd {
+            padding: 6px 0 6px 10px;
+            border-left: 2px solid #337ab7;
+            margin-bottom: 20px;
+        }
+    </style>
+        <script type="text/javascript" src="/static/admin/js/jquery.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js"></script>
+<script type="text/javascript" src="/static/ckeditor/jquery.min.js"></script>
+<script type="text/javascript" src="/static/ckeditor/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/static/ckeditor/ckeditor-init.js"></script>
+{% endblock %}
+{% block content %}
+
+    <div class="container main-container">
+
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="hd">所有产品</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>产品名</th>
+                    <th>所属企业</th>
+                    <th>开始年龄</th>
+                    <th>结束年龄</th>
+                    <th>最低价格</th>
+                    <th>from-url</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in allinfo %}
+                    {% with star_age=i.star_age end_age=i.end_age %}
+                <tr>
+                    <td>{{ i.pid }}</td>
+                    <td>{{ i.pro_name }}</td>
+                    <td>{{ i.get_short_comname }}</td>
+                    <td>{% if star_age > 0 %}{{ i.star_age }}岁{% elif star_age < 0  %}{{ i.star_age }}天{% endif %}</td>
+                    <td>{% if end_age > 0 %}{{ i.end_age }}岁{% elif end_age < 0  %}{{ i.end_age }}天{% endif %}</td>
+                    <td>{{ i.min_price }}</td>
+                    <td>{{ i.from_url }}</td>
+                    <td><a href="/manage/product/detail/{{ i.pid }}.html">修改</a>/<a href="/product/detail/{{ i.pid }}.html" target="_blank">预览</a>
+                    /<a href="/manage/product/detail/delete/{{ i.pid }}.html" target="_blank">删除</a></td>
+                </tr>
+                    {% endwith %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% if allinfo_paginator.num_pages >= 2 %}
+        {% load range %}
+        <div class="row">
+            <div style="text-align: center">
+                <ul class="pagination">
+                    <li>
+                        <a href="{{ request.path }}?page=1">首页</a>
+                    </li>
+                    {% for i in page|near:4 %}
+                        {% if i > 0 and i <= allinfo_paginator.num_pages %}
+                    <li {% if i == page %}class="active" {% endif %}>
+                        <a href="{{ request.path }}?page={{ i }}" >{{ i }}</a>
+                    </li>{% endif %}{% endfor %}
+                {% if allinfo.has_next %}
+                    <li><a title="下一页"
+                           href="{{ request.path }}?page={{ allinfo.next_page_number }}">
+                        &gt;&gt;</a></li>{% endif %}
+                    <li>
+                        <a href="{{ request.path }}?page={{ allinfo_paginator.num_pages }}">尾页</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+     </div>
+{% endblock %}

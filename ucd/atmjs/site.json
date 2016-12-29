@@ -1,0 +1,20 @@
+{
+  "stable": true,
+  "debug": {
+    "param": "debugId",
+    "importCss": false
+  },
+  "loaderId": "parser:parser",
+  "alias": {
+    "jquery": "jquery:jquery",
+    "$": "com/global:dollar",
+    "global": "com/global:global",
+    "validator": "com/global:validator",
+    "selects": "com/global:selects",
+    "region": "com/global:region",
+    "toastr": "toastr:toastr"
+  },
+  "formatTag": true,
+  "async": false,
+  "together": false
+}

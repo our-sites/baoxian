@@ -1,0 +1,43 @@
+{
+  "res": {
+    "www/product/1.0.0:common.css": {
+      "uri": "/www/product/1.0.0/src/common.css",
+      "type": "css"
+    },
+    "www/product/1.0.0:common": {
+      "uri": "/www/product/1.0.0/src/common.js",
+      "type": "js",
+      "deps": [
+        "www/common/1.0.0:common",
+        "www/product/1.0.0:common.css"
+      ]
+    },
+    "www/product/1.0.0:detail.css": {
+      "uri": "/www/product/1.0.0/src/detail.css",
+      "type": "css"
+    },
+    "www/product/1.0.0:detail": {
+      "uri": "/www/product/1.0.0/src/detail.js",
+      "type": "js",
+      "deps": [
+        "www/product/1.0.0:common",
+        "com/global/1.0.0:dollar",
+        "www/product/1.0.0:detail.css"
+      ]
+    },
+    "www/product/1.0.0:index.css": {
+      "uri": "/www/product/1.0.0/src/index.css",
+      "type": "css"
+    },
+    "www/product/1.0.0:index": {
+      "uri": "/www/product/1.0.0/src/index.js",
+      "type": "js",
+      "deps": [
+        "www/product/1.0.0:common",
+        "com/global/1.0.0:dollar",
+        "www/product/1.0.0:index.css"
+      ]
+    }
+  },
+  "pkg": {}
+}

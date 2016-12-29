@@ -1,0 +1,27 @@
+{
+  "res": {
+    "lib/jquery/1.11.3:jquery": {
+      "uri": "/lib/jquery/1.11.3/src/jquery.js",
+      "type": "js",
+      "deps": [
+        "lib/jquery/1.11.3:origin/jquery"
+      ],
+      "pkg": "lib/jquery/1.11.3:p0"
+    },
+    "lib/jquery/1.11.3:origin/jquery": {
+      "uri": "/lib/jquery/1.11.3/src/origin/jquery.js",
+      "type": "js",
+      "pkg": "lib/jquery/1.11.3:p0"
+    }
+  },
+  "pkg": {
+    "lib/jquery/1.11.3:p0": {
+      "uri": "/lib/jquery/1.11.3/pkg/jquery-1.11.3.js",
+      "type": "js",
+      "has": [
+        "lib/jquery/1.11.3:origin/jquery",
+        "lib/jquery/1.11.3:jquery"
+      ]
+    }
+  }
+}

@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{% block title %}
+    保险产品_保险管家
+{% endblock %}
+{% load atm %}
+{% load math %}
+{% load range  %}
+{% load pinyin %}
+{% block css %}
+    {% atmcss www/product:index %}
+{% endblock %}
+{% block content %}
+    <div id="productList" class="clf">
+    <div class="grid clf">
+        <!--面包屑导航-->
+        <div class="bx-crubms">
+            <a href="/">保险管家</a> &gt;
+            <a href="/product/">保险产品</a>
+        </div>
+
+        <!-- 条件筛选-->
+        <div class="product-condition">
+            <!--适合人群-->
+            <div class="people clf">
+                <div class="fl">
+                    适合人群：
+                </div>
+                <div class="content">
+                    <a href="/product/search/0-{{ cate_id }}-{{ c_id }}/" class="single {% if people_id == 0  %}active{% endif %}">全部</a>
+                    {% for i in user_type_list %}
+                    <a href="/product/search/{{ i.id }}-{{ cate_id }}-{{ c_id }}/" class="single {% if people_id == i.id %}active{% endif %}">{{ i.type_name }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+            <!--保险险种-->
+            <div class="type clf">
+                <div class="fl">
+                    保险险种：
+                </div>
+                <div class="content">
+                <a href="/product/search/{{ people_id }}-0-{{ c_id }}/{{ page }}.html" class="single {% if cate_id == 0  %}active{% endif %}">全部</a>
+                    {% for i in cate_type_list %}
+                    <a href="/product/search/{{ people_id }}-{{ i.id }}-{{ c_id }}/" class="single {% if cate_id == i.id  %}active{% endif %}">{{ i.type_name }}</a>
+                    {% endfor %}
+                </div>
+{#                <div class="fr">#}
+{#                    <a href="javascript:;" class="more">更多</a>#}
+{#                </div>#}
+            </div>
+            <!--保险公司-->
+            <div class="company clf">
+                <div class="fl">
+                    保险公司：
+                </div>
+                <div class="content letter-filter">
+                    <div class="grapheme-box">
+                        <a href="/product/search/{{ people_id }}-{{ cate_id }}-0/" class="single {% if c_id == 0 %}active{% endif %}">全部</a>
+                        <div class="grapheme">
+                            {% for tt in "ABCDEFGHIGKLMNOPQRSTUVWXYZ"|make_list %}
+                            <a href class="single-grapheme" data-key="{{ tt }}">{{ tt }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="sub-content">
+                        {% for i in company_list %}
+                        <a data-belong="{{ i.shortname|first_letter|upper }}" href="/product/search/{{ people_id }}-{{ cate_id }}-{{ i.cid }}/" class="single {% if c_id == i.cid %}active{% endif %}">{{ i.shortname }}</a>
+                        {% endfor %}
+                    </div>
+
+                </div>
+{#                <div class="fr">#}
+{#                    <a href="javascript:;" class="more">更多</a>#}
+{#                </div>#}
+            </div>
+        </div>
+        <!--已选条件-->
+        <div class="chose-condition clf">
+            <div class="fl">
+                条件：
+            </div>
+        </div>
+
+        <div class="clf">
+            <div class="fl">
+                <!--筛选结果-->
+                <div class="product-list clf">
+                    {% for i in allinfo %}
+                    <div class="product-item {% if forloop.counter|mod:3 == 0  %}right {% endif %}">
+                        <h4>{{ i.pro_name }}</h4>
+                        <ul>
+                                {% for j in i.get_pro_desc_json|slice:":3" %}
+                            <li>{{ j.0 }}</li>
+                                {% endfor %}
+                        </ul>
+                        <a href="/product/detail/{{ i.pid }}.html" class="view">查看详情</a>
+                        <dl class="clf">
+                            <dt>承保年龄</dt>
+                            <dd>{{ i.insurance_agelimit }}</dd>
+                            <dt>保险期限</dt>
+                            <dd>{{ i.insurance_timelimit }}</dd>
+                            <dt>缴费方式</dt>
+                            <dd>{{ i.insurance_paytype }}</dd>
+                            <dt>保险公司</dt>
+                            <dd>{{ i.comname }}</dd>
+                        </dl>
+                    </div>
+                    {% endfor %}
+                </div>
+                <!--翻页-->
+            {% if allinfo.paginator.num_pages >= 2 %}
+                <div class="bx-list-flip clf">
+                    {% if allinfo.has_previous %}
+                    <a href="/product/search/{{ people_id }}-{{ cate_id }}-{{ c_id }}/{{ allinfo.previous_page_number }}.html{% if keyword %}?keyword={{ keyword|urlencode }}{% endif %}" class="bx-list-flip-btn prev">&lt;</a>
+                        {% endif %}
+                    {% for t in allinfo.number|near:3 %}
+                        {% if t > 0 and t <= allinfo.paginator.num_pages %}
+                    <a href="/product/search/{{ people_id }}-{{ cate_id }}-{{ c_id }}/{{ t }}.html{% if keyword %}?keyword={{ keyword|urlencode }}{% endif %}" class="bx-list-flip-btn number {% if t == allinfo.number %}active{% endif %}">{{ t }}</a>
+                        {% endif %}
+                    {% endfor %}
+                {% if allinfo.has_next %}
+                    <a href="/product/search/{{ people_id }}-{{ cate_id }}-{{ c_id }}/{{ allinfo.next_page_number }}.html{% if keyword %}?keyword={{ keyword|urlencode }}{% endif %}" class="bx-list-flip-btn next">&gt;</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+            </div>
+
+
+            <div class="fr">
+                <!--私人定制-->
+                {% include "dingzhi_common.html" %}
+                <!--活跃顾问-->
+
+                <!-- 活跃顾问 -->
+               {% include "dailiren_common.html" %}
+            </div>
+
+        </div>
+    </div>
+    </div>
+{% endblock %}
+{% block js %}
+    {% atmjs www/product:index %}
+{% endblock %}

@@ -1,0 +1,50 @@
+/*面包屑导航*/
+@import url("./crubms.css?__inline");
+/*私人定制*/
+@import url("./custom-box.css?__inline");
+/*量身定制*/
+@import url("./customized-box.css?__inline");
+/*活跃顾问*/
+@import url("./lively-advisers.css?__inline");
+/*热心顾问  保险精英*/
+@import url("./warmheart-advisers.css?__inline");
+/*活跃顾问*/
+@import url("./underwriter-condition.css?__inline");
+/*相关产品*/
+@import url("./related-products.css?__inline");
+/*相关产品*/
+@import url("./related-faqs.css?__inline");
+
+.ask-icon {
+    float: left;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    line-height: 24px;
+    font-size: 12px;
+    color: #ffffff;
+    text-align: center;
+    background-color: #42bad0;
+    margin-right: 10px;
+}
+
+.ask-icon-big,
+.answer-icon-big {
+    float: left;
+    display: inline-block;
+    width: 56px;
+    height: 56px;
+    background: no-repeat 0 0;
+    margin-right: 20px;
+}
+
+.ask-icon-big {
+    background-image: url("./img/ask-icon-big.png");
+}
+
+.answer-icon-big {
+    background-image: url("./img/answer-icon-big.png");
+}

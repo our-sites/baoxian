@@ -1,0 +1,23 @@
+{{ atmjs.use(':index') }}
+{%include 'html/layouts/header.html' | path('www/common') %}
+
+<div id="Index">
+    {%include './module/banner及导航.html'%}
+    <div class="index-container">
+        {%include './module/保险产品.html'%}
+        {%include './module/保险问吧.html'%}
+
+        <div class="clf">
+            {%include './module/最新需求.html'%}
+            {%include './module/最新资讯.html'%}
+        </div>
+
+        {%include './module/保险顾问.html'%}
+    </div>
+
+</div>
+
+
+
+
+{%include 'html/layouts/footer.html' | path('www/common') %}

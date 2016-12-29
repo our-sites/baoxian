@@ -1,0 +1,43 @@
+<div class="customized-box">
+    <h3>量身定制</h3>
+    <div class="customized-content">
+        <form id="customized-form" class="ui-form" action="{{ 'html/data/提交成功' | uri('work/user') }}">
+            <div class="ui-form-item">
+                <div class="form-control clf">
+                    <label for="name">
+                        称呼
+                    </label>
+                    <div class="form-control-ele">
+                        <input type="text" id="name" name="name" placeholder="请填写">
+                    </div>
+                </div>
+                <div class="ui-form-explain"></div>
+            </div>
+            <div class="ui-form-item">
+                <div class="form-control clf">
+                    <label for="cellphone">
+                        手机
+                    </label>
+                    <div class="form-control-ele">
+                        <input type="text" id="cellphone" name="cellphone" placeholder="请填写">
+                    </div>
+                </div>
+                <div class="ui-form-explain"></div>
+            </div>
+            <div class="ui-form-item">
+                <div class="form-control clf">
+                    <label for="timeFrame">
+                        联系时段
+                    </label>
+                    <div class="form-control-ele">
+                        <select name="timeFrame" id="timeFrame">
+                            <option value="1">请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="ui-form-explain"></div>
+            </div>
+            <button type="submit" class="submit">提交</button>
+        </form>
+    </div>
+</div>

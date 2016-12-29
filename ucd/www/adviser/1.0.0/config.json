@@ -1,0 +1,17 @@
+{
+  "stable": false,
+  "exports": {
+    "index": {},
+	"detail": {}
+  },
+  "packs": {
+	  "/pkg/adviser.js": [
+		  "/src/common.js",
+		  "/src/index.js"
+	  ],
+	  "/pkg/adviser.css": [
+		  "/src/common.css",
+		  "/src/index.css"
+	  ]
+  }
+}

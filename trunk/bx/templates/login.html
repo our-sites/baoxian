@@ -1,0 +1,58 @@
+{% load atm %}
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <title>登录页</title>
+{% atmcss work/user:login %}
+</head>
+
+<body>
+    <div id="Login">
+        <div class="login-body clf">
+            <div class="logo">
+                <a href="/">
+                    <img src="/static/imgs/logo.png" alt="logo" width="56" height="56">
+                </a>
+            </div>
+            <div class="fl">
+                <img src="/static/imgs/login-left.jpg" alt="欢迎登录保险管家" width="320" height="320">
+            </div>
+            <div class="fr">
+                <form class="ui-form"
+                      action="/login/?next={% if next_to %}{{ next_to|urlencode }}{% endif %}{% if role %}&role={{ role }}{% endif %}" method="post">
+                    <h2>登录保险管家</h2>
+                    {% csrf_token %}
+                    <div class="ui-form-item">
+                        <input id="username" name="username" class="ui-input" placeholder="手机" type="text" />
+                        <div class="ui-form-explain"></div>
+                    </div>
+
+                    <div class="ui-form-item">
+                        <input id="password" name="password" type="password" class="ui-input" placeholder="密码" />
+                        <div class="ui-form-explain"></div>
+                    </div>
+                    <div class="clf">
+                        <label>
+                        <input type="checkbox" name="auto">
+                        自动登录
+                    </label>
+                        <div class="fr">
+                            <a href="/register/{% if role == "proxy" %}?role=proxy{% endif %}" class="color">注册保险管家账号</a> |
+                            <a href="/forgotpwd/" class="color">忘记密码？</a>
+                        </div>
+                    </div>
+
+                    <div class="ui-form-item">
+                        <button type="submit">登录</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="copyright">　© 2016 baoxianguanjia.com 豫ICP备13006688号</div>
+    </div>
+    {% atmjs work/user:login %}
+</body>
+
+</html>

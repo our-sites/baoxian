@@ -1,0 +1,1 @@
+define("www/index/1.0.0:index",["www/common/1.0.0:common"],function(n){n("www/common/1.0.0:common")});

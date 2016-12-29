@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block title %}问吧首页_保险管家{% endblock %}
+{% load atm  %}
+{% load math %}
+{% load range %}
+{% block css %}{% atmcss www/ask:list %}{% endblock %}
+{% block content %}
+    <div id="askList">
+    <div class="grid clf">
+        <!-- 面包屑 -->
+        <div class="bx-crubms">
+            <a href="/">保险管家</a> &gt;
+            <a href="/ask/">问吧</a> &gt;
+            <a >问吧列表</a>
+        </div>
+        <div class="clf">
+            <div class="ask-list-left">
+                <!--提问-->
+                <div class="ask-box clf">
+                    <div class="ask-icon">
+                        问
+                    </div>
+
+
+                    <form id="ask" class="ui-form" action="/ask/" method="post">
+                        {% csrf_token %}
+                        <div class="ui-form-item">
+                            <textarea id="content" name="content"
+                                      placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少...">{{ last_ask_info }}</textarea>
+                            <div class="ui-form-explain"></div>
+                        </div>
+                        <div class="float-layer">
+                            <span class="current-length">0</span>/<span class="total-length">200</span>
+                        </div>
+
+                        <p>
+                            <input type="submit" value="提交回答" class="ask-btn"/>
+{#                            <i class="fa fa-exclamation-circle"></i>#}
+{#                            普通代理人每天最多只能回复一个保险疑问，<a href="" class="color">开通钻石</a>获取不限量权限#}
+                        </p>
+                    </form>
+{#                    <form class="ui-form" action="/ask/"  id="ask">#}
+{#                        <textarea#}
+{#                                placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少..."#}
+{#                                  name="content" maxlength="200" required="required" id="content">{{ last_ask_info }}</textarea>#}
+{#                        {% csrf_token %}#}
+{#                        <div class="float-layer">0/200</div>#}
+{#                        <p>#}
+{#                            <input value="提交问题"  type="submit"  class="ask-btn" >#}
+{#                            <span>已解决保险疑问  <b class="q-number">{{ ask_paginator.count }}条</b></span>#}
+{#                        </p>#}
+{#                    </form>#}
+
+                </div>
+
+                <!-- 列表-->
+                {% for i in allinfo %}
+                <div class="ask-list-item">
+                    <div class="q-box clf">
+                        <div class="ask-icon">
+                            问
+                        </div>
+                        <div class="fl">
+                            <h4>
+                                <a href="/ask/detail/{{ i.askid }}.html" class="color">{{ i.ask_content|slice:":30" }}{% if i.ask_content|length > 50 %}..{% endif %}</a></h4>
+                            <p>
+                                问题来自： {{ i.get_date }} {{ i.get_area_info }}
+                            </p>
+                        </div>
+                        <div class="answer-number">
+                            <span>{{ i.get_answer_count }}</span>条回答
+                        </div>
+                    </div>
+                    {% with ans=i.get_first_ans %}
+                        {% if ans %}
+                            {% with ans_user=ans.get_user ans_user_profile=ans.get_user_profile %}
+                    <div class="result-box clf">
+                        <img class="result-author-avatar" src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" />
+                        <div class="fl">
+                            <p class="result-info">
+                                <a href="" class="result-info-company">{{ ans_user_profile.get_short_comname }}</a>
+                                <a href="" class="result-info-name">
+                                    {% if  ans_user.real_name %}{{ ans_user.real_name }}
+                                    {% else %}
+                                        {{ ans_user.username|slice:":-2" }}**
+                                    {% endif %}</a>
+                                <a href="" class="result-info-level"></a>
+                                <a href="" class="result-info-authentication"></a>
+                                <span class="result-info-answer">{{ ans_user_profile.ans_num }}条回答</span>
+                                <span class="result-info-thank">被感谢xx次</span>
+                                <span class="result-info-date"></span>
+                            </p>
+                            <div class="result-content">
+                                {{ ans.ans_content }}
+                            </div>
+                        </div>
+                    </div>
+                            {% endwith %}
+                        {% endif %}
+                {% endwith %}
+
+                </div>
+            {% endfor %}
+
+                <!--翻页-->
+            {% if allinfo.paginator.num_pages >= 2 %}
+                <div class="bx-list-flip clf">
+                    {% if allinfo.has_previous %}
+                    <a href="/ask/{{ allinfo.previous_page_number }}/" class="bx-list-flip-btn prev">&lt;</a>
+                        {% endif %}
+                    {% for t in allinfo.number|near:3 %}
+                        {% if t > 0 and t <= allinfo.paginator.num_pages %}
+                    <a href="/ask/{{ t }}/" class="bx-list-flip-btn number {% if t == allinfo.number %}active{% endif %}">{{ t }}</a>
+                        {% endif %}
+                    {% endfor %}
+                {% if allinfo.has_next %}
+                    <a href="/ask/{{ allinfo.next_page_number }}/" class="bx-list-flip-btn next">&gt;</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+            </div>
+            <div class="fr">
+                {% include "dingzhi_common.html" %}
+                <!-- 活跃顾问 -->
+                {% include "dailiren_common.html" %}
+            </div>
+        </div>
+
+    </div>
+    </div>
+{% endblock %}
+{% block js %}
+    {% atmjs www/ask:list %}
+{% endblock %}
