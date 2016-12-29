@@ -80,7 +80,7 @@ define('www/common/1.0.0:common', ['com/global/1.0.0:global', 'com/global/1.0.0:
   if ($fixedArea.length) {
       var top = $fixedArea.offset().top;
       var $window = $(window);
-      $window.on('ready scroll resize', function () {
+      $window.on('load scroll resize', function () {
           var scrollTop = $window.scrollTop();
           if (scrollTop - top > 1) {
               $fixedArea.addClass('fn-fixed');
