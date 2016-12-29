@@ -48,3 +48,8 @@
 .answer-icon-big {
     background-image: url("./img/answer-icon-big.png");
 }
+
+.fn-fixed {
+    position: fixed !important;
+    top: 2px;
+}
