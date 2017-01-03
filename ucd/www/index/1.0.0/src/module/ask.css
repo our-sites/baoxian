@@ -1,17 +1,23 @@
-.index-ask .left{
+#Index .index-ask .left {
     background: url("../img/index-ask-left-bg.png") repeat-x 0 0;
 }
-.index-ask .left .feature{
+
+#Index .index-ask .left .feature {
     height: 153px;
     background-image: url('../img/index-ask-left-feature.png');
 }
-#Index .index-ask .left .links-btn{
+
+#Index .index-ask .left .links-btn {
     display: block;
     color: #ffffff;
-    background-color: #91cc9a;
+    background-color: #93a9b2;
 }
 
-.index-ask .right{
+#Index .index-ask .left .links-btn:hover {
+    background-color: #9db2ba;
+}
+
+#Index .index-ask .right {
     float: right;
     width: 639px;
     height: 454px;
@@ -19,7 +25,8 @@
     background: #fff url('../img/index-ask-right-bg.png') no-repeat 0 0;
     overflow: hidden;
 }
-.index-ask .right-item{
+
+#Index .index-ask .right-item {
     height: 60px;
     padding: 15px 39px;
     line-height: 30px;
@@ -28,19 +35,19 @@
     position: relative;
 }
 
-.index-ask .right-item:last-child{
+#Index .index-ask .right-item:last-child {
     border-bottom: none;
 }
 
-.index-ask .right-item .ask-icon{
+#Index .index-ask .right-item .ask-icon {
     width: 20px;
     height: 20px;
     line-height: 20px;
     margin-top: 3px;
 }
 
-.index-ask .right-item h4,
-.index-ask .right-item p{
+#Index .index-ask .right-item h4,
+#Index .index-ask .right-item p {
     width: 420px;
     height: 30px;
     overflow: hidden;
@@ -48,11 +55,12 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-.index-ask .right-item-answer{
+
+#Index .index-ask .right-item-answer {
     color: #9e9e9e;
 }
 
-.index-ask .right-item .answer-number{
+#Index .index-ask .right-item .answer-number {
     position: absolute;
     right: 39px;
     top: 17px;
@@ -64,7 +72,8 @@
     line-height: 17px;
     text-align: center;
 }
-.index-ask .right-item .answer-number b{
+
+#Index .index-ask .right-item .answer-number b {
     display: block;
     font-size: 18px;
     margin-top: 8px;

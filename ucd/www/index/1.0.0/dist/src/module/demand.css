@@ -1,27 +1,34 @@
-.index-new-demand{
+#Index .index-new-demand {
     float: left;
     width: 820px;
     height: 537px;
     margin-top: 24px;
 }
 
-#Index .index-new-demand h2{
+#Index .index-new-demand h2 {
     margin-top: 0;
 }
 
-.index-new-demand .left{
+#Index .index-new-demand .left {
     background: url("/assets/bx/dev/www/index/1.0.0/src/img/index-demand-left-bg.png") repeat-x 0 0;
 }
-.index-new-demand .left .feature{
+
+#Index .index-new-demand .left .feature {
     height: 176px;
     background-image: url('/assets/bx/dev/www/index/1.0.0/src/img/index-demand-left-feature.png');
 }
-.index-new-demand .left .links-btn{
+
+#Index .index-new-demand .left .links-btn {
     color: #ffffff;
     background-color: #8fcbd6;
     float: left;
 }
-.index-new-demand .right{
+
+#Index .index-new-demand .left .links-btn:hover {
+    background-color: #96d0db;
+}
+
+#Index .index-new-demand .right {
     float: left;
     width: 540px;
     height: 481px;
@@ -29,7 +36,8 @@
     font-size: 14px;
     background-color: #fff;
 }
-.index-new-demand .right-item{
+
+#Index .index-new-demand .right-item {
     display: block;
     padding: 20px 40px;
     height: 20px;
@@ -40,13 +48,14 @@
     white-space: nowrap;
     border-bottom: 1px solid #eaf1f3;
 }
-.index-new-demand .right-item .ask-icon{
+
+#Index .index-new-demand .right-item .ask-icon {
     width: 20px;
     height: 20px;
     line-height: 20px;
 }
 
-.index-new-demand .right-other{
+#Index .index-new-demand .right-other {
     padding: 40px 40px 0 0;
     text-align: right;
 }

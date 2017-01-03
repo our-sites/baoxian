@@ -1,25 +1,33 @@
-.index-adviser .left{
+#Index .index-adviser .left {
     background: url("/assets/bx/dev/www/index/1.0.0/src/img/index-adviser-left-bg.png") repeat-x 0 0;
 }
-.index-adviser .left .feature{
+
+#Index .index-adviser .left .feature {
     height: 153px;
     background-image: url('/assets/bx/dev/www/index/1.0.0/src/img/index-adviser-left-feature.png');
 }
-.index-adviser .left .links-btn{
+
+#Index .index-adviser .left .links-btn {
     color: #ffffff;
     background-color: #91cc9a;
     float: left;
 }
-.index-adviser .left .links-btn:nth-child(2n-1){
+
+#Index .index-adviser .left .links-btn:nth-child(2n-1) {
     margin-right: 4px;
 }
-.index-adviser .right{
+
+#Index .index-adviser .left .links-btn:hover {
+    background-color: #97d1a0;
+}
+
+#Index .index-adviser .right {
     float: right;
     width: 920px;
     overflow: hidden;
 }
 
-.index-adviser .right-item{
+#Index .index-adviser .right-item {
     float: left;
     width: 210px;
     height: 240px;
@@ -27,14 +35,15 @@
     background-color: #ffffff;
     text-align: center;
 }
-.index-adviser .right-item:nth-child(1),
-.index-adviser .right-item:nth-child(2),
-.index-adviser .right-item:nth-child(3),
-.index-adviser .right-item:nth-child(4){
+
+#Index .index-adviser .right-item:nth-child(1),
+#Index .index-adviser .right-item:nth-child(2),
+#Index .index-adviser .right-item:nth-child(3),
+#Index .index-adviser .right-item:nth-child(4) {
     margin-bottom: 1px;
 }
 
-.index-adviser .right-item img{
+#Index .index-adviser .right-item img {
     display: block;
     width: 118px;
     height: 118px;
@@ -42,11 +51,13 @@
     border: 1px solid #dbddde;
     margin: 20px auto;
 }
-.index-adviser .right-item h4{
+
+#Index .index-adviser .right-item h4 {
     font-size: 18px;
     line-height: 2;
 }
-.index-adviser .right-item p{
+
+#Index .index-adviser .right-item p {
     font-size: 14px;
     line-height: 2;
     color: #808080;
