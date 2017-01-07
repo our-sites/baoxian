@@ -116,15 +116,16 @@
     border-top-color: #42bad0;
 }
 
-/*产品详情*/
-#productDetail .product-info-detail {
+
+#productDetail .product-info-detail, #productDetail .product-info-example, #productDetail .product-info-process {
     font-size: 14px;
     color: #808080;
     line-height: 2;
+	padding: 30px;
 }
 
+/*产品详情*/
 #productDetail .product-info-detail-item{
-    padding: 30px;
     border-bottom: 1px solid #ebebeb;
 }
 #productDetail .product-info-detail-item:last-child{
@@ -151,16 +152,8 @@
     background-color: #e9f2f4;
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
+#productDetail .product-info-detail img, #productDetail .product-info-example img, #productDetail .product-info-process img{
+    max-width: 824px !important;
+	height: auto !important;
+	display: block;
+}
