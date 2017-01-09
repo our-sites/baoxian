@@ -12,9 +12,11 @@ import  re
 from django.db.models import  Q
 from ..myauth.models import ProxyUserProfile
 import  json
+import  datetime
 
 
 def home(request):
+    now_date=datetime.datetime.now().strftime("%Y-%m-%d")
     page=1
     try:
         page=re.match(r"^/ask/(\d+)/",request.path).groups()[0]
@@ -45,7 +47,7 @@ def home(request):
 
         data=json.dumps(data)
         return  HttpResponse(data,mimetype="application/javascript")
-    ask_all=Ask.objects.all().order_by("-ask_time")
+    ask_all=Ask.objects.filter(state=0).order_by("-ask_time")
     ask_paginator=Paginator(ask_all,5)
     try:
         allinfo=ask_paginator.page(page)
@@ -58,6 +60,7 @@ def home(request):
 
 
 def detail(request,ask_id):
+    now_date=datetime.datetime.now().strftime("%Y-%m-%d")
     page=1
     ask_id=int(ask_id)
     try:
@@ -92,14 +95,14 @@ def detail(request,ask_id):
                                                                  "duration":500},"data":{}}
         data=json.dumps(data)
         return  HttpResponse(data,mimetype="application/javascript")
-    ask_obj=Ask.objects.get(askid=int(ask_id))
+    ask_obj=Ask.objects.get(askid=int(ask_id),state=0)
     answer_all=Answer.objects.filter(askid=int(ask_id)).order_by("ans_time")
     answer_paginator=Paginator(answer_all,5)
     try:
         allinfo=answer_paginator.page(page)
     except InvalidPage:
         allinfo=answer_paginator.page(1)
-    other_info=Ask.objects.filter(Q(askid__gt=ask_id)|Q(askid__lt=ask_id))[:3]
+    other_info=Ask.objects.filter(Q(askid__gt=ask_id,state=0)|Q(askid__lt=ask_id))[:3]
     other_proinfo=Product.objects.all()[:4]
     last_answer_info=request.session.get("last_answer_info","")
     return  render_to_response("ask_detail.html",locals(),context_instance=RequestContext(request))

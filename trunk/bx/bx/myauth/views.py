@@ -73,7 +73,8 @@ def login(request):
 
 
 def logout(request):
-    result=  HttpResponseRedirect(settings.LOGOUT_REDIRECT_URL)
+    _next=request.GET.get("next")
+    result=  HttpResponseRedirect(_next or  settings.LOGOUT_REDIRECT_URL)
     if request.myuser==None:
         pass
     else:

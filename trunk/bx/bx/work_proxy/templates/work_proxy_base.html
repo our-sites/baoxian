@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{% block title %}投保人管理中心-保险管家{% endblock %}</title>
+    <title>{% block title %}保险顾问管理中心-保险管家{% endblock %}</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/static/sb-admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -57,11 +57,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">投保人管理中心</a>
+                <a class="navbar-brand" href="index.html">保险顾问管理中心</a>
             </div>
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
+            <li>
+                <a style="color: #ff0000"><i class="fa  fa-credit-card    fa-fw"></i>实名认证(未认证)</a>
+            </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-envelope fa-fw"></i>{{ my_unread_messages_num }} <i class="fa fa-caret-down"></i>
@@ -86,7 +89,7 @@
 
                         {% if my_unread_messages_num >= 0 %}
                         <li>
-                            <a class="text-center" href="/work_buy/all_msg/">
+                            <a class="text-center" href="/work_proxy/all_msg/">
                                 <strong>所有消息</strong>
                                 <i class="fa fa-angle-right"></i>
                             </a>
@@ -116,7 +119,7 @@
                     <ul class="nav" id="side-menu">
                         <li>
                             <div  style="height: 50px;margin-top:30px;margin-bottom:15px;padding-left:10px ;display: inline-block">
-                                <a style="display: inline;float: left;margin-right: 10px" href="/work_buy/my/img/">
+                                <a style="display: inline;float: left;margin-right: 10px" href="/work_proxy/my/img/">
                                     <img width="50" height="50" src="{% if not request.myuser.imgurl %}/static/imgs/default-user.png{% else %}{{ request.myuser.imgurl.url }}{% endif %}" style="border-radius: 25px">
                                 </a>
                                 <div style="display: inline;float: left">
@@ -130,41 +133,45 @@
 
                                     </a>
                                     <p>
-                                        等级:6
+                                        积分:6
                                     </p>
                                 </div>
 
                             </div>
                         </li>
                         <li>
-                            <a href="/work_buy/" {% if request.path == "/work_buy/"  %}class="active" {% endif  %}><i class="fa fa-home fa-fw"></i> 首页</a>
+                            <a href="/work_proxy/" {% if request.path == "/work_proxy/"  %}class="active" {% endif  %}><i class="fa fa-home fa-fw"></i> 首页</a>
                         </li>
                         <li>
-                            <a href="/work_buy/myask/" {% if request.path == "/work_buy/myask/"  %}class="active" {% endif  %}><i class="glyphicon  glyphicon-question-sign    fa-fw"></i> 我的提问</a>
+                            <a href="/work_proxy/renzheng/" {% if request.path == "/work_proxy/renzheng/"  %}class="active" {% endif  %}><i class="fa  fa-credit-card    fa-fw"></i> 实名认证(未认证)</a>
+                        </li>
+                        <li>
+                            <a href="/work_proxy/jifen/" {% if request.path == "/work_proxy/jifen/"  %}class="active" {% endif  %}><i class="fa fa-bookmark-o  fa-fw"></i> 我的积分</a>
+                        </li>
+                        <li>
+                            <a href="/work_proxy/myans/" {% if request.path == "/work_proxy/myans/"  %}class="active" {% endif  %}><i class="fa fa-comment-o    fa-fw"></i> 我的回答</a>
                         </li>
 {#                        <li>#}
 {#                            <a href="#"><i class="fa fa-comment  fa-fw"></i> 我的咨询</a>#}
 {#                        </li>#}
+
                         <li>
-                            <a href="/work_buy/mydingzhi/" {% if request.path == "/work_buy/mydingzhi/"  %}class="active" {% endif  %}><i class="fa fa-magic  fa-fw"></i> 我的定制</a>
+                            <a href="/work_proxy/all_msg/" {% if request.path == "/work_proxy/all_msg/"  %}class="active" {% endif  %}><i class="fa fa-envelope fa-fw"></i> 系统消息</a>
                         </li>
-                        <li>
-                            <a href="/work_buy/all_msg/" {% if request.path == "/work_buy/all_msg/"  %}class="active" {% endif  %}><i class="fa fa-envelope fa-fw"></i> 系统消息</a>
-                        </li>
-                        <li {% if "/work_buy/my/" in  request.path %}class="active" {% endif %}>
+                        <li {% if "/work_proxy/my/" in  request.path %}class="active" {% endif %}>
                             <a href="#"><i class="fa fa-gears fa-fw"></i> 个人资料<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="/work_buy/my/contact/" {% if request.path == "/work_buy/my/contact/"  %}class="active" {% endif  %}>基本信息</a>
+                                    <a href="/work_proxy/my/contact/" {% if request.path == "/work_proxy/my/contact/"  %}class="active" {% endif  %}>基本信息</a>
                                 </li>
                                 <li>
-                                    <a href="/work_buy/my/img/" {% if request.path == "/work_buy/my/img/"  %}class="active" {% endif  %}>修改头像</a>
+                                    <a href="/work_proxy/my/img/" {% if request.path == "/work_proxy/my/img/"  %}class="active" {% endif  %}>修改头像</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="/work_buy/change_pwd/" {% if request.path == "/work_buy/change_pwd/"  %}class="active" {% endif  %}><i class="fa fa-lock fa-fw"></i>修改密码</a>
+                            <a href="/work_proxy/change_pwd/" {% if request.path == "/work_proxy/change_pwd/"  %}class="active" {% endif  %}><i class="fa fa-lock fa-fw"></i>修改密码</a>
                         </li>
                         <li>
                             <a href="/logout/?next=/"><i class="fa fa-sign-out fa-fw"></i> 退出</a>

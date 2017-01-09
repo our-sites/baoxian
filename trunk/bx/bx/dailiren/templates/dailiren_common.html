@@ -11,11 +11,11 @@
                     <!--list-->
 
                     <div class="rank-type rank-day">
-                        {% with userprofiles=dailiren_common.get_hot|slice:":3" %}
+                        {% with userprofiles=dailiren_common.get_hot|slice:":6" %}
                             {% for profile in userprofiles %}
                                 {% with user=profile.get_user %}
                         <div class="rank-item clf">
-                            <img src="{% if user.imgurl %}{{ user.imgurl.url }}{% else %}/static/imgs/logo.png{% endif %}" class="rank-item-avatar">
+                            <img src="{% if user.imgurl %}{{ user.imgurl.url }}{% else %}/static/imgs/default-user.png{% endif %}" class="rank-item-avatar">
                             <div class="info">
                                 <p>
                                     <span class="rank-item-name">{% if user.real_name %}{{ user.real_name }}{% else %}{{ user.username|slice:":4" }}**{% endif %}</span>
@@ -26,10 +26,13 @@
                                     <span class="rank-item-company">{{ profile.get_short_comname }}&nbsp;</span>
                                 </p>
                             </div>
-                            <div class="fr">
-                                <span class="rank-item-score">{{ profile.ans_num }}条回答</span>
-                                <a href="" class="rank-item-link">咨询他</a>
-                            </div>
+{#                            <div class="fr">#}
+{#                                <span class="rank-item-score">{{ profile.ans_num }}条回答</span>#}
+{#                                <a href="" class="rank-item-link">咨询他</a>#}
+{#                            </div>#}
+                        <div class="rank-item-consult">
+                                    咨询
+                                </div>
                         </div>
                                 {% endwith %}
                             {% endfor %}

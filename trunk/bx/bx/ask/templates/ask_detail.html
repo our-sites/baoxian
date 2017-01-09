@@ -37,39 +37,71 @@
 {#                    </form>#}
 {##}
 {#                </div>#}
-            <div class="ask-box clf">
-                    <div class="fl ask-icon">
-                        问
-                    </div>
-                    <div class="fr">
-                        <h2>
-                            {{ ask_obj.ask_content }}
-                        </h2>
-                        <span class="muted">问题来自：  {{ ask_obj.get_date }}  {{ ask_obj.get_area_info }}      </span>
-
-                        <form id="ask" class="ui-form" action="{{ request.path }}" novalidate="novalidate" data-widget-cid="widget-3" method="post">
-                            {% csrf_token %}
-                            <div class="ui-form-item">
-                                <textarea id="content" name="content"
-                                          placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少..."
-                                          data-widget-cid="widget-4" data-explain="">{{ last_answer_info }}</textarea>
-                                <div class="ui-form-explain"> </div>
-                            </div>
-                            <div class="float-layer">
-                                <span class="current-length">0</span> /
-                                <span class="total-length">200</span>
-                            </div>
-                            <p>
-                                <input type="submit" value="提交回答" class="ask-btn">
+{#            <div class="ask-box clf">#}
+{#                    <div class="fl ask-icon">#}
+{#                        问#}
+{#                    </div>#}
+{#                    <div class="fr">#}
+{#                        <h2>#}
+{#                            {{ ask_obj.ask_content }}#}
+{#                        </h2>#}
+{#                        <span class="muted">问题来自：  {{ ask_obj.get_date }}  {{ ask_obj.get_area_info }}      </span>#}
+{##}
+{#                        <form id="ask" class="ui-form" action="{{ request.path }}" novalidate="novalidate" data-widget-cid="widget-3" method="post">#}
+{#                            {% csrf_token %}#}
+{#                            <div class="ui-form-item">#}
+{#                                <textarea id="content" name="content"#}
+{#                                          placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少..."#}
+{#                                          data-widget-cid="widget-4" data-explain="">{{ last_answer_info }}</textarea>#}
+{#                                <div class="ui-form-explain"> </div>#}
+{#                            </div>#}
+{#                            <div class="float-layer">#}
+{#                                <span class="current-length">0</span> /#}
+{#                                <span class="total-length">200</span>#}
+{#                            </div>#}
+{#                            <p>#}
+{#                                <input type="submit" value="提交回答" class="ask-btn">#}
 {#                                <i class="fa fa-exclamation-circle"></i> 普通代理人每天最多只能回复一个保险疑问，#}
 {#                                <a href="" class="color">开通钻石</a>获取不限量权限#}
-                            </p>
-                        </form>
+{#                            </p>#}
+{#                        </form>#}
+{##}
+{#                    </div>#}
+{##}
+{#                </div>#}
+
+            <div class="ask-box clf">
+                        <div class="answer-icon-big"></div>
+                        <div class="fr">
+                            <h2>
+                            {{ ask_obj.ask_content }}
+                            </h2>
+                            <span class="muted">问题来自：  {{ ask_obj.get_date }}  {{ ask_obj.get_area_info }}      </span>
+
+                            <form id="ask" class="ui-form" action="{{ request.path }}" novalidate="novalidate" data-widget-cid="widget-6" method="post">
+                                <div class="ui-form-item">
+                                    <textarea id="content" name="content" placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少..." data-widget-cid="widget-7" data-explain="">{{ last_answer_info }}</textarea>
+                                    <div class="ui-form-explain"></div>
+                                </div>
+                                <div class="float-layer">
+                                    <span class="current-length">0</span> /
+                                    <span class="total-length">200</span>
+                                </div>
+
+                                <p>
+                                    <button type="submit" class="ask-btn">提交回答</button>
+{#                                    <i class="fa fa-exclamation-circle"></i> 普通代理人每天最多只能回复一个保险疑问，#}
+{#                                    <a href="" class="color">开通钻石</a>获取不限量权限#}
+                                </p>
+                            </form>
+                            <!--当前时间-->
+                            <div class="current-time">
+                                {{ now_date }}
+                            </div>
+
+                        </div>
 
                     </div>
-
-                </div>
-
                 <!-- 列表-->
                 <h2 class="ask-list-title">已经有{{ ask_obj.get_answer_count }}条回答</h2>
 
@@ -77,17 +109,18 @@
                 <div class="ask-list-item">
                     <div class="result-box">
                         <div class="clf">
-                            <img class="result-author-avatar" src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" />
+                            <img class="result-author-avatar" src="{% if i.get_user.imgurl %}{{ i.get_user.imgurl.url }}{% else %}/static/imgs/default-user.png{% endif %}" />
                             <div class="result-info">
                                 <p>
                                     <a href="" class="result-info-company">新华</a>
                                     <a href="" class="result-info-name">兴趣使然</a>
                                     <a href="" class="result-info-level"></a>
                                     <a href="" class="result-info-authentication"></a>
-                                    <span class="result-info-answer">26条回答</span>
-                                    <span class="result-info-thank">被感谢45次</span>
+                                    <a href="" class="ask-btn"><img src="/static/imgs/rank-item-consult-icon.png" alt="">咨询</a>
+{#                                    <span class="result-info-answer">26条回答</span>#}
+{#                                    <span class="result-info-thank">被感谢45次</span>#}
                                 </p>
-                                <a href="" class="ask-btn">咨询他</a>
+{#                                <a href="" class="ask-btn">咨询他</a>#}
                             </div>
                             <div class="result-info-date">{{ i.get_date }}</div>
                         </div>

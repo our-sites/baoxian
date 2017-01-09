@@ -14,6 +14,7 @@ from django.db import  models
 from ..manger import MyManager
 import time
 from ..models import Area,Company
+import  datetime
 
 class MyUser(models.Model):
     uid=models.AutoField(primary_key=True)   # uid  主键
@@ -33,6 +34,7 @@ class MyUser(models.Model):
     ip=models.CharField(max_length=15)  # ip vchar(15)   注册IP
     usertype=models.PositiveSmallIntegerField(default=0)  # usertype tinyint(1) unsigned   用户类型  1 投保人  2 代理人
     addtime=models.PositiveIntegerField(default=lambda:int(time.time()))  #创建时间
+    married=models.PositiveIntegerField(default=0)
     objects=MyManager(using="default")
     is_active=True
     def is_authenticated(self):
@@ -52,6 +54,11 @@ class MyUser(models.Model):
             return True
         else:
             return False
+
+    def reset_password(self,new_pwd):
+        _=self.hashed_password(self.salt,new_pwd)
+        self.password=_
+        self.save()
 
     @classmethod
     def make_salt(cls):
@@ -85,6 +92,9 @@ class MyUser(models.Model):
             args={}
         return Msg.objects.filter(uid=self.uid,**args)
 
+    def get_unread_messages(self):
+        return Msg.objects.filter(uid=self.uid,is_read=0)
+
     def send_message(self,subject,message):
         _=Msg(subject=subject,message=message,uid=self.uid,addtime=int(time.time()))
         _.save()
@@ -105,6 +115,8 @@ class ProxyUserProfile(models.Model):
     city=models.IntegerField(default=0)
     zone=models.IntegerField(default=0)
     ans_num=models.IntegerField(default=0)
+    score=models.PositiveIntegerField(default=0)
+
     class Meta:
         db_table="bx_proxyuser_profile"
 
@@ -126,6 +138,22 @@ class ProxyUserProfile(models.Model):
             return Company.objects.get(cid=self.cid).shortname
         except:
             return ""
+
+    def get_comcontent(self):
+        try:
+            return  Company.objects.get(cid=self.cid).content
+        except:
+            return ""
+
+    def get_score(self):
+        "获取积分"
+        return  self.score
+
+    def add_score(self,num):
+        "增加积分"
+        self.score+=num
+        self.save()
+        return self.score
 
 class BuyUserProfile(models.Model):
     id=models.AutoField(primary_key=True)
@@ -149,3 +177,6 @@ class Msg(models.Model):
     class Meta:
         db_table="bx_user_msg"
         ordering=["-addtime"]
+
+    def get_date_time(self):
+        return datetime.datetime.fromtimestamp(self.addtime).strftime("%Y-%m-%d %H:%M:%S")

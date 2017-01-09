@@ -29,7 +29,7 @@
       "pkg": "www/info/1.0.0:p1"
     },
     "www/info/1.0.0:index.css": {
-      "uri": "/www/info/1.0.0/src/index_aa412e7.css",
+      "uri": "/www/info/1.0.0/src/index_4d2cb60.css",
       "type": "css",
       "pkg": "www/info/1.0.0:p0"
     },
@@ -45,7 +45,7 @@
   },
   "pkg": {
     "www/info/1.0.0:p0": {
-      "uri": "/www/info/1.0.0/pkg/info_7019227.css",
+      "uri": "/www/info/1.0.0/pkg/info_577ac05.css",
       "type": "css",
       "has": [
         "www/info/1.0.0:common.css",

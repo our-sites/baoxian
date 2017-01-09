@@ -15,7 +15,12 @@ class Work_Proxy(object):
         self.app_name=app_name
     def get_urls(self):
         urlpatterns = patterns('',
-
+      #      ("^%s$"%settings.LOGIN_URL.lstrip("/"),views.login),
+      #      ("^%s$"%settings.LOGOUT_URL.lstrip("/"),views.logout),
+                               ("^$",views.index),
+                               (r"all_msg/$",views.all_msg),
+                               (r"change_pwd",views.change_pwd),
+                               (r"^myans/",views.my_ans),
 
             )
         return urlpatterns

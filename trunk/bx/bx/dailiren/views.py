@@ -52,9 +52,12 @@ def detail(request,id):
     except:
         user.city_info=""
     try:
-        user.comname=Company.objects.get(cid=user.profile.cid).comname
+        _=Company.objects.get(cid=user.profile.cid)
+        user.comname=_.comname
+        user.comcontent=_.content
     except:
         user.comname=""
+        user.comcontent=""
     products=Product.objects.filter(cid=user.profile.cid)[:10]
     return  render_to_response("dailiren_detail.html",locals(),
                                context_instance=RequestContext(request))

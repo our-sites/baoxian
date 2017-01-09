@@ -16,51 +16,72 @@
         <div class="clf">
             <div class="ask-list-left">
                 <!--提问-->
-                <div class="ask-box clf">
-                    <div class="ask-icon">
-                        问
-                    </div>
-
-
-                    <form id="ask" class="ui-form" action="/ask/" method="post">
-                        {% csrf_token %}
-                        <div class="ui-form-item">
-                            <textarea id="content" name="content"
-                                      placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少...">{{ last_ask_info }}</textarea>
-                            <div class="ui-form-explain"></div>
-                        </div>
-                        <div class="float-layer">
-                            <span class="current-length">0</span>/<span class="total-length">200</span>
-                        </div>
-
-                        <p>
-                            <input type="submit" value="提交回答" class="ask-btn"/>
-{#                            <i class="fa fa-exclamation-circle"></i>#}
-{#                            普通代理人每天最多只能回复一个保险疑问，<a href="" class="color">开通钻石</a>获取不限量权限#}
-                        </p>
-                    </form>
-{#                    <form class="ui-form" action="/ask/"  id="ask">#}
-{#                        <textarea#}
-{#                                placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少..."#}
-{#                                  name="content" maxlength="200" required="required" id="content">{{ last_ask_info }}</textarea>#}
+{#                <div class="ask-box clf">#}
+{#                    <div class="ask-icon">#}
+{#                        问#}
+{#                    </div>#}
+{##}
+{##}
+{#                    <form id="ask" class="ui-form" action="/ask/" method="post">#}
 {#                        {% csrf_token %}#}
-{#                        <div class="float-layer">0/200</div>#}
+{#                        <div class="ui-form-item">#}
+{#                            <textarea id="content" name="content"#}
+{#                                      placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少...">{{ last_ask_info }}</textarea>#}
+{#                            <div class="ui-form-explain"></div>#}
+{#                        </div>#}
+{#                        <div class="float-layer">#}
+{#                            <span class="current-length">0</span>/<span class="total-length">200</span>#}
+{#                        </div>#}
+{##}
 {#                        <p>#}
-{#                            <input value="提交问题"  type="submit"  class="ask-btn" >#}
-{#                            <span>已解决保险疑问  <b class="q-number">{{ ask_paginator.count }}条</b></span>#}
+{#                            <input type="submit" value="提交回答" class="ask-btn"/>#}
 {#                        </p>#}
 {#                    </form>#}
+{##}
+{#                </div>#}
 
-                </div>
+                <div class="ask-box clf">
+                        <div class="ask-icon-big"></div>
+                        <div class="fr">
+                            <!--表单-->
+                            <form id="ask" class="ui-form" action="/ask/" novalidate="novalidate" data-widget-cid="widget-6" method="post">
+                                <div class="ui-form-item">
+                                    <textarea id="content" name="content" placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少..." data-widget-cid="widget-7" data-explain="">{{ last_ask_info }}</textarea>
+                                    <div class="ui-form-explain"></div>
+                                </div>
+                                <div class="float-layer">
+                                    <span class="current-length">0</span> /
+                                    <span class="total-length">200</span>
+                                </div>
+                                <p>
+                                    <button type="submit" class="ask-btn">提交问题</button> 已解决保险疑问 <a href="" class="color">34256条</a>
+                                    <!-- <i class="fa fa-exclamation-circle"></i>
+                                 普通代理人每天最多只能回复一个保险疑问，<a href="" class="color">开通钻石</a>获取不限量权限-->
+                                </p>
+                            </form>
+                            <!--当前时间-->
+                            <div class="current-time">
+                                {{ now_date }}
+                            </div>
+                        </div>
 
+                    </div>
+
+<div class="ask-list-header clf">
+                        <div class="ask-list-header-tab active">全部问题</div>
+                        <div class="ask-list-header-tab">未回答</div>
+                        <div class="ask-list-header-tab">已回答</div>
+                    </div>
                 <!-- 列表-->
+            <div class="ask-list-type all-reply">
+
+            </div>
                 {% for i in allinfo %}
                 <div class="ask-list-item">
                     <div class="q-box clf">
-                        <div class="ask-icon">
-                            问
+                        <div class="ask-icon-big">
                         </div>
-                        <div class="fl">
+                        <div class="q-box-content">
                             <h4>
                                 <a href="/ask/detail/{{ i.askid }}.html" class="color">{{ i.ask_content|slice:":30" }}{% if i.ask_content|length > 50 %}..{% endif %}</a></h4>
                             <p>
@@ -75,7 +96,7 @@
                         {% if ans %}
                             {% with ans_user=ans.get_user ans_user_profile=ans.get_user_profile %}
                     <div class="result-box clf">
-                        <img class="result-author-avatar" src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" />
+                        <img class="result-author-avatar" src="{% if ans_user.imgurl %}{{ ans_user.imgurl.url }}{% else %}/static/imgs/default-user.png{% endif %}" />
                         <div class="fl">
                             <p class="result-info">
                                 <a href="" class="result-info-company">{{ ans_user_profile.get_short_comname }}</a>

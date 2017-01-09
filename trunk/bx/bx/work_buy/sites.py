@@ -18,6 +18,12 @@ class Work_Buy(object):
       #      ("^%s$"%settings.LOGIN_URL.lstrip("/"),views.login),
       #      ("^%s$"%settings.LOGOUT_URL.lstrip("/"),views.logout),
                                ("^$",views.index),
+                               (r"all_msg/$",views.all_msg),
+                               (r"myask/",views.my_ask),
+                               (r"mydingzhi/",views.my_dingzhi),
+                               (r"my/contact/",views.contact),
+                               (r"my/img/",views.img),
+                               (r"change_pwd",views.change_pwd),
 
             )
         return urlpatterns

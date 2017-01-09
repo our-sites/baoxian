@@ -218,6 +218,7 @@ class Ask(models.Model):
     mark=models.IntegerField(default=0)
     province=models.IntegerField(default=0)
     city=models.IntegerField(default=0)
+    state=models.PositiveIntegerField(default=0)  #状态  正常0    其他为异常
     class Meta:
         db_table="bx_ask"
         verbose_name="提问"
@@ -228,6 +229,10 @@ class Ask(models.Model):
     def get_date(self):
         "获取日期信息   2016-01-01"
         return datetime.datetime.fromtimestamp(self.ask_time).strftime("%Y-%m-%d")
+
+    def get_date_time(self):
+        return  datetime.datetime.fromtimestamp(self.ask_time).strftime("%Y-%m-%d %H:%M:%S")
+
 
     def get_answer_count(self):
         "获取回答数"
@@ -270,13 +275,20 @@ class Answer(models.Model):
         verbose_name="回答"
         verbose_name_plural="所有回答"
 
+
     def get_date(self):
         "获取日期信息   2016-01-01"
         return datetime.datetime.fromtimestamp(self.ans_time).strftime("%Y-%m-%d")
 
+    def get_date_time(self):
+        return datetime.datetime.fromtimestamp(self.ans_time).strftime("%Y-%m-%d %H:%M:%S")
+
     def get_user(self):
         from myauth.models import  MyUser,ProxyUserProfile
         return MyUser.objects.get(uid=self.uid)
+
+    def get_ask(self):
+        return  Ask.objects.get(askid=self.askid)
 
     def get_user_profile(self):
         from myauth.models import  MyUser,ProxyUserProfile
@@ -303,5 +315,7 @@ class DingZhi(models.Model):
     class Meta:
         db_table="bx_dingzhi"
 
+    def get_date_time(self):
+        return datetime.datetime.fromtimestamp(self.addtime).strftime("%Y-%m-%d %H:%M:%S")
 
 
