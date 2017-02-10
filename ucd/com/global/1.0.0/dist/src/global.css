@@ -184,20 +184,18 @@ a.color:hover {
 
 /* 公用部分 top*/
 .bx-top,
-.bx-header,
-.bx-nav {
+.bx-header {
     width: 100%;
 }
 
-.bx-top > .clf,
-.bx-header > .clf,
-.bx-nav > .clf {
+.bx-top-content,
+.bx-header-content{
     width: 1200px;
     margin: 0 auto;
 }
 
 .bx-top {
-    background-color: #ffffff;
+    background-color: #f5f5f5;
     height: 40px;
     line-height: 40px;
     color: #9e9e9e;
@@ -206,110 +204,91 @@ a.color:hover {
 /* 公用部分 header*/
 
 .bx-header {
-    height: 132px;
-    background-color: #e9f2f4;
+    height: 112px;
+    border-bottom: 1px solid #dbdbdb;
 }
 
-.bx-header .ui-form-item-error p {display: none;}
-
-.bx-header > .clf > .fl {
-    margin: 38px 0;
+.bx-header .bx-logo {
+    float: left;
+    margin: 27px 0;
 }
 
-.bx-header > .clf > .fr {
-    width: 470px;
-    color: #9e9e9e;
+/*搜索*/
+
+.bx-header .bx-search {
+    float: right;
+    width: 200px;
 }
 
-.bx-header > .clf > .fr p a {
-    color: #9e9e9e;
-}
-
-.bx-header > .clf > .fr p a:hover {
-    color: #42bad0;
+.bx-header .ui-form-item-error p {
+    display: none;
 }
 
 .bx-header-search-box {
-    display: table;
-    margin: 46px 0 6px;
+    position: relative;
+    width: 200px;
+    height: 40px;
+    margin-top: 36px;
     line-height: 38px;
 }
 
 .bx-header-search-box input {
-    display: table-cell;
-    width: 368px;
-    height: 38px;
-    padding-left: 12px;
-    border: 2px solid #bdbdbd;
-    border-right: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 174px;
+    height: 26px;
+    padding: 6px 12px;
+    border: 1px solid #bdbdbd;
 }
 
 .bx-header-search-box input:focus {
     border-color: #42bad0;
 }
 
-.bx-header-search-box a {
-    display: table-cell;
-    width: 90px;
-    height: 38px;
-    padding: 2px;
-    text-align: center;
-    color: #ffffff;
-    background-color: #42bad0;
-    vertical-align: middle;
-}
-
-.bx-header-search-box a:hover {
-    background-color: #4bd3eb;
-}
-
-.bx-header-qr-code {
-    float: right;
-    width: 76px;
-    height: 100px;
-    margin: 20px 0 0 80px;
-}
-
-.bx-header-qr-code img {
-    width: 76px;
-    height: 76px;
-    display: block;
-}
-
-.bx-header-qr-code p {
-    color: #42bad0;
-    font-size: 12px;
-    line-height: 2;
+.bx-header-search-box img {
+    position: absolute;
+    top: 6px;
+    right: 12px;
+    z-index: 2;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
 }
 
 /* 公用部分 nav*/
 
-.bx-nav {
-    font-size: 14px;
-    height: 40px;
-    background-color: #42bad0;
-}
-
-.bx-nav > .clf {
-    background-color: #42bad0;
-}
-
-.bx-nav > .clf li {
+.bx-header .bx-nav {
     float: left;
+    font-size: 16px;
+    width: 635px;
+    padding: 30px 0;
 }
 
-.bx-nav > .clf a {
+.bx-header .bx-nav-content {
+    margin-left: 60px;
+}
+
+.bx-nav .bx-nav-content li {
+    float: left;
+    margin-right: 38px;
+    
+}
+
+.bx-nav .bx-nav-content a {
     display: block;
-    height: 40px;
-    line-height: 40px;
-    padding: 0 16px;
-    color: #ffffff;
+    height: 48px;
+    line-height: 48px;
+    color: #424242;
+    border-bottom: 2px solid transparent;
 }
 
 .bx-nav > .clf a:hover,
 .bx-nav > .clf li.active a {
-    background: #4bd3eb;
+    color: #4bd3eb;
+    border-color: #4bd3eb;
 }
+
 
 /* 公用部分 footer*/
 
@@ -371,12 +350,13 @@ a.color:hover {
     width: 102px;
 }
 
-.bx-footer-info{
+.bx-footer-info {
     width: 1200px;
     margin: 20px auto 0;
     line-height: 2;
 }
-.bx-footer-map .record{
+
+.bx-footer-map .record {
     margin-left: 25px;
 }
 
@@ -387,11 +367,11 @@ a.color:hover {
     display: block;
 }
 
-.bx-footer-partner{
+.bx-footer-partner {
     margin-top: 10px;
 }
 
-.bx-footer-partner a{
+.bx-footer-partner a {
     margin-right: 5px;
 }
 
@@ -425,13 +405,12 @@ a.color:hover {
     display: none;
 }
 
-
-
 /*整体 样式*/
 body {
-    background-color: #e9f2f4;
+    /*background-color: #e9f2f4;*/
 }
-.grid{
+
+.grid {
     width: 1200px;
     padding: 30px 0 60px;
     margin: 0 auto;

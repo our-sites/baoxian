@@ -9,7 +9,7 @@
 
 <!--公用top-->
 <div class="bx-top">
-    <div class="clf">
+    <div class="bx-top-content clf">
         <span>关注我们</span>
         <div class="fr">
             <!--未登录-->
@@ -25,34 +25,30 @@
 </div>
 <!--公用header-->
 <div class="bx-header">
-    <div class="clf">
-        <img src="{{ 'html/img/bx-logo.png' | uri('www/common') }}" alt="logo" class="fl" width="210" height="56">
-        <div class="bx-header-qr-code">
-            <img src="{{ 'html/img/app-qrcode.png' | uri('www/common') }}" alt="">
-            <p>保险管家APP</p>
+    <div class="bx-header-content clf">
+        <!--logo-->
+        <img src="{{ 'html/img/bx-logo.png' | uri('www/common') }}" alt="logo" class="bx-logo" width="362" height="58">
+        <!--公用nav-->
+        <div class="bx-nav">
+            <ul class="bx-nav-content clf">
+                <li><a href="">首页</a></li>
+                <li><a href="">保险问吧</a></li>
+                <li><a href="">保险产品</a></li>
+                <li class="active"><a href="">专业顾问</a></li>
+                <li><a href="">保险咨询</a></li>
+                <li><a href="">VIP管家</a></li>
+            </ul>
         </div>
-        <form class="fr ui-form" method="post" action="{{ 'html/data/搜索成功' | uri('com/global') }}">
+        <!--搜索-->
+        <form class="ui-form bx-search" method="post" action="{{ 'html/data/搜索成功' | uri('com/global') }}">
             <div class="ui-form-item">
                 <div class="bx-header-search-box">
                     <input name="keyword" id="search-kw" type="text" placeholder="请输入...">
-                    <a id="search-btn" href="javascript:;">搜索</a>
+                    <img id="search-btn" src="{{ 'html/img/bx-header-search-icon.png' | uri('www/common') }}" title="搜索">
                 </div>
                 <div class="ui-form-explain"></div>
-                <p>热门搜索： <a href="">少儿</a> | <a href="">医疗</a> | <a href="">养老</a> | <a href="">少儿</a> | <a href="">医疗</a> |
-                    <a href="">养老</a></p>
             </div>
-
-
         </form>
     </div>
 </div>
-<!--公用nav-->
-<div class="bx-nav">
-    <ul class="clf">
-        <li><a href="">首页</a></li>
-        <li><a href="">保险产品</a></li>
-        <li class="active"><a href="">保险顾问</a></li>
-        <li><a href="">问吧</a></li>
-        <li><a href="">咨询</a></li>
-    </ul>
-</div>
+

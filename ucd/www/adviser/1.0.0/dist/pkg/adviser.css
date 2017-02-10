@@ -2,15 +2,16 @@
 
 /*!www/adviser/1.0.0:index.css*/
 #adviserList {
-    background-color: #fff;
+    background-color: #f5f5f5;
 }
 
 /*条件筛选*/
 #adviserList .adviser-condition {
     width: 1198px;
-    margin: 0 auto 10px;
+    margin: 0 auto 20px;
     border: 1px solid #ebebeb;
     overflow: hidden;
+    background-color: #fff;
 }
 
 #adviserList .adviser-condition > .clf {
@@ -59,7 +60,6 @@
 
 #adviserList .adviser-condition .company {
     /*height: 60px;*/
-    border-bottom: none;
 }
 
 #adviserList .adviser-condition .company .more {
@@ -75,21 +75,26 @@
 }
 
 /*已选条件*/
-#adviserList .chose-condition {
-    width: 1168px;
-    line-height: 30px;
-    padding: 4px 10px 4px 20px;
-    border: 1px solid #ebebeb;
-    background-color: #f5f5f5;
-    margin-bottom: 20px;
+#adviserList .adviser-condition .selected {
+    border-bottom: none;
 }
 
-#adviserList .chose-condition .fl {
-    width: 112px;
+#adviserList .adviser-condition .selected-item {
+    display: inline-block;
+    line-height: 20px;
+    border: 1px solid #dbdbdb;
+    padding: 0 21px 0 4px;
+    margin-right: 6px;
+    color: #42bad0;
+    background: no-repeat right center url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAALCAYAAACgR9dcAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3JpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpjMjU0ZjMyMC04MmNkLTQ2NzMtOWY4Mi1jYjJmMDgyZGExMTgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QTMyNTdCOEFENDdEMTFFNjg2NzZCRTEwNTFEMjg5ODEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QTMyNTdCODlENDdEMTFFNjg2NzZCRTEwNTFEMjg5ODEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjI1RDIwQjIyRDQ3RDExRTZBMDM0OTlERUUxMDk3QjBFIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjI1RDIwQjIzRDQ3RDExRTZBMDM0OTlERUUxMDk3QjBFIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+e3F+pgAAAKRJREFUeNpinDdvHisDA4MmEF9iwA30gPh6YmLib2RBJiDWAuK9QGyHQ6MdVF4LXQKk+SIQhwLxWiwG2EHFQ6HqMDSDwAEsBiBrPIDNSUxIbGQDiglpRNcMM6ALiHug9AE8gYih2R6Iy5CwPbGaQQrXQJ3aDcQhUL49Ic0wjSFITj1IyACQZn0kjQfR5JEN0EfXzALE14DYGU8KOwiVv44uARBgAMeGKCd1gIANAAAAAElFTkSuQmCC');
+}
+
+#adviserList .adviser-condition .selected-item:hover{
+    border-color: #42bad0;
 }
 
 /*排序*/
-#adviserList .adviser-list-sort-wrap {
+/*#adviserList .adviser-list-sort-wrap {
     width: 1198px;
     height: 40px;
     border: 1px solid #ebebeb;
@@ -120,7 +125,7 @@
 #adviserList .adviser-list-sort a.active {
     color: #ffffff;
     background-color: #42bad0;
-}
+}*/
 
 /*筛选结果*/
 #adviserList .adviser-list {
