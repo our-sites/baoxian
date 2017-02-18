@@ -126,86 +126,98 @@
 
 /*筛选结果*/
 #adviserList .adviser-list {
-    width: 886px;
+    width: 878px;
+    border: 1px solid #ebebeb;
+    border-bottom: none;
     overflow: hidden;
 }
 
 #adviserList .adviser-item {
-    float: left;
-    width: 240px;
-    height: 284px;
-    border: 1px solid #ebebeb;
-    padding: 30px 20px;
-    margin: 0 20px 20px 0;
+    width: 828px;
+    height: 130px;
+    border-bottom: 1px solid #ebebeb;
+    padding: 30px 30px 30px 20px;
+    background-color: #fff;
 }
-
-#adviserList .adviser-item.right {
-    margin-right: 0;
-}
-
-#adviserList .adviser-item-resume {
-    height: 96px;
-    margin-bottom: 25px;
-}
-
 #adviserList .adviser-item-resume-img {
     float: left;
-    display: block;
-    width: 70px;
-    height: 94px;
-    line-height: 94px;
-    border: 1px solid #ebebeb;
-    margin-right: 20px;
-    text-align: center;
+    position: relative;
+    width: 140px;
+    height: 120px;
 }
 
 #adviserList .adviser-item-resume-img img {
-    max-height: 100%;
-    max-width: 100%;
-    vertical-align: middle;
+    width: 120px;
+    height: 120px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
 }
 
 #adviserList .adviser-item-resume-word {
-    overflow: hidden;
+    float: left;
+    width: 288px;
+    height: 100%;
 }
 
 #adviserList .adviser-item-resume-word h4 {
-    font-size: 14px;
+    font-size: 18px;
     font-weight: bold;
-    line-height: 2;
+}
+
+#adviserList .adviser-item-resume-word h4 span{
+    font-size: 14px;
+    font-weight: normal;
+    margin-left: 10px;
 }
 
 #adviserList .adviser-item-resume-word p {
-    color: #616161;
-    line-height: 1.9;
+    line-height: 1.8;
 }
 
-#adviserList .adviser-item-resume-word .area {
-    margin-right: 6px;
+#adviserList .adviser-item-resume-word p span{
+    color: #808080;
 }
+
 
 #adviserList .adviser-item-detail {
-    height: 54px;
+    float: left;
+    margin-top: 45px;
+    width: 190px;
+    height: 80px;
+    padding: 0 30px;
+    border-left: 1px solid #ebebeb;
     overflow: hidden;
-    margin-bottom: 15px;
+    color: #808080;
 }
 
-#adviserList .adviser-item-speciality {
-    line-height: 2;
-    color: #616161;
+#adviserList .adviser-item-other {
+    float: right;
+    width: 102px;
+    height: 120px;
+}
+
+
+#adviserList .adviser-item-company-logo{
+    display: block;
+    width: 100px;
+    height: 46px;
+    border: 1px solid #ebebeb;
 }
 
 #adviserList .adviser-item-consult {
     display: block;
-    width: 84px;
-    height: 32px;
-    line-height: 32px;
-    color: #ffffff;
-    background-color: #42bad0;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #42bad0;
+    color: #42bad0;
+    background-color: #ffffff;
     text-align: center;
-    margin-top: 15px;
+    margin-top: 40px;
 }
 
 #adviserList .adviser-item-consult:hover {
-    background-color: #4bd3eb;
+    background-color: #42bad0;
+    color: #ffffff;
 }
