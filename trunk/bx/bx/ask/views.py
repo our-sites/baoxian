@@ -102,7 +102,10 @@ def detail(request,ask_id):
         allinfo=answer_paginator.page(page)
     except InvalidPage:
         allinfo=answer_paginator.page(1)
-    other_info=Ask.objects.filter(Q(askid__gt=ask_id,state=0)|Q(askid__lt=ask_id))[:3]
+    other_info=Ask.objects.filter(Q(askid__lt=ask_id)).order_by("-askid")[:3]
+    if len(other_info)<3:
+        other_info=Ask.objects.filter(Q(askid__gt=ask_id)).order_by("askid")[:3]
+
     other_proinfo=Product.objects.all()[:4]
     last_answer_info=request.session.get("last_answer_info","")
     return  render_to_response("ask_detail.html",locals(),context_instance=RequestContext(request))

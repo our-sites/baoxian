@@ -17,6 +17,8 @@ from itertools import  groupby
 import  json
 import decimal
 import  traceback
+import  urllib
+
 
 @staff_member_required
 def home(request):
@@ -169,8 +171,31 @@ def user_proxy(request):
             i.datetime=datetime.datetime.fromtimestamp(i.addtime).strftime("%Y-%m-%d %H:%M:%S")
         return  render_to_response("manage_user_proxy.html",locals(),context_instance=RequestContext(request))
 
+from django.core.files.uploadedfile import InMemoryUploadedFile
+from PIL import  Image
+import  StringIO
+
 @staff_member_required
 def user_proxy_detail(request,_id):
+    def get_thumbnail(orig, width=200, height=200):
+        """get the thumbnail of orig
+        @return: InMemoryUploadedFile which can be assigned to ImageField
+        """
+        quality = "keep"
+        file_suffix = orig.name.split(".")[-1]
+        filename = orig.name
+        if file_suffix not in ["jpg", "jpeg"]:
+            filename = "%s.jpg" % orig.name[:-(len(file_suffix)+1)]
+            quality = 95
+        im = Image.open(orig)
+        size = (width, height)
+        thumb = im
+        thumb.thumbnail(size, Image.ANTIALIAS)
+        thumb_io = StringIO.StringIO()
+        thumb.save(thumb_io, format="JPEG", quality=quality)
+        thumb_file = InMemoryUploadedFile(thumb_io, None, filename, 'image/jpeg',
+                                          thumb_io.len, None)
+        return thumb_file
     myuser=MyUser.objects.get(usertype=2,uid=int(_id))
     status_range=[1,2,3]
     try:
@@ -191,8 +216,12 @@ def user_proxy_detail(request,_id):
         qq=request.POST.get("qq")
         sex=request.POST.get("sex")
         sex=int(sex)
+        year=request.POST.get("year")
+        year=int(year)
+        #img.name=str(time.time())+img.name.split(".")[0][:15]+"."+img.name.split(".")[-1]
         if img:
-            myuser.imgurl=img
+            img.name = str(time.time()) + img.name.split(".")[0][:15] + "." + img.name.split(".")[-1]
+            myuser.imgurl=get_thumbnail(img,125,145)
         myuser.real_name=real_name
         myuser.state=state
         myuser.tel=tel
@@ -202,6 +231,7 @@ def user_proxy_detail(request,_id):
         myuser.save()
         cid=int(request.POST.get("cid","0"))
         myprofile.cid=cid
+        myprofile.year=year
         myprofile.my_ad=request.POST.get("my_ad","")
         myprofile.certifi_num=request.POST.get("certifi_num","")
         myprofile.practice_num=request.POST.get("practice_num","")
@@ -744,13 +774,15 @@ def company_detail(request,_id):
 
     return render_to_response("manage_company_detail.html",locals(),context_instance=RequestContext(request))
 
-
+@staff_member_required
 def company_delete(request,_id):
     com_obj=Company.objects.get(cid=int(_id))
     return  render_to_response("manage_company_delete.html",locals(),context_instance=RequestContext(request))
 
 
 
+
+@staff_member_required
 def company_delete_do(request):
     cid=request.GET.get("cid")
     cid=int(cid)
@@ -767,3 +799,17 @@ def company_delete_do(request):
             com_obj.delete()
     return  render_to_response("manage_company_delete_success.html",locals(),context_instance=RequestContext(request)
                                )
+
+from bx.myauth.cookie_encrypt import phpcookie_encode
+
+@staff_member_required
+def auth_user(request):
+    uid=request.GET.get("uid")
+    uid=int(uid)
+    myuser=MyUser.objects.get(uid=uid)
+    response = HttpResponseRedirect("/work/")
+    timestamp=int(time.time())
+    response.set_cookie("user_info", urllib.quote(
+        phpcookie_encode("\t".join([str(myuser.uid), myuser.username, request.ip, str(timestamp)]), 'gc895316')),
+                        )
+    return response

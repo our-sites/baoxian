@@ -1,0 +1,1 @@
+define("com/chat/1.0.0:chat",["com/global/1.0.0:dollar"],function(o){var l=o("com/global/1.0.0:dollar");l(document).on("click",".rank-item-consult",function(o){o.preventDefault(),layer.open({type:1,title:!1,closeBtn:0,shadeClose:!0,skin:"yourclass",content:"自定义HTML内容"})})});

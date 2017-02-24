@@ -45,6 +45,7 @@
                         <div class="fr">
                             <!--表单-->
                             <form id="ask" class="ui-form" action="/ask/" novalidate="novalidate" data-widget-cid="widget-6" method="post">
+                                {% csrf_token %}
                                 <div class="ui-form-item">
                                     <textarea id="content" name="content" placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少..." data-widget-cid="widget-7" data-explain="">{{ last_ask_info }}</textarea>
                                     <div class="ui-form-explain"></div>

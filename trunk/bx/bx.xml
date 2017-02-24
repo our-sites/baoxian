@@ -2,10 +2,10 @@
     <socket>127.0.0.1:8100</socket>
     <protocol>http</protocol>
     <master>true</master>
-    <harakiri>10</harakiri>
+    <harakiri>20</harakiri>
     <chdir>./</chdir>
     <module>django_wsgi</module>
-    <processes>4</processes> <!-- 进程数 -->
+    <processes>10</processes> <!-- 进程数 -->
     <gevent>100</gevent>
     <gevent-monkey-patch>true</gevent-monkey-patch>
     <pidfile>/home/nginx/logs/uwsgi_bx.pid</pidfile>

@@ -57,13 +57,41 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">保险顾问管理中心</a>
+                <a class="navbar-brand" href="/work_proxy/">保险顾问管理中心</a>
             </div>
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
+                <li>
+
+                    <a  href="/" target="_blank"><i class="fa  fa-home    fa-fw"></i> 首页</a>
+
+                </li>
+                <li>
+
+                    <a  href="/product/" target="_blank"><i class="fa  fa-th    fa-fw"></i> 保险产品</a>
+
+                </li>
+                <li>
+
+                    <a  href="/ask/" target="_blank"><i class="fa   fa-question-circle    fa-fw"></i> 问吧</a>
+
+                </li>
+                <li>
+
+                    <a  href="/dailiren/" target="_blank"><i class="fa  fa-users    fa-fw"></i> 保险顾问</a>
+
+                </li>
+                <li>
+                    <a  href="/zixun/" target="_blank"><i class="fa  fa-fire    fa-fw"></i> 热门资讯</a>
+
+                </li>
             <li>
-                <a style="color: #ff0000"><i class="fa  fa-credit-card    fa-fw"></i>实名认证(未认证)</a>
+                {% if request.myuser_profile.certifi_status != 2 %}
+                <a style="color: #ff0000" href="/work_proxy/renzheng/"><i class="fa  fa-credit-card    fa-fw"></i>实名认证(未认证)</a>
+                {% else %}
+                    <a  href="/work_proxy/renzheng/"><i class="fa  fa-credit-card    fa-fw"></i> 已实名认证</a>
+                {% endif %}
             </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -119,10 +147,10 @@
                     <ul class="nav" id="side-menu">
                         <li>
                             <div  style="height: 50px;margin-top:30px;margin-bottom:15px;padding-left:10px ;display: inline-block">
-                                <a style="display: inline;float: left;margin-right: 10px" href="/work_proxy/my/img/">
+                                <a style="display: inline;float: left;margin-right: 10px" href="/work_proxy/img/">
                                     <img width="50" height="50" src="{% if not request.myuser.imgurl %}/static/imgs/default-user.png{% else %}{{ request.myuser.imgurl.url }}{% endif %}" style="border-radius: 25px">
                                 </a>
-                                <div style="display: inline;float: left">
+                                <div style="display: inline;float: left;margin-top: 15px">
                                     <a style="font-size: 18px;color: rgb(119,119,119)">
 
                                             {% if my_username|length <= 11 %}
@@ -133,7 +161,7 @@
 
                                     </a>
                                     <p>
-                                        积分:6
+{#                                        积分:6#}
                                     </p>
                                 </div>
 
@@ -143,11 +171,15 @@
                             <a href="/work_proxy/" {% if request.path == "/work_proxy/"  %}class="active" {% endif  %}><i class="fa fa-home fa-fw"></i> 首页</a>
                         </li>
                         <li>
-                            <a href="/work_proxy/renzheng/" {% if request.path == "/work_proxy/renzheng/"  %}class="active" {% endif  %}><i class="fa  fa-credit-card    fa-fw"></i> 实名认证(未认证)</a>
+                            <a href="/work_proxy/renzheng/" {% if request.path == "/work_proxy/renzheng/"  %}class="active" {% endif  %} {% if request.myuser_profile.certifi_status != 2 %}style="color: #ff0000"{% else %}{% endif %}><i class="fa  fa-credit-card    fa-fw"></i> 实名认证({% if request.myuser_profile.certifi_status != 2 %}未{% else %}已{% endif %}认证)</a>
                         </li>
-                        <li>
-                            <a href="/work_proxy/jifen/" {% if request.path == "/work_proxy/jifen/"  %}class="active" {% endif  %}><i class="fa fa-bookmark-o  fa-fw"></i> 我的积分</a>
+                        <li >
+                            <a href="/work_proxy/img/" {% if request.path == "/work_proxy/img/" %}class="active" {% endif %}><i class="fa fa-gears fa-fw"></i> 修改头像</a>
+
                         </li>
+{#                        <li>#}
+{#                            <a href="/work_proxy/jifen/" {% if request.path == "/work_proxy/jifen/"  %}class="active" {% endif  %}><i class="fa fa-bookmark-o  fa-fw"></i> 我的积分</a>#}
+{#                        </li>#}
                         <li>
                             <a href="/work_proxy/myans/" {% if request.path == "/work_proxy/myans/"  %}class="active" {% endif  %}><i class="fa fa-comment-o    fa-fw"></i> 我的回答</a>
                         </li>
@@ -158,24 +190,15 @@
                         <li>
                             <a href="/work_proxy/all_msg/" {% if request.path == "/work_proxy/all_msg/"  %}class="active" {% endif  %}><i class="fa fa-envelope fa-fw"></i> 系统消息</a>
                         </li>
-                        <li {% if "/work_proxy/my/" in  request.path %}class="active" {% endif %}>
-                            <a href="#"><i class="fa fa-gears fa-fw"></i> 个人资料<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="/work_proxy/my/contact/" {% if request.path == "/work_proxy/my/contact/"  %}class="active" {% endif  %}>基本信息</a>
-                                </li>
-                                <li>
-                                    <a href="/work_proxy/my/img/" {% if request.path == "/work_proxy/my/img/"  %}class="active" {% endif  %}>修改头像</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
+
                         <li>
                             <a href="/work_proxy/change_pwd/" {% if request.path == "/work_proxy/change_pwd/"  %}class="active" {% endif  %}><i class="fa fa-lock fa-fw"></i>修改密码</a>
                         </li>
-                        <li>
-                            <a href="/logout/?next=/"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
+                        <li >
+                            <a  href="#myModal" data-toggle="modal"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
                         </li>
+
+
 
                     </ul>
                 </div>
@@ -183,6 +206,28 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
+    <div>
+
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" style="width: 400px">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="myModalLabel">提醒</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            您确定要退出么？
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                            <a  href="/logout/?next=/" type="button" class="btn btn-primary">确定</a>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+    </div>
 
         {% block content %}
         {% endblock %}

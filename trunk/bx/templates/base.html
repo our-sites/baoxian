@@ -3,12 +3,31 @@
 <!-- saved from url=(0065)http://192.168.12.48:2015/files/bx/www/info/1.0.0/html/index.html -->
 <html lang="zh-cmn-Hans"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>{% block title %}保险管家{% endblock %}</title>
+        <style>
+        .fot{
+            width: 100%;
+            background: #272723;
+        }
+        .fot-content{
+            margin: 0 auto;
+            width: 1200px;
+            padding: 20px 0;
+            color: #939392;
+            font-size: 12px;
+            line-height: 18px;
+            text-align: center;
+        }
+    </style>
 {% block css %}{% endblock %}
-<style>@font-face{font-family:uc-nexus-iconfont;src:url(chrome-extension://pogijhnlcfmcppgimcaccdkmbedjkmhi/res/font_1476274416_922599.woff) format('woff'),url(chrome-extension://pogijhnlcfmcppgimcaccdkmbedjkmhi/res/font_1476274416_922599.ttf) format('truetype')}</style></head>
+<style>@font-face{font-family:uc-nexus-iconfont;src:url(chrome-extension://pogijhnlcfmcppgimcaccdkmbedjkmhi/res/font_1476274416_922599.woff) format('woff'),url(chrome-extension://pogijhnlcfmcppgimcaccdkmbedjkmhi/res/font_1476274416_922599.ttf) format('truetype')}</style>
+<script type="text/javascript">
+	document.write('<script src="\/\/assets-cdn.kf5.com\/supportbox\/main.js?' + (new Date).getDay() + '" id="kf5-provide-supportBox" kf5-domain="wolover.kf5.com" charset="utf-8"><\/script>');
+</script>
+</head>
 <body>
 {% include "top.html" %}
 {% include "header.html" %}
-{% include "nav.html" %}
+{#{% include "nav.html" %}#}
 {% block content %}
 {% endblock %}
 {% include "footer.html" %}

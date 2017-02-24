@@ -2,6 +2,10 @@ require('global');
 var $ = require('$');
 require('com/tabs:tabs');
 require('region').initAll();
+require('slick:slick');
+// 引入咨询脚本
+require('com/chat:chat');
+var layer = require('layer:layer');
 
 // 代理人模块选项卡
 $('.warmheart-advisers').tabs({
@@ -87,4 +91,18 @@ if ($fixedArea.length) {
         }
     });
 }
+
+// 顶部消息
+$('.bx-rtk-content ul').slick({
+    dots: false,
+    infinite: true,
+    arrows: false,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    vertical: true,
+    autoplay: true,
+    autoplaySpeed: 2000
+});
+
+
 // @require './common.css';

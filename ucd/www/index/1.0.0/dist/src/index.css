@@ -323,6 +323,7 @@
     width: 100%;
     height: 480px;
     position: relative;
+    overflow: hidden;
 }
 
 /*banner*/
@@ -545,4 +546,16 @@
 .index-banner-menu .ui-form-item-error .ui-form-explain {
     margin: -6px 0 6px;
     line-height: 21px;
+}
+
+.slick-dotted.slick-slider
+{
+    margin-bottom: 0;
+}
+.slick-dots{
+    bottom: 25px;
+    z-index: 500;
+}
+.slick-list img{
+    /*height: 480px;*/
 }

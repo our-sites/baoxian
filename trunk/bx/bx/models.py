@@ -12,6 +12,7 @@ from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 import  re
 import  json
+import  HTMLParser
 
 
 def filter_tags(htmlstr):
@@ -63,7 +64,8 @@ class Consult(models.Model):
     def get_simple_content(self):
         a=filter_tags(self.content)
         b= replace_charentity(a)
-        return  b.strip()
+        _=HTMLParser.HTMLParser()
+        return  _.unescape(b.strip())
     def get_date(self):
         return datetime.datetime.fromtimestamp(self.addtime).strftime("%Y-%m-%d")
 
@@ -198,6 +200,9 @@ class Product(models.Model):
             return Company.objects.get(cid=self.cid).shortname
         except:
             return None
+
+    def get_comobj(self):
+        return  Company.objects.get(cid=self.cid)
 
 
 class ProductImgCache(models.Model):

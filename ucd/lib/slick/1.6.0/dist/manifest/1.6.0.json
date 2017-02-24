@@ -1,0 +1,22 @@
+{
+  "res": {
+    "lib/slick/1.6.0:slick-theme.css": {
+      "uri": "/lib/slick/1.6.0/src/slick-theme.css",
+      "type": "css"
+    },
+    "lib/slick/1.6.0:slick.css": {
+      "uri": "/lib/slick/1.6.0/src/slick.css",
+      "type": "css"
+    },
+    "lib/slick/1.6.0:slick": {
+      "uri": "/lib/slick/1.6.0/src/slick.js",
+      "type": "js",
+      "deps": [
+        "lib/jquery/1.11.3:jquery",
+        "lib/slick/1.6.0:slick.css",
+        "lib/slick/1.6.0:slick-theme.css"
+      ]
+    }
+  },
+  "pkg": {}
+}

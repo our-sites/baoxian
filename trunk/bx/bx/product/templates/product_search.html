@@ -72,27 +72,40 @@
 {#                    <a href="javascript:;" class="more">更多</a>#}
 {#                </div>#}
             </div>
+                        <div class="selected clf">
+                    <div class="fl">
+                        条件：
+                    </div>
+                    <div class="content">
+                        {% if user_type_info %}
+                        <a href="javascript:;" class="selected-item">{{ user_type_info }}</a>
+                        {% endif %}
+                    {% if cate_type_info %}
+                        <a href="javascript:;" class="selected-item">{{ cate_type_info }}</a>
+                    {% endif %}
+                    {% if c_info %}
+                        <a href="javascript:;" class="selected-item">{{ c_info }}</a>
+                    {% endif %}
+                    </div>
+                </div>
+
         </div>
-        <!--已选条件-->
-        <div class="chose-condition clf">
-            <div class="fl">
-                条件：
-            </div>
-        </div>
+
 
         <div class="clf">
             <div class="fl">
                 <!--筛选结果-->
-                <div class="product-list clf">
-                    {% for i in allinfo %}
-                    <div class="product-item {% if forloop.counter|mod:3 == 0  %}right {% endif %}">
-                        <h4>{{ i.pro_name }}</h4>
-                        <ul>
-                                {% for j in i.get_pro_desc_json|slice:":3" %}
-                            <li>{{ j.0 }}</li>
-                                {% endfor %}
-                        </ul>
-                        <a href="/product/detail/{{ i.pid }}.html" class="view">查看详情</a>
+                <div class="product-list ">
+                {% for i in allinfo %}
+                        <div class="product-item clf">
+                            <div class="fl">
+                                <a href="/product/detail/{{ i.pid }}.html">
+                                    <img src="{{ i.img.url }}">
+                                </a>
+                            </div>
+                            <div class="product-item-info">
+                                <h4>{{ i.pro_name }}</h4>
+                                <div class="product-item-content">
                         <dl class="clf">
                             <dt>承保年龄</dt>
                             <dd>{{ i.insurance_agelimit }}</dd>
@@ -103,8 +116,45 @@
                             <dt>保险公司</dt>
                             <dd>{{ i.comname }}</dd>
                         </dl>
-                    </div>
-                    {% endfor %}
+                        <ul>
+                                {% for j in i.get_pro_desc_json|slice:":3" %}
+                            <li>{{ j.0 }}</li>
+                                {% endfor %}
+                        </ul>
+                                </div>
+                            </div>
+                        {% with com=i.get_comobj %}
+                            <div class="fr">
+                                <a href="/company/detail/{{ com.cid }}.html">
+                                    <img src="{{ com.img.url }}">
+                                </a>
+
+                                <a href="/product/detail/{{ i.pid }}.html" class="product-item-buy">我要购买</a>
+                            </div>
+                        {% endwith %}
+                        </div>
+                {% endfor %}
+{#                    {% for i in allinfo %}#}
+{#                    <div class="product-item {% if forloop.counter|mod:3 == 0  %}right {% endif %}">#}
+{#                        <h4>{{ i.pro_name }}</h4>#}
+{#                        <ul>#}
+{#                                {% for j in i.get_pro_desc_json|slice:":3" %}#}
+{#                            <li>{{ j.0 }}</li>#}
+{#                                {% endfor %}#}
+{#                        </ul>#}
+{#                        <a href="/product/detail/{{ i.pid }}.html" class="view">查看详情</a>#}
+{#                        <dl class="clf">#}
+{#                            <dt>承保年龄</dt>#}
+{#                            <dd>{{ i.insurance_agelimit }}</dd>#}
+{#                            <dt>保险期限</dt>#}
+{#                            <dd>{{ i.insurance_timelimit }}</dd>#}
+{#                            <dt>缴费方式</dt>#}
+{#                            <dd>{{ i.insurance_paytype }}</dd>#}
+{#                            <dt>保险公司</dt>#}
+{#                            <dd>{{ i.comname }}</dd>#}
+{#                        </dl>#}
+{#                    </div>#}
+{#                    {% endfor %}#}
                 </div>
                 <!--翻页-->
             {% if allinfo.paginator.num_pages >= 2 %}

@@ -79,6 +79,7 @@
                             <span class="muted">问题来自：  {{ ask_obj.get_date }}  {{ ask_obj.get_area_info }}      </span>
 
                             <form id="ask" class="ui-form" action="{{ request.path }}" novalidate="novalidate" data-widget-cid="widget-6" method="post">
+                                {% csrf_token %}
                                 <div class="ui-form-item">
                                     <textarea id="content" name="content" placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少..." data-widget-cid="widget-7" data-explain="">{{ last_answer_info }}</textarea>
                                     <div class="ui-form-explain"></div>
@@ -108,12 +109,15 @@
                 {% for i in allinfo  %}
                 <div class="ask-list-item">
                     <div class="result-box">
+                    {% with buff_user=i.get_user %}
+                        {% with buff_user_profile=buff_user.get_profile %}
+                            {% with buff_user_profile_com=buff_user_profile.get_comobj %}
                         <div class="clf">
-                            <img class="result-author-avatar" src="{% if i.get_user.imgurl %}{{ i.get_user.imgurl.url }}{% else %}/static/imgs/default-user.png{% endif %}" />
+                            <img class="result-author-avatar" src="{% if buff_user.imgurl %}{{ buff_user.imgurl.url }}{% else %}/static/imgs/default-user.png{% endif %}" />
                             <div class="result-info">
                                 <p>
-                                    <a href="" class="result-info-company">新华</a>
-                                    <a href="" class="result-info-name">兴趣使然</a>
+                                    <a href="" class="result-info-company">{{ buff_user_profile_com.comname }}</a>
+                                    <a href="" class="result-info-name">{% if buff_user.real_name  %}{{ buff_user.real_name }}{% else %}{{ buff_user.username|slice:":4" }}**{% endif %}</a>
                                     <a href="" class="result-info-level"></a>
                                     <a href="" class="result-info-authentication"></a>
                                     <a href="" class="ask-btn"><img src="/static/imgs/rank-item-consult-icon.png" alt="">咨询</a>
@@ -124,6 +128,9 @@
                             </div>
                             <div class="result-info-date">{{ i.get_date }}</div>
                         </div>
+                                {% endwith %}
+                            {% endwith %}
+                    {% endwith %}
                     </div>
                     <div class="result-content">
 {{ i.ans_content }}                    </div>

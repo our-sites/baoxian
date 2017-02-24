@@ -34,7 +34,8 @@ class Manage(object):
                                (r"company/detail/(\d+).html",views.company_detail),
                                (r"company/detail/delete/(\d+)\.html",views.company_delete),
                                (r"company/detail/delete/do/",views.company_delete_do),
-                               (r"logout/",views.logout)
+                               (r"logout/",views.logout),
+                               (r"auth_user/",views.auth_user)
             )
         return urlpatterns
     @property

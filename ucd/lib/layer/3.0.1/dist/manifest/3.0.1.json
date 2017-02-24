@@ -1,0 +1,17 @@
+{
+  "res": {
+    "lib/layer/3.0.1:layer.css": {
+      "uri": "/lib/layer/3.0.1/src/layer.css",
+      "type": "css"
+    },
+    "lib/layer/3.0.1:layer": {
+      "uri": "/lib/layer/3.0.1/src/layer.js",
+      "type": "js",
+      "deps": [
+        "lib/jquery/1.11.3:jquery",
+        "lib/layer/3.0.1:layer.css"
+      ]
+    }
+  },
+  "pkg": {}
+}

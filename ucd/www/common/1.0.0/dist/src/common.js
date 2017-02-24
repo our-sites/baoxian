@@ -1,9 +1,13 @@
-define('www/common/1.0.0:common', ['com/global/1.0.0:global', 'com/global/1.0.0:dollar', 'com/tabs/1.0.0:tabs', 'com/global/1.0.0:region', 'com/global/1.0.0:validator'], function(require, exports, module) {
+define('www/common/1.0.0:common', ['com/global/1.0.0:global', 'com/global/1.0.0:dollar', 'com/tabs/1.0.0:tabs', 'com/global/1.0.0:region', 'lib/slick/1.6.0:slick', 'com/chat/1.0.0:chat', 'lib/layer/3.0.1:layer', 'com/global/1.0.0:validator'], function(require, exports, module) {
 
   require('com/global/1.0.0:global');
   var $ = require('com/global/1.0.0:dollar');
   require('com/tabs/1.0.0:tabs');
   require('com/global/1.0.0:region').initAll();
+  require('lib/slick/1.6.0:slick');
+  // 引入咨询脚本
+  require('com/chat/1.0.0:chat');
+  var layer = require('lib/layer/3.0.1:layer');
   
   // 代理人模块选项卡
   $('.warmheart-advisers').tabs({
@@ -89,6 +93,20 @@ define('www/common/1.0.0:common', ['com/global/1.0.0:global', 'com/global/1.0.0:
           }
       });
   }
+  
+  // 顶部消息
+  $('.bx-rtk-content ul').slick({
+      dots: false,
+      infinite: true,
+      arrows: false,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      vertical: true,
+      autoplay: true,
+      autoplaySpeed: 2000
+  });
+  
+  
   // @require 'www/common/1.0.0:common.css';
   
 

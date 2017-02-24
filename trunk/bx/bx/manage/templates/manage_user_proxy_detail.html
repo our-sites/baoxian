@@ -34,14 +34,17 @@
         }
     </style>
 {% endblock %}
-{% block title %}投保人详情{% endblock %}
+{% block title %}代理人详情{% endblock %}
 {% block content %}
     <div class="container main-container">
         <div class="row">
             <div class="col-md-6">
-                <h3 class="hd">投保人详情</h3>
+                <h3 class="hd">代理人详情</h3>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+                <a href="/manage/auth_user/?uid={{ myuser.uid }}" role="button" class="btn btn-primary" style="float: right;margin-top: 30px;" target="_blank">自助登录</a>
             </div>
             <div class="col-md-2">
                 <a href="/manage/user/proxy/resetpwd/{{ myuser.uid }}.html" role="button" class="btn btn-primary" style="float: right;margin-top: 30px;">密码重置</a>
@@ -140,6 +143,21 @@
                 <td>{{ myuser.xx }}</td>
             </tr>
             <tr>
+                <td>从业年限：</td>
+                <td>
+
+                                            <select class="form-control" name="year" style="width:200px">
+                                                <option value="1"  {% if myprofile.year == 1 %}selected{% endif %}>1年</option>
+                                                <option value="2"  {% if myprofile.year == 2 %}selected{% endif %}>2年</option>
+                                                <option value="3" {% if  myprofile.year == 3 %}selected{% endif %}>3年</option>
+                                                <option value="4" {% if  myprofile.year == 4 %}selected{% endif %}>4年</option>
+                                                <option value="5" {% if  myprofile.year == 5 %}selected{% endif %}>5年</option>
+                                                <option value="6" {% if  myprofile.year == 6 %}selected{% endif %}>6年</option>
+                                            </select>
+
+                </td>
+            </tr>
+            <tr>
                 <td>所属保险公司</td>
                 <td><select class="form-control" name="cid" style="width: 200px">
                     <option value="0">无</option>
@@ -170,7 +188,7 @@
                 <td>元信息</td>
                 <td>{% if myprofile %}<label class="label label-info">{{ myprofile.meta }}</label>{% endif %}</td>
             </tr>
-            {% if myprofile.certifi_status in  status_range %}
+
                         <tr>
                 <td>认证状态</td>
                 <td>
@@ -189,7 +207,7 @@
                 <td>认证通知</td>
                 <td><input type="text" class="form-control" id="fdsfddscdf"  value="{{ myprofile.certifi_message }}" style="width: 300px" name="certifi_message"></td>
             </tr>
-            {% endif %}
+
                         <tr>
                 <td>操作</td>
                 <td><button type="submit" class="btn btn-primary btn-sm">提交</button></td>

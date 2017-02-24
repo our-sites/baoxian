@@ -40,18 +40,22 @@ def search(request):
 
     querystring=""
     if people_id:
-        end_age=UserType.objects.get(id=people_id).end_age
+        _usertype=UserType.objects.get(id=people_id)
+        end_age=_usertype.end_age
         querystring+=" end_age>=%s"%end_age
+        user_type_info=_usertype.type_name
     else:
         end_age=0
     if cate_id:
         if  querystring!="":
             querystring+= " and "
         querystring+=" FIND_IN_SET(  '%s',bx_type )  "%cate_id
+        cate_type_info=CateType.objects.get(id=cate_id).type_name
     if c_id:
         if querystring!="":
             querystring+=  " and "
         querystring+=" cid = %s "%c_id
+        c_info=Company.objects.get(cid=c_id).shortname
 
     user_type_list=UserType.objects.all()
     if not people_id:

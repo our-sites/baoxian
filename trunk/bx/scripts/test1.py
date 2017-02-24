@@ -18,4 +18,7 @@ data=requests.post("http://iir.circ.gov.cn/web/baoxyx!searchInfoBaoxyx.html",{"i
 
 print time.time()
 doc=pyquery.PyQuery(data.content.decode("gbk"))
-print doc.html()
+for i in  doc("th"):
+    _= pyquery.PyQuery(i).html()
+    if _:
+        print _,pyquery.PyQuery(i).next().html()

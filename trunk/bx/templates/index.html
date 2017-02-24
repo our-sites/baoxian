@@ -5,6 +5,13 @@
 {% load atm %}
 {% block css %}
     {% atmcss www/index:index %}
+    <style>
+      .friendbrand{
+          width: 167px;
+
+
+      }
+    </style>
 {% endblock %}
 {% block content %}
 <div id="Index">
@@ -312,6 +319,17 @@
                             {% endwith %}
                         {% endfor %}
                     </div>
+                </div>
+            </div>
+<div class="index-adviser">
+                <h2>合作品牌</h2>
+                <div class="clf">
+                    <div>
+                        {% for i in  friend_company|slice:":14" %}
+                        <img src="{{ i.img.url }}"  class="friendbrand" alt="{{ i.comname }}">
+                        {% endfor %}
+                    </div>
+
                 </div>
             </div>
         </div>

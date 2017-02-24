@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load atm %}
+{% load range %}
+{% block css %}
+    {% atmcss www/info:index %}
+{% endblock %}
+{% block content %}
+    <div id="informationList" >
+    <div class="grid clf">
+            <div class="bx-crubms">
+                <a href="/zixun/">保险资讯</a> &gt;
+                <a href="/zixun/{{ name }}/">{{ name_ch }}</a>
+            </div>
+            <div class="classify clf">
+                <a href="/zixun/" class="classify-item all ">全部</a>
+                <a href="/zixun/anli/" class="classify-item anli {% if name == "anli" %}active{% endif %}" {% if name == "anli" %}style="color: #42BAD0" {% endif %} >保险案例</a>
+                <a href="/zixun/xinwen/" class="classify-item zixun {% if name == "xinwen" %}active{% endif %}" {% if name == "xinwen" %}style="color: #42BAD0" {% endif %}>保险新闻</a>
+                <a href="/zixun/dongtai/" class="classify-item dongtai {% if name == "dongtai" %}active{% endif %}" {% if name == "dongtai" %}style="color: #42BAD0" {% endif %}>监管动态</a>
+                <a href="/zixun/guahua/" class="classify-item guihua {% if name == "guahua" %}active{% endif %}" {% if name == "guahua" %}style="color: #42BAD0" {% endif %}>保险规划</a>
+                <a href="/zixun/citiao/" class="classify-item citiao {% if name == "citiao" %}active{% endif %}" {% if name == "citiao" %}style="color: #42BAD0" {% endif %}>保险词条</a>
+                <a href="/zixun/baike/" class="classify-item baike {% if name == "baike" %}active{% endif %}" {% if name == "baike" %}style="color: #42BAD0" {% endif %}>保险百科</a>
+            </div>
+    <div class="clf">
+        <div class="clf">
+            <div class="fl">
+                <div class="information-sub-box">
+                    <h3>{{ name_ch }}</h3>
+                    <div class="information-sub-content" style="
+    padding-bottom: 10px;
+">
+                        {% for i in allinfo %}
+                        <div class="information-item clf">
+                                <div class="information-item-content">
+                                    <h4>
+                                        <a href="/zixun/detail/{{ i.zid }}.html">{{ i.title }}</a>
+                                    </h4>
+                                    <p class="information-item-guide">
+                                        <b>导读：</b>
+                                            {{ i.get_simple_content }}
+                                    </p>
+                                    <p>
+                                        <span class="view-number">0</span>
+                                        <span class="zan-number">342</span>
+                                    </p>
+                                </div>
+                                <div class="information-item-date">
+                                    {{ i.get_date }}
+                                </div>
+                            </div>
+                        {% endfor %}
+{#                    <a href="/zixun/xinwen/" class="information-sub-more" target="_blank">查看更多</a>#}
+                    </div>
+                </div>
+
+                {% if allinfo.paginator.num_pages >= 2 %}
+                <div class="bx-list-flip clf">
+                    {% if allinfo.has_previous %}
+                    <a href="/zixun/{{ name }}/{{ allinfo.pervious_page_number }}/" class="bx-list-flip-btn prev">&lt;</a>
+                        {% endif %}
+                    {% for t in allinfo.number|near:3 %}
+                        {% if t > 0 and t <= allinfo.paginator.num_pages %}
+                    <a href="/zixun/{{ name }}/{{ t }}/" class="bx-list-flip-btn number {% if t == allinfo.number %}active{% endif %}">{{ t }}</a>
+                        {% endif %}
+                    {% endfor %}
+                {% if allinfo.has_next %}
+                    <a href="/zixun/{{ name }}/{{ allinfo.next_page_number }}/" class="bx-list-flip-btn next">&gt;</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+            </div>
+
+            <div class="fr">
+                {% include "dingzhi_common.html" %}
+                {% include "dailiren_common.html" %}
+            </div>
+        </div>
+    </div>
+
+    </div>
+    </div>
+
+{% endblock %}
+{% block js %}
+    {% atmjs www/info:index %}
+{% endblock %}

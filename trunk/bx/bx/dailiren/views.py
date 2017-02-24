@@ -28,6 +28,10 @@ def search(request):
     else:
         city_id=0
         c_id=0
+    if c_id:
+        c_obj=Company.objects.get(cid=c_id)
+    else:
+        c_obj=None
     company_list=Company.objects.all().order_by("-dailiren_weight")[:25]
     params={}
     if c_id:
@@ -59,5 +63,12 @@ def detail(request,id):
         user.comname=""
         user.comcontent=""
     products=Product.objects.filter(cid=user.profile.cid)[:10]
+
+    my_ans=Answer.objects.filter(uid=user.uid)
+    _dict = dict([(_.askid,_.ans_content) for _ in my_ans])
+    my_ans_ask=Ask.objects.filter(askid__in=[ i.askid for i in my_ans]).order_by("-ask_time")[:10]
+    for _ in my_ans_ask:
+        _.self_content=_dict[_.askid]
+
     return  render_to_response("dailiren_detail.html",locals(),
                                context_instance=RequestContext(request))

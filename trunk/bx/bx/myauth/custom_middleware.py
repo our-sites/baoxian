@@ -18,10 +18,27 @@ class SelfAuthMiddleware(object):
             except Exception as e :
                 print "Exception",e.message
                 request.myuser=None
+                request.myuser_profile=None
             else:
                 request.myuser=user
+                if request.myuser.usertype==1:
+                    try:
+                        request.myuser_profile=BuyUserProfile.objects.get(uid=request.myuser.uid)
+                    except:
+                        _=BuyUserProfile(uid=request.myuser, province=request.province_id, city=request.city_id)
+                        _.save()
+                        request.myuser_profile=_
+
+                else:
+                    try:
+                        request.myuser_profile=ProxyUserProfile.objects.get(uid=request.myuser.uid)
+                    except:
+                        _=ProxyUserProfile(uid=request.myuser,province=request.province_id, city=request.city_id)
+                        _.save()
+                        request.myuser_profile=_
         else:
             request.myuser=None
+            request.myuser_profile=None
 
 
     def process_response(self, request, response):

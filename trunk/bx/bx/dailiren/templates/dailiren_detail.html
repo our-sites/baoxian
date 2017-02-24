@@ -20,22 +20,23 @@
                 <div class="adviser-preview-basic">
                     <p class="job">客户经理</p>
                     <p class="company"><span>{{ user.city_info }}</span>{{ user.comname }}</p>
-                    <p class="contact"><span>电话：{{ user.phone }}</span>QQ：{{ user.qq }}</p>
-                    <a class="consult-btn" href="javascript:;">我要咨询</a>
+                    <p class="contact"><span>电话：{{ user.phone }}</span>QQ：{{ user.qq }}<span>微信：{{ user.profile.weixin }}</span></p>
+
+                    <a class="consult-btn" href="/ask/" target="_blank">我要咨询</a>
                 </div>
                 <div class="adviser-preview-addition">
                     <p>
-                        <span>保险销售执业证号：</span>{{ user.profile.certifi_num }}
+                        <span>保险代理资格证号：</span>{{ user.profile.certifi_num }}
                     </p>
                     <p>
-                        <span>保险代理资格证号：</span>{{ user.profile.practice_num }}
+                        <span>保险销售执业证号：</span>{{ user.profile.practice_num }}
                     </p>
                     <p>
-                        <span>从业时间：</span>x年
+                        <span>从业时间：</span>{{ user.profile.year }}年
                     </p>
                     <p>
-                        <span>回答：</span>x条
-                        <span class="ml50">好评：</span>100
+                        <span>回答：</span>{{ user.profile.ans_num }}条
+{#                        <span class="ml50">好评：</span>100#}
                     </p>
                 </div>
             </div>
@@ -47,7 +48,6 @@
         <!--tabs-->
         <div class="adviser-details-tabs">
             <a href="javascript:;" class="active">个人信息</a>
-            <a href="javascript:;">保险产品</a>
         </div>
         <!--个人信息-->
         <div class="adviser-personal-info">
@@ -60,25 +60,6 @@
                     <p>{{ user.profile.my_ad }}</p>
                 </div>
             </div>
-            <!--个人荣誉-->
-{#            <div class="clf honour">#}
-{#                <div class="fl">#}
-{#                    个人荣誉#}
-{#                </div>#}
-{#                <div class="content">#}
-{#                    <ul>#}
-{#                        <li>平安宁波高级个人客户经理</li>#}
-{#                        <li>1998年进入平安服务至今</li>#}
-{#                        <li>平安2008、2012年钻石峰会华东地区总会长</li>#}
-{#                        <li>2013年平安全国高峰会会长</li>#}
-{#                        <li>宁波十大杰出青年</li>#}
-{#                        <li>平安历届华东地区年度冠军</li>#}
-{#                    </ul>#}
-{#                </div>#}
-{#                <div class="unfold">#}
-{#                    <i class="fa fa-caret-down"></i>#}
-{#                </div>#}
-{#            </div>#}
             <!--擅长险种-->
             <div class="clf adept">
                 <div class="fl">
@@ -113,14 +94,10 @@
                     问答
                 </div>
                 <div class="content">
-                    <a href="" class="color">xx问：我想给私家车买保险，行车城市：郑州，购车时间：2016年11月，新车购置价：12万，上年未出险，驾驶多年，经常市...</a>
-                    <p>答：我在郑州联系我。</p>
-                    <a href="" class="color">xx问：我想给私家车买保险，行车城市：郑州，购车时间：2016年11月，新车购置价：12万，上年未出险，驾驶多年，经常市...</a>
-                    <p>答：我在郑州联系我。</p>
-                    <a href="" class="color">xx问：我想给私家车买保险，行车城市：郑州，购车时间：2016年11月，新车购置价：12万，上年未出险，驾驶多年，经常市...</a>
-                    <p>答：我在郑州联系我。</p>
-                    <a href="" class="color">xx问：我想给私家车买保险，行车城市：郑州，购车时间：2016年11月，新车购置价：12万，上年未出险，驾驶多年，经常市...</a>
-                    <p>答：我在郑州联系我。</p>
+                    {% for i in my_ans_ask %}
+                    <a href="/ask/detail/{{ i.askid }}.html" class="color" target="_blank">问：{{ i.ask_content }}.</a>
+                        <p>答：{{ i.self_content }}</p>
+                    {% endfor %}
                 </div>
                 <div class="unfold">
                     <i class="fa fa-caret-down"></i>
@@ -132,7 +109,7 @@
                     保险产品
                 </div>
                 <div class="content">
-                    {% for product in products|slice:":3" %}
+                    {% for product in products|slice:":4" %}
                     <div class="clf">
                         <div class="product-img">
                             <img src="{{ product.img.url }}">

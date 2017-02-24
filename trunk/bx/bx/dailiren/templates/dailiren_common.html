@@ -1,202 +1,106 @@
 <div class="lively-advisers">
-                    <!--title-->
-                    <h3 class="rank-title">
-                        <b>活跃顾问</b>
-{#                        <div class="rank-title-tab">#}
-{#                            <a href="" class="active">今日</a>#}
-{#                            <a href="">本周</a>#}
-{#                            <a href="">本月</a>#}
-{#                        </div>#}
-                    </h3>
-                    <!--list-->
-
-                    <div class="rank-type rank-day">
-                        {% with userprofiles=dailiren_common.get_hot|slice:":6" %}
-                            {% for profile in userprofiles %}
+                        <!--title-->
+                        <h3>活跃顾问</h3>
+                        <!--list-->
+                            {% with userprofiles=dailiren_common.get_hot|slice:":6" %}
+                                                        {% for profile in userprofiles %}
                                 {% with user=profile.get_user %}
-                        <div class="rank-item clf">
-                            <img src="{% if user.imgurl %}{{ user.imgurl.url }}{% else %}/static/imgs/default-user.png{% endif %}" class="rank-item-avatar">
-                            <div class="info">
-                                <p>
-                                    <span class="rank-item-name">{% if user.real_name %}{{ user.real_name }}{% else %}{{ user.username|slice:":4" }}**{% endif %}</span>
-                                    <span class="rank-item-level"></span>
-                                    <span class="rank-item-authentication"></span>
-                                </p>
-                                <p>
-                                    <span class="rank-item-company">{{ profile.get_short_comname }}&nbsp;</span>
-                                </p>
-                            </div>
-{#                            <div class="fr">#}
-{#                                <span class="rank-item-score">{{ profile.ans_num }}条回答</span>#}
-{#                                <a href="" class="rank-item-link">咨询他</a>#}
-{#                            </div>#}
-                        <div class="rank-item-consult">
-                                    咨询
+                        <div class="rank-list">
+                            <div class="rank-item clf">
+                                <img src="{% if user.imgurl %}{{ user.imgurl.url }}{% else %}/static/imgs/default-user.png{% endif %}" class="rank-item-avatar">
+                                <div class="info">
+                                    <h4>
+                                        {% if user.real_name %}{{ user.real_name }}{% else %}{{ user.username|slice:":4" }}**{% endif %}，{{ profile.get_short_comname }}
+                                    </h4>
+                                    <p>
+                                        <span class="rank-item-level"></span>
+                                        <span class="rank-item-authentication"></span>
+                                    </p>
                                 </div>
-                        </div>
-                                {% endwith %}
-                            {% endfor %}
+                                <div class="rank-item-consult">
+                                    咨询
+                                    <script class="chat-box-wrap" type="text/html">
+                                        <div class="chat-online-wrap chat-box">
+                                            <!--聊天-->
+                                            <div class="chat-online-box">
+                                                <!--header-->
+                                                <div class="chat-online-header clf">
+                                                    <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" alt="" class="chat-online-avatar">
+                                                    <div class="chat-online-info">
+                                                        <p>兴趣使燃，新华保险</p>
+                                                        <p>
+                                                            <span class="chat-online-info-level"></span>
+                                                            <span class="chat-online-info-authentication"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="chat-online-close" title="关闭"></div>
+                                                </div>
+                                                <!--记录-->
+                                                <div class="chat-online-body">
+                                                    <div class="chat-online-item clf left">
+                                                        <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" alt="" class="chat-online-item-avatar">
+                                                        <div class="chat-online-item-content">你好，有什么需要帮助的吗？</div>
+                                                    </div>
+                                                    <div class="chat-online-item clf right">
+                                                        <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" alt="" class="chat-online-item-avatar">
+                                                        <div class="chat-online-item-content">
+                                                            你好，我想买份保险。你好，我想买份保险。你好，我想买份保险。你好， 我想买份保险。
+                                                        </div>
+                                                    </div>
+                                                    <div class="chat-online-item clf left">
+                                                        <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" alt="" class="chat-online-item-avatar">
+                                                        <div class="chat-online-item-content">你好，有什么需要帮助的吗？</div>
+                                                    </div>
+                                                    <div class="chat-online-item clf right">
+                                                        <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" alt="" class="chat-online-item-avatar">
+                                                        <div class="chat-online-item-content">
+                                                            你好，我想买份保险。你好，我想买份保险。你好，我想买份保险。你好， 我想买份保险。
+                                                        </div>
+                                                    </div>
+                                                    <div class="chat-online-item clf left">
+                                                        <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" alt="" class="chat-online-item-avatar">
+                                                        <div class="chat-online-item-content">你好，有什么需要帮助的吗？</div>
+                                                    </div>
+                                                    <div class="chat-online-item clf right">
+                                                        <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" alt="" class="chat-online-item-avatar">
+                                                        <div class="chat-online-item-content">
+                                                            你好，我想买份保险。你好，我想买份保险。你好，我想买份保险。你好， 我想买份保险。
+                                                        </div>
+                                                    </div>
+                                                    <div class="chat-online-item clf left">
+                                                        <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" alt="" class="chat-online-item-avatar">
+                                                        <div class="chat-online-item-content">你好，有什么需要帮助的吗？</div>
+                                                    </div>
+                                                    <div class="chat-online-item clf right">
+                                                        <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" alt="" class="chat-online-item-avatar">
+                                                        <div class="chat-online-item-content">
+                                                            你好，我想买份保险。你好，我想买份保险。你好，我想买份保险。你好， 我想买份保险。
+                                                        </div>
+                                                    </div>
 
+                                                </div>
+                                                <!--发送-->
+                                                <div class="chat-online-footer">
+                                                    <form class="ui-form" action="/files/bx/www/common/1.0.0/html/data/提交失败">
+                                                        <div class="ui-form-item">
+                                                            <textarea name="text" class="chat-text-field" placeholder="填写咨询信息......"></textarea>
+                                                            <div class="ui-form-explain"></div>
+                                                        </div>
+                                                        <div class="send-btn">发送</div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <!--遮罩-->
+                                            <div class="chat-online-mask"></div>
+                                        </div>
+                                    </script>
+                                </div>
+                            </div>
+
+                        </div>
+
+                                                                {% endwith %}
+                            {% endfor %}
                         {% endwith %}
 
                     </div>
-{#                    <div class="rank-type rank-week fn-hidden">#}
-{#                        <div class="rank-item clf">#}
-{#                            <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" class="rank-item-avatar">#}
-{#                            <div class="info">#}
-{#                                <p>#}
-{#                                    <span class="rank-item-name">1这是个名字</span>#}
-{#                                    <span class="rank-item-level"></span>#}
-{#                                    <span class="rank-item-authentication"></span>#}
-{#                                </p>#}
-{#                                <p>#}
-{#                                    <span class="rank-item-company">公司的名字</span>#}
-{#                                </p>#}
-{#                            </div>#}
-{#                            <div class="fr">#}
-{#                                <span class="rank-item-score">554条回答</span>#}
-{#                                <a href="" class="rank-item-link">咨询他</a>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="rank-item clf">#}
-{#                            <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" class="rank-item-avatar">#}
-{#                            <div class="info">#}
-{#                                <p>#}
-{#                                    <span class="rank-item-name">1这是个名字</span>#}
-{#                                    <span class="rank-item-level"></span>#}
-{#                                    <span class="rank-item-authentication"></span>#}
-{#                                </p>#}
-{#                                <p>#}
-{#                                    <span class="rank-item-company">公司的名字</span>#}
-{#                                </p>#}
-{#                            </div>#}
-{#                            <div class="fr">#}
-{#                                <span class="rank-item-score">554条回答</span>#}
-{#                                <a href="" class="rank-item-link">咨询他</a>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="rank-item clf">#}
-{#                            <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" class="rank-item-avatar">#}
-{#                            <div class="info">#}
-{#                                <p>#}
-{#                                    <span class="rank-item-name">1这是个名字</span>#}
-{#                                    <span class="rank-item-level"></span>#}
-{#                                    <span class="rank-item-authentication"></span>#}
-{#                                </p>#}
-{#                                <p>#}
-{#                                    <span class="rank-item-company">公司的名字</span>#}
-{#                                </p>#}
-{#                            </div>#}
-{#                            <div class="fr">#}
-{#                                <span class="rank-item-score">554条回答</span>#}
-{#                                <a href="" class="rank-item-link">咨询他</a>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="rank-item clf">#}
-{#                            <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" class="rank-item-avatar">#}
-{#                            <div class="info">#}
-{#                                <p>#}
-{#                                    <span class="rank-item-name">1这是个名字</span>#}
-{#                                    <span class="rank-item-level"></span>#}
-{#                                    <span class="rank-item-authentication"></span>#}
-{#                                </p>#}
-{#                                <p>#}
-{#                                    <span class="rank-item-company">公司的名字</span>#}
-{#                                </p>#}
-{#                            </div>#}
-{#                            <div class="fr">#}
-{#                                <span class="rank-item-score">554条回答</span>#}
-{#                                <a href="" class="rank-item-link">咨询他</a>#}
-{#                            </div>#}
-{#                        </div>#}
-{##}
-{#                    </div>#}
-{#                    <div class="rank-type rank-month fn-hidden">#}
-{#                        <div class="rank-item clf">#}
-{#                            <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" class="rank-item-avatar">#}
-{#                            <div class="info">#}
-{#                                <p>#}
-{#                                    <span class="rank-item-name">1这是个名字</span>#}
-{#                                    <span class="rank-item-level"></span>#}
-{#                                    <span class="rank-item-authentication"></span>#}
-{#                                </p>#}
-{#                                <p>#}
-{#                                    <span class="rank-item-company">公司的名字</span>#}
-{#                                </p>#}
-{#                            </div>#}
-{#                            <div class="fr">#}
-{#                                <span class="rank-item-score">554条回答</span>#}
-{#                                <a href="" class="rank-item-link">咨询他</a>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="rank-item clf">#}
-{#                            <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" class="rank-item-avatar">#}
-{#                            <div class="info">#}
-{#                                <p>#}
-{#                                    <span class="rank-item-name">1这是个名字</span>#}
-{#                                    <span class="rank-item-level"></span>#}
-{#                                    <span class="rank-item-authentication"></span>#}
-{#                                </p>#}
-{#                                <p>#}
-{#                                    <span class="rank-item-company">公司的名字</span>#}
-{#                                </p>#}
-{#                            </div>#}
-{#                            <div class="fr">#}
-{#                                <span class="rank-item-score">554条回答</span>#}
-{#                                <a href="" class="rank-item-link">咨询他</a>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="rank-item clf">#}
-{#                            <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" class="rank-item-avatar">#}
-{#                            <div class="info">#}
-{#                                <p>#}
-{#                                    <span class="rank-item-name">1这是个名字</span>#}
-{#                                    <span class="rank-item-level"></span>#}
-{#                                    <span class="rank-item-authentication"></span>#}
-{#                                </p>#}
-{#                                <p>#}
-{#                                    <span class="rank-item-company">公司的名字</span>#}
-{#                                </p>#}
-{#                            </div>#}
-{#                            <div class="fr">#}
-{#                                <span class="rank-item-score">554条回答</span>#}
-{#                                <a href="" class="rank-item-link">咨询他</a>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="rank-item clf">#}
-{#                            <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" class="rank-item-avatar">#}
-{#                            <div class="info">#}
-{#                                <p>#}
-{#                                    <span class="rank-item-name">1这是个名字</span>#}
-{#                                    <span class="rank-item-level"></span>#}
-{#                                    <span class="rank-item-authentication"></span>#}
-{#                                </p>#}
-{#                                <p>#}
-{#                                    <span class="rank-item-company">公司的名字</span>#}
-{#                                </p>#}
-{#                            </div>#}
-{#                            <div class="fr">#}
-{#                                <span class="rank-item-score">554条回答</span>#}
-{#                                <a href="" class="rank-item-link">咨询他</a>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="rank-item clf">#}
-{#                            <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" class="rank-item-avatar">#}
-{#                            <div class="info">#}
-{#                                <p>#}
-{#                                    <span class="rank-item-name">1这是个名字</span>#}
-{#                                    <span class="rank-item-level"></span>#}
-{#                                    <span class="rank-item-authentication"></span>#}
-{#                                </p>#}
-{#                                <p>#}
-{#                                    <span class="rank-item-company">公司的名字</span>#}
-{#                                </p>#}
-{#                            </div>#}
-{#                            <div class="fr">#}
-{#                                <span class="rank-item-score">554条回答</span>#}
-{#                                <a href="" class="rank-item-link">咨询他</a>#}
-{#                            </div>#}
-{#                        </div>#}
-{##}
-{#                    </div>#}
-                </div>

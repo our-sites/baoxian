@@ -17,6 +17,8 @@ import  product
 import  dailiren
 import work_buy
 import  work_proxy
+import  company
+import  app
 
 urlpatterns = patterns('',
     # Examples:
@@ -46,4 +48,6 @@ urlpatterns = patterns('',
                        (r"^work_buy/",include(work_buy.site.urls)),
                        (r"^work_proxy/",include(work_proxy.site.urls)),
                        (r'^ckeditor/', include('ckeditor_uploader.urls')),
+                       (r"^company/",include(company.site.urls)),
+                       (r"^app/",include(app.site.urls)),
 )

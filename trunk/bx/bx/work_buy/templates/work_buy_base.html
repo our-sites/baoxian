@@ -57,11 +57,35 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">投保人管理中心</a>
+                <a class="navbar-brand" href="/work_buy/">投保人管理中心</a>
             </div>
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
+                <li>
+
+                    <a  href="/" target="_blank"><i class="fa  fa-home    fa-fw"></i> 首页</a>
+
+                </li>
+                <li>
+
+                    <a  href="/product/" target="_blank"><i class="fa  fa-th    fa-fw"></i> 保险产品</a>
+
+                </li>
+                <li>
+
+                    <a  href="/ask/" target="_blank"><i class="fa   fa-question-circle    fa-fw"></i> 问吧</a>
+
+                </li>
+                <li>
+
+                    <a  href="/dailiren/" target="_blank"><i class="fa  fa-users    fa-fw"></i> 保险顾问</a>
+
+                </li>
+                <li>
+                    <a  href="/zixun/" target="_blank"><i class="fa  fa-fire    fa-fw"></i> 热门资讯</a>
+
+                </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-envelope fa-fw"></i>{{ my_unread_messages_num }} <i class="fa fa-caret-down"></i>
@@ -119,7 +143,7 @@
                                 <a style="display: inline;float: left;margin-right: 10px" href="/work_buy/my/img/">
                                     <img width="50" height="50" src="{% if not request.myuser.imgurl %}/static/imgs/default-user.png{% else %}{{ request.myuser.imgurl.url }}{% endif %}" style="border-radius: 25px">
                                 </a>
-                                <div style="display: inline;float: left">
+                                <div style="display: inline;float: left;margin-top: 15px">
                                     <a style="font-size: 18px;color: rgb(119,119,119)">
 
                                             {% if my_username|length <= 11 %}
@@ -130,7 +154,7 @@
 
                                     </a>
                                     <p>
-                                        等级:6
+{#                                        你好，欢迎回来#}
                                     </p>
                                 </div>
 
@@ -167,7 +191,7 @@
                             <a href="/work_buy/change_pwd/" {% if request.path == "/work_buy/change_pwd/"  %}class="active" {% endif  %}><i class="fa fa-lock fa-fw"></i>修改密码</a>
                         </li>
                         <li>
-                            <a href="/logout/?next=/"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
+                            <a href="#myModal" data-toggle="modal"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
                         </li>
 
                     </ul>
@@ -176,6 +200,28 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
+        <div>
+
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" style="width: 400px">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="myModalLabel">提醒</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            您确定要退出么？
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                            <a  href="/logout/?next=/" type="button" class="btn btn-primary">确定</a>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+    </div>
 
         {% block content %}
         {% endblock %}
