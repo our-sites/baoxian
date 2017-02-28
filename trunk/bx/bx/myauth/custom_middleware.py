@@ -42,4 +42,9 @@ class SelfAuthMiddleware(object):
 
 
     def process_response(self, request, response):
+        if request.myuser:
+            response.set_cookie("user_type",str(request.myuser.usertype)
+                                  )
+        else:
+            response.delete_cookie("user_type")
         return  response

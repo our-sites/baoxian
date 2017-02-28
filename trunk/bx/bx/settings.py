@@ -111,7 +111,8 @@ MIDDLEWARE_CLASSES = (
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "bx.ip_middleware.IpMiddleware",  # ip info
-    "bx.myauth.custom_middleware.SelfAuthMiddleware" , # self auth
+    "bx.myauth.custom_middleware.SelfAuthMiddleware" , # self auth,
+    "bx.allsite_msg_middleware.AllSiteMsgMiddleware",  #all site msg
 )
 
 ROOT_URLCONF = 'bx.urls'

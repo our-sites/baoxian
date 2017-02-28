@@ -1,5 +1,19 @@
 {
   "res": {
+    "com/global/1.0.0:chat/chat.css": {
+      "uri": "/com/global/1.0.0/src/chat/chat_da8f743.css",
+      "type": "css"
+    },
+    "com/global/1.0.0:chat/chat": {
+      "uri": "/com/global/1.0.0/src/chat/chat_b46ef9b.js",
+      "type": "js",
+      "deps": [
+        "com/global/1.0.0:dollar",
+        "lib/art-dialog/6.0.5:art-dialog",
+        "com/global/1.0.0:validator",
+        "com/global/1.0.0:chat/chat.css"
+      ]
+    },
     "com/global/1.0.0:css/font-awesome.css": {
       "uri": "/com/global/1.0.0/src/css/font-awesome_4a450cb.css",
       "type": "css",
@@ -22,11 +36,12 @@
       "pkg": "com/global/1.0.0:p0"
     },
     "com/global/1.0.0:global": {
-      "uri": "/com/global/1.0.0/src/global_ce94c25.js",
+      "uri": "/com/global/1.0.0/src/global_9aa4ff6.js",
       "type": "js",
       "deps": [
         "lib/jquery/1.11.3:jquery",
         "com/global/1.0.0:validator",
+        "com/global/1.0.0:chat/chat",
         "com/global/1.0.0:global.css"
       ],
       "pkg": "com/global/1.0.0:p1"
@@ -53,12 +68,13 @@
       "pkg": "com/global/1.0.0:p0"
     },
     "com/global/1.0.0:validator": {
-      "uri": "/com/global/1.0.0/src/validator_c757ff6.js",
+      "uri": "/com/global/1.0.0/src/validator_d873a95.js",
       "type": "js",
       "deps": [
         "com/validator/0.10.3:validator",
         "com/global/1.0.0:dollar",
         "lib/toastr/2.1.3:toastr",
+        "lib/art-dialog/6.0.5:art-dialog",
         "com/global/1.0.0:validator.css"
       ],
       "pkg": "com/global/1.0.0:p1"
@@ -75,7 +91,7 @@
       ]
     },
     "com/global/1.0.0:p1": {
-      "uri": "/com/global/1.0.0/pkg/global_1f6ced7.js",
+      "uri": "/com/global/1.0.0/pkg/global_a9cb224.js",
       "type": "js",
       "has": [
         "com/global/1.0.0:dollar",
@@ -86,7 +102,9 @@
         "lib/jquery/1.11.3:jquery",
         "com/validator/0.10.3:validator",
         "lib/toastr/2.1.3:toastr",
+        "lib/art-dialog/6.0.5:art-dialog",
         "com/global/1.0.0:validator.css",
+        "com/global/1.0.0:chat/chat",
         "com/global/1.0.0:global.css"
       ]
     }

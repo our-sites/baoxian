@@ -9,7 +9,15 @@ define('www/index/1.0.0:index', ['www/common/1.0.0:common', 'lib/slick/1.6.0:sli
       arrows: false,
       slidesToShow: 1,
       slidesToScroll: 1,
-      centerMode: true
+      centerMode: true,
+      centerPadding: 0
+  }).on('setPosition', function(){
+      var wrapWith = $('.slider-item').width();
+      var left = (wrapWith - 1890)/2 + 'px';
+      $('.slider-helper').css({
+          left: left
+      })
+  
   });
   
   

@@ -325,7 +325,25 @@
     position: relative;
     overflow: hidden;
 }
-
+.index-banner-content .slider-item{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+}
+.index-banner-content .slider-helper{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 1920px;
+    height: 480px;
+}
+.index-banner-content img{
+    position: relative;
+    left: 0;
+    height: 480px;
+    width: 1920px;
+}
 /*banner*/
 .index-banner-menu .index-banner-content {
     height: 100%;

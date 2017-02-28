@@ -7,12 +7,14 @@ define('com/global/1.0.0:dollar', ['lib/jquery/1.11.3:jquery'], function(require
 });
 
 ;/*!com/global/1.0.0:validator*/
-define('com/global/1.0.0:validator', ['com/validator/0.10.3:validator', 'com/global/1.0.0:dollar', 'lib/toastr/2.1.3:toastr'], function(require, exports, module) {
+define('com/global/1.0.0:validator', ['com/validator/0.10.3:validator', 'com/global/1.0.0:dollar', 'lib/toastr/2.1.3:toastr', 'lib/art-dialog/6.0.5:art-dialog'], function(require, exports, module) {
 
   var Validator = require('com/validator/0.10.3:validator');
   var $ = require('com/global/1.0.0:dollar');
   var toastr = require('lib/toastr/2.1.3:toastr');
-  module.exports = Validator.extend({
+  var dialog = require('lib/art-dialog/6.0.5:art-dialog');
+  var unique = 1;
+  var Validator2 = Validator.extend({
   
       // 显示错误
       showError: function (selector, msg) {
@@ -51,12 +53,49 @@ define('com/global/1.0.0:validator', ['com/validator/0.10.3:validator', 'com/glo
   
       // 表单出错的处理
       formErrorHandle: function (res) {
-          var formError = res.formError || {};
-          var errorFields = formError.fields || [];
-          if (errorFields.length) {
-              errorFields = this.transformSelectors(errorFields);
-              this.showErrors(errorFields);
+          var that = this;
+          if (res.errorCode === 800) {
+              // 弹出登录窗口
+              var ins = dialog({
+                  content: res.data.html
+              });
+              ins.showModal();
+              var $node = $(ins.node);
+              var $form = $node.find('form');
+              //$form.data('dialog', ins);
+              if ($form.length) {
+                  var validator = new Validator({
+                      element: $form
+                  });
+  
+                  $form.find('.popup-login-input-text').each(function() {
+                      var id = 'login-text-' + unique++;
+                      $(this).attr('id', id);
+                      var display = $(this).attr('placeholder');
+                      validator.addItem({
+                          element: '#' + id,
+                          required: true,
+                          display: display
+                      });
+                  });
+                  $form.on('click', '.popup-login-close', function(e) {
+                      e.preventDefault();
+                      ins.remove();
+                  });
+                  console.log(validator);
+                  validator.after('formSuccessHandle', function() {
+                      alert(3);
+                  })
+              }
+          } else {
+              var formError = res.formError || {};
+              var errorFields = formError.fields || [];
+              if (errorFields.length) {
+                  errorFields = this.transformSelectors(errorFields);
+                  this.showErrors(errorFields);
+              }
           }
+  
       },
   
       // 表单提交成功的处理
@@ -117,17 +156,69 @@ define('com/global/1.0.0:validator', ['com/validator/0.10.3:validator', 'com/glo
           }
       }
   });
+  module.exports = Validator2.extend({
+      // 表单出错的处理
+      formErrorHandle: function (res) {
+          var that = this;
+          if (res.errorCode === 800) {
+              // 弹出登录窗口
+              var ins = dialog({
+                  content: res.data.html
+              });
+              ins.showModal();
+              var $node = $(ins.node);
+              var $form = $node.find('form');
+              var validator = new Validator2({
+                  element: $form
+              });
   
+              $form.find('.popup-login-input-text').each(function() {
+                  var id = 'login-text-' + unique++;
+                  $(this).attr('id', id);
+                  var display = $(this).attr('placeholder');
+                  validator.addItem({
+                      element: '#' + id,
+                      required: true,
+                      display: display
+                  });
+              });
+              $node.on('click', '.popup-login-close', function(e) {
+                  e.preventDefault();
+                  ins.remove();
+              }).on('click', '.popup-login-submit', function(e) {
+                  e.preventDefault();
+                  $form.submit();
+              });
+              validator.before('formSuccessHandle', function() {
+                  ins.remove();
+                  that.element.submit();
+                  return false;
+              });
+          } else {
+              var formError = res.formError || {};
+              var errorFields = formError.fields || [];
+              if (errorFields.length) {
+                  errorFields = this.transformSelectors(errorFields);
+                  this.showErrors(errorFields);
+              }
+          }
+  
+      }
+  });
   // @require com/global/1.0.0:validator.css
 
 });
 
 ;/*!com/global/1.0.0:global*/
-define('com/global/1.0.0:global', ['lib/jquery/1.11.3:jquery', 'com/global/1.0.0:validator'], function(require, exports, module) {
+define('com/global/1.0.0:global', ['lib/jquery/1.11.3:jquery', 'com/global/1.0.0:validator', 'com/global/1.0.0:chat/chat'], function(require, exports, module) {
 
   var $ = require('lib/jquery/1.11.3:jquery');
   var Validator = require('com/global/1.0.0:validator');
   var $form = $('.bx-header form.ui-form');
+  
+  // 引入咨询脚本
+  require('com/global/1.0.0:chat/chat');
+  
   if ($form.length) {
       $form.on('click', '.bx-header-search-box a', function (e) {
           e.preventDefault();

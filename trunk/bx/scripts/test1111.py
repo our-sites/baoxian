@@ -38,7 +38,7 @@ class Word_analyse(object):
                     pass
                 else:
                     kw.append(word)
-            if not isinstance(type(self.context),unicode):
+            if not isinstance(self.context,unicode):
                 self.context  = unicode(self.context,'utf-8')
             #是否对特殊字符进行处理？
             # for i  in ' n!"#$%&()*+,-./:;<=>?@[\]^_`{|}~':
@@ -56,7 +56,7 @@ class Word_analyse(object):
                 cut_words = content[int(round(word_len*0.33)):int(round(word_len * 0.33)*2)]
             elif self.windows_size == 'low':
                 cut_words = content[int(round(word_len * 0.33*2)):]
-            print "截取后的词",cut_words
+            #print "截取后的词",cut_words
             try:
                 #中文转韩文zh_to_kor
                 data = requests.post("http://fanyi.baidu.com/v2transapi",data={"from": "zh", "to": "kor",
@@ -89,9 +89,9 @@ class Word_analyse(object):
 
 
 if __name__=="__main__":
-    test = Word_analyse({"title":"我是中国人","context":"欢迎来到上海人生苦短正确的使用方法"},windows_size='low')
+    test = Word_analyse({"title":u"我是中国人","context":u"很高兴能够来参加一年一度的财新峰会，确实是个思想的盛宴。今天我讲的就是本次论坛的主题“金融创新与监管”。我认为，金融创新与监管永远是一对矛盾，需要加以平衡。一方面，创新能够带来金融市场的繁荣，也可能带来风险;另一方面，如果强化金融监管，出台管制措施，又可能对金融市场产生一定的抑制作用，使其失去活力。比如，最近有媒体报道在特朗普当选美国总统后，将在强化金融监管方面有所动作，欧洲的金融业高管们听到这个消息后很振奋，觉得好机会来了。因此，我认为金融创新与监管需要认真加以平衡。"},windows_size='center')
     result = test.get_result()
     print result["zhaiyao"][0]
-    print result.get('data')[0].get('tgt')
+    #print result.get('data')[0].get('tgt')
     print result.get('before_context')
     print result.get('later_context')

@@ -45,6 +45,7 @@ def home(request):
             data={"errorCode":0,"msg":"问题已提交！","formSuccess":{"redirect":"/ask/" ,
                                                                  "duration":500},"data":{}}
 
+            request.send_allsite_msg('''来自%s%s 的用户提交了一条新的提问"%s" '''%content,"/ask/detail/%s.html"%_.askid)
         data=json.dumps(data)
         return  HttpResponse(data,mimetype="application/javascript")
     ask_all=Ask.objects.filter(state=0).order_by("-ask_time")
@@ -78,19 +79,22 @@ def detail(request,ask_id):
             data={"errorCode":0,"msg":"请以代理人身份登录！","formSuccess":{"redirect":"/login/?next=/ask/detail/%s.html&role=proxy"%ask_id,
                                                                  "duration":900},"data":{}}
         else:
-            _=Answer(askid=int(ask_id),ans_content=content,uid=request.myuser.uid,parent_ansid=0)
-            _.save()
-            profile=request.myuser.get_profile()
-            # if not  profile:
-            #     profile=ProxyUserProfile(uid=request.myuser,ans_num=1)
+            ask_obj=Ask.objects.get(askid=int(ask_id),state=0)
+            ans_obj=ask_obj.add_answer(request.myuser,content=content)
+            # _=Answer(askid=int(ask_id),ans_content=content,uid=request.myuser.uid,parent_ansid=0)
+            # _.save()
+            # profile=request.myuser.get_profile()
+            # # if not  profile:
+            # #     profile=ProxyUserProfile(uid=request.myuser,ans_num=1)
+            # #     profile.save()
+            # if profile:
+            #     profile.ans_num+=1
             #     profile.save()
-            if profile:
-                profile.ans_num+=1
-                profile.save()
             try:
                 del request.session["last_answer_info"]
             except:
                 pass
+            request.send_allsite_msg('''来自%s%s 的用户提交了一条新的回答"%s" ''' % content, "/ask/detail/%s.html"%ask_id)
             data={"errorCode":0,"msg":"回答已提交！","formSuccess":{"redirect":"/ask/detail/%s.html"%ask_id ,
                                                                  "duration":500},"data":{}}
         data=json.dumps(data)

@@ -25,9 +25,9 @@
                                             <div class="chat-online-box">
                                                 <!--header-->
                                                 <div class="chat-online-header clf">
-                                                    <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" alt="" class="chat-online-avatar">
+                                                    <img src="{% if user.imgurl %}{{ user.imgurl.url }}{% else %}/static/imgs/default-user.png{% endif %}" alt="" class="chat-online-avatar">
                                                     <div class="chat-online-info">
-                                                        <p>兴趣使燃，新华保险</p>
+                                                        <p>{% if user.real_name %}{{ user.real_name }}{% else %}{{ user.username|slice:":4" }}**{% endif %}，{{ profile.get_short_comname }}</p>
                                                         <p>
                                                             <span class="chat-online-info-level"></span>
                                                             <span class="chat-online-info-authentication"></span>
@@ -38,46 +38,15 @@
                                                 <!--记录-->
                                                 <div class="chat-online-body">
                                                     <div class="chat-online-item clf left">
-                                                        <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" alt="" class="chat-online-item-avatar">
-                                                        <div class="chat-online-item-content">你好，有什么需要帮助的吗？</div>
+                                                        <img src="{% if user.imgurl %}{{ user.imgurl.url }}{% else %}/static/imgs/default-user.png{% endif %}" alt="" class="chat-online-item-avatar">
+                                                        <div class="chat-online-item-content">你好，有什么需要帮助的么？ 请留下你的联系方式，以便我能联系到您。</div>
                                                     </div>
-                                                    <div class="chat-online-item clf right">
-                                                        <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" alt="" class="chat-online-item-avatar">
-                                                        <div class="chat-online-item-content">
-                                                            你好，我想买份保险。你好，我想买份保险。你好，我想买份保险。你好， 我想买份保险。
-                                                        </div>
-                                                    </div>
-                                                    <div class="chat-online-item clf left">
-                                                        <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" alt="" class="chat-online-item-avatar">
-                                                        <div class="chat-online-item-content">你好，有什么需要帮助的吗？</div>
-                                                    </div>
-                                                    <div class="chat-online-item clf right">
-                                                        <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" alt="" class="chat-online-item-avatar">
-                                                        <div class="chat-online-item-content">
-                                                            你好，我想买份保险。你好，我想买份保险。你好，我想买份保险。你好， 我想买份保险。
-                                                        </div>
-                                                    </div>
-                                                    <div class="chat-online-item clf left">
-                                                        <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" alt="" class="chat-online-item-avatar">
-                                                        <div class="chat-online-item-content">你好，有什么需要帮助的吗？</div>
-                                                    </div>
-                                                    <div class="chat-online-item clf right">
-                                                        <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" alt="" class="chat-online-item-avatar">
-                                                        <div class="chat-online-item-content">
-                                                            你好，我想买份保险。你好，我想买份保险。你好，我想买份保险。你好， 我想买份保险。
-                                                        </div>
-                                                    </div>
-                                                    <div class="chat-online-item clf left">
-                                                        <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" alt="" class="chat-online-item-avatar">
-                                                        <div class="chat-online-item-content">你好，有什么需要帮助的吗？</div>
-                                                    </div>
-                                                    <div class="chat-online-item clf right">
-                                                        <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" alt="" class="chat-online-item-avatar">
-                                                        <div class="chat-online-item-content">
-                                                            你好，我想买份保险。你好，我想买份保险。你好，我想买份保险。你好， 我想买份保险。
-                                                        </div>
-                                                    </div>
-
+{#                                                    <div class="chat-online-item clf right">#}
+{#                                                        <img src="/files/bx/www/common/1.0.0/html/img/test-avatar.png" alt="" class="chat-online-item-avatar">#}
+{#                                                        <div class="chat-online-item-content">#}
+{#                                                            你好，我想买份保险。你好，我想买份保险。你好，我想买份保险。你好， 我想买份保险。#}
+{#                                                        </div>#}
+{#                                                    </div>#}
                                                 </div>
                                                 <!--发送-->
                                                 <div class="chat-online-footer">

@@ -2,6 +2,8 @@
 {% block title %}
     {{ info.title }}_资讯_保险管家
 {% endblock %}
+{% block keywords %}{{ info.keywords }} 保险管家{% endblock %}
+{% block description %}{{ info.get_simple_content|slice:":100" }}_保险管家{% endblock %}
 {% load atm %}
 {% block css %}
     {% atmcss www/info:detail %}
@@ -40,7 +42,15 @@
                     </div>
                     <!-- 文章内容 -->
                     <div class="information-article-content">
+                        {% if info.abstract %}
+                            <p style="background: #f1f1f1;padding: 10px 15px;font-size: 13px;line-height: 25px;color: #666;">摘要:{{ info.abstract }}</p>
+                        {% endif %}
                         {{ info.content|safe }}
+                    </div>
+                    <div style="background: #f1f1f1;padding: 10px 15px;font-size: 13px;line-height: 25px;color: #666;">
+                        <p >保险管家网关于版权的免责声明：</p>
+                        <p>1.凡本网站注明 来源"保险管家网"的作品均受著作权保护，版权属于本网站，转账请注明出处。违反上述声明者，本网站有权追究法律责任</p>
+                        <p>2.凡本网站中注明来源非保险管家网的作品， 均转载自网络， 目的在于传播更多信息，并不代表本网赞同其观点和对其真实性负责，如果涉及侵权，请及时联系我们，我们会尽快核实并删除。</p>
                     </div>
                     <!-- 文章底部 -->
                     <div class="information-article-footer">
@@ -84,74 +94,6 @@
                     </ul>
                 </div>
             </div>
-            <!-- 右侧 -->
-{#            <div class="sidebar">#}
-{#                <!-- 热门资讯 -->#}
-{#                <div class="hot-information">#}
-{#                    <h3>热门资讯</h3>#}
-{#                    <ul>#}
-{#                        {% for i in hot_infos %}#}
-{#                        <li><a href="/zixun/detail/{{ i.zid }}.html">#}
-{#                            {{ i.title }}</a></li>#}
-{#                        {% endfor %}#}
-{#                    </ul>#}
-{#                </div>#}
-{##}
-{#                <!-- 热心顾问 -->#}
-{#                <div class="warmheart-advisers">#}
-{#                    <!--title-->#}
-{#                    <h3 class="rank-title">#}
-{#                        <b>热心顾问</b>#}
-{#                        <div class="rank-title-tab">#}
-{#                            <a href="http://192.168.12.48:2015/files/bx/www/info/1.0.0/html/detail.html" class="active">今日</a>#}
-{#                            <a href="http://192.168.12.48:2015/files/bx/www/info/1.0.0/html/detail.html">本周</a>#}
-{#                            <a href="http://192.168.12.48:2015/files/bx/www/info/1.0.0/html/detail.html">本月</a>#}
-{#                        </div>#}
-{#                    </h3>#}
-{#                    <!--list-->#}
-{##}
-{#                    <div class="rank-type rank-day">#}
-{#                        <div class="rank-item">#}
-{#                            <img src="./资讯详情页_files/test-avatar.png" alt="" width="32" height="32" class="rank-item-avatar">#}
-{#                            <span class="rank-item-name">1这是个名字</span>#}
-{#                            <span class="rank-item-company">公司的名字</span>#}
-{#                            <span class="rank-item-level"></span>#}
-{#                            <span class="rank-item-authentication"></span>#}
-{#                            <span class="rank-item-score">554条回答</span>#}
-{#                            <a href="http://192.168.12.48:2015/files/bx/www/info/1.0.0/html/detail.html" class="rank-item-link">咨询他</a>#}
-{#                        </div>#}
-{#                        <div class="rank-item">#}
-{#                            <img src="./资讯详情页_files/test-avatar.png" alt="" width="32" height="32" class="rank-item-avatar">#}
-{#                            <span class="rank-item-name">这是个名字</span>#}
-{#                            <span class="rank-item-company">公司的名字</span>#}
-{#                            <span class="rank-item-level"></span>#}
-{#                            <span class="rank-item-authentication"></span>#}
-{#                            <span class="rank-item-score">554条回答</span>#}
-{#                            <a href="http://192.168.12.48:2015/files/bx/www/info/1.0.0/html/detail.html" class="rank-item-link">咨询他</a>#}
-{#                        </div>#}
-{#                        <div class="rank-item">#}
-{#                            <img src="./资讯详情页_files/test-avatar.png" alt="" width="32" height="32" class="rank-item-avatar">#}
-{#                            <span class="rank-item-name">这是个名字</span>#}
-{#                            <span class="rank-item-company">公司的名字</span>#}
-{#                            <span class="rank-item-level"></span>#}
-{#                            <span class="rank-item-authentication"></span>#}
-{#                            <span class="rank-item-score">554条回答</span>#}
-{#                            <a href="http://192.168.12.48:2015/files/bx/www/info/1.0.0/html/detail.html" class="rank-item-link">咨询他</a>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <div class="rank-type rank-week fn-hidden">#}
-{#                        <div class="rank-item">#}
-{#                            <img src="./资讯详情页_files/test-avatar.png" alt="" width="32" height="32" class="rank-item-avatar">#}
-{#                            <span class="rank-item-name">2这是个名字</span>#}
-{#                            <span class="rank-item-company">公司的名字</span>#}
-{#                            <span class="rank-item-level"></span>#}
-{#                            <span class="rank-item-authentication"></span>#}
-{#                            <span class="rank-item-score">554条回答</span>#}
-{#                            <a href="http://192.168.12.48:2015/files/bx/www/info/1.0.0/html/detail.html" class="rank-item-link">咨询他</a>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
                     <div class="fr">
                 <!--私人定制-->
                 {% include "dingzhi_common.html" %}

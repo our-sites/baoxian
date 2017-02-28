@@ -32,12 +32,16 @@
       "uri": "/www/common/1.0.0/src/related-faqs_ee2d6bd.css",
       "type": "css"
     },
+    "www/common/1.0.0:login.css": {
+      "uri": "/www/common/1.0.0/src/login_ec656a2.css",
+      "type": "css"
+    },
     "www/common/1.0.0:common.css": {
-      "uri": "/www/common/1.0.0/src/common_39d0112.css",
+      "uri": "/www/common/1.0.0/src/common_c8d6fac.css",
       "type": "css"
     },
     "www/common/1.0.0:common": {
-      "uri": "/www/common/1.0.0/src/common_cd60a19.js",
+      "uri": "/www/common/1.0.0/src/common_e795117.js",
       "type": "js",
       "deps": [
         "com/global/1.0.0:global",
@@ -45,7 +49,6 @@
         "com/tabs/1.0.0:tabs",
         "com/global/1.0.0:region",
         "lib/slick/1.6.0:slick",
-        "com/chat/1.0.0:chat",
         "lib/layer/3.0.1:layer",
         "com/global/1.0.0:validator",
         "www/common/1.0.0:common.css"

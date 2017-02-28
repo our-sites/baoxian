@@ -52,6 +52,7 @@ class Consult(models.Model):
     cid=models.IntegerField(default=0,verbose_name="CID")
     good_num=models.IntegerField(default=0,verbose_name="赞次数")
     see_num=models.IntegerField(default=0,verbose_name="浏览次数")
+    abstract=models.TextField(default='',verbose_name="摘要")
     # imghandle_tag=models.PositiveIntegerField(default=0)
     class Meta:
         db_table="bx_consult"
@@ -224,6 +225,7 @@ class Ask(models.Model):
     province=models.IntegerField(default=0)
     city=models.IntegerField(default=0)
     state=models.PositiveIntegerField(default=0)  #状态  正常0    其他为异常
+    ans_num=models.PositiveIntegerField(default=0)  #回答数
     class Meta:
         db_table="bx_ask"
         verbose_name="提问"
@@ -267,6 +269,25 @@ class Ask(models.Model):
             return Answer.objects.filter(askid=self.askid).order_by("-ans_time")[0]
         except:
             return None
+
+    def add_answer(self,user,content):
+        assert  user.usertype==2 #必须为代理人账户
+        _ = Answer(askid=int(self.askid), ans_content=content, uid=user.uid, parent_ansid=0)
+        _.save()
+        profile = user.get_profile()
+        # if not  profile:
+        #     profile=ProxyUserProfile(uid=request.myuser,ans_num=1)
+        #     profile.save()
+        if profile:
+            profile.ans_num += 1
+            profile.save()
+        self.ans_num+=1
+        self.save()
+        return  _
+
+    def get_user(self):
+        from myauth.models import MyUser
+        return MyUser.objects.get(uid=self.uid)
 
 class Answer(models.Model):
     ansid=models.AutoField(primary_key=True)
@@ -322,5 +343,19 @@ class DingZhi(models.Model):
 
     def get_date_time(self):
         return datetime.datetime.fromtimestamp(self.addtime).strftime("%Y-%m-%d %H:%M:%S")
+
+class AllSiteMsg(models.Model):
+    msgid=models.AutoField(primary_key=True)
+    message=models.TextField()
+    addtime=models.IntegerField(default=lambda:int(time.time()))
+    state=models.PositiveIntegerField(default=0)
+    url=models.CharField(max_length=200,default='')
+
+    class Meta:
+        db_table="bx_allsite_msg"
+
+    def get_date_time(self):
+        return datetime.datetime.fromtimestamp(self.addtime).strftime("%Y-%m-%d %H:%M:%S")
+
 
 

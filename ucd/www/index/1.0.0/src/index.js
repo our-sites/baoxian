@@ -7,7 +7,15 @@ $(".regular").slick({
     arrows: false,
     slidesToShow: 1,
     slidesToScroll: 1,
-    centerMode: true
+    centerMode: true,
+    centerPadding: 0
+}).on('setPosition', function(){
+    var wrapWith = $('.slider-item').width();
+    var left = (wrapWith - 1890)/2 + 'px';
+    $('.slider-helper').css({
+        left: left
+    })
+
 });
 
 

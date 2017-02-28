@@ -3,8 +3,6 @@ var $ = require('$');
 require('com/tabs:tabs');
 require('region').initAll();
 require('slick:slick');
-// 引入咨询脚本
-require('com/chat:chat');
 var layer = require('layer:layer');
 
 // 代理人模块选项卡
@@ -12,6 +10,14 @@ $('.warmheart-advisers').tabs({
     type: 'click',
     menuNode: '.rank-title-tab a',
     contNode: '.rank-type',
+    className: 'active'
+});
+
+// 问吧模块选项卡
+$('.ask-list-left').tabs({
+    type: 'click',
+    menuNode: '.ask-list-header-tab',
+    contNode: '.ask-list-type',
     className: 'active'
 });
 
