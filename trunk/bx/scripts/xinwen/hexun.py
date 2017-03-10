@@ -3,7 +3,9 @@ __author__ = 'admin'
 # --------------------------------
 # Created by admin  on 2016/10/12.
 # ---------------------------------
-
+import  sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
 from threadspider import *
 from pyquery import  *
 import  re

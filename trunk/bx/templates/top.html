@@ -10,8 +10,9 @@
 
             {% else %}
             <!--已登录-->
-                <a href="/work/" class="color" target="_blank">{{ request.myuser.username }}</a> |
-                [<a href="/logout/" class="color" target="_blank">退出</a>]
+                <a href="/work/" class="color" target="_blank" style="padding: 0 7px">{{ request.myuser.username }}</a>
+                <a href="/work/all_msg/" target="_blank" class="color" style="padding: 0 7px">消息<em style="padding-left: 2px">{{ request.myuser.get_unread_messages.count }}</em></a>
+                <a href="/logout/" class="color" target="_blank">退出</a>
 
             {% endif %}
         <span style="float: right;padding-left: 5px;padding-right: 5px;"><a href="#" style="color: #666" target="_blank">公司简介</a></span>

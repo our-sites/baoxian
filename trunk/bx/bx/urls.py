@@ -50,4 +50,9 @@ urlpatterns = patterns('',
        (r'^ckeditor/', include('ckeditor_uploader.urls')),
        (r"^company/",include(company.site.urls)),
        (r"^app/",include(app.site.urls)),
+        # sitemap
+        ("^sitemap.index$",views.sitemap_index),
+        ("^sitemap.xml$",views.sitemap_index),
+        ("^sitemap.index.xml$",views.sitemap_index),
+        ("^zixun_sitemap(\d+).xml$",views.zixun_sitemap_xml),
 )

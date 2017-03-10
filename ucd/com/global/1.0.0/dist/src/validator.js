@@ -3,6 +3,9 @@ define('com/global/1.0.0:validator', ['com/validator/0.10.3:validator', 'com/glo
   var Validator = require('com/validator/0.10.3:validator');
   var $ = require('com/global/1.0.0:dollar');
   var toastr = require('lib/toastr/2.1.3:toastr');
+  toastr.options = {
+      positionClass: 'toast-top-full-width'
+  };
   var dialog = require('lib/art-dialog/6.0.5:art-dialog');
   var unique = 1;
   var Validator2 = Validator.extend({
@@ -154,7 +157,8 @@ define('com/global/1.0.0:validator', ['com/validator/0.10.3:validator', 'com/glo
           if (res.errorCode === 800) {
               // 弹出登录窗口
               var ins = dialog({
-                  content: res.data.html
+                  content: res.data.html,
+                  fixed: true
               });
               ins.showModal();
               var $node = $(ins.node);

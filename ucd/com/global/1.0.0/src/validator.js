@@ -1,6 +1,9 @@
 var Validator = require('com/validator:validator');
 var $ = require('./dollar');
 var toastr = require('toastr');
+toastr.options = {
+    positionClass: 'toast-top-full-width'
+};
 var dialog = require('art-dialog:art-dialog');
 var unique = 1;
 var Validator2 = Validator.extend({
@@ -152,7 +155,8 @@ module.exports = Validator2.extend({
         if (res.errorCode === 800) {
             // 弹出登录窗口
             var ins = dialog({
-                content: res.data.html
+                content: res.data.html,
+                fixed: true
             });
             ins.showModal();
             var $node = $(ins.node);

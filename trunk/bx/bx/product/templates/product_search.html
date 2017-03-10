@@ -61,12 +61,18 @@
                             {% endfor %}
                         </div>
                     </div>
-                    <div class="sub-content">
+                    <div class="sub-content" id="sub-content-little">
+                        {% for i in company_list|slice:":15" %}
+                        <a data-belong="{{ i.shortname|first_letter|upper }}" href="/product/search/{{ people_id }}-{{ cate_id }}-{{ i.cid }}/" class="single {% if c_id == i.cid %}active{% endif %}">{{ i.shortname }}</a>
+                        {% endfor %}
+                        <a class="single"  href="javascript:;" style="color: #42bad0;    text-decoration: underline;" id="see_all">查看更多</a>
+                    </div>
+                    <div class="sub-content" style="display: none " id="sub-content-all">
                         {% for i in company_list %}
                         <a data-belong="{{ i.shortname|first_letter|upper }}" href="/product/search/{{ people_id }}-{{ cate_id }}-{{ i.cid }}/" class="single {% if c_id == i.cid %}active{% endif %}">{{ i.shortname }}</a>
                         {% endfor %}
+                        <a class="single"  href="javascript:;"  style="color: #42bad0;    text-decoration: underline;" id="see_little">立刻收起</a>
                     </div>
-
                 </div>
 {#                <div class="fr">#}
 {#                    <a href="javascript:;" class="more">更多</a>#}
@@ -190,4 +196,15 @@
 {% endblock %}
 {% block js %}
     {% atmjs www/product:index %}
+    <script>
+    jQuery("#see_all").click(function(){
+        jQuery("#sub-content-little").hide();
+        jQuery("#sub-content-all").show()
+    });
+    jQuery("#see_little").click(function () {
+        jQuery("#sub-content-all").hide();
+        jQuery("#sub-content-little").show()
+
+    })
+    </script>
 {% endblock %}

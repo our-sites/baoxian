@@ -68,7 +68,7 @@
       "pkg": "com/global/1.0.0:p0"
     },
     "com/global/1.0.0:validator": {
-      "uri": "/com/global/1.0.0/src/validator_d873a95.js",
+      "uri": "/com/global/1.0.0/src/validator_5c63aa5.js",
       "type": "js",
       "deps": [
         "com/validator/0.10.3:validator",
@@ -91,7 +91,7 @@
       ]
     },
     "com/global/1.0.0:p1": {
-      "uri": "/com/global/1.0.0/pkg/global_a9cb224.js",
+      "uri": "/com/global/1.0.0/pkg/global_6a05f2c.js",
       "type": "js",
       "has": [
         "com/global/1.0.0:dollar",

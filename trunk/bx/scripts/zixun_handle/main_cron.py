@@ -15,6 +15,9 @@ import  urllib2
 import  traceback
 import  HTMLParser
 import  re
+import  sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
 
 def filter_tags(htmlstr):
     s=re.sub("<[^<>]+>",'',htmlstr)
@@ -142,7 +145,7 @@ result=mgr.runQuery('''select zid,title,content,`from`  from bx_consult WHERE st
 
 for _zid,title,content,_from  in  result:
     if not content:
-        mgr.runOperation('''update bx_consult  set status=0 where zid=%s''',
+        mgr.runOperation('''delete from  bx_consult   where zid=%s''',
                          (_zid,))
     else:
         doc=PyQuery("<div>"+ content+"</div>")
@@ -172,7 +175,7 @@ for _zid,title,content,_from  in  result:
             if PyQuery(_).children().__len__()==0:
                 _text=PyQuery(_).text()
                 if len(_text)>10:
-                    test = Word_analyse({"title": "", "context": _text}, windows_size='center')
+                    test = Word_analyse({"title": "", "context": _text}, windows_size='low')
                     result = test.get_result()
                     PyQuery(_).html(result["later_context"])
 

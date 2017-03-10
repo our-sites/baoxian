@@ -15,61 +15,6 @@
         </div>
         <div class="clf">
             <div class="ask-list-left">
-                <!--提问-->
-{#                <div class="ask-box clf">#}
-{#                    <div class="fl ask-icon">#}
-{#                        问#}
-{#                    </div>#}
-{#                    <form  class="fr" method="post" >#}
-{#                        <h2>#}
-{#                            {{ ask_obj.ask_content }}#}
-{#                        </h2>#}
-{#                        {% csrf_token %}#}
-{#                        <span class="muted">问题来自：123  {{ ask_obj.get_date }}  {{ ask_obj.get_area_info }}      </span>#}
-{#                        <textarea placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少..."#}
-{#                                  name="content">{% if last_answer_info %}{{ last_answer_info }}{% endif %}</textarea>#}
-{#                        <div class="float-layer">0/200</div>#}
-{#                        <p>#}
-{#                            <button type="submit" class="submit ask-btn">提交回答</button>#}
-{#                            <i class="fa fa-exclamation-circle"></i> 普通代理人每天最多只能回复一个保险疑问，#}
-{#                            <a href="" class="color">开通钻石</a>获取不限量权限#}
-{#                        </p>#}
-{#                    </form>#}
-{##}
-{#                </div>#}
-{#            <div class="ask-box clf">#}
-{#                    <div class="fl ask-icon">#}
-{#                        问#}
-{#                    </div>#}
-{#                    <div class="fr">#}
-{#                        <h2>#}
-{#                            {{ ask_obj.ask_content }}#}
-{#                        </h2>#}
-{#                        <span class="muted">问题来自：  {{ ask_obj.get_date }}  {{ ask_obj.get_area_info }}      </span>#}
-{##}
-{#                        <form id="ask" class="ui-form" action="{{ request.path }}" novalidate="novalidate" data-widget-cid="widget-3" method="post">#}
-{#                            {% csrf_token %}#}
-{#                            <div class="ui-form-item">#}
-{#                                <textarea id="content" name="content"#}
-{#                                          placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少..."#}
-{#                                          data-widget-cid="widget-4" data-explain="">{{ last_answer_info }}</textarea>#}
-{#                                <div class="ui-form-explain"> </div>#}
-{#                            </div>#}
-{#                            <div class="float-layer">#}
-{#                                <span class="current-length">0</span> /#}
-{#                                <span class="total-length">200</span>#}
-{#                            </div>#}
-{#                            <p>#}
-{#                                <input type="submit" value="提交回答" class="ask-btn">#}
-{#                                <i class="fa fa-exclamation-circle"></i> 普通代理人每天最多只能回复一个保险疑问，#}
-{#                                <a href="" class="color">开通钻石</a>获取不限量权限#}
-{#                            </p>#}
-{#                        </form>#}
-{##}
-{#                    </div>#}
-{##}
-{#                </div>#}
-
             <div class="ask-box clf">
                         <div class="answer-icon-big"></div>
                         <div class="fr">
@@ -80,6 +25,9 @@
 
                             <form id="ask" class="ui-form" action="{{ request.path }}" novalidate="novalidate" data-widget-cid="widget-6" method="post">
                                 {% csrf_token %}
+                                                                <div style="display: none ">
+                                    <input name="next" value="/ask/" style="display: none">
+                                </div>
                                 <div class="ui-form-item">
                                     <textarea id="content" name="content" placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少..." data-widget-cid="widget-7" data-explain="">{{ last_answer_info }}</textarea>
                                     <div class="ui-form-explain"></div>
