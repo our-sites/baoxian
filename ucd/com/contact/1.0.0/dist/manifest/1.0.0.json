@@ -1,0 +1,16 @@
+{
+  "res": {
+    "com/contact/1.0.0:contact.css": {
+      "uri": "/com/contact/1.0.0/src/contact.css",
+      "type": "css"
+    },
+    "com/contact/1.0.0:contact": {
+      "uri": "/com/contact/1.0.0/src/contact.js",
+      "type": "js",
+      "deps": [
+        "com/contact/1.0.0:contact.css"
+      ]
+    }
+  },
+  "pkg": {}
+}

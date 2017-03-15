@@ -1,0 +1,179 @@
+.kfc {
+    position: fixed;
+    top: 35%;
+    right: 10px;
+    z-index: 1040;
+    overflow-wrap: break-word;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto
+}
+
+.kfc .s_item {
+    position: relative;
+    float: right;
+    clear: both;
+    display: block;
+    margin: 0 0 5px;
+    width: 0;
+    line-height: 54px;
+    padding: 0 27px;
+    border-radius: 27px;
+    overflow: hidden
+}
+
+.kfc .s_item:hover {
+    width: 100px;
+    text-decoration: none;
+}
+
+.kfc em, .kfc i {
+    width: 54px;
+    left: 0;
+    position: absolute;
+    font-size: 12px;
+    font-style: normal;
+}
+
+.kfc em {
+    text-align: center;
+    top: 36px;
+    line-height: 1
+}
+
+.kfc .s_qq {
+    background-color: #6ea9fc;
+}
+
+.kfc .s_qq i {
+    width: 20px;
+    height: 23px;
+    top: 10px;
+    left: 17px;
+}
+
+.kfc .s_qq:hover i {
+    background-position: 0 -54px;
+}
+
+.kfc .s_item, .kfc i {
+    color: #fff;
+    height: 54px;
+}
+
+.trans {
+    transition: all 0.3s ease 0s;
+}
+
+.kfc .s_tel {
+    background: url("./img/telico.png") no-repeat 0 0;
+}
+
+.kfc .s_tel:hover {
+    width: 0;
+    box-shadow: 0 0 7px #ec6842;
+    -webkit-box-shadow: 0 0 7px #ec6842
+}
+
+.kfc .s_qq:hover {
+    box-shadow: 0 0 10px #6ea9fc;
+    background-color: #559afb;
+
+}
+
+.kfc strong {
+    display: block;
+    padding-left: 27px;
+    width: 200px;
+}
+
+.kfc .s_wx {
+    background-color: #60bf14;
+    overflow: visible;
+}
+
+.kfc em, .kfc i {
+    left: 0;
+    position: absolute;
+    width: 54px;
+}
+
+.kfc i {
+    text-align: center;
+    top: 0;
+    background: url('./img/qqico.png') no-repeat 0 0;
+    overflow: hidden;
+}
+
+.kfc .s_wx strong {
+    background-color: #fff;
+    background-size: 100% auto;
+    border: 5px solid #fff;
+    border-radius: 5px;
+    bottom: 20px;
+    height: 0;
+    opacity: 0;
+    padding: 0;
+    position: absolute;
+    right: 70px;
+    visibility: hidden;
+    width: 0;
+}
+
+.kfc .s_wx strong, .kfc .s_wx:hover {
+    box-shadow: 0 0 10px #60bf14;
+    -webkit-box-shadow: 0 0 10px #60bf14
+}
+
+.kfc .s_wx:hover {
+    background-color: #54a812;
+    width: 0
+}
+
+.kfc .s_wx:hover strong {
+    visibility: visible;
+    opacity: 1;
+    bottom: 0
+}
+
+.kfc .s_wx:hover strong {
+    height: 160px;
+    width: 160px
+}
+
+.kfc:hover .s_wx strong {
+}
+
+.kfc .f_yaq {
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: .2px
+}
+
+.kfc strong {
+    display: block;
+    width: 200px;
+    padding-left: 27px
+}
+
+.kfc .s_qq {
+    background-color: #6ea9fc;
+    text-decoration: none;
+}
+
+.kfc .s_qq:hover {
+    background-color: #559afb;
+    box-shadow: 0 0 10px #6ea9fc;
+    -webkit-box-shadow: 0 0 10px #6ea9fc
+}
+
+.kfc .s_wx i {
+    background-position: -44px 0;
+    width: 27px;
+    height: 21px;
+    top: 10px;
+    left: 14px;
+}
+
+.kfc .s_wx:hover i {
+    background-position: -44px -54px;
+}
