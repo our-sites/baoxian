@@ -1,11 +1,25 @@
 {% load atm %}
 <!DOCTYPE html>
 <html lang="zh-cmn-Hans">
-
 <head>
     <meta charset="UTF-8">
     <title>登录页</title>
 {% atmcss work/user:login %}
+                <style>
+        .fot{
+            width: 100%;
+            background: #272723;
+        }
+        .fot-content{
+            margin: 0 auto;
+            width: 1200px;
+            padding: 20px 0;
+            color: #939392;
+            font-size: 12px;
+            line-height: 18px;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -50,9 +64,11 @@
                 </form>
             </div>
         </div>
-        <div class="copyright">　© 2016 baoxianguanjia.com 豫ICP备13006688号</div>
+
     </div>
     {% atmjs work/user:login %}
+{#{% include "footer.html" %}#}
+
 </body>
 
 </html>

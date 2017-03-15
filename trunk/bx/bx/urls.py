@@ -17,6 +17,8 @@ import  product
 import  dailiren
 import work_buy
 import  work_proxy
+import  company
+import  app
 
 urlpatterns = patterns('',
     # Examples:
@@ -31,19 +33,26 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-                       (r"admin/bx/consult/\d+/themes/default/css/ueditor.css",lambda x:HttpResponseRedirect("/static/editor/themes/default/css/ueditor.css")),
-                       (r"^favicon.ico$",lambda x:HttpResponseRedirect('/static/favicon.ico')),
+       (r"admin/bx/consult/\d+/themes/default/css/ueditor.css",lambda x:HttpResponseRedirect("/static/editor/themes/default/css/ueditor.css")),
+       (r"^favicon.ico$",lambda x:HttpResponseRedirect('/static/favicon.ico')),
     url(r'^admin/', include(admin.site.urls)),
-                       (r"^manage/",include(manage.site.urls)),
+       (r"^manage/",include(manage.site.urls)),
     url(r"api/",include(api.site.urls)),
-                       (r"^$",views.home),
-                       (r"^ask/",include(ask.site.urls)),
-                       (r"^dingzhi/",include(dingzhi.site.urls)),
-                       (r"^zixun/",include(zixun.site.urls)),
-                       (r"^product/",include(product.site.urls)),
-                       (r"^dailiren/",include(dailiren.site.urls)),
-                       (r"^work/",views.work),
-                       (r"^work_buy/",include(work_buy.site.urls)),
-                       (r"^work_proxy/",include(work_proxy.site.urls)),
-                       (r'^ckeditor/', include('ckeditor_uploader.urls')),
+       (r"^$",views.home),
+       (r"^ask/",include(ask.site.urls)),
+       (r"^dingzhi/",include(dingzhi.site.urls)),
+       (r"^zixun/",include(zixun.site.urls)),
+       (r"^product/",include(product.site.urls)),
+       (r"^dailiren/",include(dailiren.site.urls)),
+       (r"^work/",views.work),
+       (r"^work_buy/",include(work_buy.site.urls)),
+       (r"^work_proxy/",include(work_proxy.site.urls)),
+       (r'^ckeditor/', include('ckeditor_uploader.urls')),
+       (r"^company/",include(company.site.urls)),
+       (r"^app/",include(app.site.urls)),
+        # sitemap
+        ("^sitemap.index$",views.sitemap_index),
+        ("^sitemap.xml$",views.sitemap_index),
+        ("^sitemap.index.xml$",views.sitemap_index),
+        ("^zixun_sitemap(\d+).xml$",views.zixun_sitemap_xml),
 )

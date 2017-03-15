@@ -12,8 +12,8 @@ import  StringIO
 
 @buyuser_login_required
 def index(request):
-    hot_anli=Consult.objects.filter(type=2,status=1)[:7]
-    hot_pro=Product.objects.all()[:7]
+    hot_anli=Consult.objects.filter(type=2,status=1)[:5]
+    hot_pro=Product.objects.all()[:5]
     hot_baike=Consult.objects.filter(type=6,status=1)[:7]
     hot_users=ProxyUserProfile.objects.filter(certifi_status=2)[:12]
     return render_to_response("work_buy_index.html",locals(),context_instance=RequestContext(request))
@@ -21,7 +21,7 @@ def index(request):
 @buyuser_login_required
 def all_msg(request):
     page=request.GET.get("page","1")
-    request.myuser.send_message("test","fsdafdsafdsafdsafdsfddsf")
+    #request.myuser.send_message("test","fsdafdsafdsafdsafdsfddsf")
     try:
         page=int(page)
         assert page>0

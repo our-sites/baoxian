@@ -1,0 +1,7 @@
+{
+  "dev": true,
+  "packs": {},
+  "alias": {
+    "jquery": "jquery:jquery"
+  }
+}

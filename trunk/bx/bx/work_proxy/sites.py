@@ -21,6 +21,8 @@ class Work_Proxy(object):
                                (r"all_msg/$",views.all_msg),
                                (r"change_pwd",views.change_pwd),
                                (r"^myans/",views.my_ans),
+                               (r"renzheng/",views.renzheng),
+                               (r"^img/$",views.img)
 
             )
         return urlpatterns

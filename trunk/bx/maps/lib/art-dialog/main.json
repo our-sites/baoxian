@@ -1,0 +1,11 @@
+{
+  "domain": "/static/atm",
+  "active": "6.0.5",
+  "debugParam": "debugId",
+  "port": 2015,
+  "debugDomain": "/assets/bx/dev",
+  "https": "dev.gcimg.net:2016",
+  "maps": {
+    "6.0.5": {}
+  }
+}

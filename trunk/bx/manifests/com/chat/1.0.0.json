@@ -1,14 +1,16 @@
 {
   "res": {
     "com/chat/1.0.0:chat.css": {
-      "uri": "/com/chat/1.0.0/src/chat_6c13cc0.css",
+      "uri": "/com/chat/1.0.0/src/chat_da8f743.css",
       "type": "css"
     },
     "com/chat/1.0.0:chat": {
-      "uri": "/com/chat/1.0.0/src/chat_9a23b1c.js",
+      "uri": "/com/chat/1.0.0/src/chat_530f742.js",
       "type": "js",
       "deps": [
         "com/global/1.0.0:dollar",
+        "lib/art-dialog/6.0.5:art-dialog",
+        "com/global/1.0.0:validator",
         "com/chat/1.0.0:chat.css"
       ]
     }

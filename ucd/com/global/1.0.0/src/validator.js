@@ -1,7 +1,12 @@
 var Validator = require('com/validator:validator');
 var $ = require('./dollar');
 var toastr = require('toastr');
-module.exports = Validator.extend({
+toastr.options = {
+    positionClass: 'toast-top-full-width'
+};
+var dialog = require('art-dialog:art-dialog');
+var unique = 1;
+var Validator2 = Validator.extend({
 
     // 显示错误
     showError: function (selector, msg) {
@@ -40,12 +45,49 @@ module.exports = Validator.extend({
 
     // 表单出错的处理
     formErrorHandle: function (res) {
-        var formError = res.formError || {};
-        var errorFields = formError.fields || [];
-        if (errorFields.length) {
-            errorFields = this.transformSelectors(errorFields);
-            this.showErrors(errorFields);
+        var that = this;
+        if (res.errorCode === 800) {
+            // 弹出登录窗口
+            var ins = dialog({
+                content: res.data.html
+            });
+            ins.showModal();
+            var $node = $(ins.node);
+            var $form = $node.find('form');
+            //$form.data('dialog', ins);
+            if ($form.length) {
+                var validator = new Validator({
+                    element: $form
+                });
+
+                $form.find('.popup-login-input-text').each(function() {
+                    var id = 'login-text-' + unique++;
+                    $(this).attr('id', id);
+                    var display = $(this).attr('placeholder');
+                    validator.addItem({
+                        element: '#' + id,
+                        required: true,
+                        display: display
+                    });
+                });
+                $form.on('click', '.popup-login-close', function(e) {
+                    e.preventDefault();
+                    ins.remove();
+                });
+                console.log(validator);
+                validator.after('formSuccessHandle', function() {
+                    alert(3);
+                })
+            }
+        } else {
+            var formError = res.formError || {};
+            var errorFields = formError.fields || [];
+            if (errorFields.length) {
+                errorFields = this.transformSelectors(errorFields);
+                this.showErrors(errorFields);
+            }
         }
+
     },
 
     // 表单提交成功的处理
@@ -106,5 +148,54 @@ module.exports = Validator.extend({
         }
     }
 });
+module.exports = Validator2.extend({
+    // 表单出错的处理
+    formErrorHandle: function (res) {
+        var that = this;
+        if (res.errorCode === 800) {
+            // 弹出登录窗口
+            var ins = dialog({
+                content: res.data.html,
+                fixed: true
+            });
+            ins.showModal();
+            var $node = $(ins.node);
+            var $form = $node.find('form');
+            var validator = new Validator2({
+                element: $form
+            });
 
+            $form.find('.popup-login-input-text').each(function() {
+                var id = 'login-text-' + unique++;
+                $(this).attr('id', id);
+                var display = $(this).attr('placeholder');
+                validator.addItem({
+                    element: '#' + id,
+                    required: true,
+                    display: display
+                });
+            });
+            $node.on('click', '.popup-login-close', function(e) {
+                e.preventDefault();
+                ins.remove();
+            }).on('click', '.popup-login-submit', function(e) {
+                e.preventDefault();
+                $form.submit();
+            });
+            validator.before('formSuccessHandle', function() {
+                ins.remove();
+                that.element.submit();
+                return false;
+            });
+        } else {
+            var formError = res.formError || {};
+            var errorFields = formError.fields || [];
+            if (errorFields.length) {
+                errorFields = this.transformSelectors(errorFields);
+                this.showErrors(errorFields);
+            }
+        }
+
+    }
+});
 // @require ./validator.css

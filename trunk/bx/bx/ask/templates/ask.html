@@ -16,35 +16,15 @@
         <div class="clf">
             <div class="ask-list-left">
                 <!--提问-->
-{#                <div class="ask-box clf">#}
-{#                    <div class="ask-icon">#}
-{#                        问#}
-{#                    </div>#}
-{##}
-{##}
-{#                    <form id="ask" class="ui-form" action="/ask/" method="post">#}
-{#                        {% csrf_token %}#}
-{#                        <div class="ui-form-item">#}
-{#                            <textarea id="content" name="content"#}
-{#                                      placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少...">{{ last_ask_info }}</textarea>#}
-{#                            <div class="ui-form-explain"></div>#}
-{#                        </div>#}
-{#                        <div class="float-layer">#}
-{#                            <span class="current-length">0</span>/<span class="total-length">200</span>#}
-{#                        </div>#}
-{##}
-{#                        <p>#}
-{#                            <input type="submit" value="提交回答" class="ask-btn"/>#}
-{#                        </p>#}
-{#                    </form>#}
-{##}
-{#                </div>#}
-
                 <div class="ask-box clf">
                         <div class="ask-icon-big"></div>
                         <div class="fr">
                             <!--表单-->
                             <form id="ask" class="ui-form" action="/ask/" novalidate="novalidate" data-widget-cid="widget-6" method="post">
+                                {% csrf_token %}
+                                <div style="display: none ">
+                                    <input name="next" value="/ask/" style="display: none">
+                                </div>
                                 <div class="ui-form-item">
                                     <textarea id="content" name="content" placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少..." data-widget-cid="widget-7" data-explain="">{{ last_ask_info }}</textarea>
                                     <div class="ui-form-explain"></div>

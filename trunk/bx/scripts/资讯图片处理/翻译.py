@@ -56,7 +56,7 @@ class Word_analyse(object):
                 cut_words = content[int(round(word_len*0.33)):int(round(word_len * 0.33)*2)]
             elif self.windows_size == 'low':
                 cut_words = content[int(round(word_len * 0.33*2)):]
-            print "截取后的词",cut_words
+            #print "截取后的词",cut_words
             try:
                 #中文转韩文zh_to_kor
                 data = requests.post("http://fanyi.baidu.com/v2transapi",data={"from": "zh", "to": "kor",
@@ -94,7 +94,7 @@ if __name__=="__main__":
     '''
     test = Word_analyse({"title":"我是中国人","context":context},windows_size='center')
     result = test.get_result()
-    print result
+    # print result
     print result.get('data')[0].get('tgt')
-    print result.get('before_context')
-    print result.get('later_context')
+    # print result.get('before_context')
+    # print result.get('later_context')

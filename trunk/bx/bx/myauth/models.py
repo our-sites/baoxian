@@ -116,6 +116,7 @@ class ProxyUserProfile(models.Model):
     zone=models.IntegerField(default=0)
     ans_num=models.IntegerField(default=0)
     score=models.PositiveIntegerField(default=0)
+    year=models.PositiveIntegerField(default=0)   #工作年限
 
     class Meta:
         db_table="bx_proxyuser_profile"
@@ -144,6 +145,9 @@ class ProxyUserProfile(models.Model):
             return  Company.objects.get(cid=self.cid).content
         except:
             return ""
+
+    def get_comobj(self):
+        return  Company.objects.get(cid=self.cid)
 
     def get_score(self):
         "获取积分"

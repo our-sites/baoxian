@@ -9,6 +9,8 @@
       "type": "js",
       "deps": [
         "com/global/1.0.0:dollar",
+        "lib/art-dialog/6.0.5:art-dialog",
+        "com/global/1.0.0:validator",
         "com/chat/1.0.0:chat.css"
       ]
     }

@@ -74,6 +74,7 @@
                     <th>省</th>
                     <th>市</th>
                     <th>创建时间</th>
+                    <th>状态</th>
                     <th>操作</th>
                 </tr>
                 </thead>
@@ -87,7 +88,8 @@
                     <td>{{ i.province_info }}</td>
                     <td>{{ i.city_info }}</td>
                     <td>{{ i.datetime }}</td>
-                    <td><a href="/manage/user/proxy/{{ i.uid }}.html">详情</a></td>
+                    <td>{% if i.state != 0 %}正常（{% if i.get_profile.certifi_status == 2 %}已认证{% else %}未认证{% endif %}）{% else %}禁用{% endif %}</td>
+                    <td><a href="/manage/auth_user/?uid={{ i.uid }}" target="_blank">自助登录</a>|<a href="/manage/user/proxy/{{ i.uid }}.html" target="_blank">详情</a></td>
                 </tr>
                 {% endfor %}
                 </tbody>

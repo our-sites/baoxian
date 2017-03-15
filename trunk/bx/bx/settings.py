@@ -16,7 +16,7 @@ DATABASES = {
         'NAME': 'bx_abc',                      # Or path to database file if using sqlite3.
         'USER': 'bx_user',                      # Not used with sqlite3.
         'PASSWORD': 'gc895316',                  # Not used with sqlite3.
-        'HOST': '113.10.195.169',                      # Set to empty string for localhost. Not used with sqlite3.
+        'HOST': '10.141.52.179',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '3306',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
@@ -38,7 +38,7 @@ DATABASE_ROUTERS = ["bx.router.AppRouter"]
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # In a Windows environment this must be set to your system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'Asia/Shanghai'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -110,8 +110,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "bx.myauth.custom_middleware.SelfAuthMiddleware" , # self auth
-    "bx.ip_middleware.IpMiddleware",# ip info
+    "bx.ip_middleware.IpMiddleware",  # ip info
+    "bx.myauth.custom_middleware.SelfAuthMiddleware" , # self auth,
+    "bx.allsite_msg_middleware.AllSiteMsgMiddleware",  #all site msg
 )
 
 ROOT_URLCONF = 'bx.urls'
@@ -141,7 +142,9 @@ INSTALLED_APPS = (
     "bx.product",
     "bx.dailiren",
     "bx.work_buy",
-    "bx.work_proxy"
+    "bx.work_proxy",
+    "bx.company",
+    "bx.app",
 )
 
 # A sample logging configuration. The only tangible logging

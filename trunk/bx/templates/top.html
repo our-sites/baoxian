@@ -1,21 +1,25 @@
-<!--公用top-->
-<div class="bx-top">
-    <div class="clf">
-        <span>关注我们</span>
-        <div class="fr">
-            <!--未登录-->
+
+<div >
+    <div style="width: 100%;background-color: #f5f5f5;margin-bottom: 0px;height: 36px;border-bottom: 1px solid #dddddd">
+        <div style="width: 1200px;color: #666;font-size: 12px;margin: 0 auto;line-height: 36px ">
+            你好，欢迎来到保险管家！
             {% if not request.myuser %}
-            <div class="bx-top-not-login">
-                <a href="/login/" class="color">登录</a> |
-                <a href="/register/" class="color">注册</a>
-            </div>
+
+                <a href="/login/" class="color " target="_blank">登录</a> |
+                <a href="/register/" class="color" target="_blank">注册</a>
+
             {% else %}
             <!--已登录-->
-            <div class="bx-top-login">
-                欢迎来到保险管家，<a href="/work/" class="color">{{ request.myuser.username }}</a> |
-                [<a href="/logout/" class="color">退出</a>]
-            </div>
+                <a href="/work/" class="color" target="_blank" style="padding: 0 7px">{{ request.myuser.username }}</a>
+                <a href="/work/all_msg/" target="_blank" class="color" style="padding: 0 7px">消息<em style="padding-left: 2px">{{ request.myuser.get_unread_messages.count }}</em></a>
+                <a href="/logout/" class="color" target="_blank">退出</a>
+
             {% endif %}
+        <span style="float: right;padding-left: 5px;padding-right: 5px;"><a href="#" style="color: #666" target="_blank">公司简介</a></span>
+        <span style="float: right;color: #cccccc">|</span>
+        <span style="float: right;padding-left: 5px;padding-right: 5px"><a href="#" style="color: #666" target="_blank">联系我们</a> </span>
         </div>
+
     </div>
+
 </div>

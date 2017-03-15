@@ -6,158 +6,207 @@
 {% block content %}
     <div id="informationList" >
     <div class="grid clf">
-        <div class="left">
-            <h3 class="clf">
-                <b>保险百科</b>
-                <a class="color" href="http://192.168.12.48:2015/files/bx/www/info/1.0.0/html/index.html">更多</a>
-            </h3>
-        <div class="information-list">
-
-            {% for i in baike_info %}
-{#            <div class="information-list-item">#}
-{#                <h4><a href="/zixun/detail/{{ i.zid }}.html" class="color">{{ i.title }}</a></h4>#}
-{#                <p class="info">#}
-{#{{   i.get_simple_content|slice:":100" }}                </p>#}
-{#                <p class="more">#}
-{#                    <span class="time">{{ i.get_date }}</span>#}
-{#                    <span class="author">来源：{{ i.writer }}</span>#}
-{#                </p>#}
-{#            </div>#}
-                <div class="information-list-item">
-                        <h4 class="clf">
-                            <a href="/zixun/detail/{{ i.zid }}.html" class="color">{{ i.title }}</a>
-                            <div class="more">
-                                <span class="time">{{ i.get_date }}</span>
-                                <span class="author">来源：{{ i.writer }}</span>
+            <div class="bx-crubms">
+                <a href="/zixun/">保险资讯</a> &gt;
+                <a href="#">全部</a>
+            </div>
+            <div class="classify clf">
+                <a href="/zixun/" class="classify-item all active" style="color: #42BAD0">全部</a>
+                <a href="/zixun/anli/" class="classify-item anli">保险案例</a>
+                <a href="/zixun/xinwen/" class="classify-item zixun">保险新闻</a>
+                <a href="/zixun/dongtai/" class="classify-item dongtai">监管动态</a>
+                <a href="/zixun/guahua/" class="classify-item guihua">保险规划</a>
+                <a href="/zixun/citiao/" class="classify-item citiao">保险词条</a>
+                <a href="/zixun/baike/" class="classify-item baike">保险百科</a>
+            </div>
+    <div class="clf">
+        <div class="clf">
+            <div class="fl">
+                <div class="information-sub-box">
+                    <h3>保险新闻</h3>
+                    <div class="information-sub-content" style="
+    padding-bottom: 10px;
+">
+                        {% for i in xinwen_info %}
+                        <div class="information-item clf">
+                                <div class="information-item-content">
+                                    <h4>
+                                        <a href="/zixun/detail/{{ i.zid }}.html">{{ i.title }}</a>
+                                    </h4>
+                                    <p class="information-item-guide">
+                                        <b>导读：</b>
+                                            {{ i.get_simple_content }}
+                                    </p>
+                                    <p>
+                                        <span class="view-number">0</span>
+                                        <span class="zan-number">342</span>
+                                    </p>
+                                </div>
+                                <div class="information-item-date">
+                                    {{ i.get_date }}
+                                </div>
                             </div>
-                        </h4>
-                        <p class="info">
-                            {{   i.get_simple_content|slice:":100" }}
-                        </p>
-
+                        {% endfor %}
+                    <a href="/zixun/xinwen/" class="information-sub-more" target="_blank">查看更多</a>
                     </div>
-            {% endfor %}
-        </div>
-        </div>
-        <div>
-            <h3 class="clf">
-                <b>社会案例</b>
-                <a class="color" href="http://192.168.12.48:2015/files/bx/www/info/1.0.0/html/index.html">更多</a>
-            </h3>
-        <div class="information-list">
-            {% for i in anli_info %}
-                <div class="information-list-item">
-                        <h4 class="clf">
-                            <a href="/zixun/detail/{{ i.zid }}.html" class="color">{{ i.title }}</a>
-                            <div class="more">
-                                <span class="time">{{ i.get_date }}</span>
-                                <span class="author">来源：{{ i.writer }}</span>
+                </div>
+
+                <div class="information-sub-box">
+                    <h3>保险案例</h3>
+                    <div class="information-sub-content" style="
+    padding-bottom: 10px;
+">
+                        {% for i in anli_info %}
+                        <div class="information-item clf">
+                                <div class="information-item-content">
+                                    <h4>
+                                        <a href="/zixun/detail/{{ i.zid }}.html">{{ i.title }}</a>
+                                    </h4>
+                                    <p class="information-item-guide">
+                                        <b>导读：</b>
+                                            {{ i.get_simple_content }}
+                                    </p>
+                                    <p>
+                                        <span class="view-number">0</span>
+                                        <span class="zan-number">342</span>
+                                    </p>
+                                </div>
+                                <div class="information-item-date">
+                                    {{ i.get_date }}
+                                </div>
                             </div>
-                        </h4>
-                        <p class="info">
-                            {{   i.get_simple_content|slice:":100" }}
-                        </p>
-
+                        {% endfor %}
+                    <a href="/zixun/anli/" class="information-sub-more" target="_blank">查看更多</a>
                     </div>
-            {% endfor %}
-</div>
-        </div>
+                </div>
 
-        <div class="left">
-            <h3 class="clf">
-                <b>保险规划</b>
-                <a class="color" href="http://192.168.12.48:2015/files/bx/www/info/1.0.0/html/index.html">更多</a>
-            </h3>
-<div class="information-list">
-            {% for i in guahua_info %}
-                <div class="information-list-item">
-                        <h4 class="clf">
-                            <a href="/zixun/detail/{{ i.zid }}.html" class="color">{{ i.title }}</a>
-                            <div class="more">
-                                <span class="time">{{ i.get_date }}</span>
-                                <span class="author">来源：{{ i.writer }}</span>
+                <div class="information-sub-box">
+                    <h3>监管动态</h3>
+                    <div class="information-sub-content" style="
+    padding-bottom: 10px;
+">
+                        {% for i in dongtai_info %}
+                        <div class="information-item clf">
+                                <div class="information-item-content">
+                                    <h4>
+                                        <a href="/zixun/detail/{{ i.zid }}.html">{{ i.title }}</a>
+                                    </h4>
+                                    <p class="information-item-guide">
+                                        <b>导读：</b>
+                                            {{ i.get_simple_content }}
+                                    </p>
+                                    <p>
+                                        <span class="view-number">0</span>
+                                        <span class="zan-number">342</span>
+                                    </p>
+                                </div>
+                                <div class="information-item-date">
+                                    {{ i.get_date }}
+                                </div>
                             </div>
-                        </h4>
-                        <p class="info">
-                            {{   i.get_simple_content|slice:":100" }}
-                        </p>
-
+                        {% endfor %}
+                    <a href="/zixun/dongtai/" class="information-sub-more" target="_blank">查看更多</a>
                     </div>
-            {% endfor %}
-</div>
-        </div>
-        <div>
-            <h3 class="clf">
-                <b>保险新闻</b>
-                <a class="color" href="http://192.168.12.48:2015/files/bx/www/info/1.0.0/html/index.html">更多</a>
-            </h3>
-        <div class="information-list">
-            {% for i in xinwen_info %}
-                <div class="information-list-item">
-                        <h4 class="clf">
-                            <a href="/zixun/detail/{{ i.zid }}.html" class="color">{{ i.title }}</a>
-                            <div class="more">
-                                <span class="time">{{ i.get_date }}</span>
-                                <span class="author">来源：{{ i.writer }}</span>
+                </div>
+
+                <div class="information-sub-box">
+                    <h3>保险规划</h3>
+                    <div class="information-sub-content" style="
+    padding-bottom: 10px;
+">
+                        {% for i in guahua_info %}
+                        <div class="information-item clf">
+                                <div class="information-item-content">
+                                    <h4>
+                                        <a href="/zixun/detail/{{ i.zid }}.html">{{ i.title }}</a>
+                                    </h4>
+                                    <p class="information-item-guide">
+                                        <b>导读：</b>
+                                            {{ i.get_simple_content }}
+                                    </p>
+                                    <p>
+                                        <span class="view-number">0</span>
+                                        <span class="zan-number">342</span>
+                                    </p>
+                                </div>
+                                <div class="information-item-date">
+                                    {{ i.get_date }}
+                                </div>
                             </div>
-                        </h4>
-                        <p class="info">
-                            {{   i.get_simple_content|slice:":100" }}
-                        </p>
-
+                        {% endfor %}
+                    <a href="/zixun/guahua/" class="information-sub-more" target="_blank">查看更多</a>
                     </div>
-            {% endfor %}
-        </div>
-        </div>
+                </div>
 
-        <div class="left">
-            <h3 class="clf">
-                <b>监管动态</b>
-                <a class="color" href="http://192.168.12.48:2015/files/bx/www/info/1.0.0/html/index.html">更多</a>
-            </h3>
-<div class="information-list">
-            {% for i in dongtai_info %}
-                <div class="information-list-item">
-                        <h4 class="clf">
-                            <a href="/zixun/detail/{{ i.zid }}.html" class="color">{{ i.title }}</a>
-                            <div class="more">
-                                <span class="time">{{ i.get_date }}</span>
-                                <span class="author">来源：{{ i.writer }}</span>
+                <div class="information-sub-box">
+                    <h3>保险百科</h3>
+                    <div class="information-sub-content" style="
+    padding-bottom: 10px;
+">
+                        {% for i in xinwen_info %}
+                        <div class="information-item clf">
+                                <div class="information-item-content">
+                                    <h4>
+                                        <a href="/zixun/detail/{{ i.zid }}.html">{{ i.title }}</a>
+                                    </h4>
+                                    <p class="information-item-guide">
+                                        <b>导读：</b>
+                                            {{ i.get_simple_content }}
+                                    </p>
+                                    <p>
+                                        <span class="view-number">0</span>
+                                        <span class="zan-number">342</span>
+                                    </p>
+                                </div>
+                                <div class="information-item-date">
+                                    {{ i.get_date }}
+                                </div>
                             </div>
-                        </h4>
-                        <p class="info">
-                            {{   i.get_simple_content|slice:":100" }}
-                        </p>
-
+                        {% endfor %}
+                    <a href="/zixun/baike/" class="information-sub-more" target="_blank">查看更多</a>
                     </div>
-            {% endfor %}
-</div>
-        </div>
-        <div>
-            <h3 class="clf">
-                <b>保险词条</b>
-                <a class="color" href="http://192.168.12.48:2015/files/bx/www/info/1.0.0/html/index.html">更多</a>
-            </h3>
-        <div class="information-list">
-            {% for i in citiao_info %}
-                <div class="information-list-item">
-                        <h4 class="clf">
-                            <a href="/zixun/detail/{{ i.zid }}.html" class="color">{{ i.title }}</a>
-                            <div class="more">
-                                <span class="time">{{ i.get_date }}</span>
-                                <span class="author">来源：{{ i.writer }}</span>
+                </div>
+
+                <div class="information-sub-box">
+                    <h3>保险词条</h3>
+                    <div class="information-sub-content" style="
+    padding-bottom: 10px;
+">
+                        {% for i in citiao_info %}
+                        <div class="information-item clf">
+                                <div class="information-item-content">
+                                    <h4>
+                                        <a href="/zixun/detail/{{ i.zid }}.html">{{ i.title }}</a>
+                                    </h4>
+                                    <p class="information-item-guide">
+                                        <b>导读：</b>
+                                            {{ i.get_simple_content }}
+                                    </p>
+                                    <p>
+                                        <span class="view-number">0</span>
+                                        <span class="zan-number">342</span>
+                                    </p>
+                                </div>
+                                <div class="information-item-date">
+                                    {{ i.get_date }}
+                                </div>
                             </div>
-                        </h4>
-                        <p class="info">
-                            {{   i.get_simple_content|slice:":100" }}
-                        </p>
-
+                        {% endfor %}
+                    <a href="/zixun/citiao/" class="information-sub-more" target="_blank">查看更多</a>
                     </div>
-            {% endfor %}
-        </div>
+                </div>
+            </div>
+
+            <div class="fr">
+                {% include "dingzhi_common.html" %}
+                {% include "dailiren_common.html" %}
+            </div>
         </div>
     </div>
+
     </div>
+    </div>
+
 {% endblock %}
 {% block js %}
     {% atmjs www/info:index %}

@@ -3,19 +3,12 @@ __author__ = 'admin'
 # --------------------------------
 # Created by admin  on 2016/10/14.
 # ---------------------------------
-import  urllib2
+from threadspider.utils.db import MySQLMgr
 
+mgr=MySQLMgr("118.89.220.36",3306,"bx_abc","bx_user","gc895316")
+result=mgr.runQuery("SELECT  askid,count(*) from bx_answer GROUP BY askid",())
 
-import  pyquery
-
-import  urllib2
-import  urllib
-import  requests
-import time
-print time.time()
-data=requests.post("http://iir.circ.gov.cn/web/baoxyx!searchInfoBaoxyx.html",{"id_card":"","certificate_code":"00201412110000069878","evelop_code":"",
-                                                                              "name":"","valCode":""},timeout=30)
-
-print time.time()
-doc=pyquery.PyQuery(data.content.decode("gbk"))
-print doc.html()
+for askid,num in result:
+    askid=int(askid)
+    num=int(num)
+    mgr.runOperation("update bx_ask set ans_num=%s where askid=%s",(num,askid))

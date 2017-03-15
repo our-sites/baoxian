@@ -42,54 +42,67 @@
 
                 </div>
         </div>
+        <div class="selected clf">
+                    <div class="fl">
+                        条件：
+                    </div>
+                    <div class="content">
+                        {% if c_id == 0 %}
+                        <a href="javascript:;" class="selected-item">全部</a>
+                        {% else %}
+                        <a href="javascript:;" class="selected-item">{{ c_obj.shortname }}</a>
+                        {% endif %}
+                    </div>
+                </div>
     </div>
     <!--已选条件-->
-    <div class="chose-condition clf">
-        <div class="fl">
-            条件：
-        </div>
-    </div>
+
 
     <div class="clf">
         <div class="fl">
             <!--筛选结果-->
             <div class="adviser-list clf">
                 {% for i in info %}
-                <div class="adviser-item {% if forloop.counter|mod:3 == 0 %}right{% endif %}">
-                {% with myuser=i.get_user comname=i.get_comname %}
-                    <div class="adviser-item-resume clf">
-                        <div class="adviser-item-resume-img">
-                            <a href="/dailiren/detail/{{ myuser.uid }}.html"><img src="{{ myuser.imgurl.url }}"></a>
+                {% with myuser=i.get_user comname=i.get_comname  com_obj=i.get_comobj%}
+
+                    <div class="adviser-item clf">
+                            <!--头像-->
+                            <div class="adviser-item-resume-img">
+                                <img src="{{ myuser.imgurl.url }}">
+                            </div>
+                            <!--资料-->
+                            <div class="adviser-item-resume-word">
+                                <h4>
+                                    {{ myuser.real_name }}<span class="adviser-item-resume-location">{{ i.get_city_info }}</span><span class="adviser-item-resume-company">{{ comname }}</span>
+                                </h4>
+                                <p>
+                                    lv2 已认证
+                                </p>
+                                <p>
+                                    <span>从业时间：</span>{{ i.year }}年
+                                </p>
+                                <p>
+                                    <span>回答问题：</span>{{ i.ans_num }}条
+                                </p>
+                                <p>
+                                    <span> 擅长险种：</span>
+                                    <a href="" class="color">人寿险</a>
+                                    <a href="" class="color">重疾险</a>
+                                    <a href="" class="color">养老险</a>
+                                </p>
+                            </div>
+                            <!--详情-->
+                            <div class="adviser-item-detail">
+                                {{ i.my_ad }}
+                            </div>
+
+                            <div class="adviser-item-other">
+                                <img src="{{ com_obj.img.url }}" class="adviser-item-company-logo">
+                                <a href="" class="adviser-item-consult">我要咨询</a>
+                            </div>
+
                         </div>
-                        <div class="adviser-item-resume-word">
-                            <a href="/dailiren/detail/{{ myuser.uid }}.html"><h4>{{ myuser.real_name }}</h4></a>
-                            <p>
-                                <span class="area">{{ i.get_city_info }}</span>
-                                <span class="company">{{ comname }}</span>
-                            </p>
-                            <p>
-                                从业时间：x年
-                            </p>
-                            <p>
-                                回答：{{ i.ans_num }}条
-                            </p>
-                        </div>
-                    </div>
-                    <div class="adviser-item-detail">
-                        {% if i.my_ad %}{{ i.my_ad }}{% else %}现隶属于{{ comname }}。{% endif %}
-                    </div>
-                    <div class="adviser-item-speciality">
-                        <p>擅长险种：</p>
-                        <p>
-                            <a href="" class="color">人寿险</a>
-                            <a href="" class="color">重疾险</a>
-                            <a href="" class="color">健康险</a>
-                            <a href="" class="color">养老险</a>
-                        </p>
-                    </div>
-                    <a href="/ask/" class="adviser-item-consult">我要咨询</a>
-                {% endwith %}
-                </div>
+                    {% endwith %}
                 {% endfor %}
             </div>
             <!--翻页-->

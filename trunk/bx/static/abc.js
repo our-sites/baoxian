@@ -33,3 +33,50 @@ function  main(){
         }
 
 }
+function getCookie(name)
+{
+var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+if(arr=document.cookie.match(reg))
+return unescape(arr[2]);
+else
+return null;
+}
+
+//注：投保人登陆模态框 和 代理人登陆模态框区别就是name=user_type的一个隐藏input
+//投保人：<div style="display:none"><input type="hidden" name="user_type" value="1"></div>
+//代理人: <div style="display:none"><input type="hidden" name="user_type" value="2"></div>
+///////////////////////////
+//模态框中的表单验证及提交方式还用以前那种就行
+
+
+function isBuyLogin(){  //是否已以投保人身份登陆
+    var user_type=getCookie("user_type");
+    return user_type==1;
+}
+function isProxyLogin(){ //是否已以代理人身份登陆
+    var user_info=getCookie("user_type");
+    return user_info==2
+}
+
+function buy_login_window_show(){ //投保人登陆模态框显示
+
+}
+function proxy_login_window_show(){//代理人登陆模态框显示
+
+}
+document.click=function(event){
+    var target_element=event.target;
+    var target_element_j=jQuery(target_element);
+    if(target_element_j.hasClass("buy_login_required")){
+        if (!isBuyLogin){   //未登陆
+            buy_login_window_show();
+            return false;
+        }
+    }
+    else if(target_element_j.hasClass("proxy_login_required")){
+        if(!isProxyLogin()){ //未登陆
+            proxy_login_window_show();
+            return false;
+        }
+    }
+};

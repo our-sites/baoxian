@@ -1,0 +1,33 @@
+<div class="popup-login-wrap">
+    <div class="popup-login">
+        <!--logo-->
+        <img src="/static/imgs/DIyHzvdX7E.png" alt="logo" class="popup-login-logo" width="56" height="56">
+        <!--close-->
+        <div class="popup-login-close">x</div>
+        <!--title-->
+        <div class="popup-login-title">登录保险管家</div>
+        <!--form-->
+        <form action="/login/?next={% if next %}{{ next|urlencode }}{% endif %}&role=proxy" class="popup-login-form ui-form" method="post">
+        {% csrf_token %}
+            <div class="ui-form-item">
+                <input type="text" class="popup-login-input-text" placeholder="手机号/用户名" name="username">
+                <div class="ui-form-explain"></div>
+            </div>
+            <input value="{{ next }}" name="next" style="display: none">
+            <div class="ui-form-item">
+                <input type="password" class="popup-login-input-text" placeholder="密码" name="password">
+                <div class="ui-form-explain"></div>
+            </div>
+            <div class="popup-login-row clf">
+                <div class="fl">
+                    <input type="checkbox" class="popup-login-input-checkbox">自动登录
+                </div>
+                <div class="fr">
+                    <a href="/register/?rold=proxy" class="color">注册保险管家账号</a><span class="division-line">|</span><a href="/forgotpwd/"  class="color">忘记密码？</a>
+                </div>
+            </div>
+            <div class="popup-login-submit">登录</div>
+        </form>
+    </div>
+    <div class="popup-mask"></div>
+</div>

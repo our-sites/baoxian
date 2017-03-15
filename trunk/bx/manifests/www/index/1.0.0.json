@@ -25,18 +25,20 @@
       "type": "css"
     },
     "www/index/1.0.0:module/banner-menu.css": {
-      "uri": "/www/index/1.0.0/src/module/banner-menu_9949b33.css",
+      "uri": "/www/index/1.0.0/src/module/banner-menu_63e390c.css",
       "type": "css"
     },
     "www/index/1.0.0:index.css": {
-      "uri": "/www/index/1.0.0/src/index_a0a3eb5.css",
+      "uri": "/www/index/1.0.0/src/index_a156b24.css",
       "type": "css"
     },
     "www/index/1.0.0:index": {
-      "uri": "/www/index/1.0.0/src/index_2f29772.js",
+      "uri": "/www/index/1.0.0/src/index_4c66073.js",
       "type": "js",
       "deps": [
         "www/common/1.0.0:common",
+        "lib/slick/1.6.0:slick",
+        "com/global/1.0.0:dollar",
         "www/index/1.0.0:index.css"
       ]
     }

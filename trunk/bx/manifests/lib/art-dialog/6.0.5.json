@@ -1,0 +1,17 @@
+{
+  "res": {
+    "lib/art-dialog/6.0.5:art-dialog.css": {
+      "uri": "/lib/art-dialog/6.0.5/src/art-dialog_48cf0fa.css",
+      "type": "css"
+    },
+    "lib/art-dialog/6.0.5:art-dialog": {
+      "uri": "/lib/art-dialog/6.0.5/src/art-dialog_0464c0a.js",
+      "type": "js",
+      "deps": [
+        "lib/jquery/1.11.3:jquery",
+        "lib/art-dialog/6.0.5:art-dialog.css"
+      ]
+    }
+  },
+  "pkg": {}
+}

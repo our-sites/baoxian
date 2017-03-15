@@ -3,12 +3,14 @@ __author__ = 'admin'
 # --------------------------------
 # Created by admin  on 2016/10/12.
 # ---------------------------------
-from gcutils.db import  MySQLMgr
+
 from threadspider import *
 from pyquery import  *
 import  re
 import  time
-mgr=MySQLMgr("113.10.195.169",3306,"bx_abc","bx_user","gc895316")
+from threadspider.utils.db import MySQLMgr
+
+mgr=MySQLMgr("10.141.52.179",3306,"bx_abc","bx_user","gc895316")
 spider_init(10,2000000)
 alldata=[]
 def index_handle(result):
@@ -24,9 +26,10 @@ def index_handle(result):
             title=doc(".articleName").find("h1").html() or doc(".art_title").find("h1").html()
             print url,title
             alldata.append ([url ,title,PyQuery(content).html()])
-        Spider(detail_url,code="gbk",handle=detail_handle)
-Spider("http://insurance.hexun.com/",code="gbk",handle=index_handle)
+        Spider(detail_url,code="gbk",response_handle=detail_handle)
+Spider("http://insurance.hexun.com/",code="gbk",response_handle=index_handle)
 spider_join()
 for i,j,k  in alldata:
+    print i,j ,k
     mgr.runOperation(''' insert ignore   into bx_consult(title, type, writer, `from`, addtime, content, status, type_cate)
-                          VALUES (%s,4,"网络",%s,%s,%s,0,0)''',(j,i,int(time.time()),k))
+                         VALUES (%s,4,"网络",%s,%s,%s,0,0)''',(j,i,int(time.time()),k))
