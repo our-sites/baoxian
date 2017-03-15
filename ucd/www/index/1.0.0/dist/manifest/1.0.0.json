@@ -8,10 +8,6 @@
       "uri": "/www/index/1.0.0/src/module/adviser.css",
       "type": "css"
     },
-    "www/index/1.0.0:module/demand.css": {
-      "uri": "/www/index/1.0.0/src/module/demand.css",
-      "type": "css"
-    },
     "www/index/1.0.0:module/news.css": {
       "uri": "/www/index/1.0.0/src/module/news.css",
       "type": "css"
@@ -28,6 +24,14 @@
       "uri": "/www/index/1.0.0/src/module/banner-menu.css",
       "type": "css"
     },
+    "www/index/1.0.0:module/partner.css": {
+      "uri": "/www/index/1.0.0/src/module/partner.css",
+      "type": "css"
+    },
+    "www/index/1.0.0:module/harvest.css": {
+      "uri": "/www/index/1.0.0/src/module/harvest.css",
+      "type": "css"
+    },
     "www/index/1.0.0:index.css": {
       "uri": "/www/index/1.0.0/src/index.css",
       "type": "css"
@@ -39,6 +43,10 @@
         "www/common/1.0.0:common",
         "www/index/1.0.0:index.css"
       ]
+    },
+    "www/index/1.0.0:module/demand.css": {
+      "uri": "/www/index/1.0.0/src/module/demand.css",
+      "type": "css"
     }
   },
   "pkg": {}

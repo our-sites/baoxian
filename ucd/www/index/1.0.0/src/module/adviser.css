@@ -27,40 +27,57 @@
     overflow: hidden;
 }
 
-#Index .index-adviser .right-item {
-    float: left;
-    width: 210px;
-    height: 240px;
-    margin-left: 20px;
+#Index .index-adviser .right-row {
+    width: 100%;
+    height: 120px;
     background-color: #ffffff;
-    text-align: center;
-}
-
-#Index .index-adviser .right-item:nth-child(1),
-#Index .index-adviser .right-item:nth-child(2),
-#Index .index-adviser .right-item:nth-child(3),
-#Index .index-adviser .right-item:nth-child(4) {
     margin-bottom: 1px;
 }
 
-#Index .index-adviser .right-item img {
+#Index .index-adviser .right-row:last-child{
+    margin-bottom: 0;
+}
+
+#Index .index-adviser .right-item {
     display: block;
-    width: 118px;
-    height: 118px;
+    float: left;
+    width: 230px;
+    height: 120px;
+}
+
+#Index .index-adviser .right-item img {
+    float: left;
+    display: block;
+    width: 78px;
+    height: 78px;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
     border: 1px solid #dbddde;
-    margin: 20px auto;
+    margin: 20px 30px 20px 20px;
+}
+
+#Index .index-adviser .right-item .word-wrap{
+    float: left;
+    width: 100px;
+    height: 120px;
+    display: table;
+}
+
+#Index .index-adviser .right-item .word{
+    width: 100px;
+    height: 120px;
+    display: table-cell;
+    line-height: 24px;
+    vertical-align: middle;
+    overflow: hidden;
 }
 
 #Index .index-adviser .right-item h4 {
-    font-size: 18px;
-    line-height: 2;
+    font-size: 14px;
 }
 
 #Index .index-adviser .right-item p {
-    font-size: 14px;
-    line-height: 2;
+    font-size: 12px;
     color: #808080;
 }

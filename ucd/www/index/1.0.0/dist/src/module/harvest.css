@@ -1,0 +1,105 @@
+#Index .index-harvest .left {
+    background: url("/assets/bx/dev/www/index/1.0.0/src/img/index-harvest-left-bg.png") repeat-x 0 0;
+}
+
+#Index .index-harvest .left .feature {
+    height: 178px;
+    background-image: url('/assets/bx/dev/www/index/1.0.0/src/img/index-harvest-left-feature.png');
+}
+
+#Index .index-harvest .left .links-btn {
+    display: block;
+    color: #ffffff;
+    background-color: #ff7866;
+}
+
+#Index .index-harvest .left .links-btn:hover {
+    background-color: #ff806f;
+}
+
+#Index .index-harvest .right {
+    float: left;
+    width: 860px;
+    height: 437px;
+    padding: 19px 30px 25px;
+    overflow: hidden;
+    font-size: 14px;
+    background-color: #fff;
+}
+
+#Index .index-harvest .right-list {
+    float: left;
+    width: 415px;
+
+}
+
+#Index .index-harvest .right-list:first-child {
+    margin-right: 30px;
+}
+
+#Index .index-harvest .right-list h3 {
+    height: 38px;
+    line-height: 38px;
+    font-size: 16px;
+    border-bottom: 1px solid #ebebeb;
+    margin-bottom: 30px;
+}
+
+#Index .index-harvest .right-list h3 .color {
+    float: right;
+    font-size: 14px;
+    display: block;
+    line-height: 38px;
+}
+
+#Index .index-harvest .right-list li {
+    height: 82px;
+    margin-bottom: 10px;
+}
+
+#Index .index-harvest .right-list-item-img {
+    float: left;
+    display: block;
+    width: 48px;
+    height: 48px;
+}
+
+#Index .index-harvest .right-list-item-img img {
+    display: block;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+#Index .index-harvest .right-list-item-content {
+    float: right;
+    width: 335px;
+    height: 64px;
+    padding: 9px 10px;
+    background-color: #f0f0f0;
+    border-radius: 2px;
+}
+
+#Index .index-harvest .right-list-item-content h4{
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 8px;
+}
+
+#Index .index-harvest .right-list-item-name{
+    margin-right: 10px;
+}
+
+#Index .index-harvest .right-list-item-time{
+    float: right;
+    font-size: 12px;
+    color: #9e9e9e;
+}
+
+#Index .index-harvest .right-list-item-content p {
+    line-height: 18px;
+    font-size: 12px;
+    color: #878787;
+    height: 36px;
+    overflow: hidden;
+}

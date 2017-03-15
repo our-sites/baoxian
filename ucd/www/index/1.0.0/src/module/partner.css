@@ -1,0 +1,14 @@
+.index-partner .clf{
+    height: 482px;
+    overflow: hidden;
+}
+.index-partner-item{
+    float: left;
+    display: block;
+    width: 239px;
+    height: 160px;
+    margin: 0 1px 1px 0;
+}
+.index-partner-item:nth-child(5n){
+    margin-right: 0;
+}
