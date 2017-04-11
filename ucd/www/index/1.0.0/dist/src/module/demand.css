@@ -10,12 +10,12 @@
 }
 
 #Index .index-new-demand .left {
-    background: url("../img/index-demand-left-bg.png") repeat-x 0 0;
+    background: url("/assets/bx/dev/www/index/1.0.0/src/img/index-demand-left-bg.png") repeat-x 0 0;
 }
 
 #Index .index-new-demand .left .feature {
     height: 176px;
-    background-image: url('../img/index-demand-left-feature.png');
+    background-image: url('/assets/bx/dev/www/index/1.0.0/src/img/index-demand-left-feature.png');
 }
 
 #Index .index-new-demand .left .links-btn {

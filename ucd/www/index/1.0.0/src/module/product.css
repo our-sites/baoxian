@@ -86,8 +86,9 @@
 
 #Index .index-product .right-wrap .center{
     width: 222px;
-    height: 441px;
+    height: 461px;
     background: url('../img/index-product-right-00.png') no-repeat 0 0;
+	background-size: 100% 100%;
 }
 
 #Index .index-product .right-wrap .center .price{

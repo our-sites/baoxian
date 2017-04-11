@@ -6,3 +6,8 @@
 @import url("./module/banner-menu.css?__inline");
 @import url("./module/partner.css?__inline");
 @import url("./module/harvest.css?__inline");
+
+.index-banner-content .slick-dots{
+	bottom: 0;
+	z-index: 1000;
+}
