@@ -1,5 +1,5 @@
 <div class="popup-login-wrap">
-    <div class="popup-login">
+    <div class="popup-login" style="height: 400px">
         <!--logo-->
         <img src="/static/imgs/DIyHzvdX7E.png" alt="logo" class="popup-login-logo" width="56" height="56">
         <!--close-->
@@ -18,6 +18,7 @@
                 <input type="password" class="popup-login-input-text" placeholder="密码" name="password">
                 <div class="ui-form-explain"></div>
             </div>
+            <input type="submit" class="fn-hidden"/>
 
             <div class="popup-login-row clf">
                 <div class="fl">
@@ -28,6 +29,24 @@
                 </div>
             </div>
             <div class="popup-login-submit">登录</div>
+            <div style="padding-top: 22px;height: 28px;">
+                <div style="display:inline-block;font-size: 14px;color: #777;line-height:28px">快速登陆</div>
+                <div style="display: inline-block;padding-left: 15px">
+                    <a  target="_blank"  href="https://graph.qq.com/oauth2.0/authorize?client_id=101389034&response_type=token&scope=all&redirect_uri=http%3A%2F%2Fwww.bao361.cn%2Fget_qq_token%3Fnext%3D{% if next %}{{ next|urlencode:'' }}{% endif %}%26role%3Dbuy">
+                        <div style="display: inline-block;width: 28px;height: 28px ;background-image: url(/static/imgs/3login1.png);background-position: -84px -28px;line-height:28px">&nbsp;</div>
+                    </a>
+                </div>
+                <div style="display: inline-block;padding-left: 3px">
+                    <a  target="_blank"  href="https://api.weibo.com/oauth2/authorize?client_id=3099094881&response_type=code&redirect_uri=http://www.bao361.cn/get_weibo_token">
+                        <div style="display: inline-block;width: 28px;height: 28px ;background-image: url(/static/imgs/3login1.png);background-position: -56px -28px;line-height:28px">&nbsp;</div>
+                    </a>
+                </div>
+                <div style="display: inline-block;padding-left: 3px">
+                    <a  target="_blank"  href="https://oauth.taobao.com/authorize?spm=a219a.7629140.0.0.eleuK3&response_type=code&client_id=23696677&redirect_uri=http://www.bao361.cn/get_taobao_token%3Fnext%3D{% if next %}{{ next|urlencode:'' }}{% endif %}%26role%3Dbuy">
+                        <div style="display: inline-block;width: 28px;height: 28px ;background-image: url(/static/imgs/3login1.png);background-position: 0px -28px;line-height:28px">&nbsp;</div>
+                    </a>
+                </div>
+            </div>
         </form>
     </div>
     <div class="popup-mask"></div>

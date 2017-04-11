@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-{% with my_username=request.myuser.username my_unread_messages=request.myuser.get_unread_messages %}
+{% with my_username=request.myuser.username my_unread_messages=request.myuser.get_unread_messages my_username_content=request.myuser.get_namecontent%}
     {% with my_unread_messages_num=my_unread_messages|length %}
 <head>
 
@@ -130,7 +130,7 @@
 
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>{{ my_username }} <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user fa-fw"></i>{{ my_username_content }} <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="/logout/"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
@@ -150,15 +150,9 @@
                                 <a style="display: inline;float: left;margin-right: 10px" href="/work_proxy/img/">
                                     <img width="50" height="50" src="{% if not request.myuser.imgurl %}/static/imgs/default-user.png{% else %}{{ request.myuser.imgurl.url }}{% endif %}" style="border-radius: 25px">
                                 </a>
-                                <div style="display: inline;float: left;margin-top: 15px">
-                                    <a style="font-size: 18px;color: rgb(119,119,119)">
-
-                                            {% if my_username|length <= 11 %}
-                                                {{ my_username }}
-                                            {% else %}
-                                                {{ my_username|slice:":11" }}**
-                                            {% endif %}
-
+                                <div style="display: inline;float: left;margin-top: 15px;width: 150px">
+                                    <a style="font-size: 18px;color: rgb(119,119,119);display:block;width: 100%;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+{{ my_username_content }}
                                     </a>
                                     <p>
 {#                                        积分:6#}

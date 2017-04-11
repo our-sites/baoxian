@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block title %}
-    {{ info.pro_name }}保险产品_保险管家
+    {{ product.pro_name }}保险产品_保险管家
 {% endblock %}
 {% load atm %}
+{% block keywords %}{{ product.pro_name }} 保险管家 保险之家{% endblock %}
+{% block description %}{{ product.pro_name }}_保险管家_保险之家{% endblock %}
 {% block css %}
     {% atmcss www/product:detail %}
 {% endblock %}
@@ -21,13 +23,13 @@
     <div class="clf">
         <div class="fl">
             <!--概览-->
-            <div class="product-preview clf">
+            <div class="product-preview clf" style="background-color: #fff">
                 <div class="product-preview-pic">
                     <div class="product-preview-img-box">
                         <img src="{{ product.img.url }}" alt="" style="height: 100%;">
                     </div>
                 </div>
-                <div class="product-preview-word">
+                <div class="product-preview-word" style="background-color: #fff">
                     <h2>{{ product.pro_name }}</h2>
                     <p class="product-preview-feature">
                         <span>特色</span>
@@ -49,7 +51,7 @@
                 </div>
             </div>
             <!--所有信息-->
-            <div class="product-information">
+            <div class="product-information" style="background-color: #fff">
                 <!--tabs-->
                 <div class="product-information-tabs">
                     <ul class="clf">
@@ -113,7 +115,7 @@
             </div>
 
             <!--相关产品-->
-            <div class="relative-product">
+            <div class="relative-product" style="">
                 <h3>相关产品</h3>
                 <div class="clf">
                     {% for i in other_products %}

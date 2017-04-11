@@ -55,4 +55,6 @@ urlpatterns = patterns('',
         ("^sitemap.xml$",views.sitemap_index),
         ("^sitemap.index.xml$",views.sitemap_index),
         ("^zixun_sitemap(\d+).xml$",views.zixun_sitemap_xml),
+        ("^product_sitemap(\d+).xml$",views.product_sitemap_xml),
+        ("^ask_sitemap(\d+).xml$",views.ask_sitemap_xml),
 )

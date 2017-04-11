@@ -13,6 +13,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 import  re
 import  json
 import  HTMLParser
+from utils import  seo
 
 
 def filter_tags(htmlstr):
@@ -271,7 +272,7 @@ class Ask(models.Model):
             return None
 
     def add_answer(self,user,content):
-        assert  user.usertype==2 #必须为代理人账户
+        #assert  user.usertype==2 #必须为代理人账户
         _ = Answer(askid=int(self.askid), ans_content=content, uid=user.uid, parent_ansid=0)
         _.save()
         profile = user.get_profile()
@@ -288,6 +289,11 @@ class Ask(models.Model):
     def get_user(self):
         from myauth.models import MyUser
         return MyUser.objects.get(uid=self.uid)
+
+    def save(self, force_insert=False, force_update=False, using=None):
+        models.Model.save(self,force_insert,force_update,using)
+        seo.postBaiDu("http://www.bao361.cn/ask/detail/%s.html"%self.askid)
+
 
 class Answer(models.Model):
     ansid=models.AutoField(primary_key=True)
@@ -319,6 +325,10 @@ class Answer(models.Model):
     def get_user_profile(self):
         from myauth.models import  MyUser,ProxyUserProfile
         return ProxyUserProfile.objects.get(uid__uid =self.uid)
+
+    def save(self, force_insert=False, force_update=False, using=None):
+        models.Model.save(self,force_insert,force_update,using)
+        seo.postBaiDu("http://www.bao361.cn/ask/detail/%s.html"%self.get_ask().askid)
 
 
 

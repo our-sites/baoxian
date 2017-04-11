@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 {% block title %}
-    保险产品_保险管家
+    {% if user_type_info %}{{ user_type_info }}{% endif %}{% if cate_type_info %}{{ cate_type_info }}{% endif %}{% if c_info %}{{ c_info }}{% endif %}保险产品_保险管家
 {% endblock %}
 {% load atm %}
 {% load math %}
 {% load range  %}
 {% load pinyin %}
+{% block keywords %}{% if user_type_info %}{{ user_type_info }}{% endif %}{% if cate_type_info %}{{ cate_type_info }}{% endif %}{% if c_info %}{{ c_info }}{% endif %} 保险管家 保险之家{% endblock %}
+{% block description %}{% if user_type_info %}{{ user_type_Info }}{% endif %}{% if cate_type_info %}{{ cate_type_info }}{% endif %}{% if c_info %}{{ c_info }}{% endif %}_保险管家_保险之家{% endblock %}
 {% block css %}
     {% atmcss www/product:index %}
 {% endblock %}
@@ -105,12 +107,12 @@
                 {% for i in allinfo %}
                         <div class="product-item clf">
                             <div class="fl">
-                                <a href="/product/detail/{{ i.pid }}.html">
+                                <a href="/product/detail/{{ i.pid }}.html" target="_blank">
                                     <img src="{{ i.img.url }}">
                                 </a>
                             </div>
                             <div class="product-item-info">
-                                <h4>{{ i.pro_name }}</h4>
+                                <a href="/product/detail/{{ i.pid }}.html" target="_blank"> <h4>{{ i.pro_name }}</h4></a>
                                 <div class="product-item-content">
                         <dl class="clf">
                             <dt>承保年龄</dt>
@@ -131,11 +133,11 @@
                             </div>
                         {% with com=i.get_comobj %}
                             <div class="fr">
-                                <a href="/company/detail/{{ com.cid }}.html">
+                                <a href="/#">
                                     <img src="{{ com.img.url }}">
                                 </a>
 
-                                <a href="/product/detail/{{ i.pid }}.html" class="product-item-buy">我要购买</a>
+                                <a href="/product/detail/{{ i.pid }}.html" class="product-item-buy" target="_blank">我要购买</a>
                             </div>
                         {% endwith %}
                         </div>

@@ -16,8 +16,19 @@ import  traceback
 import  HTMLParser
 import  re
 import  sys
+import  time
+import  random
 reload(sys)
 sys.setdefaultencoding("utf-8")
+
+
+
+def postBaiDu(filecontent):
+    URL = "http://data.zz.baidu.com/urls?site=www.bao361.cn&token=MrHjCbljFlIJxYhk&type=original"
+    send_headers = {'Content-Type': 'text/plain'}
+    conn = urllib2.Request(URL,filecontent,send_headers)
+    req=urllib2.urlopen(conn)
+    return  req.read()
 
 def filter_tags(htmlstr):
     s=re.sub("<[^<>]+>",'',htmlstr)
@@ -49,16 +60,15 @@ data:{"src":要翻译的词,"tgt:翻译之后转换的结果}
 class Word_analyse(object):
     '''
     dict_content 形式{title:xxxx ,context:xxx}
-    windows_size 有三种类型high,center,low,分别代表上中下或者33%，%33-%66，%66-%100
+
     '''
-    def __init__(self,dict_content,windows_size=None):
+    def __init__(self,dict_content):
         if isinstance(dict_content,dict):
             self.title = dict_content.get('title')
             self.context = dict_content.get('context')
         else:
             self.title = ''
             self.context = ''
-        self.windows_size = windows_size
     def get_result(self):
         kw = []
         if self.context:
@@ -82,13 +92,9 @@ class Word_analyse(object):
             content = ''
             summary = ''
             word_len = 0
-        if self.windows_size and content:
-            if self.windows_size == "high":
-                cut_words = content[:int(round(word_len*0.33))]
-            elif self.windows_size == 'center':
-                cut_words = content[int(round(word_len*0.33)):int(round(word_len * 0.33)*2)]
-            elif self.windows_size == 'low':
-                cut_words = content[int(round(word_len * 0.33*2)):]
+        if  content:
+
+            cut_words = content[int(round(word_len * 0.5)):]
             #print "截取后的词",cut_words
             try:
                 #中文转韩文zh_to_kor
@@ -110,17 +116,7 @@ class Word_analyse(object):
             except Exception as  e:
                 translate_result = e
             #对翻译后对文章进行拼接
-            try:
-                if self.windows_size == "high":
-                    join_context = content.replace(content[:int(round(word_len*0.33))],translate_result)
-                elif self.windows_size == "center":
-                    join_context = content.replace(content[int(round(word_len*0.33)):int(round(word_len * 0.33)*2)], translate_result)
-                elif self.windows_size == "low":
-                    join_context = content.replace(content[int(round(word_len * 0.33*2)):], translate_result)
-                else:
-                    join_context=content
-            except:
-                join_context=content
+            join_context=content[:int(round(word_len * 0.5))]+translate_result
         else:
             join_context,cut_words,translate_result='','',''
         return {'title':self.title,'kw':set(kw),'zhaiyao':summary,'later_context':join_context,'before_context':self.context,'word_len':word_len,"data":[{'src':cut_words,"tgt":translate_result}]}
@@ -141,7 +137,7 @@ mgr=MySQLMgr("118.89.220.36",3306,"bx_abc","bx_user","gc895316")
 
 
 
-result=mgr.runQuery('''select zid,title,content,`from`  from bx_consult WHERE status=0   limit 50''',())
+result=mgr.runQuery('''select zid,title,content,`from`  from bx_consult WHERE status=0   limit 5''',())
 
 for _zid,title,content,_from  in  result:
     if not content:
@@ -175,10 +171,12 @@ for _zid,title,content,_from  in  result:
             if PyQuery(_).children().__len__()==0:
                 _text=PyQuery(_).text()
                 if len(_text)>10:
-                    test = Word_analyse({"title": "", "context": _text}, windows_size='low')
+                    test = Word_analyse({"title": "", "context": _text})
                     result = test.get_result()
                     PyQuery(_).html(result["later_context"])
 
         content= doc.html()
         mgr.runOperation('''update bx_consult  set content=%s,status=1,keywords=%s ,abstract=%s where zid=%s''',(content,keywords,zhaiyao,_zid))
+        print postBaiDu("http://www.bao361.cn/zixun/detail/%s.html"%_zid)
         print _zid
+        time.sleep(random.randrange(0,20) )

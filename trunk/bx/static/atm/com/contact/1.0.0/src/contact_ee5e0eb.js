@@ -1,0 +1,1 @@
+define("com/contact/1.0.0:contact",[],function(){});

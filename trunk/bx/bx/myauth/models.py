@@ -100,6 +100,21 @@ class MyUser(models.Model):
         _.save()
         return _.msgid
 
+    def get_img_url(self):
+        if self.imgurl:
+            return  self.imgurl.url
+        else:
+            return "/static/imgs/default-user.png"
+
+    def get_namecontent(self):
+        '''该方法主要用于获取用户的姓名信息
+         如果用户未填写real_name，则返回username ，如果用户填写了real_name，则返回real_name
+         '''
+        if not self.real_name:
+            return  self.username
+        else:
+            return self.real_name
+
 class ProxyUserProfile(models.Model):
     id=models.AutoField(primary_key=True)
     position=models.CharField(max_length=100,default='')
@@ -165,6 +180,7 @@ class BuyUserProfile(models.Model):
     province=models.IntegerField(default=0)
     city=models.IntegerField(default=0)
     zone=models.IntegerField(default=0)
+    ans_num=models.IntegerField(default=0)
     class Meta:
         db_table="bx_buyuser_profile"
 

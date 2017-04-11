@@ -1,19 +1,15 @@
 {
   "res": {
     "www/index/1.0.0:module/common.css": {
-      "uri": "/www/index/1.0.0/src/module/common_e293b62.css",
+      "uri": "/www/index/1.0.0/src/module/common_73f41f1.css",
       "type": "css"
     },
     "www/index/1.0.0:module/adviser.css": {
-      "uri": "/www/index/1.0.0/src/module/adviser_ec5c6f6.css",
-      "type": "css"
-    },
-    "www/index/1.0.0:module/demand.css": {
-      "uri": "/www/index/1.0.0/src/module/demand_8bcf122.css",
+      "uri": "/www/index/1.0.0/src/module/adviser_18ca22a.css",
       "type": "css"
     },
     "www/index/1.0.0:module/news.css": {
-      "uri": "/www/index/1.0.0/src/module/news_e855695.css",
+      "uri": "/www/index/1.0.0/src/module/news_b4b0007.css",
       "type": "css"
     },
     "www/index/1.0.0:module/ask.css": {
@@ -21,15 +17,23 @@
       "type": "css"
     },
     "www/index/1.0.0:module/product.css": {
-      "uri": "/www/index/1.0.0/src/module/product_c8881b8.css",
+      "uri": "/www/index/1.0.0/src/module/product_c0296c5.css",
       "type": "css"
     },
     "www/index/1.0.0:module/banner-menu.css": {
       "uri": "/www/index/1.0.0/src/module/banner-menu_63e390c.css",
       "type": "css"
     },
+    "www/index/1.0.0:module/partner.css": {
+      "uri": "/www/index/1.0.0/src/module/partner_91e0620.css",
+      "type": "css"
+    },
+    "www/index/1.0.0:module/harvest.css": {
+      "uri": "/www/index/1.0.0/src/module/harvest_8e2ff45.css",
+      "type": "css"
+    },
     "www/index/1.0.0:index.css": {
-      "uri": "/www/index/1.0.0/src/index_a156b24.css",
+      "uri": "/www/index/1.0.0/src/index_fa22df1.css",
       "type": "css"
     },
     "www/index/1.0.0:index": {
@@ -41,6 +45,10 @@
         "com/global/1.0.0:dollar",
         "www/index/1.0.0:index.css"
       ]
+    },
+    "www/index/1.0.0:module/demand.css": {
+      "uri": "/www/index/1.0.0/src/module/demand_0efc522.css",
+      "type": "css"
     }
   },
   "pkg": {}

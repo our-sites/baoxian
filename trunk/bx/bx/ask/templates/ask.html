@@ -3,6 +3,8 @@
 {% load atm  %}
 {% load math %}
 {% load range %}
+{% block keywords %}问吧 保险管家 保险之家{% endblock %}
+{% block description %}问吧_保险管家_保险之家{% endblock %}
 {% block css %}{% atmcss www/ask:list %}{% endblock %}
 {% block content %}
     <div id="askList">
@@ -53,10 +55,56 @@
                         <div class="ask-list-header-tab">已回答</div>
                     </div>
                 <!-- 列表-->
-            <div class="ask-list-type all-reply">
+            <div class="ask-list-type all-reply" style="display: block">
+{% for i in allinfo %}
+                <div class="ask-list-item">
+                    <div class="q-box clf">
+                        <div class="ask-icon-big">
+                        </div>
+                        <div class="q-box-content">
+                            <h4>
+                                <a href="/ask/detail/{{ i.askid }}.html" class="color">{{ i.ask_content|slice:":30" }}{% if i.ask_content|length > 50 %}..{% endif %}</a></h4>
+                            <p>
+                                问题来自： {{ i.get_date }} {{ i.get_area_info }}
+                            </p>
+                        </div>
+                        <div class="answer-number">
+                            <span>{{ i.get_answer_count }}</span>条回答
+                        </div>
+                    </div>
+                    {% with ans=i.get_first_ans %}
+                        {% if ans %}
+                            {% with ans_user=ans.get_user ans_user_profile=ans.get_user_profile %}
+                    <div class="result-box clf">
+                        <img class="result-author-avatar" src="{% if ans_user.imgurl %}{{ ans_user.imgurl.url }}{% else %}/static/imgs/default-user.png{% endif %}" />
+                        <div class="fl">
+                            <p class="result-info">
+                                <a href="" class="result-info-company">{{ ans_user_profile.get_short_comname }}</a>
+                                <a href="" class="result-info-name">
+                                    {% if  ans_user.real_name %}{{ ans_user.real_name }}
+                                    {% else %}
+                                        {{ ans_user.username|slice:":-2" }}**
+                                    {% endif %}</a>
+                                <a href="" class="result-info-level"></a>
+                                <a href="" class="result-info-authentication"></a>
+                                <span class="result-info-answer">{{ ans_user_profile.ans_num }}条回答</span>
+{#                                <span class="result-info-thank">被感谢xx次</span>#}
+                                <span class="result-info-date"></span>
+                            </p>
+                            <div class="result-content">
+                                {{ ans.ans_content }}
+                            </div>
+                        </div>
+                    </div>
+                            {% endwith %}
+                        {% endif %}
+                {% endwith %}
 
+                </div>
+            {% endfor %}
             </div>
-                {% for i in allinfo %}
+            <div class="ask-list-type no-reply" style="display: none;">
+{% for i in ask_no_reply_all %}
                 <div class="ask-list-item">
                     <div class="q-box clf">
                         <div class="ask-icon-big">
@@ -102,6 +150,54 @@
 
                 </div>
             {% endfor %}
+                    </div>
+            <div class="ask-list-type has-reply" style="display: none;">
+{% for i in ask_has_reply_all %}
+                <div class="ask-list-item">
+                    <div class="q-box clf">
+                        <div class="ask-icon-big">
+                        </div>
+                        <div class="q-box-content">
+                            <h4>
+                                <a href="/ask/detail/{{ i.askid }}.html" class="color">{{ i.ask_content|slice:":30" }}{% if i.ask_content|length > 50 %}..{% endif %}</a></h4>
+                            <p>
+                                问题来自： {{ i.get_date }} {{ i.get_area_info }}
+                            </p>
+                        </div>
+                        <div class="answer-number">
+                            <span>{{ i.get_answer_count }}</span>条回答
+                        </div>
+                    </div>
+                    {% with ans=i.get_first_ans %}
+                        {% if ans %}
+                            {% with ans_user=ans.get_user ans_user_profile=ans.get_user_profile %}
+                    <div class="result-box clf">
+                        <img class="result-author-avatar" src="{% if ans_user.imgurl %}{{ ans_user.imgurl.url }}{% else %}/static/imgs/default-user.png{% endif %}" />
+                        <div class="fl">
+                            <p class="result-info">
+                                <a href="" class="result-info-company">{{ ans_user_profile.get_short_comname }}</a>
+                                <a href="" class="result-info-name">
+                                    {{ ans_user.get_namecontent }}</a>
+                                <a href="" class="result-info-level"></a>
+                                <a href="" class="result-info-authentication"></a>
+                                <span class="result-info-answer">{{ ans_user_profile.ans_num }}条回答</span>
+                                <span class="result-info-thank">被感谢xx次</span>
+                                <span class="result-info-date"></span>
+                            </p>
+                            <div class="result-content">
+                                {{ ans.ans_content }}
+                            </div>
+                        </div>
+                    </div>
+                            {% endwith %}
+                        {% endif %}
+                {% endwith %}
+
+                </div>
+            {% endfor %}
+                    </div>
+
+
 
                 <!--翻页-->
             {% if allinfo.paginator.num_pages >= 2 %}

@@ -38,7 +38,7 @@ def search(request):
         params["cid"]=c_id
     if city_id:
         params["city"]=int(city_id)
-    objs=ProxyUserProfile.objects.filter(certifi_status=2,**params)
+    objs=ProxyUserProfile.objects.filter(certifi_status=2,**params).order_by("-ans_num")
     paginator=Paginator(objs,9)
     info=paginator.page( page)
     allinfo=info

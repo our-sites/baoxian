@@ -10,7 +10,19 @@
 
             {% else %}
             <!--已登录-->
-                <a href="/work/" class="color" target="_blank" style="padding: 0 7px">{{ request.myuser.username }}</a>
+                <a href="/work/" class="color" target="_blank" style="padding: 0 7px">{{ request.myuser.get_namecontent }}</a>
+{#                {% if request.myuser.usertype ==  2%}#}
+{#                    {% if request.myuser_profile.certifi_status == 2 %}#}
+{#                <a style="color:#42bad0;border:1px solid #42bad0;width:40px;border-radius:2px;font-weight:bold" href="/work_proxy/renzheng/">#}
+{#                                    已认证#}
+{#                                </a>#}
+{#                        {% else %}#}
+{#                <a style="color:#60696b;border:1px solid #60696b;width:40px;border-radius:2px;font-weight:bold" href="/work_proxy/renzheng/">#}
+{#                                    未认证#}
+{#                                </a>#}
+{#                        {% endif %}#}
+{##}
+{#                    {% endif %}#}
                 <a href="/work/all_msg/" target="_blank" class="color" style="padding: 0 7px">消息<em style="padding-left: 2px">{{ request.myuser.get_unread_messages.count }}</em></a>
                 <a href="/logout/" class="color" target="_blank">退出</a>
 

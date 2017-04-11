@@ -68,16 +68,17 @@
                     <div class="adviser-item clf">
                             <!--头像-->
                             <div class="adviser-item-resume-img">
-                                <img src="{{ myuser.imgurl.url }}">
+                                <a href="/dailiren/detail/{{ myuser.uid }}.html" target="_blank"><img src="{{ myuser.get_img_url }}"></a>
+
                             </div>
                             <!--资料-->
                             <div class="adviser-item-resume-word">
                                 <h4>
-                                    {{ myuser.real_name }}<span class="adviser-item-resume-location">{{ i.get_city_info }}</span><span class="adviser-item-resume-company">{{ comname }}</span>
+                                    <a href="/dailiren/detail/{{ myuser.uid }}.html" target="_blank">{{ myuser.real_name }}</a><span class="adviser-item-resume-location">{{ i.get_city_info }}</span><span class="adviser-item-resume-company">{{ comname }}</span>
                                 </h4>
-                                <p>
-                                    lv2 已认证
-                                </p>
+<div style="color:#42bad0;border:1px solid #42bad0;width:40px;border-radius:2px">
+                                    已认证
+                                </div>
                                 <p>
                                     <span>从业时间：</span>{{ i.year }}年
                                 </p>

@@ -3,12 +3,15 @@ __author__ = 'admin'
 # --------------------------------
 # Created by admin  on 2016/10/14.
 # ---------------------------------
-from threadspider.utils.db import MySQLMgr
-
-mgr=MySQLMgr("118.89.220.36",3306,"bx_abc","bx_user","gc895316")
-result=mgr.runQuery("SELECT  askid,count(*) from bx_answer GROUP BY askid",())
-
-for askid,num in result:
-    askid=int(askid)
-    num=int(num)
-    mgr.runOperation("update bx_ask set ans_num=%s where askid=%s",(num,askid))
+import  urllib2
+import  urllib
+import  json
+request=urllib2.Request("http://tva1.sinaimg.cn/crop.24.185.402.402.180/bbc4d8bbtw1e974nf5ltuj20dy0imagi.jpg")
+request.headers["User-Agent"]="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 UBrowser/6.1.2107.202 Safari/537.36"
+request.headers["Accept"]="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+request.headers["Accept-Encoding"]="gzip, deflate"
+request.headers["Progma"]="no-cache"
+result= urllib2.urlopen(request).read()
+a=open("aaa.jpg","wb")
+a.write(result)
+a.close()

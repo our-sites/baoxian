@@ -1,154 +1,43 @@
 <html>
-  <head>&#13;
-    <title>±£ÏÕÖĞ½é¼à¹ÜĞÅÏ¢ÏµÍ³</title>&#13;
-	<meta http-equiv="pragma" content="no-cache" />&#13;
-	<meta http-equiv="cache-control" content="no-cache" />&#13;
-	<meta http-equiv="expires" content="0" />&#13;
-	<meta http-equiv="Content-Type" content="text/html; charset=GBK" />&#13;
-	<link href="/web/css/portal.css" rel="stylesheet" type="text/css" />&#13;
-	<link href="/web/css_new/style.css" rel="stylesheet" type="text/css" />&#13;
-	&#13;
-<script type="text/javascript">&#13;
-function getInfo(type,person){&#13;
-	&#13;
-	var url;&#13;
-	var priseurl="/web/priaise!searchPrise.html?person="+person;&#13;
-	var violationurl="/web/violation!searchViolation.html?person="+person;&#13;
-	var sueurl="/web/sue!searchSue.html?person="+person;&#13;
-	&#13;
-	if(type=='prise'){&#13;
-		url=priseurl;&#13;
-	}&#13;
-	if(type=='violationurl'){&#13;
-		url=violationurl;&#13;
-	}&#13;
-	if(type=='sueurl'){&#13;
-		url=sueurl;&#13;
-	}&#13;
-&#13;
-	try{&#13;
-        if(window.XMLHttpRequest){&#13;
-        	req=new XMLHttpRequest();&#13;
-        }else{&#13;
-            req=new ActiveXObject("Microsoft.XMLHTTP");&#13;
-        }&#13;
-        req.open("POST", url, true);//false Í¬²½ true  Òì²½&#13;
-	    req.onreadystatechange = callback;	           &#13;
-	    req.send(null);&#13;
-	}catch(e){&#13;
-        alert("¶Ô²»ÆğÄãµÄä¯ÀÀÆ÷²»Ö§³ÖXMLHTTP,Ô­Òò"+e.description+"\r\nÇëÉı¼¶");&#13;
-	}&#13;
-	&#13;
-}&#13;
-&#13;
-function callback() {&#13;
-	if(req.readyState == 4){&#13;
-		if (req.status == 200) {&#13;
-			parseMessage();&#13;
-	    }else{&#13;
-	        alert ("¾¯¸æ:" + req.statusText);&#13;
-	    }       &#13;
-	}&#13;
-}&#13;
-	&#13;
-function parseMessage(){&#13;
-    var list = req.responseText;&#13;
-    var content = document.getElementById("Result");&#13;
-    content.innerHTML = "&lt;font style='font-size:12px'&gt;"+list+"&lt;/font&gt;";        &#13;
-}&#13;
-</script>&#13;
-&#13;
-  </head>&#13;
-  &#13;
- <body style="">&#13;
-   <table width="100%" border="0" cellpadding="0" cellspacing="0" class="ksbm">&#13;
-  <tr>&#13;
-    <td width="28"><img src="images_new/zw_1.gif" width="28" height="32" /></td>&#13;
-    <td class="ksbm_bg">ÏêÏ¸ĞÅÏ¢</td>&#13;
-    <td width="7"><img src="images_new/zw_2.gif" width="7" height="32" /></td>&#13;
-  </tr>&#13;
-</table>&#13;
-&#13;
-<table width="100%" border="0" cellpadding="0" cellspacing="0" class="xxxx">&#13;
-  <tr>&#13;
-    <td valign="top"><ul class="xxxx2">&#13;
-      <li class="xxxx_title"><img src="images_new/ico_005.jpg" width="14" height="14" />»ù±¾ĞÅÏ¢</li>&#13;
-      <li>&#13;
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">&#13;
-          <tr>&#13;
-            <th>ĞÕ¡¡¡¡¡¡¡¡¡¡ Ãû</th>&#13;
-            <td>¶ÅÎ¢</td>&#13;
-          </tr>&#13;
-          <tr>&#13;
-            <th>ĞÔ¡¡¡¡¡¡¡¡¡¡ ±ğ</th>&#13;
-            <td>Å®</td>&#13;
-          </tr>&#13;
-          <tr>&#13;
-            <th>×Ê ¸ñ Ö¤ Êé ºÅ Âë</th>&#13;
-            <td>00201412110000069878</td>&#13;
-          </tr>&#13;
-          <tr>&#13;
-            <th>×Ê ¸ñ Ö¤ Êé ×´ Ì¬</th>&#13;
-            <td>ÓĞĞ§</td>&#13;
-          </tr>&#13;
-          <!--  <tr>
-            <th>ÓĞ Ğ§ ½Ø Ö¹ ÈÕ ÆÚ</th>
-            <td>
-            </td>
-          </tr> -->&#13;
-          <tr>&#13;
-            <th>Ö´ Òµ Ö¤¡¡±à¡¡ºÅ</th>&#13;
-            <td>02000111000080002014019864</td>&#13;
-          </tr>&#13;
-          <tr>&#13;
-            <th>Ö´ Òµ Ö¤¡¡×´¡¡Ì¬</th>&#13;
-            <td>ÓĞĞ§</td>&#13;
-          </tr>&#13;
-          <tr>&#13;
-            <th>ÓĞ Ğ§ ½Ø Ö¹ ÈÕ ÆÚ</th>&#13;
-            <td>2017-12-30</td>&#13;
-          </tr>&#13;
-          <tr>&#13;
-            <th>Òµ¡¡ Îñ¡¡ ·¶¡¡Î§</th>&#13;
-            <td>ÈËÉí±£ÏÕ</td>&#13;
-          </tr>&#13;
-          <tr>&#13;
-            <th>Ö´¡¡ Òµ¡¡ Çø¡¡Óò</th>&#13;
-            <td>±±¾©</td>&#13;
-          </tr>&#13;
-          <tr>&#13;
-            <th>Ëù ¡¡Êô¡¡ ¹«¡¡Ë¾</th>&#13;
-            <td>ÖĞ¹úÆ½°²ÈËÊÙ±£ÏÕ¹É·İÓĞÏŞ¹«Ë¾±±¾©·Ö¹«Ë¾</td>&#13;
-          </tr>&#13;
-        </table>&#13;
-        &#13;
-		&#13;
-      </li>&#13;
-      <li class="xxxx_title"><img src="images_new/ico_006.jpg" />³ÏĞÅ¼ÇÂ¼</li>&#13;
-      <li>&#13;
-	   <div class="cxjl_title">&#13;
-	   <a href="javascript:getInfo('prise',187029)">±íÕÃ½±Àø¼ÇÂ¼</a> ??????&#13;
-	 &#13;
-	       <a href="javascript:getInfo('violationurl',187029)">Î¥·¨Î¥¹æ¼ÇÂ¼</a>??????&#13;
-	  <!--       <a href="javascript:getInfo('sueurl',187029)">Í¶Ëß¼ÇÂ¼</a>
-	 -->   &#13;
-	   </div>&#13;
-	   <div class="cxjl_nr" id="Result">&#13;
-	     &#13;
-	   </div>&#13;
-	&#13;
-   </li>	</ul></td></tr></table>	&#13;
-<table border="0" cellpadding="0" cellspacing="0" class="ksbm3">&#13;
-  <tr>&#13;
-    <td><img src="images_new/zw_4.gif" width="7" height="7" /></td>&#13;
-    <th></th>&#13;
-    <td><img src="images_new/zw_3.gif" width="7" height="7" /></td>&#13;
-  </tr>&#13;
-&#13;
-</table>&#13;
-   	&#13;
-  </body>&#13;
 
-<li class="xxxx_title"><img src="images_new/ico_005.jpg" width="14" height="14" />&#22522;&#26412;&#20449;&#24687;</li>&#13;
-      <li class="xxxx_title"><img src="images_new/ico_006.jpg" />&#35802;&#20449;&#35760;&#24405;</li>&#13;
+<head>
+<style type="text/css">
+p.small {line-height: 90%}
+p.big {line-height: 200%}
+</style>
+</head>
+
+<body>
+
+<p>
+è¿™æ˜¯æ‹¥æœ‰æ ‡å‡†è¡Œé«˜çš„æ®µè½ã€‚
+åœ¨å¤§å¤šæ•°æµè§ˆå™¨ä¸­é»˜è®¤è¡Œé«˜å¤§çº¦æ˜¯ 110% åˆ° 120%ã€‚
+è¿™æ˜¯æ‹¥æœ‰æ ‡å‡†è¡Œé«˜çš„æ®µè½ã€‚
+è¿™æ˜¯æ‹¥æœ‰æ ‡å‡†è¡Œé«˜çš„æ®µè½ã€‚
+è¿™æ˜¯æ‹¥æœ‰æ ‡å‡†è¡Œé«˜çš„æ®µè½ã€‚
+è¿™æ˜¯æ‹¥æœ‰æ ‡å‡†è¡Œé«˜çš„æ®µè½ã€‚
+è¿™æ˜¯æ‹¥æœ‰æ ‡å‡†è¡Œé«˜çš„æ®µè½ã€‚
+</p>
+
+<p class="small">
+è¿™ä¸ªæ®µè½æ‹¥æœ‰æ›´å°çš„è¡Œé«˜ã€‚
+è¿™ä¸ªæ®µè½æ‹¥æœ‰æ›´å°çš„è¡Œé«˜ã€‚
+è¿™ä¸ªæ®µè½æ‹¥æœ‰æ›´å°çš„è¡Œé«˜ã€‚
+è¿™ä¸ªæ®µè½æ‹¥æœ‰æ›´å°çš„è¡Œé«˜ã€‚
+è¿™ä¸ªæ®µè½æ‹¥æœ‰æ›´å°çš„è¡Œé«˜ã€‚
+è¿™ä¸ªæ®µè½æ‹¥æœ‰æ›´å°çš„è¡Œé«˜ã€‚
+è¿™ä¸ªæ®µè½æ‹¥æœ‰æ›´å°çš„è¡Œé«˜ã€‚
+</p>
+
+<p class="big">
+è¿™ä¸ªæ®µè½æ‹¥æœ‰æ›´å¤§çš„è¡Œé«˜ã€‚
+è¿™ä¸ªæ®µè½æ‹¥æœ‰æ›´å¤§çš„è¡Œé«˜ã€‚
+è¿™ä¸ªæ®µè½æ‹¥æœ‰æ›´å¤§çš„è¡Œé«˜ã€‚
+è¿™ä¸ªæ®µè½æ‹¥æœ‰æ›´å¤§çš„è¡Œé«˜ã€‚
+è¿™ä¸ªæ®µè½æ‹¥æœ‰æ›´å¤§çš„è¡Œé«˜ã€‚
+è¿™ä¸ªæ®µè½æ‹¥æœ‰æ›´å¤§çš„è¡Œé«˜ã€‚
+è¿™ä¸ªæ®µè½æ‹¥æœ‰æ›´å¤§çš„è¡Œé«˜ã€‚
+</p>
+
+</body>
 </html>

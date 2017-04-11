@@ -33,8 +33,7 @@ def home(request):
         _next=request.POST.get("next")
         if not content:
             data={"errorCode":500,"formError":{"fields":[{"content":"问题内容不能为空!"}]}}
-
-        if  not (request.myuser and request.myuser.usertype==1):
+        if  not request.myuser :
             data={"errorCode":800,"data":{"html":get_template_string(request,"buy_login_pop.html",{"next":_next})}}
         else:
             _=Ask(ask_content=content,uid=request.myuser.uid,province=request.province_id,
@@ -51,6 +50,8 @@ def home(request):
         data=json.dumps(data)
         return  HttpResponse(data,mimetype="application/javascript")
     ask_all=Ask.objects.filter(state=0).order_by("-ask_time")
+    ask_no_reply_all=Ask.objects.filter(state=0,ans_num=0).order_by("-ask_time")[:5]
+    ask_has_reply_all=Ask.objects.filter(state=0,ans_num__gt=0).order_by("-ask_time")[:5]
     ask_paginator=Paginator(ask_all,5)
     try:
         allinfo=ask_paginator.page(page)
@@ -78,20 +79,12 @@ def detail(request,ask_id):
         if not content:
             data={"errorCode":500,"formError":{"fields":[{"content":"内容不能为空!"}]}}
 
-        if  not (request.myuser and request.myuser.usertype==2):
+        if  not request.myuser:
             data = {"errorCode": 800, "data": {"html": get_template_string(request,"proxy_login_pop.html", {"next": _next})}}
         else:
             ask_obj=Ask.objects.get(askid=int(ask_id),state=0)
             ans_obj=ask_obj.add_answer(request.myuser,content=content)
-            # _=Answer(askid=int(ask_id),ans_content=content,uid=request.myuser.uid,parent_ansid=0)
-            # _.save()
-            # profile=request.myuser.get_profile()
-            # # if not  profile:
-            # #     profile=ProxyUserProfile(uid=request.myuser,ans_num=1)
-            # #     profile.save()
-            # if profile:
-            #     profile.ans_num+=1
-            #     profile.save()
+
             try:
                 del request.session["last_answer_info"]
             except:

@@ -6,7 +6,8 @@ __author__ = 'zhoukunpeng'
 from cookie_encrypt import  phpcookie_decode
 from models import *
 
-class SelfAuthMiddleware(object):
+class self_auth_middleware(object):
+
     def process_request(self, request):
         login_cookie=request.COOKIES.get("user_info","")
         request.ip=request.META.get("HTTP_X_REAL_IP","0.0.0.0")
@@ -40,11 +41,18 @@ class SelfAuthMiddleware(object):
             request.myuser=None
             request.myuser_profile=None
 
+        print "process_request"
+
 
     def process_response(self, request, response):
-        if request.myuser:
-            response.set_cookie("user_type",str(request.myuser.usertype)
-                                  )
-        else:
-            response.delete_cookie("user_type")
+        print "process_response"
+        aa=dir(request)
+        if response["Content-Type"] != "text/xml":
+
+            if request.myuser:
+                response.set_cookie("user_type",str(request.myuser.usertype)
+                                      )
+            else:
+                response.delete_cookie("user_type")
+
         return  response

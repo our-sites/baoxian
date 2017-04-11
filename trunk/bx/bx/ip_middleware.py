@@ -27,7 +27,7 @@ def get_ip_info(ip):
                 province_info=province_obj.areaname
                 province_id=province_obj.id
                 return   province_info,province_id,city_info,city_id
-    return '','','',''
+    return '',0,'',0
 
 class IpMiddleware(object):
     def process_request(self, request):
@@ -35,11 +35,24 @@ class IpMiddleware(object):
         ip_cookie=urllib.unquote(ip_cookie)
         #print request.META
         _ip=request.META.get("HTTP_X_REAL_IP","")
+        request.ip= _ip   if _ip else None
         if ip_cookie:
             province_info,city_info=ip_cookie.split("|")
             province,province_id=province_info.split(",")
             city,city_id=city_info.split(",")
-            request.province=province
+            try:
+                province_id=int(province_id)
+            except:
+                province_id=0
+                province=''
+                city_id=0
+                city=''
+            else:
+                try:
+                    city_id=int(city_id)
+                except:
+                    city_id=0
+            request.province = province
             request.province_id=province_id
             request.city=city
             request.city_id=city_id
@@ -49,7 +62,10 @@ class IpMiddleware(object):
 
     def process_response(self, request, response):
         ip_cookie=request.COOKIES.get("ip_info","")
-        if not ip_cookie:
-            response.set_cookie("ip_info",urllib.quote(("%s,%s|%s,%s"%(request.province,request.province_id,
-                                                                      request.city,request.city_id)).encode("utf-8")),domain=".baoxiangj.com",max_age=86400*365)
+        if response["Content-Type"]!="text/xml":
+
+            if not ip_cookie:
+                response.set_cookie("ip_info",urllib.quote(("%s,%s|%s,%s"%(request.province,request.province_id,
+                                                                          request.city,request.city_id)).encode("utf-8")),domain=".baoxiangj.com",max_age=86400*365)
+
         return  response
