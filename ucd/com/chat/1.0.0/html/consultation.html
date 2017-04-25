@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>咨询弹窗</title>
+    <link rel="stylesheet" href="../src/consultation.css">
+</head>
+
+<body>
+    <div class="consultation-popup">
+        <div class="consultation-popup-content">
+            <div class="consultation-header">
+                预约某某某一对一咨询
+                <span class="close" title="关闭"></span>
+            </div>
+            <div class="consultation-body">
+                <form id="" class="ui-form consultation-form" action="">
+                    <div class="ui-form-item">
+                        <div class="form-control clf">
+                            <label for="cellphone">
+                                *手机号
+                            </label>
+                            <div class="form-control-ele">
+                                <input type="text" name="cellphone" placeholder="">
+                            </div>
+                        </div>
+                        <div class="ui-form-explain"></div>
+                    </div>
+                    <div class="ui-form-item">
+                        <div class="form-control clf">
+                            <label for="consultationContent" style="vertical-align: top;">
+                                *咨询内容
+                            </label>
+                            <div class="form-control-ele">
+                                <textarea name="consultationContent" id=""></textarea>
+                            </div>
+                        </div>
+                        <div class="ui-form-explain"></div>
+                    </div>
+                    <button type="submit" class="submit">提交</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="consultation-mask"></div>
+</body>
+
+</html>
