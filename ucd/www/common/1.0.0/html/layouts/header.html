@@ -1,76 +1,75 @@
 <!DOCTYPE html>
 <html lang="zh-cmn-Hans">
+
 <head>
     <meta charset="UTF-8">
     <title>{{ title }}</title>
     {{ atmjs.loadCss() }}
 </head>
+
 <body>
 
-<!--公用top-->
-<div class="bx-top">
-    <div class="bx-top-content clf">
-        <span>关注我们</span>
-        <div class="fr">
-            <!--未登录-->
-            <div class="bx-top-not-login">
-                <a href="" class="color">登录</a>
-                |
-                <a href="" class="color">注册</a>
-            </div>
-            <!--已登录-->
-            <div class="bx-top-login"></div>
-        </div>
-    </div>
-</div>
+    <!--公用top-->
+    <div class="bx-top">
+        <div class="bx-top-content clf">
+            <!--登录注册-->
+            你好，欢迎来到保险管家！<a href="" class="color">登录</a> | <a href="" class="color">注册</a>
 
-
-<!--实时动态-->
-<div class="bx-rtk">
-    <div class="bx-rtk-content">
-        <div class="bx-rtk-title">实时动态</div>
-        <ul>
-            <li>
-                <a href="">※ 来自湖北武汉的张先生发布一条提问“我想给家人买保险，请问有没有合适的保险产品推荐？谢谢。</a>
-            </li>
-            <li>
-                <a href="">※ 来自湖北武汉的张先生发布一条提问“我想给家人买保险，请问有没有合适的保险产品推荐？谢谢。</a>
-            </li>
-            <li>
-                <a href="">※ 来自湖北武汉的张先生发布一条提问“我想给家人买保险，请问有没有合适的保险产品推荐？谢谢。</a>
-            </li>
-        </ul>
-    </div>
-</div>
-
-
-
-<!--公用header-->
-<div class="bx-header">
-    <div class="bx-header-content clf">
-        <!--logo-->
-        <img src="{{ 'html/img/bx-logo.png' | uri('www/common') }}" alt="logo" class="bx-logo" width="362" height="58">
-        <!--公用nav-->
-        <div class="bx-nav">
-            <ul class="bx-nav-content clf">
-                <li><a href="">首页</a></li>
-                <li><a href="">保险问吧</a></li>
-                <li><a href="">保险产品</a></li>
-                <li class="active"><a href="">专业顾问</a></li>
-                <li><a href="">保险咨询</a></li>
-                <li><a href="">VIP管家</a></li>
-            </ul>
-        </div>
-        <!--搜索-->
-        <form class="ui-form bx-search" method="post" action="{{ 'html/data/搜索成功' | uri('com/global') }}">
-            <div class="ui-form-item">
-                <div class="bx-header-search-box">
-                    <input name="keyword" id="search-kw" type="text" placeholder="请输入...">
-                    <img id="search-btn" src="{{ 'html/img/bx-header-search-icon.png' | uri('www/common') }}" title="搜索">
+            <!--实时动态-->
+            <div class="bx-rtk">
+                <div class="bx-rtk-bell">
+                    <img src="{{ 'html/img/bell.gif' | uri('www/common') }}" alt="">
                 </div>
-                <div class="ui-form-explain"></div>
+                <ul>
+                    <li>
+                        <a href="">来自湖北武汉的张先生发布一条提问“我想给家人买保险，请问有没有合适的保险产品推荐？谢谢。</a>
+                    </li>
+                    <li>
+                        <a href="">来自湖北武汉的张先生发布一条提问“我想给家人买保险，请问有没有合适的保险产品推荐？谢谢。</a>
+                    </li>
+                    <li>
+                        <a href="">来自湖北武汉的张先生发布一条提问“我想给家人买保险，请问有没有合适的保险产品推荐？谢谢。</a>
+                    </li>
+                </ul>
             </div>
-        </form>
-    </div>
-</div>
 
+            <div class="fr">
+                <a href="">联系我们</a> |
+                <a href="">公司简介</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!--公用header-->
+    <div class="bx-header">
+        <div class="bx-header-content clf">
+            <!--logo-->
+            <img src="{{ 'html/img/bx-logo.png' | uri('www/common') }}" alt="logo" class="bx-logo" width="362" height="58">
+            <!--公用nav-->
+            <div class="bx-nav">
+                <ul class="bx-nav-content clf">
+                    <li><a href="">首页</a></li>
+                    <li><a href="">保险问吧</a></li>
+                    <li><a href="">保险产品</a></li>
+                    <li class="active"><a href="">保险顾问</a></li>
+                    <li><a href="">资讯</a></li>
+                    <li><a href="">VIP管家</a></li>
+                </ul>
+            </div>
+            <!--搜索-->
+            <form class="ui-form bx-search" method="post" action="{{ 'html/data/搜索成功' | uri('com/global') }}">
+                <div class="ui-form-item">
+                    <div class="bx-header-search-box">
+                        <input name="keyword" id="search-kw" type="text" placeholder="请输入...">
+                        <img id="search-btn" src="{{ 'html/img/bx-header-search-icon.png' | uri('www/common') }}" title="搜索">
+                    </div>
+                    <div class="ui-form-explain"></div>
+                </div>
+            </form>
+        </div>
+    </div>

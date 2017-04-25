@@ -88,7 +88,7 @@
     padding: 0 21px 0 4px;
     margin-right: 6px;
     color: #42bad0;
-    background: no-repeat right center url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAALCAYAAACgR9dcAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3JpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpjMjU0ZjMyMC04MmNkLTQ2NzMtOWY4Mi1jYjJmMDgyZGExMTgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QTMyNTdCOEFENDdEMTFFNjg2NzZCRTEwNTFEMjg5ODEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QTMyNTdCODlENDdEMTFFNjg2NzZCRTEwNTFEMjg5ODEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjI1RDIwQjIyRDQ3RDExRTZBMDM0OTlERUUxMDk3QjBFIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjI1RDIwQjIzRDQ3RDExRTZBMDM0OTlERUUxMDk3QjBFIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+e3F+pgAAAKRJREFUeNpinDdvHisDA4MmEF9iwA30gPh6YmLib2RBJiDWAuK9QGyHQ6MdVF4LXQKk+SIQhwLxWiwG2EHFQ6HqMDSDwAEsBiBrPIDNSUxIbGQDiglpRNcMM6ALiHug9AE8gYih2R6Iy5CwPbGaQQrXQJ3aDcQhUL49Ic0wjSFITj1IyACQZn0kjQfR5JEN0EfXzALE14DYGU8KOwiVv44uARBgAMeGKCd1gIANAAAAAElFTkSuQmCC');
+    background: no-repeat right center url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QjE5M0Q4QkYyMTI3MTFFNzg5MzhFMTcwODAyMjY5QzciIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QjE5M0Q4QkUyMTI3MTFFNzg5MzhFMTcwODAyMjY5QzciIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpCMjJGMkVGOTIxMjYxMUU3ODkzOEUxNzA4MDIyNjlDNyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpCMjJGMkVGQTIxMjYxMUU3ODkzOEUxNzA4MDIyNjlDNyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PrIqjLEAAAE4SURBVHjaYvz//z8DNQETA5XBqIEQ0HXt8Yfdz99/BzKx4k+//3zvBqrBppcFm6CBIA/H5qdv2blYmBmsRflQ5D78/sPQe/UxgxgnOyPRBrpJCv7nBho2+/ZzBpAuK6ihH4GGdVx5xCDCzsaQqSb5n2gDQQDmstl3njOwMjIxaAlwMXReeQw0jJUhT0OagYURqwNxGwgzlI2JkWHx3RcM/4H6Nfm5GFJVJBlYmRjJj2VtAW6wYdc+fmPQE+TBaxhBF4IiAORNLaDLQuVFGRYCXcqIFBwkGfjxFzACrj5iEAVGQJqqJAMzMMxAGBRRDHgMxWrgm5+/GSfdeAqOgFxgBDBDIwBmyFxgRAELFUYbMX7iDJx398UPEQ7W/xlAl7GhhRnIUFB62fLkzU9sBjKOFl+Dz0CAAAMAgV1kt4VZAC4AAAAASUVORK5CYII=')
 }
 
 #productList .product-condition .selected-item:hover{
@@ -96,100 +96,103 @@
 }
 /*筛选结果*/
 #productList .product-list {
-    width: 886px;
-    background-color: #fff;
-    border: 1px solid #ebebeb;
-    border-bottom: none;
+    width: 888px;
     overflow: hidden;
 }
 
 #productList .product-list .product-item {
-    height: 120px;
-    padding: 30px 30px 30px 20px;
+    height: 144px;
+    padding: 24px;
+    margin-bottom: 24px;
     position: relative;
-    border-bottom: 1px solid #ebebeb;
+    border: 1px solid #ebebeb;
+    background-color: #fff;
     overflow: hidden;
 }
 
 #productList .product-item .fl{
-    width: 120px;
-    height: 120px;
+    display: block;
+    width: 144px;
+    height: 144px;
 }
 
 #productList .product-item .fl img{
-    width: 118px;
-    height: 118px;
+    width: 142px;
+    height: 142px;
     border: 1px solid #ebebeb;
 }
 
 #productList .product-item .fr{
-    width: 102px;
+    width: 122px;
     height: 120px;
 }
 
 #productList .product-item .fr img{
     display: block;
-    width: 100px;
-    height: 48px;
+    width: 120px;
+    height: 54px;
     border: 1px solid #ebebeb;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 #productList .product-list .product-item-buy{
     display: block;
-    width: 100px;
-    height: 38px;
+    width: 56px;
+    height: 18px;
+    padding: 11px 19px 11px 45px;
     border: 1px solid #42bad0;
     color: #42bad0;
-    text-align: center;
-    line-height: 38px;
+    line-height: 18px;
     font-size: 14px;
+    background: no-repeat 19px 11px url('./img/buy-icon.png');
 }
 
 #productList .product-list .product-item-buy:hover{
     background-color: #42bad0;
     color: #ffffff;
+    background-image: url('./img/buy-icon-hover.png');
 }
 
 #productList .product-item-info{
     display: inline-block;
-    width: 580px;
-    padding-left: 20px;
+    width: 528px;
+    padding-left: 24px;
 }
 
 
 #productList .product-item-info h4 {
-    height: 40px;
     line-height: 24px;
     font-size: 18px;
-    font-weight: bold;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    margin-bottom: 12px;
 }
 
 #productList .product-item-content{
     width: 100%;
-    height: 80px;
+    line-height: 2;
+    font-size: 14px;
     position: relative;
 }
 
 #productList .product-list .product-item ul {
     position: absolute;
-    left: 338px;
+    left: 336px;
     top: 0;
-    width: 230px;
+    width: 210px;
     height: 72px;
     line-height: 24px;
     overflow: hidden;
-    color: #616161;
+    color: #999;
 }
 
 #productList .product-list .product-item li {
+    font-size: 12px;
     text-indent: 9px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    background: transparent no-repeat 0 10px url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA4hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpjMjU0ZjMyMC04MmNkLTQ2NzMtOWY4Mi1jYjJmMDgyZGExMTgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDQ2ODA2MThBNjUwMTFFNjk3QTQ4NjExNzI4Rjk5RTQiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDQ2ODA2MTdBNjUwMTFFNjk3QTQ4NjExNzI4Rjk5RTQiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjAzMjViMzYyLWRiYWMtNGM2Yy04NjgxLWZlYjU2YzYyMTIxNyIgc3RSZWY6ZG9jdW1lbnRJRD0iYWRvYmU6ZG9jaWQ6cGhvdG9zaG9wOmIwMGM1ZjUxLWQyYTEtMTE3OS1hMWY1LWE5YjZhZjA5ZjYwYSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PtmDJDIAAAA3SURBVHjaYnz27efs2895WZlTVCRZtjx5e/DlBwYGBklONiagGAMY8LAws3hLC0M49uICAAEGAN7JDEKDj2P0AAAAAElFTkSuQmCC");
+    background: transparent no-repeat 0 10px url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3JpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpjMjU0ZjMyMC04MmNkLTQ2NzMtOWY4Mi1jYjJmMDgyZGExMTgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QzA0MjU3MzAyMTQwMTFFNzg5MzhFMTcwODAyMjY5QzciIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QzA0MjU3MkYyMTQwMTFFNzg5MzhFMTcwODAyMjY5QzciIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjQ0NjgwNjE3QTY1MDExRTY5N0E0ODYxMTcyOEY5OUU0IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjQ0NjgwNjE4QTY1MDExRTY5N0E0ODYxMTcyOEY5OUU0Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+WJ1DJwAAAChJREFUeNpinDlzZigDA0M2AwRMZYFy7KECDEwMaACkYioSfypAgAEA6yoFACLSQqQAAAAASUVORK5CYII=");
 }
 
 
@@ -197,26 +200,20 @@
     position: absolute;
     left: 0;
     top: 0;
-    width: 307px;
-    font-size: 14px;
-    color: #808080;
-    line-height: 26px;
-    border-right: 1px solid #ebebeb;
+    width: 266px;
 }
 
 #productList .product-list .product-item dt {
     float: left;
-    width: 80px;
-    height: 26px;
-    font-weight: bold;
-    text-indent: 16px;
-    background: no-repeat left center url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA4hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpjMjU0ZjMyMC04MmNkLTQ2NzMtOWY4Mi1jYjJmMDgyZGExMTgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MzIyNzQ1MkFENDgzMTFFNkExQjBFNUY2RUYwRjZDMTAiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MzIyNzQ1MjlENDgzMTFFNkExQjBFNUY2RUYwRjZDMTAiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjRmNGYzOWM5LWQ3MmQtNDQyNy1hNjE2LWY0NmU2MWU5NjhhYSIgc3RSZWY6ZG9jdW1lbnRJRD0iYWRvYmU6ZG9jaWQ6cGhvdG9zaG9wOmIwMGM1ZjUxLWQyYTEtMTE3OS1hMWY1LWE5YjZhZjA5ZjYwYSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Ps++km4AAADZSURBVHjafFHLEYJADM3SgZZAC9w9YQu0sCVICUsJUoKUACfPUgKWACXgezMvusPBzLzJP5uXDft0Kc1sAdpQPztoQ6yCIgbENvgn2Cv9wn6SkLjJfgF3oJa/SG9BE30CJQJsLGUngPker8Xg4w9NXG0CHiruUNwyEbKdk4qSP6/iQfbGJm8Yte8baMSBMvMYwCj/7KQHaV/DpcoGzbxYyJJ8aXWC4uHXiSjucw5HwrWmR53X/J/CsZjEENvlN1rzmy+0guWng1xFduLeJKt4mf/BX/GajwADAPFHWqMJejTiAAAAAElFTkSuQmCC");
+    width: 70px;
+    height: 28px;
+    color: #999;
 }
 
 #productList .product-list .product-item dd {
     float: left;
-    width: 201px;
-    height: 26px;
+    width: 196px;
+    height: 28px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

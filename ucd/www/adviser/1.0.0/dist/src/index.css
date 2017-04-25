@@ -79,11 +79,11 @@
 #adviserList .adviser-condition .selected-item {
     display: inline-block;
     line-height: 20px;
-    border: 1px solid #dbdbdb;
+    border: 1px solid #dcdcdc;
     padding: 0 21px 0 4px;
     margin-right: 6px;
     color: #42bad0;
-    background: no-repeat right center url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAALCAYAAACgR9dcAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3JpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpjMjU0ZjMyMC04MmNkLTQ2NzMtOWY4Mi1jYjJmMDgyZGExMTgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QTMyNTdCOEFENDdEMTFFNjg2NzZCRTEwNTFEMjg5ODEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QTMyNTdCODlENDdEMTFFNjg2NzZCRTEwNTFEMjg5ODEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjI1RDIwQjIyRDQ3RDExRTZBMDM0OTlERUUxMDk3QjBFIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjI1RDIwQjIzRDQ3RDExRTZBMDM0OTlERUUxMDk3QjBFIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+e3F+pgAAAKRJREFUeNpinDdvHisDA4MmEF9iwA30gPh6YmLib2RBJiDWAuK9QGyHQ6MdVF4LXQKk+SIQhwLxWiwG2EHFQ6HqMDSDwAEsBiBrPIDNSUxIbGQDiglpRNcMM6ALiHug9AE8gYih2R6Iy5CwPbGaQQrXQJ3aDcQhUL49Ic0wjSFITj1IyACQZn0kjQfR5JEN0EfXzALE14DYGU8KOwiVv44uARBgAMeGKCd1gIANAAAAAElFTkSuQmCC');
+    background: no-repeat right center url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QjE5M0Q4QkYyMTI3MTFFNzg5MzhFMTcwODAyMjY5QzciIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QjE5M0Q4QkUyMTI3MTFFNzg5MzhFMTcwODAyMjY5QzciIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpCMjJGMkVGOTIxMjYxMUU3ODkzOEUxNzA4MDIyNjlDNyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpCMjJGMkVGQTIxMjYxMUU3ODkzOEUxNzA4MDIyNjlDNyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PrIqjLEAAAE4SURBVHjaYvz//z8DNQETA5XBqIEQ0HXt8Yfdz99/BzKx4k+//3zvBqrBppcFm6CBIA/H5qdv2blYmBmsRflQ5D78/sPQe/UxgxgnOyPRBrpJCv7nBho2+/ZzBpAuK6ihH4GGdVx5xCDCzsaQqSb5n2gDQQDmstl3njOwMjIxaAlwMXReeQw0jJUhT0OagYURqwNxGwgzlI2JkWHx3RcM/4H6Nfm5GFJVJBlYmRjJj2VtAW6wYdc+fmPQE+TBaxhBF4IiAORNLaDLQuVFGRYCXcqIFBwkGfjxFzACrj5iEAVGQJqqJAMzMMxAGBRRDHgMxWrgm5+/GSfdeAqOgFxgBDBDIwBmyFxgRAELFUYbMX7iDJx398UPEQ7W/xlAl7GhhRnIUFB62fLkzU9sBjKOFl+Dz0CAAAMAgV1kt4VZAC4AAAAASUVORK5CYII=')
 }
 
 #adviserList .adviser-condition .selected-item:hover{
@@ -126,71 +126,77 @@
 
 /*筛选结果*/
 #adviserList .adviser-list {
-    width: 878px;
-    border: 1px solid #ebebeb;
-    border-bottom: none;
+    width: 888px;
     overflow: hidden;
 }
 
 #adviserList .adviser-item {
-    width: 828px;
-    height: 130px;
-    border-bottom: 1px solid #ebebeb;
-    padding: 30px 30px 30px 20px;
+    height: 182px;
+    border: 1px solid #ebebeb;
+    padding: 24px;
     background-color: #fff;
+    margin-bottom: 24px;
 }
 #adviserList .adviser-item-resume-img {
     float: left;
+    display: block;
     position: relative;
-    width: 140px;
-    height: 120px;
+    width: 96px;
+    height: 72px;
 }
 
 #adviserList .adviser-item-resume-img img {
-    width: 120px;
-    height: 120px;
+    width: 72px;
+    height: 72px;
     border-radius: 50%;
 }
 
 #adviserList .adviser-item-resume-word {
     float: left;
-    width: 288px;
+    width: 266px;
     height: 100%;
 }
 
 #adviserList .adviser-item-resume-word h4 {
     font-size: 18px;
-    font-weight: bold;
+    line-height: 24px;
+    margin-bottom: 16px;
 }
 
-#adviserList .adviser-item-resume-word h4 span{
-    font-size: 14px;
-    font-weight: normal;
-    margin-left: 10px;
+#adviserList .adviser-item-resume-word h4 a{
+    margin-right: 4px;
 }
 
 #adviserList .adviser-item-resume-word p {
-    line-height: 1.8;
+    font-size: 14px;
+    line-height: 28px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 #adviserList .adviser-item-resume-word p span{
     color: #808080;
 }
 
+#adviserList .adviser-item-resume-word p a:hover{
+    background-color: #42bad0;
+    color: #fff;
+}
 
 #adviserList .adviser-item-detail {
     float: left;
     margin-top: 45px;
-    width: 190px;
-    height: 80px;
-    padding: 0 30px;
-    border-left: 1px solid #ebebeb;
+    width: 193px;
+    height: 120px;
+    line-height: 2;
+    padding: 0 72px 0 93px;
     overflow: hidden;
     color: #808080;
 }
 
 #adviserList .adviser-item-other {
-    float: right;
+    float: left;
     width: 102px;
     height: 120px;
 }
@@ -198,24 +204,108 @@
 
 #adviserList .adviser-item-company-logo{
     display: block;
-    width: 100px;
-    height: 46px;
+    width: 120px;
+    height: 54px;
+    margin: 8px 0 72px;
     border: 1px solid #ebebeb;
 }
 
 #adviserList .adviser-item-consult {
     display: block;
-    width: 100px;
-    height: 30px;
-    line-height: 30px;
-    border: 1px solid #42bad0;
+    width: 88px;
+    height: 18px;
+    line-height: 18px;
+    padding: 12px 16px 10px;
+    border: 1px solid #d0e7eb;
     color: #42bad0;
     background-color: #ffffff;
-    text-align: center;
-    margin-top: 40px;
+}
+
+#adviserList .adviser-item-consult-icon{
+    display: inline-block;
+    width: 24px;
+    height: 18px;
+    position: relative;
+    vertical-align: bottom;
+    margin-right: 8px;
+}
+
+#adviserList .adviser-item-consult-icon::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 24px;
+    height: 15px;
+    border-radius: 2px;
+    background-color: #42bad0
+}
+
+#adviserList .adviser-item-consult-icon::after{
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    z-index: 2;
+    width: 0;
+    height: 0;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #42bad0 transparent transparent;
+}
+
+#adviserList .adviser-item-consult-icon span{
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    z-index: 2;
+    display: block;
+    width: 4px;
+    height: 4px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+#adviserList .adviser-item-consult-icon span::before{
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 0;
+    z-index: 3;
+    width: 4px;
+    height: 4px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+#adviserList .adviser-item-consult-icon span::after{
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 0;
+    z-index: 3;
+    width: 4px;
+    height: 4px;
+    background-color: #fff;
+    border-radius: 50%;
 }
 
 #adviserList .adviser-item-consult:hover {
     background-color: #42bad0;
     color: #ffffff;
+}
+
+#adviserList .adviser-item-consult:hover .adviser-item-consult-icon::before{
+    background-color: #fff;
+}
+
+#adviserList .adviser-item-consult:hover .adviser-item-consult-icon::after{
+    border-color: #fff transparent transparent
+}
+
+#adviserList .adviser-item-consult:hover .adviser-item-consult-icon span,
+#adviserList .adviser-item-consult:hover .adviser-item-consult-icon span::before,
+#adviserList .adviser-item-consult:hover .adviser-item-consult-icon span::after{
+    background-color: #42bad0;
 }

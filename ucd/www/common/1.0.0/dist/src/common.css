@@ -114,36 +114,34 @@
 }
 /*量身定制*/
 .customized-box {
-    width: 300px;
-    /*height: 331px;*/
+    width: 288px;
     height: auto;
-    margin-bottom: 25px;
+    border: 1px solid #ebebeb;
+    margin-bottom: 24px;
 }
 
 .customized-box h3 {
     width: 100%;
-    height: 40px;
-    line-height: 40px;
+    height: 48px;
+    line-height: 48px;
     text-indent: 20px;
-    font-size: 16px;
-    background-color: #dbe9eb;
-    font-weight: bold;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #fff;
+    border-bottom: 1px solid #ebebeb;
 }
 
 .customized-box .customized-content {
-    width: 300px;
-    height: auto;
     background-color: #fff;
     overflow: hidden;
-
 }
 
 .customized-box .customized-content form {
-    margin: 20px;
+    margin: 14px 24px 24px;
 }
 
 .customized-box .customized-content .submit {
-    width: 258px;
+    width: 240px;
     height: 40px;
     line-height: 40px;
     text-align: center;
@@ -159,23 +157,11 @@
 }
 
 .customized-box .customized-content .form-control {
-    height: 32px;
-    line-height: 32px;
-    margin-bottom: 10px;
+    height: 42px;
+    line-height: 42px;
+    margin-top: 8px;
 }
 
-.customized-box .customized-content .form-control label {
-    float: left;
-    width: 56px;
-    height: 100%;
-    color: #616161;
-}
-
-.customized-box .customized-content .form-control-ele {
-    float: left;
-    width: 202px;
-    height: 100%;
-}
 
 .customized-box .customized-content .form-control-ele.atm-region{
     height: auto;
@@ -185,29 +171,30 @@
 .customized-box .customized-content select,
 .customized-box .customized-content input {
     border: 1px solid #ebebeb;
-    height: 30px;
-    width: 202px;
+    height: 40px;
+    width: 224px;
     padding: 0 8px;
 }
 
-
-.customized-box .customized-content .form-control-ele input{
-    width: 184px;
+.customized-box .customized-content select{
+    width: 240px;
 }
-
 /*活跃顾问*/
 .lively-advisers {
-    width: 300px;
+    width: 288px;
+    height: auto;
+    border: 1px solid #ebebeb;
+    margin-bottom: 24px;
 }
 
 .lively-advisers h3 {
     width: 100%;
-    height: 40px;
-    line-height: 40px;
+    height: 48px;
+    line-height: 48px;
     text-indent: 20px;
-    font-size: 16px;
-    background-color: #dbe9eb;
-    font-weight: bold;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #fff;
 }
 
 .lively-advisers .rank-title b {
@@ -219,9 +206,9 @@
 }
 
 .lively-advisers .rank-item {
-    padding: 12px 20px;
+    padding: 12px 24px;
     height: 48px;
-    border-bottom: 1px solid #ebebeb;
+    border-top: 1px solid #ebebeb;
 }
 
 .lively-advisers .rank-item:hover {
@@ -245,7 +232,6 @@
     -ms-text-overflow: ellipsis;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-weight: bold;
     margin-bottom: 4px;
 }
 
@@ -268,38 +254,32 @@
     border-radius: 50%;
 }
 
-
-
-.lively-advisers .rank-item-level,
-.lively-advisers .rank-item-authentication {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-}
-
-.lively-advisers .rank-item-level {
-    margin-right: 2px;
-    background: url("/assets/bx/dev/www/common/1.0.0/src/img/author-level.png") no-repeat 0 0;
-}
-
-.lively-advisers .rank-item-authentication {
-    background: url("/assets/bx/dev/www/common/1.0.0/src/img/author-authentication.png") no-repeat 0 0;
-}
-
 .lively-advisers .rank-item-consult {
+    position: relative;
     float: right;
-    width: 61px;
-    height: 24px;
+    width: 36px;
+    height: 22px;
     line-height: 22px;
-    margin-top: 12px;
-    color: #42bad0;
-    background: url("/assets/bx/dev/www/common/1.0.0/src/img/rank-item-consult-icon.png") no-repeat 0 0;
-    text-align: right;
-    font-size: 14px;
-    font-weight: bold;
+    margin-top: 11px;
+    background-color: #42bad0;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 2px;
+    text-align: center;
     cursor: pointer;
 }
-
+.lively-advisers .rank-item-consult::before{
+    content: '';
+    position: absolute;
+    bottom: -9px;
+    left: 14px;
+    z-index: 2;
+    width: 0;
+    height: 0;
+    border-width: 5px;
+    border-color: #42bad0 transparent transparent;
+    border-style: solid;
+}
 /*热心顾问  保险精英*/
 .warmheart-advisers {
     width: 300px;
@@ -555,6 +535,7 @@
 }
 /*弹窗登录*/
 .popup-login-wrap {
+    display: none;
     position: fixed;
     width: 100%;
     height: 100%;
@@ -566,6 +547,7 @@
 }
 
 .popup-mask {
+    display: none;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -701,4 +683,28 @@
 .fn-fixed {
     position: fixed !important;
     top: 2px;
+    z-index: 111;
 }
+
+.idf{
+    display: inline-block;
+    line-height: 18px;
+    padding: 0 3px;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 2px;
+}
+
+.idf-level{
+    background-color: #edd1a3;
+}
+.idf-authentication{
+    background-color: #99bde8;
+}
+.idf-exprience{
+    background-color: #9ad7a3;
+}
+.idf-grey{
+    background-color: #bdbdbd;
+}
+
