@@ -1,86 +1,68 @@
-<!doctype html>
+<!DOCTYPE html>
 {{ atmjs.use() }}
-<html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>咨询弹窗</title>
     {{ atmjs.loadCss() }}
 </head>
-<body>
-<div class="chat-online-wrap" id="chat-online">
-    <!--聊天-->
-    <div class="chat-online-box">
-        <!--header-->
-        <div class="chat-online-header clf">
-            <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}" alt="" class="chat-online-avatar">
-            <div class="chat-online-info">
-                <p>兴趣使燃，新华保险</p>
-                <p>
-                    <span class="chat-online-info-level"></span>
-                    <span class="chat-online-info-authentication"></span>
-                </p>
-            </div>
-            <div class="chat-online-close" title="关闭"></div>
-        </div>
-        <!--记录-->
-        <div class="chat-online-body">
-            <div class="chat-online-item clf left">
-                <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}" alt="" class="chat-online-item-avatar">
-                <div class="chat-online-item-content">你好，有什么需要帮助的吗？</div>
-            </div>
-            <div class="chat-online-item clf right">
-                <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}" alt="" class="chat-online-item-avatar">
-                <div class="chat-online-item-content">
-                    你好，我想买份保险。你好，我想买份保险。你好，我想买份保险。你好，
-                    我想买份保险。
-                </div>
-            </div>
-            <div class="chat-online-item clf left">
-                <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}" alt="" class="chat-online-item-avatar">
-                <div class="chat-online-item-content">你好，有什么需要帮助的吗？</div>
-            </div>
-            <div class="chat-online-item clf right">
-                <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}" alt="" class="chat-online-item-avatar">
-                <div class="chat-online-item-content">
-                    你好，我想买份保险。你好，我想买份保险。你好，我想买份保险。你好，
-                    我想买份保险。
-                </div>
-            </div>
-            <div class="chat-online-item clf left">
-                <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}" alt="" class="chat-online-item-avatar">
-                <div class="chat-online-item-content">你好，有什么需要帮助的吗？</div>
-            </div>
-            <div class="chat-online-item clf right">
-                <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}" alt="" class="chat-online-item-avatar">
-                <div class="chat-online-item-content">
-                    你好，我想买份保险。你好，我想买份保险。你好，我想买份保险。你好，
-                    我想买份保险。
-                </div>
-            </div>
-            <div class="chat-online-item clf left">
-                <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}" alt="" class="chat-online-item-avatar">
-                <div class="chat-online-item-content">你好，有什么需要帮助的吗？</div>
-            </div>
-            <div class="chat-online-item clf right">
-                <img src="{{ 'html/img/test-avatar.png' | uri('www/common') }}" alt="" class="chat-online-item-avatar">
-                <div class="chat-online-item-content">
-                    你好，我想买份保险。你好，我想买份保险。你好，我想买份保险。你好，
-                    我想买份保险。
-                </div>
-            </div>
 
+<body>
+<div class="consultation-popup">
+    <div class="consultation-popup-content">
+        <div class="consultation-header clf">
+            <div class="adviser-info clf">
+                <a href="" class="adviser-info-avatar">
+                    <img src="{{ 'img/avatar.png' }}" alt="">
+                </a>
+                <div class="adviser-info-content">
+                    <h4>
+                        <a href="" class="adviser-info-name">张成徐</a>
+                        <a href="" class="adviser-info-company">华夏人寿</a>
+                    </h4>
+                    <p>
+                        <span class="idf idf-level">Lv2</span>
+                        <span class="idf idf-authentication">已认证</span>
+                        <span class="idf idf-exprience">从业3年</span>
+                    </p>
+                </div>
+            </div>
+            <span class="close" title="关闭"></span>
         </div>
-        <!--发送-->
-        <div class="chat-online-footer">
-            <textarea name="" id="" placeholder="填写咨询信息......"></textarea>
-            <div class="send-btn">发送</div>
+        <div class="consultation-body">
+            <h5>已有 <span>1234</span> 位客户通过保险管家获得咨询帮助</h5>
+            <form class="ui-form consultation-form" action="">
+                <div class="ui-form-item">
+                    <div class="form-control clf">
+                        <div class="form-control-ele">
+                            <input type="text" name="cellphone" placeholder="手机号码">
+                        </div>
+                    </div>
+                    <div class="ui-form-explain"></div>
+                </div>
+                <div class="ui-form-item">
+                    <div class="form-control clf">
+                        <div class="form-control-ele">
+                            <textarea name="consultationContent" id="" placeholder="留言内容"></textarea>
+                        </div>
+                    </div>
+                    <div class="ui-form-explain"></div>
+                </div>
+                <button type="submit" class="submit">提交</button>
+            </form>
+            <p class="tips">您的隐私将被严格保密</p>
         </div>
     </div>
-    <!--遮罩-->
-    <div class="chat-online-mask"></div>
+    <div class="consultation-mask"></div>
 </div>
-
-
 {{ atmjs.loadJs() }}
 </body>
+
+
+
+
+
 </html>
