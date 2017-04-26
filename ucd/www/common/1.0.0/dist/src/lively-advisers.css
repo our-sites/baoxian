@@ -73,28 +73,9 @@
 }
 
 .lively-advisers .rank-item-consult {
-    position: relative;
     float: right;
-    width: 36px;
-    height: 22px;
-    line-height: 22px;
-    margin-top: 11px;
-    background-color: #42bad0;
-    color: #fff;
-    font-size: 12px;
-    border-radius: 2px;
-    text-align: center;
+    width: 24px;
+    height: 18px;
+    margin: 6px 8px 0 0;
     cursor: pointer;
-}
-.lively-advisers .rank-item-consult::before{
-    content: '';
-    position: absolute;
-    bottom: -9px;
-    left: 14px;
-    z-index: 2;
-    width: 0;
-    height: 0;
-    border-width: 5px;
-    border-color: #42bad0 transparent transparent;
-    border-style: solid;
 }

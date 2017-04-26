@@ -35,6 +35,7 @@
     background-color: #42bad0;
     border: 0;
     cursor: pointer;
+    font-size: 14px;
 }
 
 .customized-box .customized-content .submit:hover {
@@ -57,8 +58,9 @@
 .customized-box .customized-content input {
     border: 1px solid #ebebeb;
     height: 40px;
-    width: 224px;
-    padding: 0 8px;
+    width: 226px;
+    padding-left: 14px;
+    font-size: 14px;
 }
 
 .customized-box .customized-content select{

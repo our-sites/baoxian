@@ -78,12 +78,23 @@
 
 #adviserList .adviser-condition .selected-item {
     display: inline-block;
+    position: relative;
     line-height: 20px;
-    border: 1px solid #dcdcdc;
-    padding: 0 21px 0 4px;
+    border: 1px solid #dbdbdb;
+    padding: 0 22px 0 4px;
     margin-right: 6px;
     color: #42bad0;
-    background: no-repeat right center url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QjE5M0Q4QkYyMTI3MTFFNzg5MzhFMTcwODAyMjY5QzciIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QjE5M0Q4QkUyMTI3MTFFNzg5MzhFMTcwODAyMjY5QzciIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpCMjJGMkVGOTIxMjYxMUU3ODkzOEUxNzA4MDIyNjlDNyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpCMjJGMkVGQTIxMjYxMUU3ODkzOEUxNzA4MDIyNjlDNyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PrIqjLEAAAE4SURBVHjaYvz//z8DNQETA5XBqIEQ0HXt8Yfdz99/BzKx4k+//3zvBqrBppcFm6CBIA/H5qdv2blYmBmsRflQ5D78/sPQe/UxgxgnOyPRBrpJCv7nBho2+/ZzBpAuK6ihH4GGdVx5xCDCzsaQqSb5n2gDQQDmstl3njOwMjIxaAlwMXReeQw0jJUhT0OagYURqwNxGwgzlI2JkWHx3RcM/4H6Nfm5GFJVJBlYmRjJj2VtAW6wYdc+fmPQE+TBaxhBF4IiAORNLaDLQuVFGRYCXcqIFBwkGfjxFzACrj5iEAVGQJqqJAMzMMxAGBRRDHgMxWrgm5+/GSfdeAqOgFxgBDBDIwBmyFxgRAELFUYbMX7iDJx398UPEQ7W/xlAl7GhhRnIUFB62fLkzU9sBjKOFl+Dz0CAAAMAgV1kt4VZAC4AAAAASUVORK5CYII=')
+}
+
+#adviserList .adviser-condition .selected-item:before{
+    content: '';
+    position: absolute;
+    right: 4px;
+    top: 5px;
+    z-index: 2;
+    width: 10px;
+    height: 10px;
+    background: no-repeat 0 0 url('/assets/bx/dev/www/adviser/1.0.0/src/img/close-icon.png')
 }
 
 #adviserList .adviser-condition .selected-item:hover{
@@ -184,6 +195,11 @@
     color: #fff;
 }
 
+#adviserList .adviser-item-resume-word p b{
+    font-weight: normal;
+    color: #42bab0;
+}
+
 #adviserList .adviser-item-detail {
     float: left;
     margin-top: 45px;
@@ -219,93 +235,21 @@
     border: 1px solid #d0e7eb;
     color: #42bad0;
     background-color: #ffffff;
+    font-size: 14px;
 }
 
-#adviserList .adviser-item-consult-icon{
+#adviserList .adviser-item-consult img{
     display: inline-block;
     width: 24px;
     height: 18px;
-    position: relative;
-    vertical-align: bottom;
-    margin-right: 8px;
+    margin-right: 2px;
 }
 
-#adviserList .adviser-item-consult-icon::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 24px;
-    height: 15px;
-    border-radius: 2px;
-    background-color: #42bad0
-}
-
-#adviserList .adviser-item-consult-icon::after{
-    content: '';
-    position: absolute;
-    top: 15px;
-    left: 10px;
-    z-index: 2;
-    width: 0;
-    height: 0;
-    border-width: 3px;
-    border-style: solid;
-    border-color: #42bad0 transparent transparent;
-}
-
-#adviserList .adviser-item-consult-icon span{
-    position: absolute;
-    left: 10px;
-    top: 5px;
-    z-index: 2;
-    display: block;
-    width: 4px;
-    height: 4px;
-    background-color: #fff;
-    border-radius: 50%;
-}
-
-#adviserList .adviser-item-consult-icon span::before{
-    content: '';
-    position: absolute;
-    left: -6px;
-    top: 0;
-    z-index: 3;
-    width: 4px;
-    height: 4px;
-    background-color: #fff;
-    border-radius: 50%;
-}
-
-#adviserList .adviser-item-consult-icon span::after{
-    content: '';
-    position: absolute;
-    left: 6px;
-    top: 0;
-    z-index: 3;
-    width: 4px;
-    height: 4px;
-    background-color: #fff;
-    border-radius: 50%;
+#adviserList .adviser-item-consult span{
+    display: inline-block;
+    vertical-align: top;
 }
 
 #adviserList .adviser-item-consult:hover {
-    background-color: #42bad0;
-    color: #ffffff;
-}
-
-#adviserList .adviser-item-consult:hover .adviser-item-consult-icon::before{
-    background-color: #fff;
-}
-
-#adviserList .adviser-item-consult:hover .adviser-item-consult-icon::after{
-    border-color: #fff transparent transparent
-}
-
-#adviserList .adviser-item-consult:hover .adviser-item-consult-icon span,
-#adviserList .adviser-item-consult:hover .adviser-item-consult-icon span::before,
-#adviserList .adviser-item-consult:hover .adviser-item-consult-icon span::after{
-    background-color: #42bad0;
+    border-color: #42bad0;
 }
