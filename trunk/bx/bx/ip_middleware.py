@@ -66,6 +66,7 @@ class IpMiddleware(object):
 
             if not ip_cookie:
                 response.set_cookie("ip_info",urllib.quote(("%s,%s|%s,%s"%(request.province,request.province_id,
-                                                                          request.city,request.city_id)).encode("utf-8")),domain=".baoxiangj.com",max_age=86400*365)
+                                                                          request.city,request.city_id)).encode("utf-8")),
+                                    max_age=86400*365)
 
         return  response

@@ -11,3 +11,6 @@ register=template.Library()
 def int_mod(value,arg):
     return int(value)%int(arg)
 
+@register.filter("int")
+def _int(value):
+    return int(value)

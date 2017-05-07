@@ -3,8 +3,9 @@ __author__ = 'zhoukunpeng'
 # --------------------------------
 # Created by zhoukunpeng  on 2016/7/13.
 # ---------------------------------
-from cookie_encrypt import  phpcookie_decode
+from cookie_encrypt import  phpcookie_decode,phpcookie_encode
 from models import *
+import urllib
 
 class self_auth_middleware(object):
 
@@ -19,40 +20,33 @@ class self_auth_middleware(object):
             except Exception as e :
                 print "Exception",e.message
                 request.myuser=None
-                request.myuser_profile=None
             else:
                 request.myuser=user
-                if request.myuser.usertype==1:
-                    try:
-                        request.myuser_profile=BuyUserProfile.objects.get(uid=request.myuser.uid)
-                    except:
-                        _=BuyUserProfile(uid=request.myuser, province=request.province_id, city=request.city_id)
-                        _.save()
-                        request.myuser_profile=_
-
-                else:
-                    try:
-                        request.myuser_profile=ProxyUserProfile.objects.get(uid=request.myuser.uid)
-                    except:
-                        _=ProxyUserProfile(uid=request.myuser,province=request.province_id, city=request.city_id)
-                        _.save()
-                        request.myuser_profile=_
         else:
             request.myuser=None
-            request.myuser_profile=None
+
 
         print "process_request"
 
 
     def process_response(self, request, response):
         print "process_response"
-        aa=dir(request)
-        if response["Content-Type"] != "text/xml":
+        timestamp=int(time.time())
 
-            if request.myuser:
-                response.set_cookie("user_type",str(request.myuser.usertype)
-                                      )
+        if getattr(request,"myuser",None):
+            myuser=request.myuser
+            if not  request.COOKIES.get("user_info"):
+                response.set_cookie("user_info",urllib.quote(
+                        phpcookie_encode("\t".join([str(myuser.uid), myuser.username,request.ip,str(timestamp)]),'gc895316')),
+                                  expires=86400*365)
             else:
-                response.delete_cookie("user_type")
+                response.set_cookie("user_info",request.COOKIES.get("user_info"),
+                                    expires=86400*365)
 
+            response.set_cookie("user_status","1",expires=86400*365)
+
+        else:
+
+            response.delete_cookie("user_info")
+            response.delete_cookie("user_status")
         return  response

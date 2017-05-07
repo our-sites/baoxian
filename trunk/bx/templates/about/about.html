@@ -1,0 +1,304 @@
+{% extends "about/about_base.html" %}
+{% block head_css %}
+    <link href="/static/bootstrap3/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
+    <link href="/static/testdir/about.css" rel="stylesheet">
+
+{% endblock %}
+
+{% block head_js %}
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="/static/bootstrap3/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="/static/bootstrap3/bootstrap.min.js"></script>
+{% endblock %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12 c_top">
+            <h3>保险管家</h3>
+            <p>
+                保险管家 ( bao361.cn ) 是中国领先的第三方保险平台。<br>
+                我们希望为投保人及展业顾问提供一个纯粹、高品质的交流平台，<br>
+                创造属于保险的时代！
+            </p>
+        </div>
+    </div>
+
+    <div class="row c_bar">
+        <a href="/about/" {% if request.path == "/about/" %}class="active" {% endif %}>关于我们</a>
+
+        <a href="/about/company/" {% if request.path == "/about/company/" %}class="active" {% endif %}>公司介绍</a>
+
+        <a href="/about/huoban/" {% if request.path == "/about/huoban/" %}class="active" {% endif %}>
+            合作伙伴</a>
+
+        <a href="/about/mianze/" {% if request.path == "/about/mianze/" %}class="active" {% endif %}>
+            免责声明</a>
+
+{#        <a href="/about/contact/" {% if request.path == "/about/contact/" %}class="active" {% endif %}>#}
+{#            联系我们</a>#}
+
+    </div>
+    <div class="container">
+        {% if request.path == "/about/huoban/" %}
+            <div class="row my_row">
+                <div class="col-lg-offset-1 col-lg-10">
+                    <h3>合作伙伴</h3>
+                    <p style="font-size:16px;">感谢合作伙伴的支持，让 保险管家 变得更有活力。如您有合作意向，欢迎 <a href="/about/contact/" style="color: #42BAD0">联系我们</a>。</p>
+                    <div style="margin-top: 20px">
+                        <div class="huoban_item">
+                            <img src="/static/imgs/alibaichuan.png">
+                        </div>
+                        <div class="huoban_item">
+                            <img src="/static/imgs/aliyun.png">
+
+                        </div>
+                        <div class="huoban_item">
+                            <img src="/static/imgs/qiniuyun.png">
+
+                        </div>
+                        <div class="huoban_item">
+                            <img src="/static/imgs/tower.png">
+
+                        </div>
+                        <div class="huoban_item">
+                            <img src="/static/imgs/pingan.png">
+
+                        </div>
+                        <div class="huoban_item">
+                            <img src="/static/imgs/huaan.png">
+
+                        </div>
+                                                <div class="huoban_item">
+                                                    <img src="/static/imgs/tiananrenshou.png">
+
+                        </div>
+                                                <div class="huoban_item">
+                                                    <img src="/static/imgs/taikang.png">
+
+                        </div>
+                                                <div class="huoban_item">
+                                                    <img src="/static/imgs/yangguang.png">
+
+                        </div>
+                                                <div class="huoban_item">
+                                                    <img    src="/static/imgs/guotai.png">
+
+                        </div>
+                                                <div class="huoban_item">
+                                                    <img src="/static/imgs/taiping.png">
+
+                        </div>
+                                                <div class="huoban_item">
+                                                    <img src="/static/imgs/picc.png">
+
+                        </div>
+                        <div class="huoban_item">
+                            <img src="/static/imgs/changcheng.png">
+                        </div>
+                        <div class="huoban_item">
+                            <img src="/static/imgs/zhaoshang.png">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if request.path == "/about/company/" %}
+            <div class="row my_row">
+                <div class="col-lg-offset-1 col-lg-10">
+                    <h3 style="text-align: center;padding-top: 15px;padding-bottom: 15px">
+                        公司介绍
+                    </h3>
+                    <p style="font-size: 16px;color: #666;line-height: 1.5">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保险管家是由郑州新佳安网络科技有限公司运营的综合性保险门户网站，是最具影响力的保险门户网站之一。本网站以服务保险代理营销为根本，竭诚为中国保险代理人提供一个专业、高效、优质的保险平台。致力于改善传统保险行业中投保人、保险公司、保险代理人之间信息严重不对称弊病。保险管家用全新的信息传递模式，改变购买保险的传统方式，让投保人轻松、自由地对比及选择需要的保险产品；让保险代理人足不出户、简单便捷的卖出自己的产品。
+
+<br/><br/>特色服务:<br/>
+
+为投保人评测需求，针对每一位投保人量身定制合理的保险产品；<br/>
+
+为投保人答疑解惑，力争消除投保人对每一个保险产品的盲点；<br/>
+
+为代理人排忧解难，精准推送意向客户、全程助力签单；<br/>
+
+为代理人填能加油，提供及时、准确的保险资讯及政策，提供真实有效的经验交流平台。<br/>
+
+<br/>服务理念:<br/>
+
+让投保人放心、让代理人省心；<br/>
+
+保险管家以帮助亿万中国家庭选择最具性价比的保险产品及服务为己任，为让每一位用户都满意而不断努力前行。<br/>
+                    </p>
+                    <p style="margin:20px 0 0 ;font-size: 14px;">
+                        如有合作意向, 请发送公司资料 合作概要 合作方式等材料信息至 <span style="color: #42BAD0">admin@bao361.cn</span> 与我们进一步联系.
+
+                    </p>
+
+                </div>
+            </div>
+        {% endif %}
+        {% if request.path == "/about/" %}
+            <div class="row my_row">
+                <div class="col-lg-offset-1 col-lg-10">
+                    <h3 style="text-align: center;padding-top: 15px">旗下产品</h3>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div style="height: 132px;width: 100%">
+                                <div class="num_container">
+                                    <div class="num">
+                                        1
+                                    </div>
+                                </div>
+                                <div class="list_detail_container">
+                                    <h3 class="h4"><a href="/ask/" target="_blank">保险问吧</a></h3>
+                                    <p>专注高效地解决您的投保疑问.数万名专业保险经理人在线答疑,高质量的快速回复,帮你快捷地找到答案。</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-4" style="height: 132px">
+                            <div style="height: 132px;width: 100%">
+                                <div class="num_container">
+                                    <div class="num">
+                                        2
+                                    </div>
+                                </div>
+                                <div class="list_detail_container">
+                                    <h3 class="h4"><a href="/product/" target="_blank">保险产品</a></h3>
+                                    <p>丰富的保险产品收录,详细准确的产品描述,总有一款产品适合您。</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4" style="height: 132px">
+                            <div style="height: 132px;width: 100%">
+                                <div class="num_container">
+                                    <div class="num">
+                                        3
+                                    </div>
+                                </div>
+                                <div class="list_detail_container">
+                                    <h3 class="h4"><a href="/dailiren/" target="_blank">保险顾问</a></h3>
+                                    <p>数万名专业保险经理人,几十家一线保险企业,为您提供全方位的一对一投保服务。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="padding-top: 20px">
+                        <div class="col-lg-4">
+                            <div style="height: 132px;width: 100%">
+                                <div class="num_container">
+                                    <div class="num">
+                                        4
+                                    </div>
+                                </div>
+                                <div class="list_detail_container">
+                                    <h3 class="h4"><a href="/zixun/" target="_blank">保险资讯</a></h3>
+                                    <p>实时展现全网最新保险行业资讯,让您快速了解行业信息.</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-4" style="height: 132px">
+                            <div style="height: 132px;width: 100%">
+                                <div class="num_container">
+                                    <div class="num">
+                                        5
+                                    </div>
+                                </div>
+                                <div class="list_detail_container">
+                                    <h3 class="h4"><a href="/" target="_blank">私人订制</a></h3>
+                                    <p>精准分析保险需求,资深顾问,量身订制高性价比产品,全程一对一服务</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4" style="height: 132px">
+                            <div style="height: 132px;width: 100%">
+                                <div class="num_container">
+                                    <div class="num">
+                                        6
+                                    </div>
+                                </div>
+                                <div class="list_detail_container">
+                                    <h3 class="h4"><a href="/" target="_blank">VIP管家</a></h3>
+                                    <p>专注为保险经理人提供一站式的互联网推广方案,打造您的专业形象,迅速推广您的个人品牌!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        {% endif %}
+        {% if request.path == "/about/mianze/" %}
+            <div class="row my_row">
+                <div class="col-lg-offset-1 col-lg-10">
+                    <h3>免责声明:</h3>
+                    <p style="font-size: 16px;color: #666;line-height: 1.5">
+                        总则(用户在接受保险管家服务之前，请务必仔细阅读本条款并同意本申明.)<br>
+
+                        用户在保险管家网站的平台上不得发布以下违法信息:<br>
+
+                        1.反对宪法所确定的基本原则的；<br>
+
+                        2.危害国家安全，泄露国家秘密，颠覆国家政权，破坏国家统一的；<br>
+
+                        3.损害国家荣誉和利益的；<br>
+
+                        4.煽动民族仇恨、民族歧视，破坏民族团结的；<br>
+
+                        5.破坏国家宗教政策，宣扬邪教和封建迷信的；<br>
+
+                        6.散布谣言，扰乱社会秩序，破坏社会稳定的；<br>
+
+                        7.散布淫秽、色情、赌博、暴力、凶杀、恐怖或者教唆犯罪的；<br>
+
+                        8.侮辱或者诽谤他人，侵害他人合法权益的；<br>
+
+                        9.有法律、行政法规禁止的其他内容的。<br><br>
+
+                        如发现有上述任何情形违法、违规的信息，我们有权进行删除。<br>
+
+                        附则<br>
+
+                        　　对免责声明的解释、修改及更新权均属于保险管家所有。<br>
+                    </p>
+                </div>
+
+
+            </div>
+        {% endif %}
+
+    </div>
+
+    <div class="foot-line">
+
+    </div>
+    <div class="container">
+        <div class="row">
+            <div style="text-align: center;padding-top: 30px">
+                <p>
+                    © 2017 bao361.cn（保险管家）郑州新佳安网络科技有限公司 版权所有 社会信用代码：91410100MA40FDWW77 备案号：粤ICP备14079927号
+                </p>
+
+
+                <div class="clf">
+                    <a href=""><img src="/static/imgs/bx-footer-partner-01.png" alt=""></a>
+                    <a href=""><img src="/static/imgs/bx-footer-partner-02.png" alt=""></a>
+                    <a href=""><img src="/static/imgs/bx-footer-partner-03.png" alt=""></a>
+                    <a href=""><img src="/static/imgs/bx-footer-partner-04.png" alt=""></a>
+                    <a href=""><img src="/static/imgs/bx-footer-partner-05.png" alt=""></a>
+                    <a href=""><img src="/static/imgs/bx-footer-partner-06.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,15 +1,15 @@
 <uwsgi>
-    <socket>127.0.0.1:8100</socket>
+    <socket>127.0.0.1:8101</socket>
     <protocol>http</protocol>
     <master>true</master>
     <harakiri>20</harakiri>
     <chdir>./</chdir>
     <module>django_wsgi</module>
-    <processes>10</processes> <!-- 进程数 -->
+    <processes>5</processes> <!-- 进程数 -->
     <gevent>100</gevent>
     <gevent-monkey-patch>true</gevent-monkey-patch>
-    <pidfile>/home/nginx/logs/uwsgi_bx.pid</pidfile>
+    <pidfile>/home/nginx/logs/uwsgi_bao.pid</pidfile>
     <disable-logging>false</disable-logging>
     <buffer-size>32768</buffer-size>
-    <daemonize>/home/nginx/logs/uwsgi_bx.log</daemonize>
+    <daemonize>/home/nginx/logs/uwsgi_bao.log</daemonize>
 </uwsgi>   

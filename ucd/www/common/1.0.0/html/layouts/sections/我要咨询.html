@@ -1,0 +1,50 @@
+<script class="chat-box-wrap" type="text/html">
+	<div class="consultation-popup">
+		<div class="consultation-popup-content">
+			<div class="consultation-header clf">
+				<div class="adviser-info clf">
+					<a href="" class="adviser-info-avatar">
+						<img src="{{ 'html/img/avatar.png' | uri('com/chat')}}" alt="">
+					</a>
+					<div class="adviser-info-content">
+						<h4>
+							<a href="" class="adviser-info-name">张成徐</a>
+							<a href="" class="adviser-info-company">华夏人寿</a>
+						</h4>
+						<p>
+							<span class="idf idf-level">Lv2</span>
+							<span class="idf idf-authentication">已认证</span>
+							<span class="idf idf-exprience">从业3年</span>
+						</p>
+					</div>
+				</div>
+				<span class="chat-online-close close" title="关闭"></span>
+			</div>
+			<div class="consultation-body">
+				<h5>已有 <span>1234</span> 位客户通过保险管家获得咨询帮助</h5>
+
+				<form class="ui-form consultation-form" action="{{ 'html/data/提交失败' | uri('www/common') }}">
+					<div class="ui-form-item">
+						<div class="form-control clf">
+							<div class="form-control-ele">
+								<input class="cellphone" type="text" name="cellphone" placeholder="手机号码">
+							</div>
+						</div>
+						<div class="ui-form-explain"></div>
+					</div>
+					<div class="ui-form-item">
+						<div class="form-control clf">
+							<div class="form-control-ele">
+								<textarea class="ask-text" name="text" placeholder="留言内容"></textarea>
+							</div>
+						</div>
+						<div class="ui-form-explain"></div>
+					</div>
+					<button type="submit" class="submit">提交</button>
+				</form>
+				<p class="tips">您的隐私将被严格保密</p>
+			</div>
+		</div>
+		<div class="consultation-mask"></div>
+	</div>
+</script>

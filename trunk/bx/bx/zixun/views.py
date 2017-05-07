@@ -8,6 +8,9 @@ from django.shortcuts import  render_to_response
 from ..models import *
 from django.template.context import  RequestContext
 from django.core.paginator import  Paginator,InvalidPage,EmptyPage
+import  json
+from django.views.decorators.csrf import  csrf_exempt
+import  traceback
 
 def index(request):
     baike_info=Consult.objects.filter(type=1,status=1).order_by("-addtime")[:6]
@@ -59,3 +62,42 @@ def detail(request,zid):
     hot_infos=_infos[:8]
     relate_infos=_infos[8:]
     return  render_to_response("zixun_detail.html",locals(),context_instance=RequestContext(request))
+
+
+@csrf_exempt
+def  add_xinwen(request):
+
+    post_info=request.POST
+    try:
+        sercret=post_info.get("secret")
+        writer=post_info.get("writer","网络")
+        assert  sercret=="gc7232275"
+        url=post_info.get("from")
+        assert  url
+        assert url.startswith("http://") or url.startswith("https://")
+        try:
+            Consult.objects.get(_from=url)
+        except:
+            pass
+        else:
+            raise Exception("url has exists!")
+        title=post_info.get("title")
+        assert  title
+        content=post_info.get("content")
+        assert  content
+        print title,writer,url
+        _=Consult(title=title,type=4,
+                writer=writer,_from=url,content=content,status=0)
+        _.save()
+
+    except Exception as e :
+        exception=e
+        data={"status":False,"message":exception.message}
+        traceback.print_exc()
+    else:
+        data={"status":True,"message":"Success!","zid":_.zid}
+
+    return  HttpResponse(json.dumps(data,ensure_ascii=False),
+                         mimetype="application/javascript")
+
+

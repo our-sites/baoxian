@@ -12,30 +12,30 @@
     <!--概要-->
     <div class="adviser-preview-wrap">
         <div class="adviser-preview">
-            <h2>{{ user.real_name }}</h2>
+            <h2>{{ user.get_namecontent }}</h2>
             <div class="clf">
                 <div class="adviser-preview-img">
-                    <img src="{{ user.imgurl.url }}">
+                    <img src="{{ user.get_img_url }}">
                 </div>
                 <div class="adviser-preview-basic">
                     <p class="job">客户经理</p>
-                    <p class="company"><span>{{ user.city_info }}</span>{{ user.comname }}</p>
-                    <p class="contact"><span>电话：{{ user.phone }}</span>QQ：{{ user.qq }}<span>微信：{{ user.profile.weixin }}</span></p>
+                    <p class="company"><span>{{ user.get_province_city_info }}</span>{{ user.comname }}</p>
+                    <p class="contact"><span>电话：{{ user.phone }}</span>QQ：{{ user.qq }}<span>微信：{{ user.weixin }}</span></p>
 
                     <a class="consult-btn" href="/ask/" target="_blank">我要咨询</a>
                 </div>
                 <div class="adviser-preview-addition">
                     <p>
-                        <span>保险代理资格证号：</span>{{ user.profile.certifi_num }}
+                        <span>保险代理资格证号：</span>{{ user.proxy_certifinum }}
                     </p>
                     <p>
-                        <span>保险销售执业证号：</span>{{ user.profile.practice_num }}
+                        <span>保险销售执业证号：</span>{{ user.proxy_practicenum }}
                     </p>
                     <p>
-                        <span>从业时间：</span>{{ user.profile.year }}年
+                        <span>从业时间：</span>{{ user.proxy_workyear }}年
                     </p>
                     <p>
-                        <span>回答：</span>{{ user.profile.ans_num }}条
+                        <span>回答：</span>{{ user.ans_num }}条
 {#                        <span class="ml50">好评：</span>100#}
                     </p>
                 </div>
@@ -57,20 +57,20 @@
                     个人介绍
                 </div>
                 <div class="content">
-                    <p>{{ user.profile.my_ad }}</p>
+                    <p>{{ user.proxy_myad }}</p>
                 </div>
             </div>
-            <!--擅长险种-->
-            <div class="clf adept">
-                <div class="fl">
-                    擅长险种
-                </div>
-                <div class="content">
-                    <a href="" class="color">人寿险</a>
-                    <a href="" class="color">重疾险</a>
-                    <a href="" class="color">养老险</a>
-                </div>
-            </div>
+{#            <!--擅长险种-->#}
+{#            <div class="clf adept">#}
+{#                <div class="fl">#}
+{#                    擅长险种#}
+{#                </div>#}
+{#                <div class="content">#}
+{#                    <a href="" class="color">人寿险</a>#}
+{#                    <a href="" class="color">重疾险</a>#}
+{#                    <a href="" class="color">养老险</a>#}
+{#                </div>#}
+{#            </div>#}
             <!--所在公司-->
             <div class="clf company">
                 <div class="fl">
@@ -97,6 +97,47 @@
                     {% for i in my_ans_ask %}
                     <a href="/ask/detail/{{ i.askid }}.html" class="color" target="_blank">问：{{ i.ask_content }}.</a>
                         <p>答：{{ i.self_content }}</p>
+                    {% endfor %}
+                </div>
+                <div class="unfold">
+                    <i class="fa fa-caret-down"></i>
+                </div>
+            </div>
+            <div class="clf ">
+                <div class="fl">
+                    我的增员
+                </div>
+                <div class="content">
+                    {% for add in my_adds %}
+                    <p  style="color: #42BAD0" >{{ add.title }}[发布时间：{{ add.get_date }}]</p>
+                        <p>职位:{{ add.position_info }}</p>
+                        <p>薪资:{{ add.money_info }}</p>
+                        <p>学位要求:{{ add.degree_info }}</p>
+                        <p>所属险企:{{ add.company_info }}</p>
+                        <p>工作年限:{{ add.work_year }}</p>
+                        <p>招聘人数:{{ add.num }}</p>
+                        <div><p >职位描述:</p>{{ add.work_content|safe  }}</div>
+                        <div><p >工作要求:</p>{{ add.need_content|safe }}</div>
+                        <p>联系电话：{{ add.phone }}</p>
+                        <p>工作地址：{{ add.address }}</p>
+                    {% endfor %}
+                </div>
+                <div class="unfold">
+                    <i class="fa fa-caret-down"></i>
+                </div>
+            </div>
+
+            <div class="clf qa">
+                <div class="fl">
+                    签单分享
+                </div>
+                <div class="content">
+                    {% for share in my_shares %}
+                    <p  style="color: #42BAD0" >{{ share.title }}[发布时间：{{ share.get_date }}]</p>
+                        <p>险企:{{ share.company_info }}</p>
+                        <p>保费:{% if share.price %}{{ share.price }}{% endif %}</p>
+                        <p>保险产品:{{ share.other_proname }}</p>
+                        <div><p >分享内容:</p>{{ share.content|safe  }}</div>
                     {% endfor %}
                 </div>
                 <div class="unfold">
@@ -182,18 +223,7 @@
                     <div class="pic-item">
                         <img src="{{ user.imgurl.url }}">
                     </div>
-{#                    <div class="pic-item">#}
-{#                        <img src="">#}
-{#                    </div>#}
-{#                    <div class="pic-item">#}
-{#                        <img src="">#}
-{#                    </div>#}
-{#                    <div class="pic-item">#}
-{#                        <img src="">#}
-{#                    </div>#}
-{#                    <div class="pic-item">#}
-{#                        <img src="">#}
-{#                    </div>#}
+
                 </div>
                 <div class="unfold">
                     <i class="fa fa-caret-down"></i>

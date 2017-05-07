@@ -16,7 +16,7 @@ DATABASES = {
         'NAME': 'bx_abc',                      # Or path to database file if using sqlite3.
         'USER': 'bx_user',                      # Not used with sqlite3.
         'PASSWORD': 'gc895316',                  # Not used with sqlite3.
-        'HOST': '10.141.52.179',                      # Set to empty string for localhost. Not used with sqlite3.
+        'HOST': 'www.bao361.cn',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '3306',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
@@ -141,8 +141,8 @@ INSTALLED_APPS = (
     "bx.manage",
     "bx.product",
     "bx.dailiren",
-    "bx.work_buy",
-    "bx.work_proxy",
+    "bx.work",
+    # "bx.work_proxy",
     "bx.company",
     "bx.app",
 )

@@ -4,7 +4,7 @@ var Validator = require('validator');
 var unique = 1;
 var max = 999999999;
 // 咨询弹窗
-$(document).on('click', '.rank-item-consult', function (e) {
+$(document).on('click', '.rank-item-consult,.i-want-to-ask', function (e) {
     e.preventDefault();
     var chatId = $(this).data('chat-id');
     var chat;
@@ -27,16 +27,14 @@ $(document).on('click', '.rank-item-consult', function (e) {
             var validator = new Validator({
                 element: $form
             });
-            validator.before('formSuccessHandle', function(res) {
-                var html = res.data.html;
-                // todo 是否关闭
-                $node.find('.chat-online-body').append(html).scrollTop(max)
-                //setTimeout(function() {
-                //    chat.close();
-                //}, res.formSuccess.duration || res.duration || 3000);
+
+            validator.addItem({
+                element: '.cellphone',
+                required: true,
+                display: '手机号码'
             });
             validator.addItem({
-                element: '.chat-text-field',
+                element: '.ask-text',
                 required: true,
                 display: '咨询内容'
             });
@@ -46,7 +44,7 @@ $(document).on('click', '.rank-item-consult', function (e) {
         chat && chat.showModal();
     }
     //window.xxx = $node.find('.chat-online-body');
-    $node.find('.chat-online-body').scrollTop(max);
+    // $node.find('.chat-online-body').scrollTop(max);
 
 
 }).on('click', '.chat-online-close', function (e) {
@@ -54,10 +52,7 @@ $(document).on('click', '.rank-item-consult', function (e) {
     var chatId = $(this).data('chat-id');
     var chat = dialog.get(chatId);
     chat && chat.close();
-}).on('click', '.chat-box .send-btn', function (e) {
-    e.preventDefault();
-    $(this).closest('form').trigger('submit');
-})
+});
 
 
 

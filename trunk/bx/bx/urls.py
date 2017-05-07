@@ -15,8 +15,7 @@ import  views
 import  manage
 import  product
 import  dailiren
-import work_buy
-import  work_proxy
+import work
 import  company
 import  app
 
@@ -39,14 +38,13 @@ urlpatterns = patterns('',
        (r"^manage/",include(manage.site.urls)),
     url(r"api/",include(api.site.urls)),
        (r"^$",views.home),
+        (r"^about",views.about),
        (r"^ask/",include(ask.site.urls)),
        (r"^dingzhi/",include(dingzhi.site.urls)),
        (r"^zixun/",include(zixun.site.urls)),
        (r"^product/",include(product.site.urls)),
        (r"^dailiren/",include(dailiren.site.urls)),
-       (r"^work/",views.work),
-       (r"^work_buy/",include(work_buy.site.urls)),
-       (r"^work_proxy/",include(work_proxy.site.urls)),
+       (r"^work/",include(work.site.urls)),
        (r'^ckeditor/', include('ckeditor_uploader.urls')),
        (r"^company/",include(company.site.urls)),
        (r"^app/",include(app.site.urls)),

@@ -41,7 +41,7 @@
       "deps": [
         "lib/jquery/1.11.3:jquery",
         "com/global/1.0.0:validator",
-        "com/global/1.0.0:chat/chat",
+        "com/chat/1.0.0:chat",
         "com/global/1.0.0:global.css"
       ],
       "pkg": "com/global/1.0.0:p1"
@@ -104,7 +104,7 @@
         "lib/toastr/2.1.3:toastr",
         "lib/art-dialog/6.0.5:art-dialog",
         "com/global/1.0.0:validator.css",
-        "com/global/1.0.0:chat/chat",
+        "com/chat/1.0.0:chat",
         "com/global/1.0.0:global.css"
       ]
     }

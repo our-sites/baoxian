@@ -1,11 +1,11 @@
-define('www/common/1.0.0:common', ['com/global/1.0.0:global', 'com/global/1.0.0:dollar', 'com/tabs/1.0.0:tabs', 'com/global/1.0.0:region', 'lib/slick/1.6.0:slick', 'lib/layer/3.0.1:layer', 'com/global/1.0.0:validator'], function(require, exports, module) {
+define('www/common/1.0.0:common', ['com/global/1.0.0:global', 'com/global/1.0.0:dollar', 'com/tabs/1.0.0:tabs', 'com/global/1.0.0:region', 'lib/slick/1.6.0:slick', 'com/global/1.0.0:validator'], function(require, exports, module) {
 
   require('com/global/1.0.0:global');
   var $ = require('com/global/1.0.0:dollar');
   require('com/tabs/1.0.0:tabs');
   require('com/global/1.0.0:region').initAll();
   require('lib/slick/1.6.0:slick');
-  var layer = require('lib/layer/3.0.1:layer');
+  // var layer = require('layer:layer');
   
   // 代理人模块选项卡
   $('.warmheart-advisers').tabs({
@@ -76,7 +76,6 @@ define('www/common/1.0.0:common', ['com/global/1.0.0:global', 'com/global/1.0.0:
           e.preventDefault();
           var letter = $(this).data('key');
           if (letter === 'all') {
-              console.log($belongs.length);
               showAll();
           } else {
               showLetter(letter);
@@ -100,8 +99,13 @@ define('www/common/1.0.0:common', ['com/global/1.0.0:global', 'com/global/1.0.0:
       });
   }
   
+  var $messageWrap = $('<div class="bx-rtk-wrap"></div>').appendTo('body');
+  $('.bx-rtk').clone().appendTo($messageWrap)
+  
+  
+  // 首先把
   // 顶部消息
-  $('.bx-rtk-content ul').slick({
+  $('.bx-rtk ul').slick({
       dots: false,
       infinite: true,
       arrows: false,
@@ -111,6 +115,16 @@ define('www/common/1.0.0:common', ['com/global/1.0.0:global', 'com/global/1.0.0:
       autoplay: true,
       autoplaySpeed: 2000
   });
+  
+  var $win = $(window);
+  $win.on('scroll resize load', function() {
+  	var top = $win.scrollTop();
+  	if (top >= 40) {
+  		$messageWrap.show();
+  	} else {
+  		$messageWrap.hide();
+  	}
+  })
   
   
   // @require 'www/common/1.0.0:common.css';

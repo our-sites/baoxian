@@ -1,43 +1,111 @@
+
+<!DOCTYPE html>
 <html>
-
 <head>
-<style type="text/css">
-p.small {line-height: 90%}
-p.big {line-height: 200%}
-</style>
-</head>
+	<title>Simple Uploads plugin for CKEditor 4 sample</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="/static/js/ckeditor.js"></script>
+{#	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/default.min.css">#}
+{#	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/highlight.min.js"></script>#}
+	<link href="/static/sample.css" rel="stylesheet" type="text/css">
+	<style>
+	/* The following styles are just to make the page look nice. */
+		#columns > div
+		{
+			box-sizing: border-box;
+			display: inline-block;
+			vertical-align: top;
+			width: 50%;
+		}
 
+		#columns > div > div
+		{
+			margin: 0px 10px;
+			padding: 10px 20px;
+		}
+	</style>
+</head>
 <body>
 
-<p>
-这是拥有标准行高的段落。
-在大多数浏览器中默认行高大约是 110% 到 120%。
-这是拥有标准行高的段落。
-这是拥有标准行高的段落。
-这是拥有标准行高的段落。
-这是拥有标准行高的段落。
-这是拥有标准行高的段落。
-</p>
+	<h2>Classic editor</h2>
+		<p>
+			<textarea cols="80" id="editor1" name="editor1" rows="10">
+			&lt;p&gt;This is some &lt;strong&gt;sample text&lt;/strong&gt;. You are using &lt;a href="http://ckeditor.com/"&gt;CKEditor&lt;/a&gt;.&lt;br&gt;
+			You can add images and they will create inline &amp;lt;img&amp;gt; or other type of files and they will be linked with &amp;lt;a&amp;gt; tags.&lt;br&gt;
+			Test the different ways to add content: drop the files, paste images from your clipboard, use the file and link dialogs (even drop on them), use the quick action buttons...
+			&lt;/p&gt;
+			</textarea>
+		</p>
+<script type='text/javascript' class='samplecode'>// Create a classic editor using inline configuration
+var uploadUrl = '/work/simple_upload/';
 
-<p class="small">
-这个段落拥有更小的行高。
-这个段落拥有更小的行高。
-这个段落拥有更小的行高。
-这个段落拥有更小的行高。
-这个段落拥有更小的行高。
-这个段落拥有更小的行高。
-这个段落拥有更小的行高。
-</p>
+var config = {
+	customConfig : '',
+	// Add the required plugin
+	extraPlugins : 'simpleuploads',
+	// Required config to tell CKEditor what's the script that will process uploads
+	filebrowserUploadUrl : uploadUrl + '&type=Files',
+	filebrowserImageUploadUrl : uploadUrl + '&type=Images',
+	toolbar :	// Sample toolbar
+	[
+		{ name: 'document',    items : [ 'Source' ] },
+		{ name: 'clipboard',   items : [ 'Cut','Copy','Paste','-','Undo','Redo' ] },
+		{ name: 'basicstyles', items : [ 'Bold','Italic' ] },
+		{ name: 'insert',      items : [   'addImage' ] },
+	],
 
-<p class="big">
-这个段落拥有更大的行高。
-这个段落拥有更大的行高。
-这个段落拥有更大的行高。
-这个段落拥有更大的行高。
-这个段落拥有更大的行高。
-这个段落拥有更大的行高。
-这个段落拥有更大的行高。
-</p>
+	// Define the file extensions (whitelist) that are allowed to upload.
+	// This is a client side check. You must do the same validation on your server.
+	// By default CKEditor doesn't implement this kind of check, so users can waste time and bandwith uploading files only to get an error message later
+	// So setting this correctly can help your users greatly
+	simpleuploads_acceptedExtensions : '7z|avi|csv|doc|docx|flv|gif|gz|gzip|jpeg|jpg|mov|mp3|mp4|mpc|mpeg|mpg|ods|odt|pdf|png|ppt|pxd|rar|rtf|tar|tgz|txt|vsd|wav|wma|wmv|xls|xml|zip'
+};
+
+CKEDITOR.replace( 'editor1', config );
+</script>
+
+
+	<div id='log'></div>
+	<h2>Inline editing samples</h2>
+	<p>
+	These inline editors use the default <strong>settings</strong> defined in config.js
+	You can shrink the page and the columns will resize, and the images are responsive thanks to this little CSS:
+	<h4>CSS</h4>
+<pre id='responsive'><code class="css">/* responsive images for inline demo */
+img, svg, .SimpleUploadsTmpWrapper  {
+	height: auto;
+	max-width: 100%;
+}</code></pre>
+	So, in order to get <b>responsive images while they are being uploaded</b>, you just need to add <b>"svg, .SimpleUploadsTmpWrapper"</b> to your responsive rules
+	</p>
+
+	<div id="columns"><div id="column1">
+				<h3>
+					An inline editor
+				</h3>
+			<div contenteditable="true">
+				<p>
+					Click here and the toolbar will appear. SimpleUploads works nicely with Classic editors, inline editors, and even with the weird combinations of divareas and anything that you can create with CKEditor.
+				</p>
+				<p>It also works with either the classic Image plugin or the "Enhanced Image" version</p>
+				<p>&nbsp;</p>
+			</div>
+		</div><div id="column2">
+				<h3>
+					Another inline demo
+				</h3>
+			<div contenteditable="true">
+				<p>
+					Play around with these basic demos</p>
+				<p>Paste an image, drop files, use the upload buttons, ...</p>
+				<p>Open also your normal version of CKEditor and check the differences when you're trying to upload things</p>
+
+			</div>
+		</div></div>
+
+	<p>
+	End of the samples in this page. Check the linked pages for more usages</p>
+
 
 </body>
 </html>

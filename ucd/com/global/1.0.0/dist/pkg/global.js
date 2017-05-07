@@ -85,7 +85,6 @@ define('com/global/1.0.0:validator', ['com/validator/0.10.3:validator', 'com/glo
                       e.preventDefault();
                       ins.remove();
                   });
-                  console.log(validator);
                   validator.after('formSuccessHandle', function() {
                       alert(3);
                   })
@@ -210,18 +209,20 @@ define('com/global/1.0.0:validator', ['com/validator/0.10.3:validator', 'com/glo
       }
   });
   // @require com/global/1.0.0:validator.css
+  
 
 });
 
 ;/*!com/global/1.0.0:global*/
-define('com/global/1.0.0:global', ['lib/jquery/1.11.3:jquery', 'com/global/1.0.0:validator', 'com/global/1.0.0:chat/chat'], function(require, exports, module) {
+define('com/global/1.0.0:global', ['lib/jquery/1.11.3:jquery', 'com/global/1.0.0:validator', 'com/chat/1.0.0:chat'], function(require, exports, module) {
 
   var $ = require('lib/jquery/1.11.3:jquery');
   var Validator = require('com/global/1.0.0:validator');
   var $form = $('.bx-header form.ui-form');
   
   // 引入咨询脚本
-  require('com/global/1.0.0:chat/chat');
+  // require('./chat/chat');
+  require('com/chat/1.0.0:chat');
   
   if ($form.length) {
       $form.on('click', '.bx-header-search-box a', function (e) {

@@ -1,5 +1,9 @@
 {
   "res": {
+    "www/common/1.0.0:common.css": {
+      "uri": "/www/common/1.0.0/src/common.css",
+      "type": "css"
+    },
     "www/common/1.0.0:crubms.css": {
       "uri": "/www/common/1.0.0/src/crubms.css",
       "type": "css"
@@ -36,10 +40,6 @@
       "uri": "/www/common/1.0.0/src/login.css",
       "type": "css"
     },
-    "www/common/1.0.0:common.css": {
-      "uri": "/www/common/1.0.0/src/common.css",
-      "type": "css"
-    },
     "www/common/1.0.0:common": {
       "uri": "/www/common/1.0.0/src/common.js",
       "type": "js",
@@ -49,7 +49,6 @@
         "com/tabs/1.0.0:tabs",
         "com/global/1.0.0:region",
         "lib/slick/1.6.0:slick",
-        "lib/layer/3.0.1:layer",
         "com/global/1.0.0:validator",
         "www/common/1.0.0:common.css"
       ]

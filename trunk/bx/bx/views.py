@@ -8,26 +8,39 @@ from django.http import  HttpResponse,HttpResponseRedirect
 from django.template.context import  RequestContext
 from myauth.decorators import  login_required
 from models import Ask,Company
-from myauth.models import  ProxyUserProfile
 from models import Consult,Product,Ask
 import  datetime
+from myauth.models import  MyUser
 
 
 def home(request):
     #return  HttpResponse(request.myuser.username+request.ip)
     hot_ask=Ask.objects.all().order_by("-ask_time")
-    hot_proxy_profile=ProxyUserProfile.objects.filter(certifi_status=2).order_by("-id")
-    friend_company=Company.objects.all().order_by("-product_weight")
+    hot_user_proxy=MyUser.objects.filter(is_proxy=1).order_by("-ans_num","uid")[:20]
+    cids=[i.proxy_cid for i in hot_user_proxy]
+    cid_objs=Company.objects.filter(cid__in=cids)
+    cid_info=dict([(i.cid,i.shortname) for i in cid_objs])
+    for i in hot_user_proxy:
+        #if i.proxy_cid:
+        i.short_comname=cid_info.get(i.proxy_cid,"")
+
+    # friend_company=Company.objects.all().order_by("-product_weight")
+    hot_zixun_news=Consult.objects.filter(type=4,status=1).order_by("-addtime")[:5]
+    hot_zixun_baike=Consult.objects.filter(type=1,status=1).order_by("-addtime")[:5]
+    hot_zixun_anli=Consult.objects.filter(type=2,status=1).order_by("-addtime")[:5]
+
+
     return render_to_response( "index.html",locals(),context_instance=RequestContext(request))
 
-@login_required
-def work(request):
-    assert  request.myuser.usertype in (1,2)
-    #request.myuser.send_message("test","testtesttest")
-    if request.myuser.usertype==1:
-        return HttpResponseRedirect(request.path.replace("work","work_buy"))
-    else:
-        return HttpResponseRedirect(request.path.replace("work","work_proxy"))
+
+
+def about(request):
+    if request.path=="/about":
+        return  HttpResponseRedirect("/about/")
+    return render_to_response("about/about.html",locals(),
+                              context_instance=RequestContext(request))
+
+
 
 
 def sitemap_index(request):

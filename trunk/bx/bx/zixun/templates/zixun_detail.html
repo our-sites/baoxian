@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block title %}
-    {{ info.title }}_资讯_保险管家_保险之家
+    {{ info.title }}|保险管家
 {% endblock %}
 {% block keywords %}{{ info.keywords }} 保险管家 保险之家{% endblock %}
 {% block description %}{{ info.get_simple_content|slice:":100" }}_保险管家_保险之家{% endblock %}
@@ -43,7 +43,7 @@
                     <!-- 文章内容 -->
                     <div class="information-article-content">
                         {% if info.abstract %}
-                            <p style="background: #f1f1f1;padding: 10px 15px;font-size: 13px;line-height: 25px;color: #666; margin:0 10px ">摘要:{{ info.abstract }}</p>
+                            <p style="background: #f1f1f1;padding: 10px 15px;font-size: 18px;line-height: 30px;color: #666; margin:0 10px ">摘要:{{ info.abstract }}</p>
                         {% endif %}
                         {{ info.content|safe }}
                     </div>

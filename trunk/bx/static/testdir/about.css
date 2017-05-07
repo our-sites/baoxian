@@ -1,0 +1,114 @@
+body{
+    font-family: Helvetica Neue,Helvetica,Arial,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Microsoft Yahei,sans-serif;
+}
+
+.c_top{
+
+    background-image: url(/static/testdir/about.png) ;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-color: #42bad0;
+    background-size: auto 106px;
+    padding:45px 15px 15px  50px;
+    text-align: center;
+    color: #fff
+}
+
+.c_top>h1{
+    margin-bottom: 25px;
+}
+
+.c_top>p{
+    font-size: 18px;
+    margin-bottom: 40px;
+    line-height: 1.5;
+}
+
+.c_bar{
+
+    background-color: #f3f3f3;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.5;
+    padding:0px 15px 0px 15px
+}
+.c_bar>a{
+    display: inline-block;
+    width: 120px;
+    height: 44px;
+    line-height: 44px;
+    color: #333;
+    margin:0px 5px 0px 5px;
+    text-decoration: none;
+
+}
+.c_bar>a:hover{
+    border-bottom: 2px solid #9e9e9e;
+}
+.c_bar>a.active{
+    border-bottom: 2px solid #42bbd0;
+
+}
+.container{
+    width: 1140px;
+    padding:0px 15px 0px 15px;
+}
+.my_row{
+    margin: 0 0 0 0;
+}
+
+
+.foot-line{
+    width: 100%;
+    border-top:1px solid #eee;
+    margin-top: 40px;
+}
+
+.num_container{
+    display: inline-block;
+    width: 20px;
+    height: 69px;
+    vertical-align: top;
+}
+.list_detail_container{
+    display: inline-block;
+    width: 250px;
+    height: 100%;
+    padding-left: 10px;
+}
+.list_detail_container>h3>a{
+    text-decoration: none;
+    color: #000000;
+}
+
+.num{
+    color: #42BAD0;
+    font-size: 45px;
+    line-height: 1.5;
+    font-family: Impact,Haettenschweiler,Franklin Gothic Bold,Charcoal,Helvetica Inserat,Bitstream Vera Sans Bold,Arial Black,sans serif;;
+}
+p{
+    word-wrap:break-word;
+    word-break:normal;
+}
+
+.huoban_item{
+    display: inline-block;
+    width: 200px;
+    height: 80px;
+    padding:0px 5px 0px 5px ;
+    border: 1px solid #eee;
+    margin: 2px;
+    text-align: center;
+
+}
+
+.huoban_item>img{
+    max-width: 170px;
+    max-height: 50px;
+    margin-top: 15px;
+}
+.color{
+
+    color: #42bbd0;
+}

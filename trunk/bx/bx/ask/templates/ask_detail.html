@@ -60,14 +60,21 @@
                 <div class="ask-list-item">
                     <div class="result-box">
                     {% with buff_user=i.get_user %}
-                        {% with buff_user_profile=buff_user.get_profile %}
-                            {% with buff_user_profile_com=buff_user_profile.get_comobj %}
+
+                            {% with buff_user_profile_com=buff_user.get_comobj %}
                         <div class="clf">
                             <img class="result-author-avatar" src="{{ buff_user.get_img_url }}" />
                             <div class="result-info">
                                 <p>
-                                    <a href="" class="result-info-company">{{ buff_user_profile_com.comname }}</a>
-                                    <a href="" class="result-info-name">{{ buff_user.get_namecontent }}</a>
+                                    {% if buff_user.is_proxy and buff_user.proxy_cid %}
+                                        <a href="/product/search/0-0-{{ buff_user.proxy_cid }}/" target="_blank"
+                                           class="result-info-company">{{ buff_user_profile_com.comname }}</a>
+                                    {% endif %}
+
+                                    <a {% if buff_user.is_proxy %}href="/dailiren/detail/{{ buff_user.uid }}.html" target="_blank"
+                                       {% endif %}  class="result-info-name">{{ buff_user.get_namecontent }}
+                                    </a>
+
                                     <a href="" class="result-info-level"></a>
                                     <a href="" class="result-info-authentication"></a>
                                     <a href="" class="ask-btn"><img src="/static/imgs/rank-item-consult-icon.png" alt="">咨询</a>
@@ -79,7 +86,7 @@
                             <div class="result-info-date">{{ i.get_date }}</div>
                         </div>
                                 {% endwith %}
-                            {% endwith %}
+
                     {% endwith %}
                     </div>
                     <div class="result-content">

@@ -5,7 +5,7 @@ __author__ = 'zhoukunpeng'
 # ---------------------------------
 from decorators import  login_required
 from django.conf import  settings
-from gcutils.encrypt import  md5
+from threadspider.utils.encrypt import  md5
 from django.http import  HttpResponseRedirect
 from cookie_encrypt import  phpcookie_encode
 import  urllib
@@ -13,7 +13,6 @@ import time
 import  datetime
 import  random
 from django.shortcuts import  render_to_response
-from models import  MyUser,ProxyUserProfile,BuyUserProfile
 from django.template.context import  RequestContext
 from django.db.models import  Q
 from bx.utils.sms import send_dayysms_validnumber,send_dayysms_regsuccess
@@ -24,6 +23,7 @@ from ..models import Area
 import  urllib2
 import StringIO
 from PIL import  Image
+from models import MyUser
 from django.core.files.uploadedfile import InMemoryUploadedFile
 
 def get_qq_token(request):
@@ -65,24 +65,18 @@ def get_qq_token(request):
             passwd = str(random.randrange(100000,999999))
             salt = MyUser.make_salt()
             password = MyUser.hashed_password(salt, passwd)
-            if role=="buy":
-                user = MyUser(username=username, phone=0, salt=salt, password=password, state=1, usertype=1,
-                              ip=ip,birthday=birthday,real_name=real_name,imgurl=qq_img_obj,sex=sex)
-                user.save()
-                user_profile = BuyUserProfile(uid=user, province=request.province_id, city=request.city_id, zone=0)
-                user_profile.save()
-            else:
-                user = MyUser(username=username, phone=0, salt=salt, password=password, state=1, usertype=2,
-                              ip=ip,birthday=birthday,real_name=real_name,imgurl=qq_img_obj,sex=sex)
-                user.save()
-                myprofile = ProxyUserProfile(uid=user, province= request.province_id if request.province_id else 0,
-                                             city= request.city_id  if request.city_id else 0)
-                myprofile.save()
+
+            user = MyUser(username=username, phone=0, salt=salt, password=password, state=1,
+                          ip=ip,birthday=birthday,real_name=real_name,imgurl=qq_img_obj,sex=sex,
+                          province_id=request.province_id,city_id=request.city_id)
+            user.save()
+
         else:
             user=user_info[0]
 
         response = HttpResponseRedirect(next)
         timestamp=int(time.time())
+        request.myuser=user
         response.set_cookie("user_info", urllib.quote(
             phpcookie_encode("\t".join([str(user.uid), user.username, request.ip, str(timestamp)]), 'gc895316')),
                           expires=86400 * 365)
@@ -125,24 +119,16 @@ def get_taobao_token(request):
             passwd = str(random.randrange(100000,999999))
             salt = MyUser.make_salt()
             password = MyUser.hashed_password(salt, passwd)
-            if role=="buy":
-                user = MyUser(username=username, phone=0, salt=salt, password=password, state=1, usertype=1,
-                              ip=ip,birthday=birthday,real_name=real_name,imgurl=qq_img_obj,sex=sex)
-                user.save()
-                user_profile = BuyUserProfile(uid=user, province=request.province_id, city=request.city_id, zone=0)
-                user_profile.save()
-            else:
-                user = MyUser(username=username, phone=0, salt=salt, password=password, state=1, usertype=2,
-                              ip=ip,birthday=birthday,real_name=real_name,imgurl=qq_img_obj,sex=sex)
-                user.save()
-                myprofile = ProxyUserProfile(uid=user, province= request.province_id if request.province_id else 0,
-                                             city= request.city_id  if request.city_id else 0)
-                myprofile.save()
+            user = MyUser(username=username, phone=0, salt=salt, password=password, state=1,
+                          ip=ip,birthday=birthday,real_name=real_name,imgurl=qq_img_obj,sex=sex)
+            user.save()
+
         else:
             user=user_info[0]
 
         response = HttpResponseRedirect(next)
         timestamp=int(time.time())
+        request.myuser=user
         response.set_cookie("user_info", urllib.quote(
             phpcookie_encode("\t".join([str(user.uid), user.username, request.ip, str(timestamp)]), 'gc895316')),
                           expires=86400 * 365)
@@ -202,24 +188,16 @@ def get_weibo_token(request):
             passwd = str(random.randrange(100000, 999999))
             salt = MyUser.make_salt()
             password = MyUser.hashed_password(salt, passwd)
-            if role == "buy":
-                user = MyUser(username=username, phone=0, salt=salt, password=password, state=1, usertype=1,
-                              ip=ip, birthday=birthday, real_name=real_name, imgurl=qq_img_obj, sex=sex)
-                user.save()
-                user_profile = BuyUserProfile(uid=user, province=request.province_id, city=request.city_id, zone=0)
-                user_profile.save()
-            else:
-                user = MyUser(username=username, phone=0, salt=salt, password=password, state=1, usertype=2,
-                              ip=ip, birthday=birthday, real_name=real_name, imgurl=qq_img_obj, sex=sex)
-                user.save()
-                myprofile = ProxyUserProfile(uid=user, province=request.province_id if request.province_id else 0,
-                                             city=request.city_id if request.city_id else 0)
-                myprofile.save()
+            user = MyUser(username=username, phone=0, salt=salt, password=password, state=1, usertype=1,
+                          ip=ip, birthday=birthday, real_name=real_name, imgurl=qq_img_obj, sex=sex)
+            user.save()
+
         else:
             user = user_info[0]
 
         response = HttpResponseRedirect(next)
         timestamp = int(time.time())
+        request.myuser=user
         response.set_cookie("user_info", urllib.quote(
             phpcookie_encode("\t".join([str(user.uid), user.username, request.ip, str(timestamp)]), 'gc895316')),
                             expires=86400 * 365)
@@ -269,6 +247,7 @@ def login(request):
             data={"errorCode":0,"msg":"登录成功！","formSuccess":{"redirect":"/" if not next_to else next_to,
                                                                  "duration":500},"data":{}}
             response=HttpResponse(json.dumps(data),mimetype="application/javascript")
+            request.myuser=myuser
             response.set_cookie("user_info",urllib.quote(
                         phpcookie_encode("\t".join([str(myuser.uid), myuser.username,request.ip,str(timestamp)]),'gc895316')),
                                   expires=86400*365)
@@ -283,6 +262,7 @@ def logout(request):
         pass
     else:
         result.delete_cookie("user_info")
+        del request.myuser
     return  result
 
 
@@ -353,7 +333,11 @@ def register(request):
         usertype=int(usertype)
         phone=int(phone)
         assert  usertype in (1,2)
-        if usertype==1:
+        if usertype==2:
+            is_proxy=1
+        else:
+            is_proxy=0
+        if not is_proxy==1:
             #buy
             passwd=postinfo.get("password")
             salt=MyUser.make_salt()
@@ -374,23 +358,22 @@ def register(request):
                 data=json.dumps(data)
                 return HttpResponse(data,mimetype="application/javascript")
             else:
-                user=MyUser(username=str(phone),phone=phone,salt=salt,password=password,state=1,usertype=usertype,ip=request.ip)
+                user=MyUser(username=str(phone),phone=phone,salt=salt,password=password,state=1,is_proxy=0,ip=request.ip)
                 user.save()
-                user_profile=BuyUserProfile(uid=user ,province=request.province_id if request.province_id else 0,
-                                            city=request.city_id  if  request.city_id else  0,zone=0)
-                user_profile.save()
-                data={"errorCode":0,"msg":"注册成功！","formSuccess":{"redirect":"/zixun/" if not next_to else next_to,
+
+                data={"errorCode":0,"msg":"注册成功！","formSuccess":{"redirect":"/" if not next_to else next_to,
                                                                  "duration":3000},"data":{}}
                 timestamp=int(time.time())
                 data=json.dumps(data)
                 send_dayysms_regsuccess(phone)
                 user.send_message("注册成功", "你已成功注册，请妥善保存密码")
                 result= HttpResponse(data,mimetype="application/javascript")
+                request.myuser=user
                 result.set_cookie("user_info",urllib.quote(
                         phpcookie_encode("\t".join([str(user.uid), user.username,request.ip,str(timestamp)]),'gc895316')),
                                   expires=86400*365)
                 if request.province or request.city:
-                    request.send_allsite_msg("来自%s%s的保险顾问刚刚在本站注册了账户")
+                    request.send_allsite_msg("来自%s%s的投保用户刚刚在本站注册了账户")
                 return  result
         else:
             #proxy
@@ -432,26 +415,24 @@ def register(request):
                 data=json.dumps(data)
                 return HttpResponse(data,mimetype="application/javascript")
             else:
-                user=MyUser(username=str(phone),phone=phone,salt=salt,password=password,state=1,usertype=usertype,ip=request.ip)
+                user=MyUser(username=str(phone),phone=phone,salt=salt,
+                            password=password,state=1,is_proxy=1,ip=request.ip,
+                            province_id=request.province_id,city_id=request.city_id)
                 user.save()
-                if province_id or city_id:
-                    myprofile=ProxyUserProfile(uid=user,province=province_id,city=city_id)
-                    myprofile.save()
-                else:
-                    myprofile=ProxyUserProfile(uid=user,province=request.province_id,city=request.city_id)
-                    myprofile.save()
-                data={"errorCode":0,"msg":"注册成功！","formSuccess":{"redirect":"/ask/" if not next_to else next_to,
+
+                data={"errorCode":0,"msg":"注册成功！","formSuccess":{"redirect":"/" if not next_to else next_to,
                                                                  "duration":900},"data":{}}
                 timestamp=int(time.time())
                 data=json.dumps(data)
                 send_dayysms_regsuccess(phone)
                 user.send_message("注册成功","你已成功注册，请妥善保存密码")
                 result= HttpResponse(data,mimetype="application/javascript")
+                request.myuser=user
                 result.set_cookie("user_info",urllib.quote(
                         phpcookie_encode("\t".join([str(user.uid), user.username,request.ip,str(timestamp)]),'gc895316')),
                                   expires=86400*365)
                 if request.province or request.city:
-                    request.send_allsite_msg("来自%s%s的投保用户刚刚在本站注册了账户")
+                    request.send_allsite_msg("来自%s%s的保险代理人刚刚在本站注册了账户")
                 return  result
 
 
@@ -513,4 +494,4 @@ def forgotpwd(request):
         return HttpResponse(data,mimetype="application/javascript")
 
     return  render_to_response("forgotpwd.html",locals(),
-                               context_instance=RequestContext(request))
+                               context_instance=RequestContext(request)) #

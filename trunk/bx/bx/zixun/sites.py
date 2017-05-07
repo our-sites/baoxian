@@ -16,6 +16,7 @@ class ZiXun(object):
       #      ("^%s$"%settings.LOGIN_URL.lstrip("/"),views.login),
       #      ("^%s$"%settings.LOGOUT_URL.lstrip("/"),views.logout),
                                ("^$",views.index),
+                               (r"^add_xinwen",views.add_xinwen),
                                ("^detail/(\d+)\.html",views.detail),
                                (r"(baike)/",views.index_index),
                                (r"(anli)/",views.index_index),
@@ -23,6 +24,7 @@ class ZiXun(object):
                                (r"(guahua)/",views.index_index),
                                (r"(citiao)/",views.index_index),
                                (r"(xinwen)/",views.index_index),
+
             )
         return urlpatterns
     @property

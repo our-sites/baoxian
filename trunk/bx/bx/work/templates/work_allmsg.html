@@ -1,0 +1,67 @@
+{% extends "work_base.html" %}
+{% block content %}
+    {% load math %}
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header hd"> 系统消息</h3>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-envelope fa-fw"></i></div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <ul class="timeline">
+                        {% for msg in msg_info %}
+                                <li {% if forloop.counter|mod:"2" == 0 %}class="timeline-inverted" {% endif %}>
+                                    <div class="timeline-badge info"><i class="fa fa-envelope"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">{{ msg.subject }}</h4>
+                                            <p><small class="text-muted"><i class="fa fa-clock-o"></i>{{ msg.get_date_time }}</small>
+                                            </p>
+                                        </div>
+                                        <div class="timeline-body">
+{#                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero laboriosam dolor perspiciatis omnis exercitationem. Beatae, officia pariatur? Est cum veniam excepturi. Maiores praesentium, porro voluptas suscipit facere rem dicta, debitis.</p>#}
+                                            {{ msg.message|safe }}
+                                        </div>
+                                    </div>
+                                </li>
+                        {% endfor %}
+                            </ul>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+        </div>
+        {% if allinfo_paginator.num_pages >= 2 %}
+        {% load range %}
+        <div class="row">
+            <div style="text-align: center">
+                <ul class="pagination">
+                    <li>
+                        <a href="{{ request.path }}?page=1">首页</a>
+                    </li>
+                    {% for i in page|near:4 %}
+                        {% if i > 0 and i <= allinfo_paginator.num_pages %}
+                    <li {% if i == page %}class="active" {% endif %}>
+                        <a href="{{ request.path }}?page={{ i }}" >{{ i }}</a>
+                    </li>{% endif %}{% endfor %}
+                {% if allinfo.has_next %}
+                    <li><a title="下一页"
+                           href="{{ request.path }}?page={{ allinfo.next_page_number }}">
+                        &gt;&gt;</a></li>{% endif %}
+                    <li>
+                        <a href="{{ request.path }}?page={{ allinfo_paginator.num_pages }}">尾页</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+
+    </div>
+
+{% endblock %}

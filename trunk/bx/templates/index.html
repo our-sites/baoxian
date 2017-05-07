@@ -1,15 +1,20 @@
 {% extends "base.html" %}
 {% block title %}
-    保险管家_专业的第三方保险平台
+    保险管家 - 专业的保险代理人平台，综合性保险门户网站！
+{% endblock %}
+{% block keywords %}
+    保险管家，保险网站,保险门户,保险代理人网站,保险资讯,保险代理人,保险经纪人,保险咨询，保险方案
+{% endblock %}
+{% block description %}
+    保险管家（bao361.cn）专业为保险代理人提供网络展业服务，保险人展业，学习交流平台。欢迎广大投保人、保险代理人来入驻！
 {% endblock %}
 {% load atm %}
+{% load math %}
 {% block css %}
     {% atmcss www/index:index %}
     <style>
       .friendbrand{
           width: 167px;
-
-
       }
     </style>
 {% endblock %}
@@ -237,19 +242,24 @@
                             <a href="/product/search/21-38-0/" class="links-btn" target="_blank">两全险</a>
                         </div>
                     </div>
-                    <div class="right">
-                        <a href="" class="right-item" target="_blank">
-                            <img src="/static/imgs/index-product-right-01.png">
+<div class="right-wrap clf">
+                        <a href="" class="center">
+                            <img src="/static/imgs/index-product-right-00.png">
                         </a>
-                        <a href="" class="right-item" target="_blank">
-                            <img src="/static/imgs/index-product-right-02.png">
-                        </a>
-                        <a href="" class="right-item" target="_blank">
-                            <img src="/static/imgs/index-product-right-03.png">
-                        </a>
-                        <a href="" class="right-item" target="_blank">
-                            <img src="/static/imgs/index-product-right-04.png">
-                        </a>
+                        <div class="right clf">
+                            <a href="" class="right-item">
+                                <img src="/static/imgs/index-product-right-01.png">
+                            </a>
+                            <a href="" class="right-item">
+                                <img src="/static/imgs/index-product-right-02.png">
+                            </a>
+                            <a href="" class="right-item">
+                                <img src="/static/imgs/index-product-right-03.png">
+                            </a>
+                            <a href="" class="right-item">
+                                <img src="/static/imgs/index-product-right-04.png">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -272,14 +282,14 @@
                         <div class="right-item">
                             <h4>
                                 <span class="ask-icon">问</span>
-                                <a href="/ask/detail/{{ ask.askid }}.html">{{ ask.ask_content }}</a>
+                                <a href="/ask/detail/{{ ask.askid }}.html" target="_blank">{{ ask.ask_content }}</a>
                             </h4>
                             {% with last_ans=ask.get_last_ans %}
                                 {% if last_ans %}
                                     {% with last_ans_user=last_ans.get_user %}
                             <p>
-                                <a href="/ask/detail/{{ ask.askid }}.html" class="color" target="_blank">{% if last_ans_user.real_name %}{{ last_ans_user.real_name }}{% else %}{{ last_ans_user.username|slice:":4" }}*{% endif %}：</a>
-                                <a href="/ask/detail/{{ ask.askid }}.html" class="right-item-answer" target="_blank">{{ last_ans.ans_content }}</a>
+                                <a href="/ask/detail/{{ ask.askid }}.html" class="color" target="_blank">{{ last_ans_user.get_namecontent }}：</a>
+                                <a href="/ask/detail/{{ ask.askid }}.html" class="right-item-answer" target="_blank" >{{ last_ans.ans_content }}</a>
                             </p>
                                     {% endwith %}
                                 {% endif %}
@@ -296,6 +306,63 @@
                 </div>
             </div>
 
+
+        <div class="index-news">
+                <h2>保险资讯</h2>
+                <div class="clf">
+                    <div class="left">
+                        <!--特色-->
+                        <div class="feature"></div>
+                        <!--链接-->
+                        <div class="links">
+                            <a href="/zixun/anli/" target="_blank" class="links-btn">保险案例</a>
+                            <a href="/zixun/xinwen/" target="_blank" class="links-btn">保险新闻</a>
+                            <a href="/zixun/dongtai/" target="_blank" class="links-btn">监管动态</a>
+                            <a href="/zixun/guahua/" target="_blank" class="links-btn">保险规划</a>
+                            <a href="/zixun/citiao/" target="_blank" class="links-btn">保险词条</a>
+                            <a href="/zixun/baike/" target="_blank" class="links-btn">保险百科</a>
+                        </div>
+                    </div>
+                    <div class="right clf">
+                        <div class="right-item">
+                            <a href="" class="right-item-img">
+                                <img src="/static/imgs/index-news-right-01.png" alt="">
+                            </a>
+                            <h3>保险新闻</h3>
+                            <ul>
+                                {% for i in hot_zixun_news %}
+                                <li><a href="/zixun/detail/{{ i.zid }}.html" target="_blank">{{ i.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                            <a href="/zixun/xinwen/" class="color" target="_blank">查看更多&gt;</a>
+                        </div>
+                        <div class="right-item">
+                            <a href="" class="right-item-img">
+                                <img src="/static/imgs/index-news-right-02.png" alt="">
+                            </a>
+                            <h3>保险百科</h3>
+                            <ul>
+                                {% for i in hot_zixun_baike %}
+                                <li><a href="/zixun/detail/{{ i.zid }}.html" target="_blank">{{ i.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                            <a href="/zixun/baike/" class="color" target="_blank">查看更多&gt;</a>
+                        </div>
+                        <div class="right-item">
+                            <a href="" class="right-item-img">
+                                <img src="/static/imgs/index-news-right-03.png" alt="">
+                            </a>
+                            <h3>保险案例</h3>
+                            <ul>
+                                {% for i in hot_zixun_anli %}
+                                <li><a href="/zixun/detail/{{ i.zid }}.html" target="_blank">{{ i.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                            <a href="/zixun/anli/" class="color" target="_blank">查看更多&gt;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
             <!--保险顾问-->
@@ -316,27 +383,52 @@
                         </div>
                     </div>
                     <div class="right">
-                        {% for profile in hot_proxy_profile|slice:":8" %}
-                            {% with puser=profile.get_user %}
-                        <a class="right-item" href="/dailiren/detail/{{ puser.uid }}.html" target="_blank">
-                            <img src="{% if puser.imgurl %}{{ puser.imgurl.url }}{% else %}/static/imgs/default-user.png{% endif %}">
-                            <h4>{% if puser.real_name %}{{ puser.real_name }}{% else %}{{ puser.username|slice:":4" }}*{% endif %}</h4>
-                            <p>{{ profile.get_short_comname }}</p>
-                        </a>
-                            {% endwith %}
+                    {% for puser in hot_user_proxy|slice:":16" %}
+{#                        {% with puser=profile.get_user %}#}
+                            {% if forloop.counter|mod:"4" == 0 %}
+                        <div class="right-row clf">
+                        {% endif %}
+                                <a class="right-item clf" href="/dailiren/detail/{{ puser.uid }}.html" target="_blank">
+                                    <img src="{{ puser.get_img_url }}">
+                                    <div class="word-wrap">
+                                        <div class="word">
+                                            <h4 style="display:inline-block;width:100px;overflow:hidden;text-overflow:ellipsis; -o-text-overflow:ellipsis;white-space:nowrap">{{ puser.get_namecontent }}</h4>
+                                            <p>{{ puser.short_comname }}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            {% if forloop.counter|mod:"4" == 0 %}
+                            </div>
+                            {% endif %}
+{#                            {% endwith %}#}
                         {% endfor %}
                     </div>
                 </div>
             </div>
-<div class="index-adviser">
-                <h2>合作品牌</h2>
-                <div class="clf">
-                    <div>
-                        {% for i in  friend_company|slice:":14" %}
-                        <img src="{{ i.img.url }}"  class="friendbrand" alt="{{ i.comname }}">
-                        {% endfor %}
-                    </div>
 
+<div class="index-partner">
+                <h2>合作单位</h2>
+                <div class="clf">
+                    <a href="/product/search/0-0-54/" target="_blank" class="index-partner-item"><img src="/static/imgs/index-partner-01.png" alt="" class="index-partner-item"></a>
+                    <a href="/product/search/0-0-63/" target="_blank" class="index-partner-item"><img src="/static/imgs/index-partner-02.png" alt="" class="index-partner-item"></a>
+                    <a href="/product/search/0-0-56/" target="_blank" class="index-partner-item"><img src="/static/imgs/index-partner-03.png" alt="" class="index-partner-item"></a>
+                    <a href="/product/search/0-0-62"  target="_blank" class="index-partner-item"><img src="/static/imgs/index-partner-04.png" alt="" class="index-partner-item"></a>
+                    <a href="/product/search/0-0-33/" target="_blank" class="index-partner-item"><img src="/static/imgs/index-partner-05.png" alt="" class="index-partner-item"></a>
+
+                    <a href="/product/search/0-0-71/" target="_blank" class="index-partner-item"><img src="/static/imgs/0_0000_xfrs.jpg" alt="" class="index-partner-item"></a>
+
+                    <a href="/product/search/0-0-76/" target="_blank" class="index-partner-item"><img src="/static/imgs/index-partner-07.png" alt="" class="index-partner-item"></a>
+                    <a href="/product/search/0-0-20/" target="_blank" class="index-partner-item"><img src="/static/imgs/index-partner-08.png" alt="" class="index-partner-item"></a>
+                    <a href="/product/search/0-0-64/" target="_blank" class="index-partner-item"><img src="/static/imgs/0_0001_tars.jpg" alt="" class="index-partner-item"></a>
+                    <a href="/product/search/0-0-23/" target="_blank" class="index-partner-item"><img src="/static/imgs/0_0002_gtrs.jpg" alt="" class="index-partner-item"></a>
+
+
+
+                    <a href="/product/search/0-0-93/" target="_blank" class="index-partner-item"><img src="/static/imgs/index-partner-11.png" alt="" class="index-partner-item"></a>
+                    <a href="/product/search/0-0-19/" target="_blank" class="index-partner-item"><img src="/static/imgs/0_0003_zgrs.jpg" alt="" class="index-partner-item"></a>
+                    <a href="/product/search/0-0-72/" target="_blank" class="index-partner-item"><img src="/static/imgs/index-partner-13.png" alt="" class="index-partner-item"></a>
+                    <a href="/product/search/0-0-9/"  target="_blank" class="index-partner-item"><img src="/static/imgs/0_0004_ccrs.jpg" alt="" class="index-partner-item"></a>
+                    <a href="/product/search/0-0-82/" target="_blank" class="index-partner-item"><img src="/static/imgs/index-partner-15.png" alt="" class="index-partner-item"></a>
                 </div>
             </div>
         </div>

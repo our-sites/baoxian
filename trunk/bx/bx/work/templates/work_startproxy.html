@@ -1,0 +1,49 @@
+{% extends "work_base.html" %}
+{% block content %}
+    {% load math %}
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header hd"> 开启展业工具</h3>
+            </div>
+
+        </div>
+         <div class="row">
+             <div class="col-lg-7">
+                <div class="alert alert-success">
+                    展业工具是免费为保险代理人提供的个人品牌推广平台，开启展业工具后个人信息会在本网站得到全面推广。展业工具中提供了签单分享、发布增员等功能。祝您快速展业！
+                </div>
+             </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-7">
+                            <a href="#myModal_1" data-toggle="modal" type="button" class="btn btn-primary"><i class="fa fa-sign-out fa-fw"></i> 一键开启</a>
+            </div>
+        </div>
+    <div>
+                                    <div class="modal fade" id="myModal_1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" style="width: 400px">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="myModalLabel">提醒</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            您确定要开启展业工具么？
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                            <a  href="/work/startproxy/?go=1" type="button" class="btn btn-primary">确定</a>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+    </div>
+
+
+
+    </div>
+
+{% endblock %}

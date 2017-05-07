@@ -5,7 +5,6 @@ __author__ = 'zhou'
 # ---------------------------------
 from ..myauth.decorators import login_required
 from ..myauth.cookie_encrypt import phpcookie_encode
-from ..myauth.models import MyUser, ProxyUserProfile, BuyUserProfile
 from django.conf import settings
 from gcutils.encrypt import md5
 from django.http import HttpResponseRedirect

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block title %}
-    {{ info.pro_name }}保险代理人_保险管家
+    保险代理人_保险管家
 {% endblock %}
 {% load atm %}
 {% load math %}
@@ -14,8 +14,8 @@
 <div class="grid clf">
     <!--面包屑导航-->
     <div class="bx-crubms">
-        <a href="">保险管家</a> &gt;
-        <a href="">保险代理人</a>
+        <a href="/">保险管家</a> &gt;
+        <a href="/dailiren/search/">保险代理人</a>
     </div>
 
     <!-- 条件筛选-->
@@ -63,7 +63,7 @@
             <!--筛选结果-->
             <div class="adviser-list clf">
                 {% for i in info %}
-                {% with myuser=i.get_user comname=i.get_comname  com_obj=i.get_comobj%}
+                {% with myuser=i  com_obj=i.get_comobj%}
 
                     <div class="adviser-item clf">
                             <!--头像-->
@@ -74,13 +74,13 @@
                             <!--资料-->
                             <div class="adviser-item-resume-word">
                                 <h4>
-                                    <a href="/dailiren/detail/{{ myuser.uid }}.html" target="_blank">{{ myuser.real_name }}</a><span class="adviser-item-resume-location">{{ i.get_city_info }}</span><span class="adviser-item-resume-company">{{ comname }}</span>
+                                    <a href="/dailiren/detail/{{ myuser.uid }}.html" target="_blank">{{ myuser.get_namecontent }}</a><span class="adviser-item-resume-location">{{ i.province_city_info }}</span><span class="adviser-item-resume-company">{{ com_obj.shortname }}</span>
                                 </h4>
-<div style="color:#42bad0;border:1px solid #42bad0;width:40px;border-radius:2px">
+                                <div style="color:#42bad0;border:1px solid #42bad0;width:40px;border-radius:2px">
                                     已认证
                                 </div>
                                 <p>
-                                    <span>从业时间：</span>{{ i.year }}年
+                                    <span>从业时间：</span>{{ i.proxy_workyear }}年
                                 </p>
                                 <p>
                                     <span>回答问题：</span>{{ i.ans_num }}条
@@ -94,7 +94,7 @@
                             </div>
                             <!--详情-->
                             <div class="adviser-item-detail">
-                                {{ i.my_ad }}
+                                {{ i.proxy_myad }}
                             </div>
 
                             <div class="adviser-item-other">

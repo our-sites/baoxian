@@ -3,7 +3,8 @@ var Validator = require('./validator.js');
 var $form = $('.bx-header form.ui-form');
 
 // 引入咨询脚本
-require('./chat/chat');
+// require('./chat/chat');
+require('com/chat:chat');
 
 if ($form.length) {
     $form.on('click', '.bx-header-search-box a', function (e) {

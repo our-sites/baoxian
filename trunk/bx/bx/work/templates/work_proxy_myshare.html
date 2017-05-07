@@ -1,0 +1,186 @@
+{% extends "work_base.html" %}
+{% block head_js %}
+    <script type="text/javascript" src="/static/js/ckeditor.js"></script>
+    <link href="/static/sample.css" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block content %}
+    {% load math %}
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header hd"> 签单分享</h3>
+            </div>
+
+        </div>
+
+
+        <div class="row" style="padding-bottom: 25px ">
+            <ul class="nav nav-tabs">
+                <li {% if not  request.GET.add or success_msg %}class="active"{% endif %}><a href="/work/proxy/myshare/" >我的签单分享</a></li>
+                <li {% if  not  request.GET.add or success_msg   %}{% else %}class="active" {% endif %}><a href="/work/proxy/myshare/?add=1" >新增签单分享</a></li>
+            </ul>
+        </div>
+
+        {% if success_msg %}
+            <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                {{ success_msg }}
+            </div>
+        {% endif %}
+
+        {% if error_msg %}
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                {{ error_msg }}
+            </div>
+        {% endif %}
+
+        {% if not request.GET.add or success_msg %}
+            {% if my_shares.count == 0 %}
+            <div class="row" >
+                <div class="col-lg-8">
+                    <div class="alert alert-danger">
+                        暂无你的签单分享！  现在就去<a href="/work/proxy/myshare/?add=1">添加</a>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+                <div class="row">
+                    <div class="panel panel-default" style="height: 500px;">
+                        <div class="panel-heading">
+                            <i class="glyphicon  glyphicon-pencil   "></i></div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>序号</th>
+                                        <th style="width: 190px">分享标题</th>
+                                        <th>保险公司</th>
+                                        <th style="width: 280px">分享内容</th>
+                                        <th>保费</th>
+                                        <th>时间</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for info in allinfo %}
+                                                <tr>
+                                                    <td>{{ forloop.counter }}</td>
+                                                    <td style="display:block;width: 190px;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"> {{ info.title }}</td>
+                                                    <td>{{ info.comname }}</td>
+                                                    <td style="display:block;width: 280px;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ info.get_simple_content }}</td>
+                                                    <td>{% if info.price %}{{ info.price }}{% else %}---{% endif %}</td>
+                                                    <td>{{ info.get_date_time }}</td>
+                                                    <td><a  href="/work/proxy/myadd/?add=1&sid={{ info.sid }}">编辑</a></td>
+                                                </tr>
+
+                                    {% endfor %}
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                </div>
+
+                {% if allinfo_paginator.num_pages >= 2 %}
+                    {% load range %}
+                    <div class="row">
+                        <div style="text-align: center">
+                            <ul class="pagination">
+                                <li>
+                                    <a href="{{ request.path }}?page=1">首页</a>
+                                </li>
+                                {% for i in page|near:4 %}
+                                    {% if i > 0 and i <= allinfo_paginator.num_pages %}
+                                        <li {% if i == page %}class="active" {% endif %}>
+                                            <a href="{{ request.path }}?page={{ i }}">{{ i }}</a>
+                                        </li>{% endif %}{% endfor %}
+                                {% if allinfo.has_next %}
+                                    <li><a title="下一页"
+                                           href="{{ request.path }}?page={{ allinfo.next_page_number }}">
+                                        &gt;&gt;</a></li>{% endif %}
+                                <li>
+                                    <a href="{{ request.path }}?page={{ allinfo_paginator.num_pages }}">尾页</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+        {% else %}
+            <div class="row">
+                        <div class="col-lg-7 alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            提示：以下带* 的均为必填项！
+            </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <form role="form" method="post">
+                        {% csrf_token %}
+                        <div class="form-group" >
+                            <label><span style="color: #337ab7">*</span> 分享标题：</label>
+                            <input class="form-control" required="required" name="title" style="width: 390px" value="{% if title %}{{ title }}{% endif %}">
+
+                        </div>
+                        <div class="form-group">
+                            <label><span style="color: #337ab7">*</span> 选择险企：</label>
+                            <select class="form-control" name="cid" style="width: 200px">
+                                {% for com in com_info %}
+                                    <option value="{{ com.cid }}"
+                                            {% if com.cid == request.myuser.proxy_cid or com.cid == cid %}selected{% endif %}>{{ com.shortname }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><span style="color: #337ab7">*</span> 保险产品名：</label>
+                            <input class="form-control" placeholder="" required="required" name="pro_name"
+                                    style="width: 290px" value="{% if pro_name %}{{ pro_name }}{% endif %}">
+                        </div>
+                        <div class="form-group">
+                            <label>保费：(必须为整数)</label>
+                            <input class="form-control" placeholder="" name="price"
+                                   style="width: 145px" value="{% if price %}{{ price }}{% endif %}">
+                        </div>
+                        <div class="form-group">
+                            <label><span style="color: #337ab7">*</span> 分享详情:</label>
+                            <textarea class="form-control" required="required" name="content" id="content"
+                                      style="height: 100px"
+                            >{% if content %}{{ content }}{% endif %}</textarea>
+                                                <p class="help-block">屏幕截图可直接粘贴到编辑框中哦~</p>
+                        </div>
+                        <button type="submit" class="btn btn-primary">提交发布</button>
+                    </form>
+                </div>
+            </div>
+
+        {% endif %}
+
+    </div>
+        <script type='text/javascript' class='samplecode'>// Create a classic editor using inline configuration
+var uploadUrl = '/work/simple_upload/';
+var config = {
+	customConfig : '',
+	// Add the required plugin
+	extraPlugins : 'simpleuploads',
+	// Required config to tell CKEditor what's the script that will process uploads
+	filebrowserUploadUrl : uploadUrl + '&type=Files',
+	filebrowserImageUploadUrl : uploadUrl + '&type=Images',
+	toolbar :	// Sample toolbar
+	[
+		{ name: 'clipboard',   items : [ 'Cut','Copy','Paste','-','Undo','Redo' ] },
+		{ name: 'basicstyles', items : [ 'Bold','Italic' ] },
+		{ name: 'insert',      items : [   'addImage' ] },
+	],
+
+	simpleuploads_acceptedExtensions : '7z|avi|csv|doc|docx|flv|gif|gz|gzip|jpeg|jpg|mov|mp3|mp4|mpc|mpeg|mpg|ods|odt|pdf|png|ppt|pxd|rar|rtf|tar|tgz|txt|vsd|wav|wma|wmv|xls|xml|zip'
+};
+
+CKEDITOR.replace( 'content', config );
+</script>
+{% endblock %}

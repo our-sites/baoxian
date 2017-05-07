@@ -1,0 +1,92 @@
+/*
+Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckeditor.com/license
+*/
+
+pre,
+code,
+kbd,
+samp,
+tt{
+  font-family: monospace,monospace;
+  font-size: 1em;
+}
+
+
+ul.samples {
+	margin-bottom:15px;
+}
+
+.clear {
+	clear:both;
+}
+
+fieldset
+{
+	margin: 0;
+	padding: 10px;
+}
+
+
+
+
+a.samples {
+	color:#189DE1;
+	text-decoration:none;
+}
+
+a.samples:hover {
+  text-decoration:underline;
+}
+
+
+pre.samples
+{
+	background-color: #F7F7F7;
+	border: 1px solid #D7D7D7;
+	overflow: auto;
+	padding: 0.25em;
+}
+
+#alerts
+{
+	color: Red;
+}
+
+#footer hr
+{
+	margin: 10px 0 15px 0;
+	height: 1px;
+	border: solid 1px gray;
+	border-bottom: none;
+}
+
+#footer p
+{
+	margin: 0 10px 10px 10px;
+	float: left;
+}
+
+#footer #copy
+{
+	float: right;
+}
+
+.description {
+	margin-bottom: 10px;
+}
+
+*[contenteditable="true"] {
+	padding: 10px;
+	border:1px dotted #999;
+	background-color:#E5E5E5;
+	margin-bottom:1em;
+
+}
+
+/* responsive images for inline demos */
+ .SimpleUploadsTmpWrapper  {
+  height: auto;
+  max-width: 100%;
+}
+

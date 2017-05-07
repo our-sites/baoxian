@@ -3,7 +3,7 @@ var $ = require('$');
 require('com/tabs:tabs');
 require('region').initAll();
 require('slick:slick');
-var layer = require('layer:layer');
+// var layer = require('layer:layer');
 
 // 代理人模块选项卡
 $('.warmheart-advisers').tabs({
@@ -74,7 +74,6 @@ $('.letter-filter').each(function () {
         e.preventDefault();
         var letter = $(this).data('key');
         if (letter === 'all') {
-            console.log($belongs.length);
             showAll();
         } else {
             showLetter(letter);
@@ -98,8 +97,13 @@ if ($fixedArea.length) {
     });
 }
 
+var $messageWrap = $('<div class="bx-rtk-wrap"></div>').appendTo('body');
+$('.bx-rtk').clone().appendTo($messageWrap)
+
+
+// 首先把
 // 顶部消息
-$('.bx-rtk-content ul').slick({
+$('.bx-rtk ul').slick({
     dots: false,
     infinite: true,
     arrows: false,
@@ -109,6 +113,16 @@ $('.bx-rtk-content ul').slick({
     autoplay: true,
     autoplaySpeed: 2000
 });
+
+var $win = $(window);
+$win.on('scroll resize load', function() {
+	var top = $win.scrollTop();
+	if (top >= 40) {
+		$messageWrap.show();
+	} else {
+		$messageWrap.hide();
+	}
+})
 
 
 // @require './common.css';

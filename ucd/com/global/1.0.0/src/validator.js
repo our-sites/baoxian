@@ -74,7 +74,6 @@ var Validator2 = Validator.extend({
                     e.preventDefault();
                     ins.remove();
                 });
-                console.log(validator);
                 validator.after('formSuccessHandle', function() {
                     alert(3);
                 })

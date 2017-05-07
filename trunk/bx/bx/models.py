@@ -44,7 +44,7 @@ class Consult(models.Model):
     type=models.PositiveSmallIntegerField(max_length=1,default=0,verbose_name="类型",
                                           help_text=u" '资讯类型 默认0，1保险百科 2社会案例 3团体规划，4保险新闻 5监管动态 6保险词条',")
     writer=models.CharField(max_length=30)
-    _from=models.CharField(max_length=100,db_column="from",default="",blank=True,verbose_name="来源")
+    _from=models.CharField(max_length=100,db_column="from",default="",blank=True,verbose_name="来源",unique=True)
     addtime=models.PositiveIntegerField(default=lambda :int(time.time()),verbose_name="创建时间")
     keywords=models.CharField(max_length=100,default="",blank=True,verbose_name="SEO-关键词")
     description=models.CharField(max_length=100,default="",blank=True,verbose_name="SEO-描述")
@@ -275,13 +275,12 @@ class Ask(models.Model):
         #assert  user.usertype==2 #必须为代理人账户
         _ = Answer(askid=int(self.askid), ans_content=content, uid=user.uid, parent_ansid=0)
         _.save()
-        profile = user.get_profile()
+
         # if not  profile:
         #     profile=ProxyUserProfile(uid=request.myuser,ans_num=1)
         #     profile.save()
-        if profile:
-            profile.ans_num += 1
-            profile.save()
+        user.ans_num += 1
+        user.save()
         self.ans_num+=1
         self.save()
         return  _
@@ -316,15 +315,12 @@ class Answer(models.Model):
         return datetime.datetime.fromtimestamp(self.ans_time).strftime("%Y-%m-%d %H:%M:%S")
 
     def get_user(self):
-        from myauth.models import  MyUser,ProxyUserProfile
+        from myauth.models import  MyUser
         return MyUser.objects.get(uid=self.uid)
 
     def get_ask(self):
         return  Ask.objects.get(askid=self.askid)
 
-    def get_user_profile(self):
-        from myauth.models import  MyUser,ProxyUserProfile
-        return ProxyUserProfile.objects.get(uid__uid =self.uid)
 
     def save(self, force_insert=False, force_update=False, using=None):
         models.Model.save(self,force_insert,force_update,using)
@@ -366,6 +362,118 @@ class AllSiteMsg(models.Model):
 
     def get_date_time(self):
         return datetime.datetime.fromtimestamp(self.addtime).strftime("%Y-%m-%d %H:%M:%S")
+
+
+
+class Share(models.Model):
+    "签单分享"
+    sid=models.AutoField(primary_key=True)
+    title=models.CharField(max_length=200,default='')
+    addtime=models.PositiveIntegerField(default=lambda:int(time.time()))
+    uptime=models.PositiveIntegerField(default=lambda :int(time.time()))
+    cid=models.PositiveIntegerField(default=0)
+    pid=models.PositiveIntegerField(default=0)
+    other_proname=models.CharField(max_length=200,default='')
+    content=models.TextField()
+    price=models.PositiveIntegerField(default=0)
+    uid=models.PositiveIntegerField(default=0)
+
+    class Meta:
+        db_table="bx_share"
+
+    def get_date_time(self):
+        return datetime.datetime.fromtimestamp(self.uptime).strftime("%Y-%m-%d %H:%M:%S")
+
+    def get_comobj(self):
+        return  Company.objects.get(cid=self.cid)
+
+    def get_simple_content(self):
+        a=filter_tags(self.content)
+        b= replace_charentity(a)
+        _=HTMLParser.HTMLParser()
+        return  _.unescape(b.strip())
+
+    def get_date(self):
+        return datetime.datetime.fromtimestamp(self.uptime).strftime("%Y-%m-%d")
+
+
+
+
+class AddPosition(models.Model):
+    '职位'
+    apid=models.AutoField(primary_key=True)
+    info=models.CharField(max_length=50)
+
+    class Meta:
+        db_table="bx_add_position"
+        ordering=["apid"]
+
+
+
+
+class AddMoney(models.Model):
+    "薪资"
+    amid=models.AutoField(primary_key=True)
+    info=models.CharField(max_length=50)
+
+    class Meta:
+        db_table="bx_add_money"
+        ordering=["amid"]
+
+
+class AddDegree(models.Model):
+    "学位"
+    adid=models.AutoField(primary_key=True)
+    info=models.CharField(max_length=50)
+
+    class Meta:
+        db_table="bx_add_degree"
+        ordering=["adid"]
+
+
+
+
+
+
+class Add(models.Model):
+    "add model"
+    aid=models.AutoField(primary_key=True)
+    uid=models.PositiveIntegerField(default=0)
+    title=models.CharField(max_length=100,default='') # title
+    apid=models.PositiveIntegerField(default=0) # position
+    amid=models.PositiveIntegerField(default=0) # money
+    adid=models.PositiveIntegerField(default=0) # degree
+    cid=models.PositiveIntegerField(default=0)
+    work_year=models.PositiveIntegerField(default=0)  # work year
+    num=models.PositiveIntegerField(default=0)  # peopele num
+    need_content=models.TextField()     # need description
+    work_content=models.TextField()     # work description
+    phone=models.CharField(max_length=30) # phone info
+    address=models.CharField(max_length=30)  # work address
+    addtime=models.IntegerField(default=lambda :int(time.time()))
+    uptime=models.IntegerField(default=lambda:int(time.time()))
+
+    class Meta:
+        db_table="bx_add"
+
+    def get_simple_need_content(self):
+        a=filter_tags(self.need_content)
+        b= replace_charentity(a)
+        _=HTMLParser.HTMLParser()
+        return  _.unescape(b.strip())
+
+    def get_simple_work_content(self):
+        a=filter_tags(self.work_content)
+        b= replace_charentity(a)
+        _=HTMLParser.HTMLParser()
+        return  _.unescape(b.strip())
+
+    def get_date_time(self):
+        return datetime.datetime.fromtimestamp(self.uptime).strftime("%Y-%m-%d %H:%M:%S")
+
+    def get_date(self):
+        return datetime.datetime.fromtimestamp(self.uptime).strftime("%Y-%m-%d")
+
 
 
 

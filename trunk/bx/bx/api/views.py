@@ -25,7 +25,7 @@ def upload_img(request):
     _file=postinfo.get("file")[0]
     extname=request.POST["extname"]
     finger=md5(_file)
-    filename=md5(_file)+str(extname)
+    filename=finger+str(extname)
     _flag=int(finger,16)
     try:
         os.mkdir(os.path.join(settings.MEDIA_ROOT,"img",str(_flag%100)))

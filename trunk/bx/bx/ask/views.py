@@ -10,7 +10,6 @@ from django.core.paginator import Paginator,InvalidPage
 from django.http import  HttpResponseRedirect,HttpResponse
 import  re
 from django.db.models import  Q
-from ..myauth.models import ProxyUserProfile
 import  json
 import  datetime
 from bx.utils.template import get_template_string
