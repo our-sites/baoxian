@@ -27,7 +27,7 @@
       ]
     },
     "www/adviser/1.0.0:index.css": {
-      "uri": "/www/adviser/1.0.0/src/index_b2a802b.css",
+      "uri": "/www/adviser/1.0.0/src/index_da1a1b5.css",
       "type": "css",
       "pkg": "www/adviser/1.0.0:p0"
     },
@@ -43,7 +43,7 @@
   },
   "pkg": {
     "www/adviser/1.0.0:p0": {
-      "uri": "/www/adviser/1.0.0/pkg/adviser_228669b.css",
+      "uri": "/www/adviser/1.0.0/pkg/adviser_9aa921a.css",
       "type": "css",
       "has": [
         "www/adviser/1.0.0:common.css",

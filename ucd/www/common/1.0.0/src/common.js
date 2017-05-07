@@ -89,7 +89,7 @@ if ($fixedArea.length) {
     var $window = $(window);
     $window.on('load scroll resize', function () {
         var scrollTop = $window.scrollTop();
-        if (scrollTop - top > 1) {
+        if (scrollTop - top > 41) {
             $fixedArea.addClass('fn-fixed');
         } else {
             $fixedArea.removeClass('fn-fixed');

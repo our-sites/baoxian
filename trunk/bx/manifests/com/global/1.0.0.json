@@ -28,7 +28,7 @@
       "pkg": "com/global/1.0.0:p1"
     },
     "com/global/1.0.0:global.css": {
-      "uri": "/com/global/1.0.0/src/global_1e73a3e.css",
+      "uri": "/com/global/1.0.0/src/global_8279716.css",
       "type": "css",
       "deps": [
         "com/global/1.0.0:css/font-awesome.css"
@@ -36,12 +36,12 @@
       "pkg": "com/global/1.0.0:p0"
     },
     "com/global/1.0.0:global": {
-      "uri": "/com/global/1.0.0/src/global_9aa4ff6.js",
+      "uri": "/com/global/1.0.0/src/global_4f8434f.js",
       "type": "js",
       "deps": [
         "lib/jquery/1.11.3:jquery",
         "com/global/1.0.0:validator",
-        "com/global/1.0.0:chat/chat",
+        "com/chat/1.0.0:chat",
         "com/global/1.0.0:global.css"
       ],
       "pkg": "com/global/1.0.0:p1"
@@ -68,7 +68,7 @@
       "pkg": "com/global/1.0.0:p0"
     },
     "com/global/1.0.0:validator": {
-      "uri": "/com/global/1.0.0/src/validator_5c63aa5.js",
+      "uri": "/com/global/1.0.0/src/validator_4039915.js",
       "type": "js",
       "deps": [
         "com/validator/0.10.3:validator",
@@ -82,7 +82,7 @@
   },
   "pkg": {
     "com/global/1.0.0:p0": {
-      "uri": "/com/global/1.0.0/pkg/global_32cd252.css",
+      "uri": "/com/global/1.0.0/pkg/global_29359ed.css",
       "type": "css",
       "has": [
         "com/global/1.0.0:css/font-awesome.css",
@@ -91,7 +91,7 @@
       ]
     },
     "com/global/1.0.0:p1": {
-      "uri": "/com/global/1.0.0/pkg/global_6a05f2c.js",
+      "uri": "/com/global/1.0.0/pkg/global_404d7d4.js",
       "type": "js",
       "has": [
         "com/global/1.0.0:dollar",
@@ -104,7 +104,7 @@
         "lib/toastr/2.1.3:toastr",
         "lib/art-dialog/6.0.5:art-dialog",
         "com/global/1.0.0:validator.css",
-        "com/global/1.0.0:chat/chat",
+        "com/chat/1.0.0:chat",
         "com/global/1.0.0:global.css"
       ]
     }

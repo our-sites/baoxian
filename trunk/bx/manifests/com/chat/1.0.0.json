@@ -1,11 +1,11 @@
 {
   "res": {
     "com/chat/1.0.0:chat.css": {
-      "uri": "/com/chat/1.0.0/src/chat_da8f743.css",
+      "uri": "/com/chat/1.0.0/src/chat_1288e07.css",
       "type": "css"
     },
     "com/chat/1.0.0:chat": {
-      "uri": "/com/chat/1.0.0/src/chat_530f742.js",
+      "uri": "/com/chat/1.0.0/src/chat_34621f3.js",
       "type": "js",
       "deps": [
         "com/global/1.0.0:dollar",

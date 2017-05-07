@@ -52,7 +52,7 @@
 
 .fn-fixed {
     position: fixed !important;
-    top: 2px;
+    top: 42px;
     z-index: 111;
 }
 
@@ -77,4 +77,3 @@
 .idf-grey{
     background-color: #bdbdbd;
 }
-

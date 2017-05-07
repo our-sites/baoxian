@@ -9,11 +9,11 @@
       "type": "css"
     },
     "www/common/1.0.0:customized-box.css": {
-      "uri": "/www/common/1.0.0/src/customized-box_fd80fe0.css",
+      "uri": "/www/common/1.0.0/src/customized-box_e68c0fa.css",
       "type": "css"
     },
     "www/common/1.0.0:lively-advisers.css": {
-      "uri": "/www/common/1.0.0/src/lively-advisers_ce899a1.css",
+      "uri": "/www/common/1.0.0/src/lively-advisers_c667ce2.css",
       "type": "css"
     },
     "www/common/1.0.0:warmheart-advisers.css": {
@@ -33,15 +33,15 @@
       "type": "css"
     },
     "www/common/1.0.0:login.css": {
-      "uri": "/www/common/1.0.0/src/login_5a5049a.css",
+      "uri": "/www/common/1.0.0/src/login_06a1794.css",
       "type": "css"
     },
     "www/common/1.0.0:common.css": {
-      "uri": "/www/common/1.0.0/src/common_e6f0cc2.css",
+      "uri": "/www/common/1.0.0/src/common_d126a4e.css",
       "type": "css"
     },
     "www/common/1.0.0:common": {
-      "uri": "/www/common/1.0.0/src/common_e795117.js",
+      "uri": "/www/common/1.0.0/src/common_f769ee9.js",
       "type": "js",
       "deps": [
         "com/global/1.0.0:global",
@@ -49,7 +49,6 @@
         "com/tabs/1.0.0:tabs",
         "com/global/1.0.0:region",
         "lib/slick/1.6.0:slick",
-        "lib/layer/3.0.1:layer",
         "com/global/1.0.0:validator",
         "www/common/1.0.0:common.css"
       ]
