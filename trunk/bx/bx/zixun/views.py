@@ -51,13 +51,14 @@ def index_index(request,name):
 def detail(request,zid):
     info=Consult.objects.get(zid=int(zid))
     try:
-        next_id=Consult.objects.filter(zid__gt=zid,status=1).order_by("zid")[0].zid
+        next_obj=Consult.objects.filter(zid__gt=zid,status=1).order_by("zid")[0]
+        #next_id_obj=Consult.objects.get(zid=next_id)
     except:
-        next_id=0
+        next_obj=None
     try:
-        last_id=Consult.objects.filter(zid__lt=zid,status=1).order_by("-zid")[0].zid
+        last_obj=Consult.objects.filter(zid__lt=zid,status=1).order_by("-zid")[0]
     except:
-        last_id=0
+        last_obj=None
     _infos=Consult.objects.filter(type=info.type,status=1).order_by("-addtime")[:16]
     hot_infos=_infos[:8]
     relate_infos=_infos[8:]

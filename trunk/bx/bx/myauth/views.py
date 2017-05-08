@@ -372,8 +372,8 @@ def register(request):
                 result.set_cookie("user_info",urllib.quote(
                         phpcookie_encode("\t".join([str(user.uid), user.username,request.ip,str(timestamp)]),'gc895316')),
                                   expires=86400*365)
-                if request.province or request.city:
-                    request.send_allsite_msg("来自%s%s的投保用户刚刚在本站注册了账户")
+                if request.province  and isinstance(request.province,(str,unicode)):
+                    request.send_allsite_msg("来自%s的保险代理人刚刚在本站注册了账户"%(request.province))
                 return  result
         else:
             #proxy
@@ -431,8 +431,8 @@ def register(request):
                 result.set_cookie("user_info",urllib.quote(
                         phpcookie_encode("\t".join([str(user.uid), user.username,request.ip,str(timestamp)]),'gc895316')),
                                   expires=86400*365)
-                if request.province or request.city:
-                    request.send_allsite_msg("来自%s%s的保险代理人刚刚在本站注册了账户")
+                if request.province  and isinstance(request.province,(str,unicode)):
+                    request.send_allsite_msg("来自%s的保险代理人刚刚在本站注册了账户"%(request.province))
                 return  result
 
 

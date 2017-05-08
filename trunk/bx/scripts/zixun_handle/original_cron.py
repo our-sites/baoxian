@@ -86,7 +86,7 @@ class Word_analyse(object):
             word_len = 0
         if  content:
 
-            cut_words = content[int(round(word_len * 0.5)):]
+            cut_words = content[int(round(word_len * 0.9)):]
             #print "截取后的词",cut_words
             try:
                 #中文转韩文zh_to_kor
@@ -108,7 +108,7 @@ class Word_analyse(object):
             except Exception as  e:
                 translate_result = e
             #对翻译后对文章进行拼接
-            join_context=content[:int(round(word_len * 0.5))]+translate_result
+            join_context=content[:int(round(word_len * 0.9))]+translate_result
         else:
             join_context,cut_words,translate_result='','',''
         return {'title':self.title,'kw':set(kw),'zhaiyao':summary,'later_context':join_context,'before_context':self.context,'word_len':word_len,"data":[{'src':cut_words,"tgt":translate_result}]}
@@ -121,7 +121,7 @@ def myjoin(base, url):
 
 def save_img(content,extname):
     img_content=content
-    a=urllib2.urlopen("http://img.baoxiangj.com/api/upload_img",data=urllib.urlencode({"extname":extname,"file":img_content}) ).read()
+    a=urllib2.urlopen("http://www.bao361.cn/api/upload_img",data=urllib.urlencode({"extname":extname,"file":img_content}) ).read()
     return  json.loads(a)["imgurl"]
 
 
@@ -129,7 +129,7 @@ mgr=MySQLMgr("118.89.220.36",3306,"bx_abc","bx_user","gc895316")
 
 
 
-result=mgr.runQuery('''select zid,title,content,`from`  from bx_consult WHERE status=0   limit 5''',())
+result=mgr.runQuery('''select zid,title,content,`from`  from bx_consult WHERE status=0   limit 10''',())
 
 for _zid,title,content,_from  in  result:
     if not content:
@@ -142,8 +142,15 @@ for _zid,title,content,_from  in  result:
             if _from.startswith("http://") or _from.startswith("https://"):
                 try:
                     _url=myjoin(_from,src)
-                    _imgdata=urllib2.urlopen(_url,timeout=2).read()
+                    print _url
+                    request=urllib2.Request(_url)
+                    request.headers["Upgrade-Insecure-Requests"]=1
+                    request.headers["User-Agent"]="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.98 Safari/537.36 QQBrowser/4.2.4718.400"
+                    request.headers["Accept"]="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+                    _imgdata=urllib2.urlopen(request,timeout=3).read()
                     extname="."+ _url.split(".")[-1]
+                    if "/" in extname:
+                        extname=".jpg"
                     new_name=save_img(_imgdata,extname)
                     print new_name
                 except Exception as e :
@@ -166,7 +173,7 @@ for _zid,title,content,_from  in  result:
                     test = Word_analyse({"title": "", "context": _text})
                     result = test.get_result()
                     PyQuery(_).html(result["later_context"])
-
+        doc("script").remove()
         content= doc.html()
         mgr.runOperation('''update bx_consult  set content=%s,status=3,keywords=%s ,abstract=%s where zid=%s''',(content,keywords,zhaiyao,_zid))
         print _zid

@@ -20,9 +20,9 @@ import  time
 
 @csrf_exempt
 def upload_img(request):
-    assert  request.META["HTTP_HOST"]=="img.baoxiangj.com"
-    postinfo= urlparse.parse_qs(request.body)
-    _file=postinfo.get("file")[0]
+    print request.method
+    postinfo=request.POST
+    _file=urlparse.parse_qs(request.body).get("file")[0]
     extname=request.POST["extname"]
     finger=md5(_file)
     filename=finger+str(extname)

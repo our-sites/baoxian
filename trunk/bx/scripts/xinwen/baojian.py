@@ -10,6 +10,20 @@ import  re
 import  time
 import  datetime
 import  time
+import  json
+import  urllib
+import  sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
+
+def add_xinwen(_from,writer,title,content):
+    result=urllib2.urlopen("http://www.bao361.cn/zixun/add_xinwen",urllib.urlencode({"secret":"gc7232275",
+                                                                        "from":str(_from),
+                                                                        "writer":str(writer),
+                                                                        "title":str(title),
+                                                                        "content":str(content)})).read()
+    return  json.loads(result)
+
 mgr=MySQLMgr("118.89.220.36",3306,"bx_abc","bx_user","gc895316")
 spider_init(1,2000000)
 alldata=[]
@@ -42,5 +56,4 @@ spider_join()
 
 for i,j,k,l   in alldata:
     print i,j ,k ,l
-    mgr.runOperation(''' insert ignore    into bx_consult(title, type, writer, `from`, addtime, content, status, type_cate)
-                          VALUES (%s,4,"保监会",%s,%s,%s,0,0)''',(i,l , k ,j))
+    print add_xinwen(l,"保监会",i,j)

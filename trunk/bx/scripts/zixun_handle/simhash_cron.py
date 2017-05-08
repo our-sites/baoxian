@@ -107,7 +107,7 @@ def consult_handle(zid,content):
 
 
 
-result=mgr.runQuery('''select zid,content  from bx_consult WHERE status=3   limit 5''',())
+result=mgr.runQuery('''select zid,content  from bx_consult WHERE status=3   limit 50''',())
 
 for _zid,content  in  result:
     print consult_handle(_zid,content)

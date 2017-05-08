@@ -21,7 +21,20 @@ def myjoin(base, url):
     path = normpath(arr[2])
     return urlunparse((arr.scheme, arr.netloc, path, arr.params, arr.query, arr.fragment))
 
-mgr=MySQLMgr("118.89.220.36",3306,"bx_abc","bx_user","gc895316")
+import  urllib
+import  json
+import  sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
+
+def add_xinwen(_from,writer,title,content):
+    result=urllib2.urlopen("http://www.bao361.cn/zixun/add_xinwen",urllib.urlencode({"secret":"gc7232275",
+                                                                        "from":str(_from),
+                                                                        "writer":str(writer),
+                                                                        "title":str(title),
+                                                                        "content":str(content)})).read()
+    return  json.loads(result)
+
 spider_init(10,2000000)
 alldata=[]
 def index_handle(result):
@@ -48,5 +61,4 @@ spider_join()
 
 for i,j,k  in alldata:
     print i,j ,k
-    mgr.runOperation(''' insert ignore   into bx_consult(title, type, writer, `from`, addtime, content, status, type_cate)
-                        VALUES (%s,4,"网络",%s,%s,%s,0,0)''',(j,i,int(time.time()),k))
+    print add_xinwen(i,"网络",j,k)

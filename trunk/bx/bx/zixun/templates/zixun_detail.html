@@ -2,7 +2,7 @@
 {% block title %}
     {{ info.title }}|保险管家
 {% endblock %}
-{% block keywords %}{{ info.keywords }} 保险管家 保险之家{% endblock %}
+{% block keywords %}{{ info.title }}{% endblock %}
 {% block description %}{{ info.get_simple_content|slice:":100" }}_保险管家_保险之家{% endblock %}
 {% load atm %}
 {% block css %}
@@ -10,13 +10,13 @@
 {% endblock %}
 {% block content %}
 
-    <div id="informationDetail" style="background-color: #f5f5f5">
+    <div id="informationDetail" >
     <div class="grid clf">
         <!-- 面包屑 -->
         <div class="bx-crubms">
             <a href="/">保险管家首页</a> &gt;
             <a href="/zixun/">保险资讯</a> &gt;
-            <a href="#">{{ info.get_type }}</a> &gt;{{ info.title }}
+            <a href="{{ info.get_type_url }}">{{ info.get_type }}</a> &gt;{{ info.title }}
         </div>
         <div class="clf">
             <!-- 左侧 -->
@@ -44,22 +44,24 @@
                     <div class="information-article-content">
                         {% if info.abstract %}
                             <p style="background: #f1f1f1;padding: 10px 15px;font-size: 18px;line-height: 30px;color: #666; margin:0 10px ">摘要:{{ info.abstract }}</p>
+                            <br/>
                         {% endif %}
                         {{ info.content|safe }}
+                        <p>{{ info.title }}</p>
                     </div>
                     <div style="background: #f1f1f1;padding: 10px 15px;font-size: 13px;line-height: 25px;color: #666;margin: 0 10px">
                         <p >保险管家网关于版权的免责声明：</p>
                         <p>1.凡本网站注明 来源"保险管家网"的作品均受著作权保护，版权属于本网站，转账请注明出处。违反上述声明者，本网站有权追究法律责任</p>
-                        <p>2.凡本网站中注明来源非保险管家网的作品， 均转载自网络， 目的在于传播更多信息，并不代表本网赞同其观点和对其真实性负责，如果涉及侵权，请及时联系我们，我们会尽快核实并删除。</p>
+                        <p>2.凡本网站中注明来源非保险管家网的作品， 均转载自网络， 目的在于传播更多信息，并不代表本网赞同其观点和对其真实性负责，如果涉及侵权，请及时联系我们(news@bao361.cn)，我们会尽快核实并删除。</p>
                     </div>
                     <!-- 文章底部 -->
                     <div class="information-article-footer">
                         <span class="filp">
-                            {% if last_id %}
-                    		<a href="/zixun/detail/{{ last_id }}.html" class="prev">上一篇</a>
+                            {% if last_obj %}
+                    		<a href="/zixun/detail/{{ last_obj.zid }}.html" class="prev">{{ last_obj.title }}</a>
                             {% endif %}
-                        {% if next_id %}
-                    		<a href="/zixun/detail/{{ next_id }}.html" class="next">下一篇</a>
+                        {% if next_obj %}
+                    		<a href="/zixun/detail/{{ next_obj.zid }}.html" class="next">{{ next_obj.title }}</a>
                         {% endif %}
                     	</span>
                         <span class="share">

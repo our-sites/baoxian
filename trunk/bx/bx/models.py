@@ -78,6 +78,12 @@ class Consult(models.Model):
         config={1:"保险百科",2:"社会案例",3:"保险规划",4:"保险新闻",5:"监管动态",6:"保险词条"}
         if self.type in config:
             return config[self.type]
+
+    def get_type_url(self):
+        config={1:"/zixun/baike/",2:"/zixun/anli/",3:"/zixun/guahua/",
+                4:"/zixun/xinwen/",5:"/zixun/dongtai/",6:"/zixun/citiao/"}
+        return  config[self.type]
+
     def simple_title(self):
         if len(self.title)>17:
             return self.title[:17]+".."

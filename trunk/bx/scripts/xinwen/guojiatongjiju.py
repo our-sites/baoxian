@@ -8,7 +8,20 @@ from threadspider import  *
 from pyquery import  *
 import  datetime
 from gcutils.db import  MySQLMgr
-mgr=MySQLMgr("10.141.52.179",3306,"bx_abc","bx_user","gc895316")
+import  urllib
+import  json
+import  sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
+
+def add_xinwen(_from,writer,title,content):
+    result=urllib2.urlopen("http://www.bao361.cn/zixun/add_xinwen",urllib.urlencode({"secret":"gc7232275",
+                                                                        "from":str(_from),
+                                                                        "writer":str(writer),
+                                                                        "title":str(title),
+                                                                        "content":str(content)})).read()
+    return  json.loads(result)
+
 spider_init(1,2000000)
 alldata=[]
 def list_handle(result):
@@ -34,5 +47,4 @@ Spider("http://www.stats.gov.cn/tjsj/zxfb/index.html",code="utf-8",response_hand
 
 spider_join()
 for i,j,k,l   in alldata:
-    mgr.runOperation(''' insert ignore    into bx_consult(title, type, writer, `from`, addtime, content, status, type_cate)
-                          VALUES (%s,4,"国家统计局",%s,%s,%s,0,0)''',(i,l , k ,j))
+    print add_xinwen(l,"国家统计局",i,j)

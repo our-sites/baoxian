@@ -55,4 +55,6 @@ urlpatterns = patterns('',
         ("^zixun_sitemap(\d+).xml$",views.zixun_sitemap_xml),
         ("^product_sitemap(\d+).xml$",views.product_sitemap_xml),
         ("^ask_sitemap(\d+).xml$",views.ask_sitemap_xml),
+
+                       ("^",lambda x:HttpResponseRedirect("/static/imgs/logo.png")),
 )
