@@ -168,7 +168,7 @@
             {% if allinfo.paginator.num_pages >= 2 %}
                 <div class="bx-list-flip clf">
                     {% if allinfo.has_previous %}
-                    <a href="/product/search/{{ people_id }}-{{ cate_id }}-{{ c_id }}/{{ allinfo.previous_page_number }}.html{% if keyword %}?keyword={{ keyword|urlencode }}{% endif %}" class="bx-list-flip-btn prev">&lt;</a>
+                    <a href="/product/search/{{ people_id }}-{{ cate_id }}-{{ c_id }}/{{ allinfo.previous_page_number }}.html{% if keyword %}?keyword={{ keyword|urlencode }}{% endif %}" class="bx-list-flip-btn prev">上一页</a>
                         {% endif %}
                     {% for t in allinfo.number|near:3 %}
                         {% if t > 0 and t <= allinfo.paginator.num_pages %}
@@ -176,7 +176,7 @@
                         {% endif %}
                     {% endfor %}
                 {% if allinfo.has_next %}
-                    <a href="/product/search/{{ people_id }}-{{ cate_id }}-{{ c_id }}/{{ allinfo.next_page_number }}.html{% if keyword %}?keyword={{ keyword|urlencode }}{% endif %}" class="bx-list-flip-btn next">&gt;</a>
+                    <a href="/product/search/{{ people_id }}-{{ cate_id }}-{{ c_id }}/{{ allinfo.next_page_number }}.html{% if keyword %}?keyword={{ keyword|urlencode }}{% endif %}" class="bx-list-flip-btn next">下一页</a>
                     {% endif %}
                 </div>
             {% endif %}

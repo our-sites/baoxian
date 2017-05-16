@@ -482,4 +482,15 @@ class Add(models.Model):
 
 
 
-
+class Advice(models.Model):
+    "咨询"
+    iid=models.AutoField(primary_key=True)
+    uid=models.PositiveIntegerField(default=0)
+    phone=models.PositiveIntegerField(default=0)
+    content=models.CharField(max_length=300,default='')
+    addtime=models.PositiveIntegerField(default=lambda:int(time.time()))
+    ip=models.CharField(max_length=50,default='')
+    province_id=models.PositiveIntegerField(default=0)
+    city_id=models.PositiveIntegerField(default=0)
+    class Meta:
+        db_table="bx_advice"

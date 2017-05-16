@@ -1,13 +1,12 @@
-    <div class="bx-rtk">
-        <div class="bx-rtk-content">
-            <div class="bx-rtk-title">实时动态</div>
-            <ul>
-                {% for msg in request.get_allsite_msg %}
-                <li>
-                    <a href="{{ msg.url }}">※ {{ msg.message|slice:":60" }}&nbsp;</a>
-                </li>
-                {% endfor %}
-
-            </ul>
-        </div>
+<div class="bx-rtk">
+    <div class="bx-rtk-bell">
+        <img src="/static/imgs/bell.gif" alt="实时动态">
     </div>
+    <ul>
+        {% for msg in request.get_allsite_msg %}
+            <li>
+                <a href="{{ msg.url }}">※ {{ msg.message|slice:":60" }}&nbsp;</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

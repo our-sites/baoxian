@@ -1,9 +1,13 @@
 {% extends "work_base.html" %}
 {% block custom_css %}
     <link rel="stylesheet" href="/static/datepicker/foundation-datepicker.css">
+<link href="http://hovertree.com/texiao/bootstrap/4/css/city-picker.css" rel="stylesheet" type="text/css" />
+
+
     {#    <link rel="stylesheet" href="/static/datepicker/foundation.min.css">#}
 {% endblock %}
 {% block content %}
+
     {% load math %}
     <div id="page-wrapper">
         <div class="row">
@@ -51,7 +55,7 @@
                         <div class="col-lg-6 form-group">
                             <label>出生年月:</label>
                             <input class="form-control" placeholder=""  name="birthday"
-                                   id="birthday" value="{{ request.myuser.birthday }}">
+                                   id="birthday" value="{% if not request.myuser.birthday %}1985-01-01{% else %}{{ request.myuser.birthday }}{% endif %}">
                         </div>
                     </div>
                     <div class="row">
@@ -81,16 +85,31 @@
                         <div class="col-lg-6 form-group">
                             <label style="display: block">性别：</label>
                             <label class="radio-inline">
-                                <input type="radio" name="sex" id="optionsRadiosInline1" value="0" {% if request.myuser.sex == 0 %}checked="checked"{% endif %}>男
+                                <input type="radio" name="sex" id="optionsRadiosInline1" value="1" {% if request.myuser.sex != 2 %}checked="checked"{% endif %}>男
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="sex" id="optionsRadiosInline2" value="1" {% if request.myuser.sex == 1 %}checked="checked"{% endif %}>女
+                                <input type="radio" name="sex" id="optionsRadiosInline2" value="2" {% if request.myuser.sex == 2 %}checked="checked"{% endif %}>女
                             </label>
                         </div>
-                        <div    class="col-lg-6">
-                            <button type="submit" class="btn btn-primary">提交</button>
+                        <div    class="col-lg-6 form-group">
+                            <label>所在地区:</label>
+
+                        <div data-toggle="distpicker" id="distpicker">
+                        <select class="form-control" name="province_id"    style="width: 45%;display: inline-block" ></select>
+                        <select class="form-control" name="city_id"  style="width: 45%;display: inline-block;"></select>
                         </div>
 
+
+
+
+                        </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <button type="submit" class="btn btn-primary">提交</button>
+
+                    </div>
                 </div>
 {#                                    <div class="col-lg-6 form-group">#}
 
@@ -107,10 +126,22 @@
 {% endblock %}
 {% block custom_js %}
     <script src="/static/datepicker/foundation-datepicker.js"></script>
+
+        <script src="/static/js/distpicker/distpicker.js"></script>
+
     <script>
         $('#birthday').fdatepicker({
             format: 'yyyy-mm-dd',
             pickTime: false
         });
+
+    $("#distpicker").distpicker({
+        {% if request.myuser.province_id %}
+            province: '{{ request.myuser.province_id }}',
+            {% if request.myuser.city_id %}
+                city: '{{ request.myuser.city_id }}',
+            {% endif %}
+        {% endif %}
+    })
     </script>
 {% endblock %}

@@ -10,7 +10,7 @@ import product
 import info
 import ask
 import users
-import custom
+#import custom
 from django.conf import  settings
 
 class App(object):

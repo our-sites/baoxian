@@ -18,6 +18,7 @@ class Dailiren(object):
                                ("^detail/(\d+)\.html",views.detail),
                                 ("^search/",views.search),
                                ("^$",views.index),
+                               ("^add_advice",views.add_adivce)
             )
         return urlpatterns
     @property

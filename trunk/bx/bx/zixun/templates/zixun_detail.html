@@ -2,7 +2,7 @@
 {% block title %}
     {{ info.title }}|保险管家
 {% endblock %}
-{% block keywords %}{{ info.title }}{% endblock %}
+{% block keywords %}{{ info.keywords }}{% endblock %}
 {% block description %}{{ info.get_simple_content|slice:":100" }}_保险管家_保险之家{% endblock %}
 {% load atm %}
 {% block css %}
@@ -27,7 +27,7 @@
                     <div class="information-article-header">
                         <h2>{{ info.title }}</h2>
                         <p class="clf">
-                            时间：{{ info.get_date }}　|　来源：{{ info.writer }}
+                            时间：{{ info.get_date }}　|　来源：网络
                             <span class="share">
                             	<span class="fa-stack fa-lg weixin">
                             	  <i class="fa fa-circle fa-stack-2x"></i>

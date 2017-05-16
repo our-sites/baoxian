@@ -20,7 +20,7 @@
                 <div class="adviser-preview-basic">
                     <p class="job">客户经理</p>
                     <p class="company"><span>{{ user.get_province_city_info }}</span>{{ user.comname }}</p>
-                    <p class="contact"><span>电话：{{ user.phone }}</span>QQ：{{ user.qq }}<span>微信：{{ user.weixin }}</span></p>
+                    <p class="contact"><span>电话：{{ user.get_hide_phone }}</span>QQ：{{ user.qq }}<span>微信：{{ user.get_hide_weixin }}</span></p>
 
                     <a class="consult-btn" href="/ask/" target="_blank">我要咨询</a>
                 </div>
@@ -221,7 +221,7 @@
                 </div>
                 <div class="content clf">
                     <div class="pic-item">
-                        <img src="{{ user.imgurl.url }}">
+                        <img src="{{ user.get_img_url }}">
                     </div>
 
                 </div>

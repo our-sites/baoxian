@@ -94,23 +94,27 @@ class Word_analyse(object):
                                                                                      "query": cut_words, "transtype": "translang",
                                                                                  "simple_means_flag": "3"},timeout=10)
                 response = data.text
-                translate_result = json.loads(response).get("trans_result").get("data")[0].get("dst")
-                if translate_result:
+                translate_result_kor = json.loads(response).get("trans_result").get("data")[0].get("dst")
+                if translate_result_kor:
                     # 韩文转化为中文kor_to_zh
                     data = requests.post("http://fanyi.baidu.com/v2transapi", data={"from": "kor", "to": "zh",
-                                                                            "query": translate_result,
+                                                                            "query": translate_result_kor,
                                                                             "transtype": "translang",
                                                                             "simple_means_flag": "3"})
                     response = data.text
                     translate_result = json.loads(response).get("trans_result").get("data")[0].get("dst")
                 else:
-                    translate_result = '未请求到数据'
+                    translate_result = ''
             except Exception as  e:
-                translate_result = e
-            #对翻译后对文章进行拼接
-            join_context=content[:int(round(word_len * 0.9))]+translate_result
+                translate_result = ''
+                print str(e)
+            if translate_result:
+                #对翻译后对文章进行拼接
+                join_context=content[:int(round(word_len * 0.9))]+translate_result
+            else:
+                join_context=content
         else:
-            join_context,cut_words,translate_result='','',''
+            join_context,cut_words,translate_result=content,'',''
         return {'title':self.title,'kw':set(kw),'zhaiyao':summary,'later_context':join_context,'before_context':self.context,'word_len':word_len,"data":[{'src':cut_words,"tgt":translate_result}]}
 
 def myjoin(base, url):
@@ -166,13 +170,13 @@ for _zid,title,content,_from  in  result:
         keywords=" ".join ([i  for i,j in   pseg.cut(title) if j!="v"][:5])
         print keywords
         print zhaiyao
-        for _ in  doc("p"):
-            if PyQuery(_).children().__len__()==0:
-                _text=PyQuery(_).text()
-                if len(_text)>10:
-                    test = Word_analyse({"title": "", "context": _text})
-                    result = test.get_result()
-                    PyQuery(_).html(result["later_context"])
+        # for _ in  doc("p"):
+        #     if PyQuery(_).children().__len__()==0:
+        #         _text=PyQuery(_).text()
+        #         if len(_text)>10:
+        #             test = Word_analyse({"title": "", "context": _text})
+        #             result = test.get_result()
+        #             PyQuery(_).html(result["later_context"])
         doc("script").remove()
         content= doc.html()
         mgr.runOperation('''update bx_consult  set content=%s,status=3,keywords=%s ,abstract=%s where zid=%s''',(content,keywords,zhaiyao,_zid))

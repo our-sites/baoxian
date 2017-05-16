@@ -451,7 +451,12 @@ def contact(request):
         qq=post_info.get("qq")
         #phone=post_info.get("phone")
         sex=post_info.get("sex")
-
+        province_id=post_info.get("province_id")
+        city_id=post_info.get("city_id")
+        if province_id:
+            province_id=int(province_id)
+        if city_id:
+            city_id=int(city_id)
         weixin=post_info.get("weixin")
         sex=int(sex)
 
@@ -495,6 +500,10 @@ def contact(request):
             request.myuser.sex=sex
 
             request.myuser.weixin=weixin
+            if province_id:
+                request.myuser.province_id=province_id
+            if province_id and  city_id:
+                request.myuser.city_id=city_id
             request.myuser.save()
             success_msg="基本信息修改成功!"
 

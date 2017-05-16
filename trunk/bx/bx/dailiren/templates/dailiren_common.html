@@ -17,58 +17,65 @@
                                 {{ user.get_namecontent }}，{{ user.get_short_comname }}
                             </h4>
                             <p>
-                                <span class="rank-item-level"></span>
-                                <span class="rank-item-authentication"></span>
+                                <span class="idf  idf-level"></span>
+                                {% if user.phone %}<span class="idf idf-authentication">已认证</span>{% endif %}
+                                {% if user.proxy_workyear %}<span class="idf idf-exprience">从业{{ user.proxy_workyear }}年</span>{% endif %}
                             </p>
                         </div>
-                        <div class="rank-item-consult">
-                            咨询
-                            <script class="chat-box-wrap" type="text/html">
-                                <div class="chat-online-wrap chat-box">
-                                    <!--聊天-->
-                                    <div class="chat-online-box">
-                                        <!--header-->
-                                        <div class="chat-online-header clf">
-                                            <img src="
-                                                    {{ user.get_img_url }}"
-                                                 alt="" class="chat-online-avatar">
-                                            <div class="chat-online-info">
-                                                <p>{{ user.get_namecontent }}，{{ profile.get_short_comname }}</p>
-                                                <p>
-                                                    <span class="chat-online-info-level"></span>
-                                                    <span class="chat-online-info-authentication"></span>
-                                                </p>
-                                            </div>
-                                            <div class="chat-online-close" title="关闭"></div>
-                                        </div>
-                                        <!--记录-->
-                                        <div class="chat-online-body">
-                                            <div class="chat-online-item clf left">
-                                                <img src="
-                                                        {{ user.get_img_url }}"
-                                                     alt="" class="chat-online-item-avatar">
-                                                <div class="chat-online-item-content">你好，有什么需要帮助的么？
-                                                    请留下你的联系方式，以便我能联系到您。
+                        <div class="rank-item-consult i-want-to-ask" title="咨询">
+                            <img src="/static/imgs/consult-icon.png">
+                           <script class="chat-box-wrap" type="text/html">
+                                        <div class="consultation-popup">
+                                            <div class="consultation-popup-content">
+                                                <div class="consultation-header clf">
+                                                    <div class="adviser-info clf">
+                                                        <a href="" class="adviser-info-avatar">
+                                                            <img src="{{ user.get_img_url }}" alt="" style="width: 48px;height: 48px;border-radius: 24px">
+                                                        </a>
+                                                        <div class="adviser-info-content">
+                                                            <h4>
+                                                                <a href="" class="adviser-info-name">{{ user.get_namecontent }}</a>
+                                                                <a href="" class="adviser-info-company">{{ user.get_short_comname }}</a>
+                                                            </h4>
+                                                            <p>
+                                                                <span class="idf  idf-level"></span>
+                                                                {% if user.phone %}<span class="idf idf-authentication">已认证</span>{% endif %}
+                                                                {% if user.proxy_workyear %}<span class="idf idf-exprience">从业{{ user.proxy_workyear }}年</span>{% endif %}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <span class="chat-online-close close" title="关闭"></span>
                                                 </div>
-                                            </div>
+                                                <div class="consultation-body">
+                                                    <h5>已有 <span>1234</span> 位客户通过保险管家获得咨询帮助</h5>
 
-                                        </div>
-                                        <!--发送-->
-                                        <div class="chat-online-footer">
-                                            <form class="ui-form" action="/files/bx/www/common/1.0.0/html/data/提交失败">
-                                                <div class="ui-form-item">
-                                                    <textarea name="text" class="chat-text-field"
-                                                              placeholder="填写咨询信息......"></textarea>
-                                                    <div class="ui-form-explain"></div>
+                                                    <form class="ui-form consultation-form" action="/dailiren/add_advice" method="post">
+                                                        {% csrf_token %}
+                                                        <input name="next" value="{{ request.path }}" style="display:none;">
+                                                        <div class="ui-form-item">
+                                                            <div class="form-control clf">
+                                                                <div class="form-control-ele">
+                                                                    <input class="cellphone" type="text" name="cellphone" placeholder="手机号码">
+                                                                </div>
+                                                            </div>
+                                                            <div class="ui-form-explain"></div>
+                                                        </div>
+                                                        <div class="ui-form-item">
+                                                            <div class="form-control clf">
+                                                                <div class="form-control-ele">
+                                                                    <textarea class="ask-text" name="text" placeholder="留言内容"></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="ui-form-explain"></div>
+                                                        </div>
+                                                        <button type="submit" class="submit">提交</button>
+                                                    </form>
+                                                    <p class="tips">您的隐私将被严格保密</p>
                                                 </div>
-                                                <div class="send-btn">发送</div>
-                                            </form>
+                                            </div>
+                                            <div class="consultation-mask"></div>
                                         </div>
-                                    </div>
-                                    <!--遮罩-->
-                                    <div class="chat-online-mask"></div>
-                                </div>
-                            </script>
+                                    </script>
                         </div>
                     </div>
 

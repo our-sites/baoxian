@@ -18,6 +18,7 @@ import  dailiren
 import work
 import  company
 import  app
+import  weixin_dingyuehao
 
 urlpatterns = patterns('',
     # Examples:
@@ -48,6 +49,10 @@ urlpatterns = patterns('',
        (r'^ckeditor/', include('ckeditor_uploader.urls')),
        (r"^company/",include(company.site.urls)),
        (r"^app/",include(app.site.urls)),
+       (r"^weixin_dingyuehao/",include(weixin_dingyuehao.site.urls)),
+
+
+
         # sitemap
         ("^sitemap.index$",views.sitemap_index),
         ("^sitemap.xml$",views.sitemap_index),

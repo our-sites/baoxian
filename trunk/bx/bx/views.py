@@ -44,17 +44,46 @@ def about(request):
 
 
 def sitemap_index(request):
+    def get_zixun_sitemap_lastmod(id):
+        id = int(id)
+        try:
+            info = Consult.objects.filter(zid__gte=id * 10000, zid__lt=(id + 1) * 10000).order_by("-addtime")
+            return info[0].addtime
+        except:
+            return None
+
+    def get_product_sitemap_lastmod(id):
+        id = int(id)
+        try:
+            info = Product.objects.filter(pid__gte=id * 10000, pid__lt=(id + 1) * 10000).order_by("-addtime")
+            return info[0].addtime
+        except:
+            return None
+
+    def get_ask_sitemap_lastmod(id):
+        id = int(id)
+        try:
+            info = Ask.objects.filter(askid__gte=id * 10000, askid__lt=(id + 1) * 10000).order_by("-ask_time")
+            return  info[0].ask_time
+        except:
+            return None
+
     _=Consult.objects.all().order_by("-zid")[0]
     max_id=_.zid
-    zixun_info=[i for  i in range(0,max_id/10000+1)]
+    zixun_info=[(i,get_zixun_sitemap_lastmod(i)) for  i in range(0,max_id/10000+1)]
+    zixun_info=[(i,datetime.datetime.fromtimestamp(j).strftime("%Y-%m-%d %H:%M:%S")) for i,j in zixun_info if j ]
+
 
     _=Product.objects.all().order_by("-pid")[0]
     max_id=_.pid
-    product_info=[i for  i in range(0,max_id/10000+1)]
+    product_info=[(i,get_product_sitemap_lastmod(i)) for  i in range(0,max_id/10000+1)]
+    product_info=[(i,datetime.datetime.fromtimestamp(j).strftime("%Y-%m-%d %H:%M:%S")) for i,j in product_info if j ]
 
     _=Ask.objects.all().order_by("-askid")[0]
     max_id=_.askid
-    ask_info=[i for  i in range(0,max_id/10000+1)]
+    ask_info=[(i,get_ask_sitemap_lastmod(i)) for  i in range(0,max_id/10000+1)]
+    ask_info=[(i,datetime.datetime.fromtimestamp(j).strftime("%Y-%m-%d %H:%M:%S")) for i,j in ask_info if j ]
+
 
     return render_to_response("sitemap/sitemap_index.html", locals(),mimetype="text/xml")
 

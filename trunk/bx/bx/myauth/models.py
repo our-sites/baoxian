@@ -134,6 +134,17 @@ class MyUser(models.Model):
             info+=Area.objects.get(id=self.city_id).areaname
         return  info
 
+    def get_hide_phone(self):
+        if self.phone:
+            return  str(self.phone)[:-4]+"****"
+        else:
+            return ''
+
+    def get_hide_weixin(self):
+        if self.weixin:
+            return  str(self.weixin)[:-4]+"****"
+        else:
+            return ''
 
 class Msg(models.Model):
     msgid=models.AutoField(primary_key=True)

@@ -5,7 +5,7 @@ __author__ = 'admin'
 # ---------------------------------
 from django.shortcuts import  render_to_response
 from django.template.context import  RequestContext
-from django.http import  HttpResponseRedirect
+from django.http import  HttpResponseRedirect,HttpResponse
 from bx.models import *
 from django.core.paginator import  Paginator
 from  bx.myauth.models import *
@@ -99,3 +99,29 @@ def detail(request,id):
 
     return  render_to_response("dailiren_detail.html",locals(),
                                context_instance=RequestContext(request))
+
+def add_adivce(request):
+    get_info=request.GET
+    post_info=request.POST
+    phone=post_info.get("cellphone")
+    text=post_info.get("text")
+    next=post_info.get("next","/")
+    phone=phone.strip()
+    try:
+        assert len(phone)==11
+        phone=int(phone)
+    except:
+        data={"errorCode":500,"formError":{"fields":[{"name":"cellphone","msg":"手机号格式不正确！"}]}}
+    else:
+        if not text:
+            data={"errorCode":500,"formError":{"fields":[{"name":"text","msg":"内容必须填写！"}]}}
+        else:
+            _=Advice(phone=phone,content=text,ip=request.ip,province_id=request.province_id,
+                     city_id=request.city_id)
+            _.save()
+            if request.province or request.city:
+                request.send_allsite_msg("来自%s的用户提交了一份保险咨询"%(request.province+request.city))
+            data={"errorCode":0,"msg":"咨询提交成功！","formSuccess":{"redirect":next ,
+                                                                 "duration":1000},"data":{}}
+
+    return HttpResponse(json.dumps(data),mimetype="application/javascript")

@@ -1,14 +1,13 @@
 .bx-crubms {
-    color: #9e9e9e;
+    color: #333;
     margin-bottom: 20px;
+	font-size: 14px;
 }
 
 .bx-crubms a {
-    color: #9e9e9e;
+    color: #333;
 }
 
 .bx-crubms a:hover {
-    color: #42bad0;
+    color: #333;
 }
-
-

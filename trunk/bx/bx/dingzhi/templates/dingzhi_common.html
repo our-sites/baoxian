@@ -1,48 +1,89 @@
+{#<div class="customized-box">#}
+{#    <h3>量身定制</h3>#}
+{#    <div class="customized-content">#}
+{#        <form id="customized-form" class="ui-form" action="/dingzhi/add/" method="post">#}
+{#            {% csrf_token %}#}
+{#            <div class="ui-form-item">#}
+{#                <div class="form-control clf">#}
+{#                    <label for="contact">#}
+{#                        您的称呼#}
+{#                    </label>#}
+{#                    <div class="form-control-ele">#}
+{#                        <input type="text" id="name" name="name" placeholder="请填写">#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="ui-form-explain"></div>#}
+{#            </div>#}
+{#                        <div class="ui-form-item">#}
+{#                <div class="form-control clf">#}
+{#                    <label for="contact">#}
+{#                        手机#}
+{#                    </label>#}
+{#                    <div class="form-control-ele">#}
+{#                        <input type="text" id="contact" name="contact" placeholder="请填写">#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="ui-form-explain"></div>#}
+{#            </div>#}
+{#            <div class="ui-form-item">#}
+{#                <div class="form-control clf">#}
+{#                    <label for="type">#}
+{#                        联系时段#}
+{#                    </label>#}
+{#                    <div class="form-control-ele">#}
+{#                        <select name="type" id="type">#}
+{#                            <option value="0">随时</option>#}
+{#                            <option value="1">早上</option>#}
+{#                            <option value="2">中午</option>#}
+{#                            <option value="3">晚上</option>#}
+{##}
+{#                        </select>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="ui-form-explain"></div>#}
+{#            </div>#}
+{##}
+{#            <button type="submit" class="submit">提交</button>#}
+{#        </form>#}
+{#    </div>#}
+{#</div>#}
 <div class="customized-box">
     <h3>量身定制</h3>
     <div class="customized-content">
-        <form id="customized-form" class="ui-form" action="/dingzhi/add/" method="post">
+        <form id="customized-form" class="ui-form" action="/dingzhi/add/"
+             data-widget-cid="widget-2" method="post">
             {% csrf_token %}
             <div class="ui-form-item">
                 <div class="form-control clf">
-                    <label for="contact">
-                        您的称呼
-                    </label>
                     <div class="form-control-ele">
-                        <input type="text" id="name" name="name" placeholder="请填写">
-                    </div>
-                </div>
-                <div class="ui-form-explain"></div>
-            </div>
-                        <div class="ui-form-item">
-                <div class="form-control clf">
-                    <label for="contact">
-                        手机
-                    </label>
-                    <div class="form-control-ele">
-                        <input type="text" id="contact" name="contact" placeholder="请填写">
+                        <input type="text" id="name" name="name" placeholder="称呼" data-widget-cid="widget-3"
+                               data-explain="">
                     </div>
                 </div>
                 <div class="ui-form-explain"></div>
             </div>
             <div class="ui-form-item">
                 <div class="form-control clf">
-                    <label for="type">
-                        联系时段
-                    </label>
                     <div class="form-control-ele">
-                        <select name="type" id="type">
-                            <option value="0">随时</option>
+                        <input type="text" id="cellphone" name="cellphone" placeholder="手机" data-widget-cid="widget-4"
+                               data-explain="">
+                    </div>
+                </div>
+                <div class="ui-form-explain"></div>
+            </div>
+            <div class="ui-form-item">
+                <div class="form-control clf">
+                    <div class="form-control-ele">
+                        <select name="time-frame" id="time-frame" data-widget-cid="widget-5" data-explain="">
+                            <option value="0">联系时段</option>
                             <option value="1">早上</option>
                             <option value="2">中午</option>
                             <option value="3">晚上</option>
-
                         </select>
                     </div>
                 </div>
                 <div class="ui-form-explain"></div>
             </div>
-
             <button type="submit" class="submit">提交</button>
         </form>
     </div>

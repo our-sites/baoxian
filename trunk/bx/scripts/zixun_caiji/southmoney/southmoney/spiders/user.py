@@ -25,16 +25,16 @@ class SouthmoneySpider(scrapy.Spider):
         urls = response.xpath('//div[@class="column" or @class="center_col" or class="list2"]/ul/li/a/@href').extract()
         for url in urls:
             Url="http://shebao.southmoney.com"+url
+            #Url="http://shebao.southmoney.com/shengyu/zhengce/201705/69256.html"
             yield scrapy.Request(Url, callback=self.page_list, dont_filter=True)
     def page_list(self, response):
         url=response.url
         url_list=[url]
-        R = requests.get(url)
-        m=re.findall(r'(\d+_\d+\.html)+',R.text)
+        UList = response.xpath('//div[@id="articleText" and @class="content"]/p[@align="center"]/b/a/@href').extract()
         item={'source':'社保网','keyword':'','type':0,'publishtime':int(time.time()),'title':'','writer':'','content':''}
-        if m :
+        if UList :
             _max=1
-            for _m in m:
+            for _m in UList:
                 _Max=int(_m.split('.html')[0].split('_')[-1])
                 _max = _Max if _max < _Max else _max
             for page in range(2,_max+1):
@@ -45,7 +45,7 @@ class SouthmoneySpider(scrapy.Spider):
             yield scrapy.Request(url, callback=self.page_desc, dont_filter=True,meta={'item': item})
 
     def page_desc(self, response):
-        p_pattern = re.compile(r"<p.*</p>|<div.*<img\sclass.*>")
+        p_pattern = re.compile(r"<p.*</p>|<div.*<img\sclass.*>|<center><img .*</center>")
         P = re.compile(r"http://shebao.southmoney.com/.*/\d+_\d+.html")
         strinfo = re.compile('''<a.*\.southmoney\.com.*>|</a>|<p align="center"><b>.*</b></p>''')
         item = response.meta['item']

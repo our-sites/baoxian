@@ -31,7 +31,7 @@ def home(request):
         content=request.POST.get("content")
         _next=request.POST.get("next")
         if not content:
-            data={"errorCode":500,"formError":{"fields":[{"content":"问题内容不能为空!"}]}}
+            data={"errorCode":500,"formError":{"fields":[{'name':"content","msg":"问题内容不能为空!","content":"问题内容不能为空!"}]}}
         if  not request.myuser :
             data={"errorCode":800,"data":{"html":get_template_string(request,"buy_login_pop.html",{"next":_next})}}
         else:
@@ -76,7 +76,7 @@ def detail(request,ask_id):
         content=request.POST.get("content")
         _next = request.POST.get("next")
         if not content:
-            data={"errorCode":500,"formError":{"fields":[{"content":"内容不能为空!"}]}}
+            data={"errorCode":500,"formError":{"fields":[{"name":"content","msg":"内容不能为空!","content":"内容不能为空!"}]}}
 
         if  not request.myuser:
             data = {"errorCode": 800, "data": {"html": get_template_string(request,"proxy_login_pop.html", {"next": _next})}}

@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * Created by wangyongchao on 16/10/19.
  */
-public class TestRequest extends BaseBusinessRequest {
+public class TestRequest extends BaseBusinessRequest<WeatherInfo> {
 
 
     public TestRequest(Map<String, String> params, LoadCallback callback) {
@@ -25,10 +25,8 @@ public class TestRequest extends BaseBusinessRequest {
         return null;
     }
 
-
     @Override
-    protected Class getParseClass() {
-
+    protected Class<WeatherInfo> getParseClass() {
         return WeatherInfo.class;
     }
 }

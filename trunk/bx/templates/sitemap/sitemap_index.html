@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.google.com/schemas/sitemap/0.84">
-{% for id in zixun_info %}<sitemap>
+{% for id,info in zixun_info %}<sitemap>
 <loc>http://www.bao361.cn/zixun_sitemap{{ id }}.xml</loc>
+<lastmod>{{ info }}</lastmod>
 </sitemap>{% endfor %}
-{% for id in product_info %}<sitemap>
+{% for id,info in product_info %}<sitemap>
 <loc>http://www.bao361.cn/product_sitemap{{ id }}.xml</loc>
+<lastmod>{{ info }}</lastmod>
 </sitemap>{% endfor %}
-{% for id in ask_info %}<sitemap>
+{% for id,info in ask_info %}<sitemap>
 <loc>http://www.bao361.cn/ask_sitemap{{ id }}.xml</loc>
+<lastmod>{{ info }}</lastmod>
 </sitemap>{% endfor %}
 </sitemapindex>

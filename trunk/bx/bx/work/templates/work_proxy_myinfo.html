@@ -46,7 +46,7 @@
                             <label style="display: block">性别：</label>
                             <label class="radio-inline">
                                 <input type="radio" name="sex" id="optionsRadiosInline1" value="1"
-                                       {% if request.myuser.sex == 1 %}checked="checked"{% endif %}>男
+                                       {% if request.myuser.sex != 2 %}checked="checked"{% endif %}>男
                             </label>
                             <label class="radio-inline">
                                 <input type="radio" name="sex" id="optionsRadiosInline2" value="2"
@@ -95,7 +95,7 @@
                         <select class="form-control" name="cid">
                             {% for com in com_info %}
                                 <option value="{{ com.cid }}"
-                                        {% if com.cid == request.myuser_profile.cid %}selected{% endif %}>{{ com.shortname }}</option>
+                                        {% if com.cid == request.myuser.proxy_cid %}selected{% endif %}>{{ com.shortname }}</option>
                             {% endfor %}
                         </select>
                     </div>

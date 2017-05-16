@@ -145,6 +145,7 @@ INSTALLED_APPS = (
     # "bx.work_proxy",
     "bx.company",
     "bx.app",
+    "bx.weixin_dingyuehao",   # weixin dingyuehao
 )
 
 # A sample logging configuration. The only tangible logging

@@ -63,7 +63,7 @@
             <!--筛选结果-->
             <div class="adviser-list clf">
                 {% for i in info %}
-                {% with myuser=i  com_obj=i.get_comobj%}
+                {% with myuser=i user=i  com_obj=i.get_comobj%}
 
                     <div class="adviser-item clf">
                             <!--头像-->
@@ -74,32 +74,97 @@
                             <!--资料-->
                             <div class="adviser-item-resume-word">
                                 <h4>
-                                    <a href="/dailiren/detail/{{ myuser.uid }}.html" target="_blank">{{ myuser.get_namecontent }}</a><span class="adviser-item-resume-location">{{ i.province_city_info }}</span><span class="adviser-item-resume-company">{{ com_obj.shortname }}</span>
+                                    <a href="/dailiren/detail/{{ myuser.uid }}.html" target="_blank">{{ myuser.get_namecontent }}</a>
+                                    <span class="idf idf-level">Lv2</span>
+                                    {% if myuser.phone %}<span class="idf idf-authentication">已认证</span>{% endif %}
+                                    {% if myuser.proxy_workyear %}<span class="idf idf-exprience">从业{{ myuser.proxy_workyear }}年</span>{% endif %}
+{#                                    <span class="adviser-item-resume-location">{{ i.province_city_info }}</span>#}
+{#                                    <span class="adviser-item-resume-company">{{ com_obj.shortname }}</span>#}
                                 </h4>
-                                <div style="color:#42bad0;border:1px solid #42bad0;width:40px;border-radius:2px">
-                                    已认证
-                                </div>
                                 <p>
-                                    <span>从业时间：</span>{{ i.proxy_workyear }}年
+                                    <span>解答问题：</span><b>{{ i.ans_num }}</b>条
                                 </p>
                                 <p>
-                                    <span>回答问题：</span>{{ i.ans_num }}条
+                                    <span>获得点赞：</span><b>11</b>条
                                 </p>
+                                <p>
+                                    <span>所属险企：</span>{{ i.get_comcontent }}
+                                </p>
+                                <p>
+                                    <span>从业年限：</span>{{ i.proxy_workyear }}年
+                                </p>
+
                                 <p>
                                     <span> 擅长险种：</span>
-                                    <a href="" class="color">人寿险</a>
-                                    <a href="" class="color">重疾险</a>
-                                    <a href="" class="color">养老险</a>
+                                    <a href="" class="idf idf-grey">人寿险</a>
+                                    <a href="" class="idf idf-grey">重疾险</a>
+                                    <a href="" class="idf idf-grey">养老险</a>
                                 </p>
                             </div>
                             <!--详情-->
                             <div class="adviser-item-detail">
+                                自我介绍：<br/>
                                 {{ i.proxy_myad }}
                             </div>
 
                             <div class="adviser-item-other">
                                 <img src="{{ com_obj.img.url }}" class="adviser-item-company-logo">
-                                <a href="" class="adviser-item-consult">我要咨询</a>
+                                <a href="#" class="adviser-item-consult i-want-to-ask">
+                                    <img src="/static/imgs/consult-icon.png">
+                                    <span>我要咨询</span>
+                                    <script class="chat-box-wrap" type="text/html">
+                                        <div class="consultation-popup">
+                                            <div class="consultation-popup-content">
+                                                <div class="consultation-header clf">
+                                                    <div class="adviser-info clf">
+                                                        <a href="" class="adviser-info-avatar">
+                                                            <img src="{{ user.get_img_url }}" alt="" style="width: 48px;height: 48px;border-radius: 24px">
+                                                        </a>
+                                                        <div class="adviser-info-content">
+                                                            <h4>
+                                                                <a href="" class="adviser-info-name">{{ user.get_namecontent }}</a>
+                                                                <a href="" class="adviser-info-company">{{ user.get_short_comname }}</a>
+                                                            </h4>
+                                                            <p>
+                                                                <span class="idf  idf-level"></span>
+                                                                {% if user.phone %}<span class="idf idf-authentication">已认证</span>{% endif %}
+                                                                {% if user.proxy_workyear %}<span class="idf idf-exprience">从业{{ user.proxy_workyear }}年</span>{% endif %}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <span class="chat-online-close close" title="关闭"></span>
+                                                </div>
+                                                <div class="consultation-body">
+                                                    <h5>已有 <span>1234</span> 位客户通过保险管家获得咨询帮助</h5>
+
+                                                    <form class="ui-form consultation-form" action="/dailiren/add_advice" method="post">
+                                                        {% csrf_token %}
+                                                        <input name="next" value="{{ request.path }}" style="display:none;">
+                                                        <div class="ui-form-item">
+                                                            <div class="form-control clf">
+                                                                <div class="form-control-ele">
+                                                                    <input class="cellphone" type="text" name="cellphone" placeholder="手机号码">
+                                                                </div>
+                                                            </div>
+                                                            <div class="ui-form-explain"></div>
+                                                        </div>
+                                                        <div class="ui-form-item">
+                                                            <div class="form-control clf">
+                                                                <div class="form-control-ele">
+                                                                    <textarea class="ask-text" name="text" placeholder="留言内容"></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="ui-form-explain"></div>
+                                                        </div>
+                                                        <button type="submit" class="submit">提交</button>
+                                                    </form>
+                                                    <p class="tips">您的隐私将被严格保密</p>
+                                                </div>
+                                            </div>
+                                            <div class="consultation-mask"></div>
+                                        </div>
+                                    </script>
+                                </a>
                             </div>
 
                         </div>
@@ -110,7 +175,7 @@
             {% if allinfo.paginator.num_pages >= 2 %}
                 <div class="bx-list-flip clf">
                     {% if allinfo.has_previous %}
-                    <a href="/dailiren/search/{{ city_id }}-{{ c_id }}/{{ allinfo.previous_page_number }}.html" class="bx-list-flip-btn prev">&lt;</a>
+                    <a href="/dailiren/search/{{ city_id }}-{{ c_id }}/{{ allinfo.previous_page_number }}.html" class="bx-list-flip-btn prev">上一页</a>
                         {% endif %}
                     {% for t in allinfo.number|near:3 %}
                         {% if t > 0 and t <= allinfo.paginator.num_pages %}
@@ -118,7 +183,7 @@
                         {% endif %}
                     {% endfor %}
                 {% if allinfo.has_next %}
-                    <a href="/dailiren/search/{{ city_id }}-{{ c_id }}/{{ allinfo.next_page_number }}.html" class="bx-list-flip-btn next">&gt;</a>
+                    <a href="/dailiren/search/{{ city_id }}-{{ c_id }}/{{ allinfo.next_page_number }}.html" class="bx-list-flip-btn next">下一页</a>
                     {% endif %}
                 </div>
             {% endif %}
@@ -131,6 +196,7 @@
             {% include "dingzhi_common.html" %}
 
             <!--保险人动态-->
+            {% include "dailiren_common.html" %}
 
         </div>
 
