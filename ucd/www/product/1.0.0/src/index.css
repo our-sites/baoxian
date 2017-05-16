@@ -14,7 +14,7 @@
 
 #productList .product-condition > .clf {
     width: 1168px;
-    line-height: 30px;
+    line-height: 40px;
     padding: 4px 10px 4px 20px;
     border-bottom: 1px solid #ebebeb;
 }
@@ -58,10 +58,12 @@
 
 #productList .product-condition .type {
     /*height: 30px;*/
+	font-size: 14px;
 }
 
 #productList .product-condition .company {
     /*height: 60px;*/
+	font-size: 14px;
 }
 
 #productList .product-condition .company .more {
@@ -84,18 +86,19 @@
 #productList .product-condition .selected-item {
     display: inline-block;
     position: relative;
-    line-height: 20px;
+    line-height: 30px;
     border: 1px solid #dbdbdb;
-    padding: 0 22px 0 4px;
+    padding: 0 22px 0 8px;
     margin-right: 6px;
     color: #42bad0;
+	font-size: 14px;
 }
 
 #productList .product-condition .selected-item:before{
     content: '';
     position: absolute;
-    right: 4px;
-    top: 5px;
+    right: 8px;
+    top: 9px;
     z-index: 2;
     width: 10px;
     height: 10px;
@@ -227,4 +230,3 @@
     white-space: nowrap;
     text-overflow: ellipsis;
 }
-

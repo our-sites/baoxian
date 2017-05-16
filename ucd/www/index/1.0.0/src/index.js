@@ -8,7 +8,8 @@ $(".regular").slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     centerMode: true,
-    centerPadding: 0
+    centerPadding: 0,
+	autoplay: true
 }).on('setPosition', function(){
     var wrapWith = $('.slider-item').width();
     var left = (wrapWith - 1890)/2 + 'px';

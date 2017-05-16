@@ -17,6 +17,7 @@ define('com/chat/1.0.0:chat', ['com/global/1.0.0:dollar', 'lib/art-dialog/6.0.5:
           unique++;
           var html = $(this).find('.chat-box-wrap').html();
           chat = dialog({
+  			fixed: true,
               id: chatId,
               content: html
           });

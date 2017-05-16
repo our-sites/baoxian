@@ -10,7 +10,8 @@ define('www/index/1.0.0:index', ['www/common/1.0.0:common', 'lib/slick/1.6.0:sli
       slidesToShow: 1,
       slidesToScroll: 1,
       centerMode: true,
-      centerPadding: 0
+      centerPadding: 0,
+  	autoplay: true
   }).on('setPosition', function(){
       var wrapWith = $('.slider-item').width();
       var left = (wrapWith - 1890)/2 + 'px';
@@ -22,5 +23,6 @@ define('www/index/1.0.0:index', ['www/common/1.0.0:common', 'lib/slick/1.6.0:sli
   
   
   // @require 'www/index/1.0.0:index.css'
+  
 
 });

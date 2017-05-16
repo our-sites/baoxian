@@ -15,6 +15,7 @@ $(document).on('click', '.rank-item-consult,.i-want-to-ask', function (e) {
         unique++;
         var html = $(this).find('.chat-box-wrap').html();
         chat = dialog({
+			fixed: true,
             id: chatId,
             content: html
         });
