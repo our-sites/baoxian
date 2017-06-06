@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+{{ atmjs.use() }}
+<head>
+    <meta charset="UTF-8">
+    <title>{{ index }}</title>
+    {{ atmjs.loadCss() }}
+</head>
+
+<body>
+<!-- header -->
+<div id="com-header">
+	<div class="com-header-content clf">
+		<!-- logo -->
+		<img class="header-logo" src="./img/logo.png" />
+
+		<!-- 头部导航 -->
+		<ul class="header-nav clf">                                    
+			<li><a href="">首页</a></li>
+			<li><a href="">个人简介</a></li>
+			<li><a href="">公司简介</a></li>
+			<li><a href="">保险产品</a></li>
+			<li><a href="">保险问答</a></li>
+			<li><a href="">资讯案例</a></li>
+			<li><a href="">签单增员</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- banner -->
+<div id="banner">
+	<div class="banner-top"></div>
+	<p class="banner-title">中国太平保险集团有限责任公司</p>
+</div>
+	
+<!-- 负责人介绍 -->
+<div class="leader-intro">
+	<div class="leader-img-wrap">
+		<img src="./img/leader.png" />
+	</div>
+	<dl class="leader-intro-list">
+		<dt>李东伟</dt>
+		<dd><h3>中国太平保险集团有限责任公司</h3></dd>
+		<dd><p></p></dd>
+		<dd>
+			<span class="bx-type">人寿险</span>
+			<span class="bx-type">养老险</span>
+			<span class="bx-type">重疾险</span>
+		</dd>
+	</dl>
+	
+</div>
+{{ atmjs.loadJs() }}	
+</body>
+</html>

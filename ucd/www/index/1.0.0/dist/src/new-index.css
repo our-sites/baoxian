@@ -1,0 +1,28 @@
+/* header */
+#com-header{	
+	width: 100%;
+  	background-color: #2b3e4a;
+}
+.com-header-content{
+	height: 56px;
+	width: 1200px;
+	margin: 0 auto;
+	line-height: 56px;
+}
+.header-logo{
+	display: block;
+	width: 244px;
+    height: 40px;
+    margin-top: 8px;
+	float: left;
+}
+.header-nav{
+	float: right;
+}
+.header-nav li{
+	float: left;
+}
+.header-nav a{
+	color: #ffffff;
+	font-size: 14px;
+}
