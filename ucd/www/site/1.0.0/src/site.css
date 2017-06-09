@@ -306,7 +306,7 @@
 	width: 480px;
 	padding: 4px 80px 0;
 	margin: 116px auto 0;
-	background: url(./img/map.png) no-repeat center center;
+	background: url(./img/map.png) no-repeat center top;
 }
 .advisory-form{
 	width: 100%;
@@ -347,10 +347,15 @@
   	border: none;
   	cursor: pointer;
 }
+.has-reserve-list-wrap{
+	width: 240px;
+	height: 116px;
+	margin: 96px auto 0;
+	overflow: hidden;
+}
 .has-reserve-list{
 	width: 240px;
 	line-height: 28px;
-	margin: 96px auto 0;
 	font-size: 14px;
   	color: #5d7482;
 	

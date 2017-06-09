@@ -157,7 +157,7 @@
 <div class="reserve-modal">
 	<div class="reserve-modal-title">预约咨询</div>
 	<div class="reserve-modal-content advisory-modal-wrap">
-		<form class="reserve-modal-form advisory-form">
+		<form class="reserve-modal-form advisory-form" action="./data.json" method="get">
 			<div class="form-item">
 				<span class="item-label">称呼</span>
 				<input type="text" class="form-text" name="" value="" />
@@ -168,11 +168,17 @@
 			</div>
 			<input type="submit" class="reserve-sub" value="免费预约咨询" />
 		</form>
-		<ul class="has-reserve-list">
-			<li>恭喜福建福州<span>翁云花</span>提交预约服务</li>
-			<li>恭喜<span>张雅婷</span>提交预约服务</li>
-			<li>恭喜黑龙江惠州<span>许海军</span>提交预约服务</li>
-		</ul>
+		<div class="has-reserve-list-wrap">
+			<ul class="has-reserve-list">
+				<li>恭喜福建福州<span>翁云花1</span>提交预约服务</li>
+				<li>恭喜<span>张雅婷2</span>提交预约服务</li>
+				<li>恭喜黑龙江惠州<span>许海军3</span>提交预约服务</li>
+				<li>恭喜福建福州<span>翁云花4</span>提交预约服务</li>
+				<li>恭喜<span>张雅婷5</span>提交预约服务</li>
+				<li>恭喜黑龙江惠州<span>许海军6</span>提交预约服务</li>
+			</ul>
+		</div>
+		
 			
 	</div>
 	
@@ -208,7 +214,7 @@
 <div class="question-advisory">
 	<div class="question-advisory-title">问题咨询</div>
 	<div class="question-advisory-content advisory-modal-wrap">
-		<form class="question-advisory-form advisory-form">
+		<form class="question-advisory-form advisory-form" action="./data.json" method="POST">
 			<div class="form-item">
 				<span class="item-label">称呼</span>
 				<input type="text" class="form-text" name="" value="" />
