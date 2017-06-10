@@ -2,6 +2,10 @@
 #com-header{	
 	width: 100%;
   	background-color: #2b3e4a;
+  	position: fixed;
+  	top: 0;
+  	left: 0;
+  	z-index: 9999;
 }
 .com-header-content{
 	height: 56px;
@@ -9,12 +13,24 @@
 	margin: 0 auto;
 	line-height: 56px;
 }
-.header-logo{
+.top-tips-wrap{
+	width: 100%;
+  	height: 32px;
+  	background-color: rgba(43, 62, 74, 0.5);
+  	position: fixed;
+  	top: 56px;
+  	left: 0;
+}
+.header-logo-wrap{
 	display: block;
 	width: 244px;
     height: 40px;
     margin-top: 8px;
 	float: left;
+}
+.header-logo{
+	width: 244px;
+    height: 40px;
 }
 .header-nav{
 	float: right;
@@ -32,16 +48,13 @@
 #banner{
 	width: 100%;
 	height: 720px;
+	margin-top: 56px;
 	background: url(./img/banner.jpg) no-repeat center center;
 }
-.banner-top{
-	width: 100%;
-  	height: 32px;
-  	background-color: rgba(43, 62, 74, 0.5);
-}
+
 .banner-title{
 	height: 72px;
-	margin-top: 242px;
+	padding-top: 242px;
   	font-size: 48px;
   	line-height: 1.5;
   	text-align: center;
@@ -49,7 +62,7 @@
 }
 
 /* 负责人介绍  */
-.leader-intro{
+#leader-intro{
 	position: relative;
 	padding-bottom: 177px;
 }
@@ -222,7 +235,7 @@
 
 
 /* 代理的产品  */
-.proxy-product{
+#proxy-product{
 	width: 100%;
 	height: 736px;
 	padding-top: 64px;
@@ -289,7 +302,7 @@
 
 
 /* 预约咨询  */
-.reserve-modal{
+#reserve-modal{
 	padding: 64px 0 136px;
 	background-color: #ffffff;
 }
@@ -370,9 +383,12 @@
 	white-space: nowrap;
 	background: url(./img/icon-1.png) no-repeat left center;
 }
+.has-reserve-list li span{
+	margin: 0 4px;
+}
 
 /* 保险问答  */
-.question-ask{
+#question-ask{
 	width: 100%;
 	height: 736px;
 	padding-top: 64px;
@@ -423,7 +439,7 @@
 }
 
 /* 问题咨询 */
-.question-advisory{
+#question-advisory{
 	padding: 64px 0 162px;
 	background-color: #ffffff;
 }
@@ -486,10 +502,11 @@
 }
 .has-advisory-tips span{
 	color: #42bad0;
+	margin: 0 4px;
 }
 
 /* 资讯案例 */
-.information-case{
+#information-case{
 	height: 736px;
 	padding-top: 64px;
 	background: url(./img/5.jpg) no-repeat center center;
@@ -597,7 +614,7 @@
 }
 
 /* 签单增员 */
-.sign-add{
+#sign-add{
 	padding: 64px 0 152px;
 	background-color: #f5f5f5;
 }
@@ -665,7 +682,7 @@
 }
 
 /* 我的微站 */
-.my-site{
+#my-site{
 	height: 736px;
 	padding-top: 64px;
 	background: url(./img/6.jpg) no-repeat center center;

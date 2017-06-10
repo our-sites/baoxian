@@ -12,29 +12,31 @@
 <div id="com-header">
 	<div class="com-header-content clf">
 		<!-- logo -->
-		<img class="header-logo" src="./img/logo.png" />
-
+		<a href="" class="header-logo-wrap">
+			<img class="header-logo" src="./img/logo.png" />
+		</a>
 		<!-- 头部导航 -->
 		<ul class="header-nav clf">                                    
-			<li><a href="">首页</a></li>
-			<li><a href="">个人简介</a></li>
-			<li><a href="">公司简介</a></li>
-			<li><a href="">保险产品</a></li>
-			<li><a href="">保险问答</a></li>
-			<li><a href="">资讯案例</a></li>
-			<li><a href="">签单增员</a></li>
+			<li><a href="#banner">首页</a></li>
+			<li><a href="#leader-intro">个人简介</a></li>
+			<li><a href="#video-intro">公司简介</a></li>
+			<li><a href="#proxy-product">保险产品</a></li>
+			<li><a href="#question-ask">保险问答</a></li>
+			<li><a href="#information-case">资讯案例</a></li>
+			<li><a href="#sign-add">签单增员</a></li>
 		</ul>
 	</div>
 </div>
 
+<div class="top-tips-wrap"></div>
+
 <!-- banner -->
-<div id="banner">
-	<div class="banner-top"></div>
+<div id="banner">	
 	<p class="banner-title">中国太平保险集团有限责任公司</p>
 </div>
 	
 <!-- 业务人介绍 -->
-<div class="leader-intro">
+<div id="leader-intro">
 	<div class="leader-img-wrap">
 		<img src="./img/leader.png" />
 	</div>
@@ -95,7 +97,7 @@
 </div>
 
 <!-- 代理产品 -->
-<div class="proxy-product">
+<div id="proxy-product">
 	<div class="proxy-pro-title">代理产品</div>
 	<ul class="proxy-pro-list">
 		<li>
@@ -154,7 +156,7 @@
 </div>
 
 <!-- 预约咨询 -->
-<div class="reserve-modal">
+<div id="reserve-modal">
 	<div class="reserve-modal-title">预约咨询</div>
 	<div class="reserve-modal-content advisory-modal-wrap">
 		<form class="reserve-modal-form advisory-form" action="./data.json" method="get">
@@ -185,7 +187,7 @@
 </div>
 
 <!-- 保险问答 -->
-<div class="question-ask">
+<div id="question-ask">
 	<div class="question-ask-title">保险问答</div>
 	<dl class="question-ask-block">
 		<dt>
@@ -211,7 +213,7 @@
 </div>
 
 <!-- 问题咨询  -->
-<div class="question-advisory">
+<div id="question-advisory">
 	<div class="question-advisory-title">问题咨询</div>
 	<div class="question-advisory-content advisory-modal-wrap">
 		<form class="question-advisory-form advisory-form" action="./data.json" method="POST">
@@ -234,7 +236,7 @@
 </div>
 
 <!-- 资讯案例 -->
-<div class="information-case">
+<div id="information-case">
 	<div class="information-case-title">资讯案例</div>
 	<div class="information-case-content clf">
 		<div class="information-case-block">
@@ -327,7 +329,7 @@
 </div>
 
 <!-- 签单增员 -->
-<div class="sign-add">
+<div id="sign-add">
 	<div class="sign-add-title">签单增员</div>
 	<ul class="sign-add-list">
 		<li>
@@ -374,7 +376,7 @@
 </div>
 
 <!-- 我的微站 -->
-<div class="my-site">
+<div id="my-site">
 	<div class="my-site-title">我的微站</div>
 	<div class="my-site-content">
 		<img src="./img/qr.jpg" />
