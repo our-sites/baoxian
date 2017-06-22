@@ -1,4 +1,7 @@
 /* header */
+html,body{
+	background-color: #f5f5f5;
+}
 #com-header{	
 	width: 100%;
   	background-color: #2b3e4a;
@@ -741,3 +744,213 @@
 
 
 
+/************ 1440px的theme **********/
+
+/*banner*/
+#theme-banner{
+	height: 240px;
+	width: 100%;
+	padding-top: 56px;
+	background: url('/assets/bx/dev/www/site/1.0.0/src/img/banner-1440.jpg') no-repeat center bottom;
+}
+/*保险人员基本介绍*/
+#personnel-intro{
+	width: 1200px;
+  	height: 240px;
+  	margin: -80px auto 0;
+  	background-color: #ffffff;
+  	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+}
+.personnel-img{
+	display: block;
+	width: 128px;
+	height: 128px;
+	margin: 32px 40px 0 48px;
+	float: left;
+}
+.goto-mini-shop{
+	width: 128px;
+	float: right;
+	margin: 44px 48px 0 0;
+	font-size: 14px;
+}
+.goto-mini-shop img{
+	width: 128px;
+	height: 128px;
+}
+.goto-mini-shop dd{
+	margin-top: 8px;
+	height: 16px;
+	line-height: 16px;
+	text-align: center;
+	color: #999999;
+}
+.personnel-intro-list{
+	margin-top: 40px;
+	float: left;
+}
+.personnel-intro-title{
+	height: 40px;
+	margin-bottom: 4px;
+}
+.personnel-intro-title h4{
+	line-height: 40px;
+	font-size: 24px;
+	float: left;
+	margin-right: 8px;
+  	font-weight: 600;
+  	line-height: 1.5;
+  	color: #333333;
+}
+.personnel-intro-title span{
+	display: block;
+	height: 18px;
+	line-height: 18px;
+	padding: 0 3px;
+	margin: 11px 4px 0 0;
+	font-size: 12px;
+	color: #ffffff;
+	border-radius: 2px;
+	float: left;
+}
+.personnel-intro-item{
+	height: 32px;
+	font-size: 14px;
+	color: #333333;
+}
+.personnel-intro-item i{
+	display: block;
+	width: 12px;
+	height: 16px;
+	margin: 8px 16px 0 0;
+	float: left;
+	background: url('/assets/bx/dev/www/site/1.0.0/src/img/inv.png') no-repeat;
+}
+.personnel-intro-item p{
+	float: left;
+	line-height: 32px;
+}
+.personnel-intro-item span{
+	display: block;
+	height: 24px;
+	line-height: 24px;
+	padding: 0 8px;
+	margin: 4px 10px 0 0;
+	float: left;
+	border-radius: 2px;
+  	background-color: #d8d8d8;
+}
+.icon-compay{
+	background-position: 0 -50px!important;
+}
+.icon-mark{
+	background-position: 0 0!important;
+}
+.icon-sort{
+	background-position: 0 -26px!important;
+}
+
+/* site-main */
+.site-main{
+	width: 1200px;
+	margin: 24px auto 0;
+}
+/* site-main-fl */
+.site-main-fl .bx-intro-modal{
+	width: 888px;
+}
+.bx-intro-modal{
+	margin-bottom: 24px;
+	background-color: #ffffff;
+  	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  	font-size: 14px;
+}
+.bx-intro-modal-title{
+	height: 48px;
+  	box-shadow: 0 1px 0 0 #ebebeb;
+  	color: #333333;
+}
+.bx-intro-modal-title h3{
+	margin-left: 24px;
+	line-height: 48px;
+	font-weight: 500;
+}
+.bx-intro-main{
+	padding: 0 24px;
+}
+
+/* 个人简介 */
+.personnel-simple-intro-modal .bx-intro-main{
+	padding: 24px 24px 53px;
+	color: #333333;
+}
+.personnel-simple-intro-modal .bx-intro-main p{
+	margin-bottom: 14px;
+}
+/* 公司简介 */
+.company-intro-modal .bx-intro-main{
+	padding: 24px 24px 39px;
+}
+.company-intro-modal .bx-intro-main p{
+	margin-bottom: 14px;
+}
+/* 保险产品  */
+.insurance-pro-modal .bx-intro-main{
+	padding: 32px 0 52px;
+}
+.insurance-pro-modal .bx-intro-modal-title{
+	position: relative;
+}
+.more-info{
+	display: block;
+	height: 48px;
+	line-height: 48px;
+	color: #42bad0;
+	position: absolute;
+	top: 0;
+	right: 24px;
+}
+.insurance-pro-block{
+	width: 384px;
+	margin: 0 24px;
+	float: left;
+}
+.insurance-pro-intro img{
+	display: block;
+	width: 144px;
+	height: 144px;
+	float: left;
+}
+.insurance-pro-intro dl{
+	width: 216px;
+	padding-top: 12px;
+	float: right;	
+}
+.insurance-pro-intro dt{
+	width: 216px;
+	height: 16px;
+	line-height: 16px;
+	font-size: 16px;
+	margin-bottom: 24px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.insurance-pro-intro dd{
+	line-height: 28px;
+	font-size: 14px;
+	color: #999999;
+}
+.insurance-pro-intro dd p{
+	display: inline-block;
+	color: #333333;
+}
+.insurance-pro-special{
+	width: 100%;
+	height: 42px;
+	margin-top: 24px;
+	overflow: hidden;
+	line-height: 21px;
+	font-size: 14px;
+	color: #999999;
+}
