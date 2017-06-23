@@ -869,6 +869,7 @@ html,body{
 	height: 48px;
   	box-shadow: 0 1px 0 0 #ebebeb;
   	color: #333333;
+  	position: relative;
 }
 .bx-intro-modal-title h3{
 	margin-left: 24px;
@@ -897,9 +898,6 @@ html,body{
 /* 保险产品  */
 .insurance-pro-modal .bx-intro-main{
 	padding: 32px 0 52px;
-}
-.insurance-pro-modal .bx-intro-modal-title{
-	position: relative;
 }
 .more-info{
 	display: block;
@@ -954,3 +952,169 @@ html,body{
 	font-size: 14px;
 	color: #999999;
 }
+/*保险问答 */
+.insurance-qa-modal .bx-intro-main{
+	padding: 18px 24px 12px;
+}
+.insurance-qa-modal .bx-intro-main dl{
+	width: 840px;
+	margin-bottom: 24px;
+	font-size: 14px;
+}
+.insurance-qa-modal .bx-intro-main dt{
+	height: 32px;
+	position: relative;
+}
+.insurance-qa-modal .bx-intro-main dt p{
+	line-height: 32px;
+	padding-left: 24px;
+	color: #333333;
+	background: url('/assets/bx/dev/www/site/1.0.0/src/img/ask.png') left center no-repeat;
+}
+.insurance-qa-modal .bx-intro-main dt span{
+	height: 32px;
+	line-height: 32px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	color: #999999;
+}
+.insurance-qa-modal .bx-intro-main dd{
+	width: 816px;
+	height: 32px;
+	line-height: 32px;
+	padding-left: 24px;
+	color: #999999;
+	background: url('/assets/bx/dev/www/site/1.0.0/src/img/spa.png') left center no-repeat;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* 咨询&案例  */
+.info-case-block .bx-intro-modal{
+	width: 432px;
+	float: left;
+	font-size: 14px;
+}
+.info-case-block .bx-intro-main{ 
+	padding: 18px 24px 36px;
+}
+.info-case-block .info-case-item{
+	height: 40px;
+}
+.info-case-block .info-case-item i{
+	display: block;
+	width: 16px;
+	height: 16px;
+	float: left;
+	margin: 12px 8px 0 0;
+}
+.information-case-modal .info-case-item i{
+	background: url('/assets/bx/dev/www/site/1.0.0/src/img/info-gray.png') center center no-repeat;
+}
+.safe-case-modal .info-case-item i{
+	background: url('/assets/bx/dev/www/site/1.0.0/src/img/case-gray.png') center center no-repeat;
+}
+.info-case-block .info-case-item a{
+	display: block;
+	width: 236px;
+	height: 40px;
+	line-height: 40px;
+	float: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: #333333;
+}
+.info-case-block .info-case-item span{
+	display: block;
+	height: 40px;
+	line-height: 40px;
+	float: right;
+	color: #999999;
+}
+.information-case-modal{
+	margin-right: 24px;
+}
+
+
+/* 认证成就 */
+.approve-modal .bx-intro-main{
+	padding: 18px 24px 24px;
+	font-size: 14px;
+	color: #333333;
+}
+.personnel-license-item{
+	height: 40px;
+	line-height: 40px;
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.approve-info-item{
+	height: 40px;
+}
+.approve-info-item i{
+	display: block;
+	float: left;
+	width: 16px;
+	height: 18px;
+	margin-top: 11px;
+	background: url('/assets/bx/dev/www/site/1.0.0/src/img/approve.png') no-repeat;
+}
+.approve-info-item p{
+	width: 208px;
+	height: 40px;
+	line-height: 40px;
+	margin-left: 12px;
+	float: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.approve-info-item p span{
+	color: #42bad0;
+}
+
+.icon-approve{
+	background-position: 0 -78px!important;
+}
+.icon-linke{
+	background-position: 0 -54px!important;
+}
+.icon-question-gray{
+	background-position: 0 0!important;
+}
+.icon-bill{
+	background-position: 0 -27px!important;
+}
+
+/* 视频了解 */
+.video-find-modal .bx-intro-main{
+	padding: 24px;
+}
+.video-find-modal .bx-intro-main dl{
+	width: 208;
+	margin: 24px auto 0;
+	line-height: 21px;
+	font-size: 14px;
+	color: #333333;
+}
+.video-find-modal .bx-intro-main dt{
+	width: 100%;
+	height: 21PX;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.video-find-modal .bx-intro-main dd{
+	text-align: center;
+}
+
+
+
+
+
+
