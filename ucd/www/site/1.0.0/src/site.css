@@ -1075,6 +1075,7 @@ html,body{
 	white-space: nowrap;
 }
 .approve-info-item p span{
+	margin: 0 6px;
 	color: #42bad0;
 }
 
@@ -1114,7 +1115,85 @@ html,body{
 }
 
 
+/* 立即咨询  */
+.advisory-modal .bx-intro-main{
+	padding: 24px;
+}
+.advisory-modal form{
+	width: 240px;
+	margin-bottom: 26px;
+}
+.full-inp{
+	width: 224px;
+	height: 38px;
+	padding-left: 14px;
+	margin-bottom: 8px;
+	line-height: 38px;
+  	border: solid 1px #dcdcdc;
+}
+.full-sub{
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+  	background-color: #42bad0;
+  	color: #ffffff;
+	border: none;
+}
+.full-textarea{
+	width: 224px;
+	height: 70px;
+	padding-left: 14px;
+	margin-bottom: 8px;
+	line-height: 35px;
+  	border: solid 1px #dcdcdc;
+  	resize: none;
+  	display: block;
+}
+.advisory-modal .bx-intro-main li{
+	width: 217px;
+	height: 28px;
+	line-height: 28px;
+	padding-left: 23px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: #666666;
+	background: url('./img/icon-1.png') no-repeat left center;
+}
+.advisory-modal .bx-intro-main li span{ 
+	margin: 0 6px;
+	color: #42bad0;	
+}
 
+/* 立即提问  */
+.ask-question-modal .bx-intro-main{
+	padding: 24px;
+}
+.ask-question-modal form{
+	width: 240px;
+	margin-bottom: 14px;
+}
+.ask-question-show{
+	height: 16px;
+	line-height: 16px;
+	text-align: center;
+	color: #333333;
+}
+.ask-question-show span{
+	margin: 0 6px;
+	font-weight: 600;
+  	color: #42bad0;
+}
 
-
-
+/* 签单增员 */
+.bill-add-modal .bx-intro-main{
+	padding: 18px 24px 36px;
+}
+.bill-add-list{
+	width: 100%;
+}
+.bill-add-list li {
+    height: 40px;
+    font-size: 14px;
+}
