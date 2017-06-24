@@ -1190,10 +1190,37 @@ html,body{
 .bill-add-modal .bx-intro-main{
 	padding: 18px 24px 36px;
 }
-.bill-add-list{
+.bill-add-item{
 	width: 100%;
+	height: 40px;
 }
-.bill-add-list li {
+.bill-add-item i{
+	display: block;
+    width: 17px;
+    height: 18px;
+    margin-top: 11px;
+    float: left;
+}
+.bill-add-item span{
+	display: block;
     height: 40px;
-    font-size: 14px;
+    margin-left: 12px;
+    line-height: 40px;
+    float: left;
+    color: #999999;
+}
+.bill-add-item p{
+	width: 165px;
+    height: 40px;
+    line-height: 40px;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.bill-add-item i.icon-win {
+    background: url('./img/icon-win.png') no-repeat center left;
+}
+.bill-add-item i.icon-add {
+    background: url('./img/icon-add.png') no-repeat center center;
 }
