@@ -690,3 +690,22 @@
 .idf-grey{
     background-color: #bdbdbd;
 }
+
+/* 简单底部 */
+.footer-mini{
+	background-color: #ffffff;
+}
+.footer-mini .bx-footer-copyright{
+	padding: 44px 0 26px;
+}
+.footer-mini .bx-footer-copyright-content div.clf{
+	margin: 0 0 24px;
+}
+.footer-mini .bx-footer-copyright div.clf img{
+	display: block;
+}
+.footer-mini .bx-footer-copyright-content p{
+	height: 48px;
+	line-height: 48px;
+	color: #333333;
+}

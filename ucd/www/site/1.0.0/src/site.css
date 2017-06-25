@@ -46,6 +46,9 @@ html,body{
 	color: #ffffff;
 	font-size: 14px;
 }
+.header-nav a:hover{
+	 color: #42bad0;
+}
 
 /* banner */
 #banner{
@@ -853,7 +856,7 @@ html,body{
 /* site-main */
 .site-main{
 	width: 1200px;
-	margin: 24px auto 0;
+	margin: 24px auto 40px;
 }
 /* site-main-fl */
 .site-main-fl .bx-intro-modal{
