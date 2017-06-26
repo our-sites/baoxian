@@ -17,13 +17,13 @@
 		</a>
 		<!-- 头部导航 -->
 		<ul class="header-nav clf">                                    
-			<li><a href="#banner">首页</a></li>
-			<li><a href="#leader-intro">个人简介</a></li>
-			<li><a href="#video-intro">公司简介</a></li>
-			<li><a href="#proxy-product">保险产品</a></li>
-			<li><a href="#question-ask">保险问答</a></li>
-			<li><a href="#information-case">资讯案例</a></li>
-			<li><a href="#sign-add">签单增员</a></li>
+			<li><a href="#theme-banner">首页</a></li>
+			<li><a href="#anchor-person">个人简介</a></li>
+			<li><a href="#anchor-company">公司简介</a></li>
+			<li><a href="#anchor-pro">保险产品</a></li>
+			<li><a href="#anchor-ask">保险问答</a></li>
+			<li><a href="#point-case">资讯案例</a></li>
+			<li><a href="#point-business">签单增员</a></li>
 		</ul>
 	</div>
 </div>
@@ -74,7 +74,7 @@
 <div class="site-main clf">
 	<div class="site-main-fl fl">
 		<!-- 个人简介  -->
-		<div class="bx-intro-modal personnel-simple-intro-modal">
+		<div class="bx-intro-modal personnel-simple-intro-modal" id="anchor-person">
 			<div class="bx-intro-modal-title"><h3>个人简介</h3></div>
 			<div class="bx-intro-main">
 				<p>2001年04月01日加入中国平安，回忆里那天仿佛就是昨天，一路走来，回忆历历在目，感悟沉淀于心！2001年9月1日是我转正的日子，那天，我正式成为第17562名光荣的平安人，如今平安集团已拥有超过80万保险业务代理人；在平安的大家庭里，我们一同逐梦而行!2010年07月01日晋升营业部经理，2016年01月01日晋升2001年04月01日加入中国平安，回忆里那天仿佛就是昨天，一路走来，回忆历历在目，感悟沉淀于心！</p>
@@ -82,7 +82,7 @@
 			</div>
 		</div>
 		<!-- 公司简介 -->
-		<div class="bx-intro-modal company-intro-modal">
+		<div class="bx-intro-modal company-intro-modal" id="anchor-company">
 			<div class="bx-intro-modal-title"><h3>公司简介</h3></div>
 			<div class="bx-intro-main">
 				<p>中国人寿保险（集团）公司及其子公司构成了我国最大的商业保险集团，是中国资本市场最大的机构投资者之一。2014年，营业收入5375.83亿元，总保费收入达到4,069.34亿元，境内寿险业务市场份额为27.02%，总资产达到27,467.95亿元。</p>
@@ -91,7 +91,7 @@
 			</div>
 		</div>
 		<!-- 保险产品 -->
-		<div class="bx-intro-modal insurance-pro-modal">
+		<div class="bx-intro-modal insurance-pro-modal" id="anchor-pro">
 			<div class="bx-intro-modal-title">
 				<h3>保险产品</h3>
 				<a href="" class="more-info">更多</a>
@@ -142,7 +142,7 @@
 			</div>
 		</div>
 		<!-- 保险问答 -->
-		<div class="bx-intro-modal insurance-qa-modal">
+		<div class="bx-intro-modal insurance-qa-modal" id="anchor-ask">
 			<div class="bx-intro-modal-title">
 				<h3>保险问答</h3>
 				<a href="" class="more-info">更多</a>
@@ -172,7 +172,7 @@
 			</div>
 		</div>
 		<!-- 咨询&案例 -->
-		<div class="info-case-block clf">
+		<div class="info-case-block clf" id="anchor-case">
 			<!--保险资讯-->
 			<div class="bx-intro-modal information-case-modal">
 				<div class="bx-intro-modal-title">
@@ -293,23 +293,29 @@
 		<div class="bx-intro-modal advisory-modal">
 			<div class="bx-intro-modal-title"><h3>预约咨询</h3></div>
 			<div class="bx-intro-main">
-				<form action="" method="">
+				<form action="./data.json" method="get">
 					<input type="text" placeholder="称呼" class="full-inp" />
 					<input type="text" placeholder="手机" class="full-inp" />
 					<input type="submit" value="免费预约咨询" class="full-sub"/>
 				</form>
-				<ul>
-					<li>恭喜福建福州<span>翁云花</span>提交预约服务</li>
-					<li>恭喜<span>张雅婷</span>提交预约服务</li>
-					<li>恭喜黑龙江惠州<span>许海军</span>提交预约服务</li>
-				</ul>
+				<div class="has-ask-box">
+					<ul>
+						<li>恭喜福建福州<span>翁云花1</span>提交预约服务</li>
+						<li>恭喜<span>张雅婷2</span>提交预约服务</li>
+						<li>恭喜黑龙江惠州<span>许海军3</span>提交预约服务</li>
+						<li>恭喜福建福州<span>翁云花4</span>提交预约服务</li>
+						<li>恭喜<span>张雅婷5</span>提交预约服务</li>
+						<li>恭喜黑龙江惠州<span>许海军6</span>提交预约服务</li>
+					</ul>
+				</div>
+				
 			</div>
 		</div>
 		<!-- 立即提问  -->
 		<div class="bx-intro-modal ask-question-modal">
 			<div class="bx-intro-modal-title"><h3>预约咨询</h3></div>
 			<div class="bx-intro-main">
-				<form action="" method="">
+				<form action="./data.json" method="get">
 					<input type="text" placeholder="称呼" class="full-inp" />
 					<input type="text" placeholder="手机" class="full-inp" />
 					<textarea class="full-textarea" placeholder="问题"></textarea>
@@ -319,7 +325,7 @@
 			</div>
 		</div>
 		<!-- 签单增员 -->
-		<div class="bx-intro-modal bill-add-modal">
+		<div class="bx-intro-modal bill-add-modal" id="anchor-business">
 			<div class="bx-intro-modal-title"><h3>签单增员</h3></div>
 			<div class="bx-intro-main">
 	            <div class="bill-add-item clf">
