@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <title>{% block title %}保险管家{% endblock %}</title>
+    <meta name="keywords" content="{% block keywords %}保险管家{% endblock %}">
+    <meta name="description" content="{% block description %}保险管家{% endblock %}">
+    {% block css %}
+    <link href="/static/sb-admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/sb-admin/vendor/metisMenu/metisMenu.min.css">
+    <link rel="stylesheet" href="/static/sb-admin/vendor/bootstrap-social/bootstrap-social.css">
+    <link rel="stylesheet" href="/static/sb-admin/dist/css/sb-admin-2.css">
+    <link href="/static/sb-admin/vendor/morrisjs/morris.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
+    <link href="/static/testdir/about.css" rel="stylesheet">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+
+    <link rel="stylesheet" href="/static/m-css/main.css">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <link rel="stylesheet" href="/static/m-css/swiper.css">
+{% endblock %}
+{% block customcss %}
+{% endblock %}
+<script type='text/javascript'>
+      var _vds = _vds || [];
+      window._vds = _vds;
+      (function(){
+        _vds.push(['setAccountId', 'a4556b068c57793c']);
+        (function() {
+          var vds = document.createElement('script');
+          vds.type='text/javascript';
+          vds.async = true;
+          vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(vds, s);
+        })();
+      })();
+  </script>
+<style>
+    #cnzz_m + script + a{
+        display:none;
+    }
+</style>
+</head>
+<body>
+<div class="row header-row">
+
+    <a href="/" class="header-link">
+        <i class="fa fa-home"></i>
+    </a>
+{#    <a href="#" class="header-link" onclick="bar_menu_tab()">#}
+{#        <i class="fa fa-th-list"></i>#}
+{#    </a>#}
+{% if not  request.myuser %}
+    <a href="/register/" class="header-link-float-right">
+        <i class="fa fa-user"></i>
+    </a>
+{% else %}
+    <a href="/work/" class="header-link-float-right">
+        <img src="{{ request.myuser.get_img_url }}">
+    </a>
+{% endif %}
+    <h1>
+        {% block header_title %}保险管家{% endblock %}
+    </h1>
+
+
+</div>
+<div class="row row-content" id="bar-menu">
+
+    <a class="bar-menu-a" href="/">首页</a><span></span>
+    <a class="bar-menu-a" href="/ask/">保险问吧</a><span></span>
+    <a class="bar-menu-a" href="/product/">保险产品</a><span></span>
+    <a class="bar-menu-a" href="/dailiren/">保险顾问</a><span></span>
+    <a class="bar-menu-a" href="/zixun/">保险资讯</a>
+</div>
+{% block content %}
+
+{% endblock %}
+{% block footer %}
+<div class="row row-content">
+    <div style="text-align: center;color: #999;font-size: 15px;line-height: 29px;">
+© 2017 bao361.cn（保险管家）郑州新佳安网络科技有限公司
+    </div>
+    <div style="text-align: center;color: #999;font-size: 15px;line-height: 29px">
+        备案号：豫ICP备17006962号-1
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+<script src="/static/sb-admin/vendor/jquery/jquery.min.js"></script>
+<script src="/static/sb-admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="/static/sb-admin/vendor/metisMenu/metisMenu.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/static/sb-admin/dist/js/sb-admin-2.js"></script>
+
+<script src="/static/m-js/swiper.jquery.min.js"></script>
+<script src="/static/m-js/main.js"></script>
+{% endblock %}
+{% block customjs %}
+{% endblock %}
+<script src="https://s4.cnzz.com/z_stat.php?id=1261923638&web_id=1261923638" language="JavaScript" id="cnzz_m"></script>
+</body>
+</html>

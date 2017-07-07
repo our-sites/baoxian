@@ -1,0 +1,231 @@
+{% extends "m_base.html" %}
+{% block title %}
+    保险管家 - 专业的保险代理人平台，综合性保险门户网站！
+{% endblock %}
+{% block keywords %}
+    保险管家，保险网站,保险门户,保险代理人网站,保险资讯,保险代理人,保险经纪人,保险咨询，保险方案
+{% endblock %}
+{% block description %}
+    保险管家（bao361.cn）专业为保险代理人提供网络展业服务，保险人展业，学习交流平台。欢迎广大投保人、保险代理人来入驻！
+{% endblock %}
+{% block content %}
+
+    <div class="row row-content swipper-content">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="/static/imgs/QQ20170601-093339.png" style="width: 100%;height: 240px">
+            </div>
+            <div class="swiper-slide"><img src="/static/imgs/QQ20170601-093059.png" style="width: 100%;height: 240px">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row row-content" style="padding-top: 15px">
+    <div class="col-xs-6" style="padding: 0px 10px;">
+        <div class="panel panel-primary">
+            <div class="panel-heading" style="padding: 10px 5px;">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="glyphicon glyphicon-question-sign fa-3x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">{{ hot_ask.0.askid }}</div>
+                        <div>保险问吧</div>
+                    </div>
+                </div>
+            </div>
+            <a href="/ask/">
+                <div class="panel-footer">
+                    <span class="pull-left">查看详情</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-xs-6" style="padding: 0px 10px;">
+        <div class="panel panel-green">
+            <div class="panel-heading" style="padding: 10px 5px;">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-tasks fa-3x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">{{ hot_zixun_news.0.zid }}</div>
+                        <div>保险资讯</div>
+                    </div>
+                </div>
+            </div>
+            <a href="/zixun/">
+                <div class="panel-footer">
+                    <span class="pull-left">查看详情</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="row row-content">
+    <div class="col-xs-6" style="padding: 0px 10px;">
+        <div class="panel panel-yellow">
+            <div class="panel-heading" style="padding: 10px 5px;">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-shopping-cart fa-3x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">{{ hot_product.0.pid }}</div>
+                        <div>保险产品</div>
+                    </div>
+                </div>
+            </div>
+            <a href="/product/">
+                <div class="panel-footer">
+                    <span class="pull-left">查看详情</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-xs-6" style="padding: 0px 10px;">
+        <div class="panel panel-red">
+            <div class="panel-heading" style="padding:10px 5px;">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-user fa-3x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">{{ hot_user_proxy.0.uid }}</div>
+                        <div>保险顾问</div>
+                    </div>
+                </div>
+            </div>
+            <a href="/dailiren/">
+                <div class="panel-footer">
+                    <span class="pull-left">查看详情</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="row row-content">
+    <div class="chat-panel panel panel-default" style="margin-bottom: 0px;">
+        <div class="panel-heading">
+            <i class="glyphicon  glyphicon-question-sign    fa-fw"></i>保险问吧
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body" style="height: auto;overflow: auto">
+            <ul class="chat">
+                {% for ask in hot_ask|slice:":4" %}
+                    {% with ask_user=ask.get_user %}
+                <li class="left clearfix">
+                                    <span class="chat-img pull-left">
+                                        <img src="{{ ask_user.get_img_url }}" alt="User Avatar"
+                                             class="img-circle" style="width: 50px;height: 50px">
+                                    </span>
+                    <div class="chat-body clearfix">
+                        <div class="header">
+                            <strong class="primary-font">{{ ask_user.get_hide_namecontent }}</strong>
+                            <small class="pull-right text-muted">
+                                <i class="fa fa-clock-o fa-fw"></i> {{ ask.get_date_time }}
+                            </small>
+                        </div>
+                        <p>
+                            <a href="/ask/detail/{{ ask.askid }}.html" style="color: #333">{{ ask.ask_content }}</a>
+                        </p>
+                    </div>
+                <div style="font-size: 85% ;padding-top: 2px;color:{% if not   ask.get_answer_count %}#777;{% else %}#337ab7{% endif %}">
+                    <i class="fa fa-comment-o">&nbsp;</i>{{ ask.get_answer_count }}个回答{% if ask.get_answer_count %}
+                    {% with last_ans=ask.get_last_ans %}
+                        {% with last_ans_user=last_ans.get_user %}
+                            {{ last_ans_user.get_namecontent }} 于{{ last_ans.get_date_time }}提交了新的答案
+                            {% endwith %}
+                    {% endwith %}
+                    {% endif %}
+                </div>
+                </li>
+                    {% endwith %}
+                {% endfor %}
+
+            </ul>
+            <a href="/ask/" class="btn btn-default btn-block">查看更多</a>
+        </div>
+
+    </div>
+</div>
+<div class="row row-content">
+    <div class="chat-panel panel panel-default" style="height: auto;">
+                        <div class="panel-heading">
+                            <i class="fa fa-user fa-fw"></i> 保险顾问
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" style="height: auto">
+                        <div class="row" style="margin-top: 2px;padding-bottom: 10px ;border-bottom: 1px solid #eee">
+
+
+                        {% for user in hot_user_proxy|slice:":6" %}
+                            {% if forloop.counter == 4 %}
+
+                        </div>
+                        <div class="row" style="margin-top: 15px ">
+                            {% endif %}
+                                <div class="col-xs-4" style="text-align: center">
+                                <a href="/dailiren/detail/{{ user.uid }}.html" >
+                                    <img src="{{ user.get_img_url }}" style="width: 70px;height: 70px;border-radius: 35px ">
+                                </a>
+                                <div style="text-align: center">
+                                <a href="/dailiren/detail/{{ user.uid }}.html" target="_blank">
+                                    {{ user.get_namecontent }}
+                                </a>
+                                </div>
+                                <div style="text-align: center">
+                                    <span class="label label-default">{{ user.short_comname }}</span>
+                                </div>
+                                </div>
+
+
+
+                            {% endfor %}
+
+
+
+
+
+
+                        </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+    <a href="/dailiren/" class="btn btn-default btn-block">查看更多</a>
+</div>
+<div class="row row-content">
+    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bell fa-fw"></i> 保险新闻
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="list-group">
+                                {% for xinwen in hot_zixun_news %}
+
+                                <a href="/zixun/detail/{{ xinwen.zid }}.html" class="list-group-item" style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap" target="_blank">
+                                    <i class="fa fa-tasks fa-fw"></i> &nbsp;&nbsp; {{ xinwen.title }}
+                                </a>
+                                {% endfor %}
+
+
+
+                            </div>
+                            <!-- /.list-group -->
+                            <a href="/zixun/" class="btn btn-default btn-block" target="_blank">查看更多</a>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+</div>
+{% endblock %}

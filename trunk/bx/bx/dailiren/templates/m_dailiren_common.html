@@ -1,0 +1,45 @@
+<div class="row row-content">
+    <div class="chat-panel panel panel-info" style="height: auto;">
+        <div class="panel-heading">
+            <i class="fa fa-user fa-fw"></i> 活跃顾问
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body" style="height: auto">
+            <div class="row" style="margin-top: 2px;padding-bottom: 10px ;border-bottom: 1px solid #eee">
+
+
+                {% for user in dailiren_common.get_hot|slice:":6" %}
+                    {% if forloop.counter == 4 %}
+
+                        </div>
+                        <div class="row" style="margin-top: 15px ">
+                    {% endif %}
+                    <div class="col-xs-4" style="text-align: center">
+                        <a href="/dailiren/detail/{{ user.uid }}.html">
+                            <img src="{{ user.get_img_url }}" style="width: 70px;height: 70px;border-radius: 35px ">
+                        </a>
+                        <div style="text-align: center">
+                            <a href="/dailiren/detail/{{ user.uid }}.html" target="_blank">
+                                {{ user.get_namecontent }}
+                            </a>
+                        </div>
+                        <div style="text-align: center">
+                            <span class="label label-default">{{ user.short_comname }}</span>
+                        </div>
+                    </div>
+
+
+
+                {% endfor %}
+
+
+
+
+
+
+                </div>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <a href="/dailiren/" class="btn btn-default btn-block">查看更多</a>
+</div>

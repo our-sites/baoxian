@@ -1,0 +1,122 @@
+{% extends "m_base.html" %}
+{% block header_title %}保险产品{% endblock %}
+{% block title %}{{ product.pro_name }}-保险管家{% endblock %}
+{% block keywords %}{{ product.get_keywords }} 保险管家 保险之家{% endblock %}
+{% block description %}{{ product.pro_name }}_保险管家_保险之家{% endblock %}
+{% load math %}
+{% load range %}
+{% block content %}
+    {% with com=product.get_comobj %}
+        <div class="row row-content" style="padding-top: 10px">
+            <div class="chat-panel panel panel-default" style="margin-bottom: 0px;">
+                <div class="panel-heading">
+                    <i class="fa fa-tasks    fa-fw"></i>{{ product.pro_name }}
+                </div>
+                <!-- /.panel-heading -->
+                <div style="padding: 6px 3px;">
+                    <span class="label label-default">产品特色:{{ product.bx_feature }}</span>
+                </div>
+
+                <div class="panel-body" style="height: auto;overflow: auto;padding:5px 5px;">
+                    <div class="left clearfix">
+                        <a href="/product/detail/3522.html" class="pull-left">
+                            <img src="{{ product.img.url }}"
+                                 style="width: 70px;height: 70px;border: 2px solid #fff0ff;">
+                        </a>
+                        <div style="width: 100%;padding-left: 70px">
+                            <div style="padding-left: 8px">
+                                <a href="/product/detail/{{ product.pid }}.html"><span>{{ product.pro_name }}</span></a>
+                            </div>
+                            <div style="width: 100%;height: 50px">
+                                <div style="float: left;padding-left: 8px">
+                                    <p style="font-size: 10px;line-height: 14px;margin: 2px 0px;color: #999 ">
+                                        承包年龄:{{ product.insurance_agelimit }}</p>
+                                    <p style="font-size: 10px;line-height: 14px;margin: 2px 0px;color: #999 ">
+                                        保障期限:{{ product.insurance_timelimit }}</p>
+                                    <p style="font-size: 10px;line-height: 14px;margin: 2px 0px;color: #999 ">
+                                        缴费方式:{{ product.insurance_paytype }}</p>
+                                </div>
+                                <div style="float: right;vertical-align: top">
+                                    <img src="{{ com.img.url }}"
+                                         style="width: 77px;height: 35px;border: 2px solid #fff0ff;">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+                <div style="font-size: 85% ;padding-top: 2px;color:#337ab7">
+                    <i class="fa fa-tags fa-fw"></i>{{ com.comname }}  {% for i in product.get_type_name_list %}|
+                    {{ i }}  {% endfor %}
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="row row-content" style="padding-top: 10px">
+            <div class="chat-panel panel panel-default" style="margin-bottom: 0px;">
+                <div class="panel-heading">
+                    <i class="fa fa-th    fa-fw"> </i>&nbsp;产品详情
+                </div>
+                <!-- /.panel-heading -->
+
+
+                <div class="panel-body" style="height: auto;overflow: auto;padding:5px 5px;">
+                    <div class="left clearfix">
+                        <h5>保障内容：</h5>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline"
+                               >
+                            <thead>
+                            <tr>
+                                <th width="80">保障利益</th>
+                                <th width="100">保额</th>
+                                <th>保障内容</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for i in product.desc_json_info %} {% if i.0.1 != 0 %}
+                                <tr>
+                                    <td>{{ i.0.0 }}</td>
+                                    <td>{{ i.1 }}</td>
+                                    <td>{{ i.2 }}</td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td>{{ i.1 }}</td>
+                                    <td></td>
+                                    <td>{{ i.2 }}</td>
+                                </tr>
+                            {% endif %} {% endfor %}
+                            </tbody>
+                        </table>
+                        <h5>购买理由：</h5>
+                        <div class="product-detail-content">
+                            {{ product.pro_desc_reason|safe }}
+                        </div>
+                        <h5>免责声明：</h5>
+                        <div class="product-detail-content">
+                             {{ product.pro_desc_duty|safe }}
+                        </div>
+                        <h5>理赔流程：</h5>
+                        <div class="product-detail-content">
+                            <img src="/static/imgs/bxlc.jpg" >
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+        {% include "m_dailiren_common.html" %}
+    {% endwith %}
+{% endblock %}
+{#{% block footer %}#}
+{#{% endblock %}#}

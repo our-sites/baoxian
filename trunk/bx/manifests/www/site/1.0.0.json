@@ -1,0 +1,18 @@
+{
+  "res": {
+    "www/site/1.0.0:site.css": {
+      "uri": "/www/site/1.0.0/src/site_4bb43ae.css",
+      "type": "css"
+    },
+    "www/site/1.0.0:site": {
+      "uri": "/www/site/1.0.0/src/site_606f9a9.js",
+      "type": "js",
+      "deps": [
+        "www/common/1.0.0:common",
+        "com/global/1.0.0:dollar",
+        "www/site/1.0.0:site.css"
+      ]
+    }
+  },
+  "pkg": {}
+}
