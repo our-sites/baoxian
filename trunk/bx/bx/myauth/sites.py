@@ -14,6 +14,7 @@ class SelfAuth(object):
         urlpatterns = patterns('',
             ("^%s$"%settings.LOGIN_URL.lstrip("/"),views.login),
             ("^%s$"%settings.LOGOUT_URL.lstrip("/"),views.logout),
+                               (r"^register/parentid/(\d+)",views.register),
                                (r"^register/",views.register),
                                (r"^register_valid_phone",views.register_valid_phonenum),
                                (r"^register_send_sms/",views.register_send_sms),
@@ -21,7 +22,9 @@ class SelfAuth(object):
                                (r"^forgotpwd_valid_phone",views.forgotpwd_valid_phone),
                                (r"get_qq_token",views.get_qq_token),
                                (r"get_taobao_token",views.get_taobao_token),
-                              (r"get_weibo_token", views.get_weibo_token)
+                              (r"get_weibo_token", views.get_weibo_token),
+                               (r"m_register_valid_phone",views.m_register_valid_phone),
+                               (r"m_forgotpwd_valid_phone",views.m_forgotpwd_valid_phone),
             )
         return urlpatterns
     @property

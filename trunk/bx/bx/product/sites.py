@@ -19,7 +19,7 @@ class Product(object):
                                ("^$",lambda x:HttpResponseRedirect("/product/search/")),
                                ("^search/redirect/$",views.search_redirect),
                                ("^detail/(\d+)\.html",views.detail),
-                                ("^search/",views.search),
+                                ("^search",views.search),
             )
         return urlpatterns
     @property

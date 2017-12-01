@@ -16,7 +16,7 @@ class Dailiren(object):
       #      ("^%s$"%settings.LOGIN_URL.lstrip("/"),views.login),
       #      ("^%s$"%settings.LOGOUT_URL.lstrip("/"),views.logout),
                                ("^detail/(\d+)\.html",views.detail),
-                                ("^search/",views.search),
+                                ("^search",views.search),
                                ("^$",views.index),
                                ("^add_advice",views.add_adivce)
             )

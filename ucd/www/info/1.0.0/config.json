@@ -2,18 +2,21 @@
   "stable": false,
   "exports": {
     "index": {},
-	"detail": {}
+	"detail": {},
+	"info": {}
   },
   "packs": {
 	  "/pkg/info.js": [
 		  "/src/common.js",
 		  "/src/index.js",
-		  "/src/detail.js"
+		  "/src/detail.js",
+		  "/src/info.js"
 	  ],
 	  "/pkg/info.css": [
 		  "/src/common.css",
 		  "/src/index.css",
-		  "/src/detail.css"
+		  "/src/detail.css",
+		  "/src/info.css"
 	  ]
   }
 }

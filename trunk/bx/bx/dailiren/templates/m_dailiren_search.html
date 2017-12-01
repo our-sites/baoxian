@@ -18,13 +18,13 @@
                     {% for i in allinfo %}
                         {% with com=i.get_comobj %}
                             <li class="left clearfix">
-                                <a href="/dailiren/detail/{{ i.uid }}.html" class="pull-left">
+                                <a href="http://{{ i.uid }}.site.bao361.cn/" class="pull-left">
                                     <img src="{{ i.get_img_url }}"
                                          style="width: 80px;height: 80px;border-radius: 50% ;">
                                 </a>
                                 <div style="width: 100%;padding-left: 80px">
                                     <div style="padding-left: 8px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;">
-                                        <a href="/dailiren/detail/{{ i.uid }}.html"><span>{{ i.get_namecontent }}</span></a>
+                                        <a href="http://{{ i.uid }}.site.bao361.cn/"><span>{{ i.get_namecontent }}</span></a>
                                     </div>
                                     <div style="width: 100%;height: 60px">
                                         <div style="float: left;padding-left: 8px">
@@ -43,7 +43,7 @@
                                             <img src="{{ com.img.url }}"
                                              style="width: 77px;height: 35px;border: 2px solid #fff0ff;">
                                             <br>
-                                            <a href="/dailiren/detail/{{ i.uid }}.html" class="btn btn-sm btn-outline btn-primary" style="margin-top: 5px;width: 77px;">
+                                            <a href="http://{{ i.uid }}.site.bao361.cn/" class="btn btn-sm btn-outline btn-primary" style="margin-top: 5px;width: 77px;">
                                                 <i class="glyphicon  glyphicon-shopping-cart    fa-fw"></i>咨询
                                             </a>
 

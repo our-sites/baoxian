@@ -44,15 +44,18 @@
     },
     "www/info/1.0.0:info.css": {
       "uri": "/www/info/1.0.0/src/info.css",
-      "type": "css"
+      "type": "css",
+      "pkg": "www/info/1.0.0:p0"
     },
     "www/info/1.0.0:info": {
       "uri": "/www/info/1.0.0/src/info.js",
       "type": "js",
       "deps": [
+        "com/global/1.0.0:dollar",
         "www/info/1.0.0:common",
         "www/info/1.0.0:info.css"
-      ]
+      ],
+      "pkg": "www/info/1.0.0:p1"
     }
   },
   "pkg": {
@@ -62,7 +65,8 @@
       "has": [
         "www/info/1.0.0:common.css",
         "www/info/1.0.0:index.css",
-        "www/info/1.0.0:detail.css"
+        "www/info/1.0.0:detail.css",
+        "www/info/1.0.0:info.css"
       ]
     },
     "www/info/1.0.0:p1": {
@@ -71,13 +75,16 @@
       "has": [
         "www/info/1.0.0:common",
         "www/info/1.0.0:index",
-        "www/info/1.0.0:detail"
+        "www/info/1.0.0:detail",
+        "www/info/1.0.0:info"
       ],
       "deps": [
         "www/common/1.0.0:common",
         "www/info/1.0.0:common.css",
         "www/info/1.0.0:index.css",
-        "www/info/1.0.0:detail.css"
+        "www/info/1.0.0:detail.css",
+        "com/global/1.0.0:dollar",
+        "www/info/1.0.0:info.css"
       ]
     }
   }

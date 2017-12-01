@@ -14,7 +14,8 @@ import  re
 import  json
 import  HTMLParser
 from utils import  seo
-
+import pyquery
+import jieba.posseg as pseg
 
 def filter_tags(htmlstr):
     s=re.sub("<[^<>]+>",'',htmlstr)
@@ -104,6 +105,127 @@ class Consult(models.Model):
     def get_from(self):
         return  self._from
 
+    def get_content_imgs(self):
+        _=pyquery.PyQuery("<div>"+self.content+"</div>")
+        return [  pyquery.PyQuery(i).attr("src")  for i in   _("img[src^='/media/']")]
+
+
+class News(models.Model):
+    nid=models.AutoField(primary_key=True)
+    title=models.CharField(max_length=50,verbose_name="标题")
+    cate1=models.PositiveSmallIntegerField(default=0)
+    cate2=models.PositiveIntegerField(default=0)
+    writer=models.CharField(max_length=30)
+    _from=models.CharField(max_length=100,db_column="from",default="",blank=True,verbose_name="来源",unique=True)
+    addtime=models.PositiveIntegerField(default=lambda :int(time.time()),verbose_name="创建时间")
+    keywords=models.CharField(max_length=100,default="",blank=True,verbose_name="SEO-关键词")
+    description=models.CharField(max_length=100,default="",blank=True,verbose_name="SEO-描述")
+    tags=models.CharField(max_length=100,default='',verbose_name="标签")
+    content=RichTextUploadingField(verbose_name="内容")
+    status=models.PositiveSmallIntegerField(verbose_name="资讯状态",default=1,help_text="1代表正常 其他值代表异常")
+    cid=models.IntegerField(default=0,verbose_name="CID")
+    good_num=models.IntegerField(default=0,verbose_name="赞次数")
+    see_num=models.IntegerField(default=0,verbose_name="浏览次数")
+    abstract=models.TextField(default='',verbose_name="摘要")
+
+    class Meta:
+        db_table="bx_news"
+        ordering=["-addtime"]
+        verbose_name="资讯"
+        verbose_name_plural="所有资讯"
+
+    def __unicode__(self):
+        return self.title+"---"+datetime.datetime.fromtimestamp(self.addtime).strftime("%Y-%m-%d")
+
+    def get_simple_content(self):
+        a=filter_tags(self.content)
+        b= replace_charentity(a)
+        _=HTMLParser.HTMLParser()
+        return  _.unescape(b.strip())
+
+    def get_date(self):
+        return datetime.datetime.fromtimestamp(self.addtime).strftime("%Y-%m-%d")
+
+    def get_datetime(self):
+        return  datetime.date.fromtimestamp(self.addtime).strftime("%Y-%m-%d %H:%M:%S")
+
+    def get_datetimeinfo_before_content(self):
+        obj=datetime.datetime.fromtimestamp(self.addtime)
+        now=datetime.datetime.now()
+        delta=now-obj
+        onehour=datetime.timedelta(minutes=60)
+        oneday=datetime.timedelta(days=1)
+        if delta.total_seconds() <3600:
+            return "%s分钟前"%int(delta.total_seconds()/60)
+        if delta.total_seconds()<86400:
+            return "%s小时前"%(int(delta.total_seconds()/3600))
+        return self.get_date()
+
+    def get_tags(self):
+        tags=re.sub("[\s+\.\!\/_$%^*(+\"\']+|[+——！，“：“。？、~@#￥%……&*（）]+".decode("utf8"), "",self.tags)
+        _=tags.split(",")
+        return [ i  for i in _ if i.strip()!=""][:3]
+
+    def get_cate1(self):
+        return NewsCate.objects.get(cateid=self.cate1)
+
+    def get_cate1_url(self):
+        return "/news/%s/"%(self.cate1)
+
+    def get_cate2_url(self):
+        return "/news/%s/"%(self.cate2)
+
+    def get_cate2(self):
+        return NewsCate.objects.get(cateid=self.cate2)
+
+
+
+    def simple_title(self):
+        if len(self.title)>17:
+            return self.title[:17]+".."
+        else:
+            return self.title
+
+    def simple_seo_k(self):
+        return  self.keywords+(".." if len(self.keywords)>9 else '' )
+
+    def simple_seo_d(self):
+        return  self.description+(".." if len(self.description)>9 else "")
+
+    def get_status(self):
+        if self.status==1:
+            return  "正常"
+        else:
+            return "禁用"
+
+    def get_from(self):
+        return  self._from
+
+    def get_content_imgs(self):
+        _=pyquery.PyQuery("<div>"+self.content+"</div>")
+        return [  pyquery.PyQuery(i).attr("src")  for i in   _("img[src^='/media/']")]
+
+
+class NewsCate(models.Model):
+    '新闻分类model'
+    cateid=models.AutoField(primary_key=True)
+    catename=models.CharField(max_length=200)
+    parentid=models.PositiveIntegerField(default=0)
+    level=models.PositiveIntegerField(default=0)
+    class Meta:
+        db_table="bx_news_cate"
+        verbose_name="新闻分类"
+        verbose_name_plural="所有新闻分类"
+    def get_url(self):
+        return "/news/{0}/".format(self.cateid)
+
+    def get_childrens(self):
+        if self.level==1:
+            return  NewsCate.objects.filter(parentid=self.cateid)
+        else:
+            return []
+
+
 class Company(models.Model):
     cid=models.AutoField(primary_key=True)
     comname=models.CharField(max_length=100,verbose_name="企业名",unique=True)
@@ -112,12 +234,19 @@ class Company(models.Model):
     product_weight=models.IntegerField(default=0)   #权重
     dailiren_weight=models.IntegerField(default=0)    #权重
     content=models.TextField()  #企业介绍
+    video_url=models.CharField(max_length=500,default='')
     class Meta:
         db_table="bx_company"
         verbose_name="保险企业"
         verbose_name_plural="所有保险企业"
     def __unicode__(self):
         return  self.comname
+
+    def get_video_id(self):
+        if not  self.video_url:
+            return None
+        else:
+            return re.search(r"id_(.+)\.html",self.video_url).groups()[0]
 
 class UserType(models.Model):
     id=models.AutoField(primary_key=True)
@@ -162,6 +291,7 @@ class Product(models.Model):
     img=models.ImageField(max_length=200,upload_to="pro_imgs",verbose_name="产品图片")
     meta=models.CharField(max_length=300,verbose_name="额外信息",default="",blank=True)
     addtime=models.IntegerField(default=0,verbose_name="创建时间戳")
+    keywords=models.CharField(default="",max_length=100)
     class Meta:
         db_table="bx_product"
         verbose_name="产品"
@@ -212,6 +342,9 @@ class Product(models.Model):
     def get_comobj(self):
         return  Company.objects.get(cid=self.cid)
 
+    def get_keywords(self):
+        return self.keywords or self.pro_name
+
 
 class ProductImgCache(models.Model):
     id=models.AutoField(primary_key=True)
@@ -233,6 +366,7 @@ class Ask(models.Model):
     city=models.IntegerField(default=0)
     state=models.PositiveIntegerField(default=0)  #状态  正常0    其他为异常
     ans_num=models.PositiveIntegerField(default=0)  #回答数
+    keywords=models.CharField(max_length=200,default='')
     class Meta:
         db_table="bx_ask"
         verbose_name="提问"
@@ -250,7 +384,7 @@ class Ask(models.Model):
 
     def get_answer_count(self):
         "获取回答数"
-        return Answer.objects.filter(askid=self.askid).count()
+        return self.ans_num
 
     def get_area_info(self):
         "获取地域信息"
@@ -297,7 +431,14 @@ class Ask(models.Model):
 
     def save(self, force_insert=False, force_update=False, using=None):
         models.Model.save(self,force_insert,force_update,using)
-        seo.postBaiDu("http://www.bao361.cn/ask/detail/%s.html"%self.askid)
+
+
+    def get_keywords(self):
+        if self.keywords:
+            return self.keywords
+        else:
+            return  self.ask_content
+
 
 
 class Answer(models.Model):
@@ -307,6 +448,7 @@ class Answer(models.Model):
     uid=models.IntegerField(default=0,verbose_name="用户ID")
     ans_time=models.PositiveIntegerField(verbose_name="回答时间",default=lambda :int(time.time()))
     parent_ansid=models.PositiveIntegerField(default=0,verbose_name="父回答ID")
+    good_num=models.PositiveIntegerField(default=0,verbose_name="被赞次数")
     class Meta:
         db_table="bx_answer"
         verbose_name="回答"
@@ -349,12 +491,24 @@ class DingZhi(models.Model):
     start_hour=models.IntegerField(default=0)
     end_hour=models.IntegerField(default=0)
     realname=models.CharField(max_length=50,default='')
+    ip=models.CharField(max_length=15,default='')
+    url=models.CharField(max_length=200,default='')
+
 
     class Meta:
         db_table="bx_dingzhi"
 
+    def get_date(self):
+        return  datetime.datetime.fromtimestamp(self.addtime).strftime("%Y-%m-%d")
+
     def get_date_time(self):
         return datetime.datetime.fromtimestamp(self.addtime).strftime("%Y-%m-%d %H:%M:%S")
+
+    def save(self, force_insert=False, force_update=False, using=None):
+        result=models.Model.save(self,force_insert,force_update,using)
+        from utils import  sms
+        sms.send_dingzhi_addsuccess(self.contact)
+        return  result
 
 class AllSiteMsg(models.Model):
     msgid=models.AutoField(primary_key=True)
@@ -483,14 +637,89 @@ class Add(models.Model):
 
 
 class Advice(models.Model):
-    "咨询"
+    "咨询,一般指一对一咨询 "
     iid=models.AutoField(primary_key=True)
     uid=models.PositiveIntegerField(default=0)
+    name=models.CharField(max_length=20,default='')
     phone=models.PositiveIntegerField(default=0)
     content=models.CharField(max_length=300,default='')
     addtime=models.PositiveIntegerField(default=lambda:int(time.time()))
     ip=models.CharField(max_length=50,default='')
     province_id=models.PositiveIntegerField(default=0)
     city_id=models.PositiveIntegerField(default=0)
+    touid=models.PositiveIntegerField(default=0,db_column="to_uid")
     class Meta:
         db_table="bx_advice"
+
+    def get_date_time(self):
+        return  datetime.datetime.fromtimestamp(self.addtime).strftime("%Y%m%d %H:%M:%S")
+
+    def save(self, force_insert=False, force_update=False, using=None):
+        result=models.Model.save(self,force_insert,force_update,using)
+        from utils import  sms
+        from myauth.models import MyUser
+        sms.send_advice_addsuccess(self.phone)
+        try:
+            assert  self.touid
+            _user=MyUser.objects.get(uid=self.touid)
+        except:
+            pass
+        else:
+            sms.send_advice_received(str(_user.phone),str(self.phone))
+        return  result
+
+# class Statis(models.Model):
+#     sid=models.AutoField(primary_key=True)
+#     uid=models.PositiveIntegerField(default=0)
+
+
+class StudyVideo(models.Model):
+    "视频"
+    vid=models.AutoField(primary_key=True)
+    video_type=models.PositiveSmallIntegerField(default=0)  # 1 代表新手  2代表签单  3代表增员
+    video_source=models.PositiveSmallIntegerField(default=0) # 1 代表 youku
+    title=models.CharField(max_length=50,default="")
+    addtime=models.PositiveIntegerField(default=lambda:int(time.time()))
+    video_id=models.CharField(max_length=100,default="")
+    author=models.CharField(max_length=100,default='')
+    author_imgurl=models.CharField(max_length=300,default="")
+    video_imgurl=models.CharField(max_length=300,default="")
+    duration=models.PositiveIntegerField(default=0) #时长
+    good_num=models.PositiveIntegerField(default=0)
+    play_num=models.PositiveIntegerField(default=0)
+    comment_num=models.PositiveIntegerField(default=0)
+    class Meta:
+        db_table="bx_study_video"
+
+    def get_video_source(self):
+        config={1:"youku"}
+        return  config[self.video_source]
+
+    def get_video_type(self):
+        config={1:"新手",2:"签单",3:"增员"}
+        return config[self.video_type]
+
+    def add_comment(self,user,content):
+        uid=user.uid
+        _=StudyVideoComment(vid=self.vid,content=content,uid=uid)
+        _.save()
+        self.comment_num+=1
+        self.save()
+        return  _
+
+class StudyVideoComment(models.Model):
+    "视频评论"
+    id=models.AutoField(primary_key=True)
+    vid=models.PositiveIntegerField(default=0)
+    parentid=models.PositiveIntegerField(default=0) #父id
+    pparentid=models.PositiveIntegerField(default=0) #祖先id
+    content=models.CharField(max_length=300,default="")
+    addtime=models.PositiveIntegerField(default= lambda:int(time.time()))
+    uid=models.PositiveIntegerField(default=0)
+    good_num=models.PositiveIntegerField(default=0)
+    class Meta:
+        db_table = "bx_study_video_comment"
+
+
+
+

@@ -10,7 +10,8 @@ from django.core.paginator import  Paginator,EmptyPage
 import  re
 from django.http import  HttpResponse
 import  json
-
+from django.conf import  settings
+from bx.decorators import  mobile_browser_adaptor_by_host
 #
 def search_redirect(request):
     keyword=request.POST.get("keyword")
@@ -19,6 +20,7 @@ def search_redirect(request):
 
     return  HttpResponse(json.dumps(data),mimetype="application/javascript")
 
+@mobile_browser_adaptor_by_host(settings.M_HOST_FUN,{"product_search.html":"m_product_search.html"})
 def search(request):
     path=request.path
     page=re.search(r"/(\d+)\.html",path)
@@ -27,7 +29,7 @@ def search(request):
         page=int(page.groups()[0])
     else:
         page=1
-    _info=re.search(r"/(\d+)-(\d+)-(\d+)/",path)
+    _info=re.search(r"/(\d+)-(\d+)-(\d+)",path)
     if _info:
         people_id,cate_id,c_id=tuple(_info.groups())
         people_id=int(people_id)
@@ -87,6 +89,7 @@ def search(request):
     return  render_to_response("product_search.html",locals(),
                                context_instance=RequestContext(request))
 
+@mobile_browser_adaptor_by_host(settings.M_HOST_FUN,{"product_detail.html":"m_product_detail.html"})
 def detail(request,pid):
     product=Product.objects.get(pid=int(pid))
     company=Company.objects.get(cid=product.cid)

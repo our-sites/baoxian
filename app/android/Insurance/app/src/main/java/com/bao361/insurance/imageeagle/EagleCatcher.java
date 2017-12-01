@@ -55,7 +55,7 @@ public class EagleCatcher implements ICatcher {
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public  EagleCatcher(android.app.Fragment fragment) {
+    public EagleCatcher(android.app.Fragment fragment) {
         requestManager = Glide.with(fragment);
 
     }
@@ -156,6 +156,10 @@ public class EagleCatcher implements ICatcher {
             drawableTypeRequest = requestManager.load(uri);
         } else if (resId != null) {
             drawableTypeRequest = requestManager.load(resId);
+        }
+
+        if (drawableTypeRequest == null) {
+            return this;
         }
 
         if (isGif) {

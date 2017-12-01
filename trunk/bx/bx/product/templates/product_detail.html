@@ -3,7 +3,7 @@
     {{ product.pro_name }}保险产品_保险管家
 {% endblock %}
 {% load atm %}
-{% block keywords %}{{ product.pro_name }} 保险管家 保险之家{% endblock %}
+{% block keywords %}{{ product.get_keywords }} 保险管家 保险之家{% endblock %}
 {% block description %}{{ product.pro_name }}_保险管家_保险之家{% endblock %}
 {% block css %}
     {% atmcss www/product:detail %}

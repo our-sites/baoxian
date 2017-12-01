@@ -17,27 +17,34 @@ from bx.utils.sms import send_dayysms_validnumber
 import random
 from gcutils.encrypt import  md5
 import  time
+import  traceback
 
 @csrf_exempt
 def upload_img(request):
-    print request.method
+    print request.method,len(request.body)
     postinfo=request.POST
-    _file=urlparse.parse_qs(request.body).get("file")[0]
-    extname=request.POST["extname"]
-    finger=md5(_file)
-    filename=finger+str(extname)
-    _flag=int(finger,16)
     try:
-        os.mkdir(os.path.join(settings.MEDIA_ROOT,"img",str(_flag%100)))
-    except:
-        pass
-    path=os.path.join(settings.MEDIA_ROOT,"img",str(_flag%100),filename)
-    _u=open(path,"wb")
-    _u.write(_file)
-    _u.flush()
-    _u.close()
-    return HttpResponse(json.dumps({"status":True,"filename":filename,"imgurl":"/media/img/"+str(_flag%100)+"/"+filename}),
-                        mimetype="application/javascript")
+        _file=urlparse.parse_qs(request.body).get("file")[0]
+        extname=request.POST["extname"]
+        extname=extname.split("?")[0]
+        finger=md5(_file)
+        filename=finger+str(extname)
+        _flag=int(finger,16)
+        try:
+            os.mkdir(os.path.join(settings.MEDIA_ROOT,"img",str(_flag%100)))
+        except:
+            pass
+        path=os.path.join(settings.MEDIA_ROOT,"img",str(_flag%100),filename)
+        _u=open(path,"wb")
+        _u.write(_file)
+        _u.flush()
+        _u.close()
+        return HttpResponse(json.dumps({"status":True,"filename":filename,"imgurl":"/media/img/"+str(_flag%100)+"/"+filename}),
+                            mimetype="application/javascript")
+    except Exception as e :
+        traceback.print_exc()
+        print e.message
+        return  HttpResponse(json.dumps({"status":False,"message":e.message}),mimetype="application/javascript")
 
 def area_list(request):
     getinfo=request.GET

@@ -68,18 +68,18 @@ def hash_obj_handle(zid,hash_obj):
         result[3][zid]=hash_obj.value
         mgr.runOperation("update bx_consult set status=2 where zid=%s",(zid,))
 
-    mgr.runOperation('''INSERT INTO bx_consult_simhash_a(simhash_a ,  zids ) VALUES ( %s ,%s)
-    ON DUPLICATE KEY UPDATE zids = %s  ''',(hash_a, json.dumps(result[0]),json.dumps(result[0])))
+        mgr.runOperation('''INSERT INTO bx_consult_simhash_a(simhash_a ,  zids ) VALUES ( %s ,%s)
+        ON DUPLICATE KEY UPDATE zids = %s  ''',(hash_a, json.dumps(result[0]),json.dumps(result[0])))
 
 
-    mgr.runOperation('''INSERT INTO bx_consult_simhash_b(simhash_b  ,  zids ) VALUES ( %s ,%s)
-    ON DUPLICATE KEY UPDATE zids = %s  ''',(hash_b,json.dumps(result[1]),json.dumps(result[1])))
+        mgr.runOperation('''INSERT INTO bx_consult_simhash_b(simhash_b  ,  zids ) VALUES ( %s ,%s)
+        ON DUPLICATE KEY UPDATE zids = %s  ''',(hash_b,json.dumps(result[1]),json.dumps(result[1])))
 
-    mgr.runOperation('''INSERT INTO bx_consult_simhash_c(simhash_c  ,  zids ) VALUES ( %s ,%s)
-    ON DUPLICATE KEY UPDATE zids = %s  ''',(hash_c ,json.dumps(result[2]),json.dumps(result[2])))
+        mgr.runOperation('''INSERT INTO bx_consult_simhash_c(simhash_c  ,  zids ) VALUES ( %s ,%s)
+        ON DUPLICATE KEY UPDATE zids = %s  ''',(hash_c ,json.dumps(result[2]),json.dumps(result[2])))
 
-    mgr.runOperation('''INSERT INTO bx_consult_simhash_d(simhash_d  ,  zids ) VALUES ( %s ,%s)
-    ON DUPLICATE KEY UPDATE zids = %s  ''',(hash_d ,json.dumps(result[3]),json.dumps(result[3])))
+        mgr.runOperation('''INSERT INTO bx_consult_simhash_d(simhash_d  ,  zids ) VALUES ( %s ,%s)
+        ON DUPLICATE KEY UPDATE zids = %s  ''',(hash_d ,json.dumps(result[3]),json.dumps(result[3])))
 
     return flag
 

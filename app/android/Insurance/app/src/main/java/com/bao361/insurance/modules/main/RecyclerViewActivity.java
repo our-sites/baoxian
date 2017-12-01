@@ -10,6 +10,7 @@ import android.view.View;
 
 import com.bao361.insurance.R;
 import com.bao361.insurance.base.BaseActivity;
+import com.bao361.insurance.modules.main.viewholder.TestHolder;
 import com.bao361.insurance.ui.recycler.AbsAdapter;
 import com.bao361.insurance.ui.recycler.LoadHelper;
 import com.bao361.insurance.ui.recycler.RefreshLoadHelper;

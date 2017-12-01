@@ -20,4 +20,8 @@ $(".regular").slick({
 });
 
 
+
+
+
+
 // @require './index.css'

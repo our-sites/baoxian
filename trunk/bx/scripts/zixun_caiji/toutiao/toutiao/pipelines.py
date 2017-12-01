@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-
 # Define your item pipelines here
-#
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
@@ -15,9 +13,10 @@ class UserPipeline(object):
         self.dbpool = adbapi.ConnectionPool(
                 dbapiName='MySQLdb',
                 db = 'bx_caiji',
-                host='172.16.13.165',
-                user = 'root',
-                passwd = '123456',
+                #host='172.16.13.165',
+                host='118.89.220.36',
+                user = 'mha_user',
+                passwd = 'gc895316',
                 cursorclass = MySQLdb.cursors.DictCursor,
                 charset = 'utf8',
                 use_unicode = True,
@@ -44,3 +43,4 @@ class UserPipeline(object):
                 pass
     def handle_error(self,e):
         logging.log(logging.ERROR,str(e))
+

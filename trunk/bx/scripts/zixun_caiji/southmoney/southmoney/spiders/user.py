@@ -25,6 +25,7 @@ class SouthmoneySpider(scrapy.Spider):
         urls = response.xpath('//div[@class="column" or @class="center_col" or class="list2"]/ul/li/a/@href').extract()
         for url in urls:
             Url="http://shebao.southmoney.com"+url
+            print Url
             #Url="http://shebao.southmoney.com/shengyu/zhengce/201705/69256.html"
             yield scrapy.Request(Url, callback=self.page_list, dont_filter=True)
     def page_list(self, response):
@@ -58,7 +59,7 @@ class SouthmoneySpider(scrapy.Spider):
         Info = [i.replace("'",'"') for i in info if p_pattern.match(i) and "<script" not in i]
         item['content']="".join([ strinfo.sub('',I) for I in Info ])+item['content']
         item['title']=Title
-        item['publishtime']=int(time.mktime(time.strptime(Time, "%Y-%m-%d %H:%M:%S")))
+        item['publishtime']=int(time.mktime(time.strptime(Time.replace('/','-'), "%Y-%m-%d %H:%M:%S")))
         item['writer']=Writer
         if not P.match(item['url']) :
             return item
@@ -85,7 +86,7 @@ class SouthMoneySpider(scrapy.Spider):
         Time = response.xpath('//div[@class="col1 fn-left"]/ul[@class="newslist2"]/li/span[@class="time"]/text()').extract()
         for index,url in enumerate(urls):
             #if url == 'http://baoxian.southmoney.com/zhishi/4472.html' :
-            item={'publishtime':int(time.mktime(time.strptime(Time[index], "%Y-%m-%d %H:%M:%S"))),'keyword':'','type':0,'source':'社保网'}
+            item={'publishtime':int(time.mktime(time.strptime(Time[index].replace('/','-'), "%Y-%m-%d %H:%M:%S"))),'keyword':'','type':0,'source':'社保网'}
             yield scrapy.Request(url, callback=self.page_desc, dont_filter=True,meta={'item': item})
 
     def page_desc(self, response):

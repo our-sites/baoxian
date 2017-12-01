@@ -53,12 +53,12 @@
                         <i class="fa fa-tasks fa-3x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">{{ hot_zixun_news.0.zid }}</div>
+                        <div class="huge">{{ hot_news_1.0.nid }}</div>
                         <div>保险资讯</div>
                     </div>
                 </div>
             </div>
-            <a href="/zixun/">
+            <a href="/news/">
                 <div class="panel-footer">
                     <span class="pull-left">查看详情</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -176,11 +176,11 @@
                         <div class="row" style="margin-top: 15px ">
                             {% endif %}
                                 <div class="col-xs-4" style="text-align: center">
-                                <a href="/dailiren/detail/{{ user.uid }}.html" >
+                                <a href="http://{{ user.uid }}.site.bao361.cn/" >
                                     <img src="{{ user.get_img_url }}" style="width: 70px;height: 70px;border-radius: 35px ">
                                 </a>
                                 <div style="text-align: center">
-                                <a href="/dailiren/detail/{{ user.uid }}.html" target="_blank">
+                                <a href="http://{{ user.uid }}.site.bao361.cn/" target="_blank">
                                     {{ user.get_namecontent }}
                                 </a>
                                 </div>
@@ -212,9 +212,9 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="list-group">
-                                {% for xinwen in hot_zixun_news %}
+                                {% for xinwen in hot_news_1 %}
 
-                                <a href="/zixun/detail/{{ xinwen.zid }}.html" class="list-group-item" style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap" target="_blank">
+                                <a href="/news/detail/{{ xinwen.nid }}.html" class="list-group-item" style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap" target="_blank">
                                     <i class="fa fa-tasks fa-fw"></i> &nbsp;&nbsp; {{ xinwen.title }}
                                 </a>
                                 {% endfor %}
@@ -223,7 +223,7 @@
 
                             </div>
                             <!-- /.list-group -->
-                            <a href="/zixun/" class="btn btn-default btn-block" target="_blank">查看更多</a>
+                            <a href="/news/" class="btn btn-default btn-block" target="_blank">查看更多</a>
                         </div>
                         <!-- /.panel-body -->
                     </div>

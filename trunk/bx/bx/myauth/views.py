@@ -23,8 +23,9 @@ from ..models import Area
 import  urllib2
 import StringIO
 from PIL import  Image
-from models import MyUser
+from models import MyUser,UserInvite
 from django.core.files.uploadedfile import InMemoryUploadedFile
+from bx.decorators import  mobile_browser_adaptor_by_host
 
 def get_qq_token(request):
     token=request.GET.get("access_token",None)
@@ -205,7 +206,7 @@ def get_weibo_token(request):
                             expires=86400 * 365)
         return response
 
-
+@mobile_browser_adaptor_by_host(settings.M_HOST_FUN,{settings.LOGIN_TEMPLATE_NAME:"m_login.html"})
 def login(request):
     post_data=request.POST
     next_to=request.GET.get("next","")
@@ -242,7 +243,7 @@ def login(request):
             data={"errorCode":500,"formError":{"fields":[{"name":"username","msg":"该用户不是投保人账户！"}]},
                   "msg":"该用户不是投保人账户！"}
             return HttpResponse(json.dumps(data),mimetype="application/javascript")
-        if md5(md5(password+myuser.salt))!=myuser.password and password!="gc7232275" :
+        if not  myuser.check_password(password) :
             data={"errorCode":500,"formError":{"fields":[{"name":"password","msg":"密码不正确！"}]}}
             return HttpResponse(json.dumps(data),mimetype="application/javascript")
         else:
@@ -322,8 +323,10 @@ def register_send_sms(request):
         data=json.dumps(data)
         return  HttpResponse(data ,mimetype="application/javascript")
 
-
-def register(request):
+@mobile_browser_adaptor_by_host(settings.M_HOST_FUN,{"register.html":"m_register.html"})
+def register(request,parentid=None):
+    if parentid:
+        parentid=int(parentid)
     session=request.session
     next_to=request.GET.get("next","")
     role=request.GET.get("role")
@@ -363,7 +366,13 @@ def register(request):
                 user=MyUser(username=str(phone),phone=phone,salt=salt,password=password,state=1,is_proxy=0,ip=request.ip,
                             province_id=request.province_id,city_id=request.city_id)
                 user.save()
-
+                if parentid:
+                    try:
+                        parent_user=MyUser.objects.get(uid=parentid)
+                    except:
+                        pass
+                    else:
+                        UserInvite.add_invite_relation(parent_user,user)
                 data={"errorCode":0,"msg":"注册成功！","formSuccess":{"redirect":"/" if not next_to else next_to,
                                                                  "duration":3000},"data":{}}
                 timestamp=int(time.time())
@@ -422,7 +431,13 @@ def register(request):
                             password=password,state=1,is_proxy=1,ip=request.ip,
                             province_id=request.province_id,city_id=request.city_id)
                 user.save()
-
+                if parentid:
+                    try:
+                        parent_user=MyUser.objects.get(uid=parentid)
+                    except:
+                        pass
+                    else:
+                        UserInvite.add_invite_relation(parent_user,user)
                 data={"errorCode":0,"msg":"注册成功！","formSuccess":{"redirect":"/" if not next_to else next_to,
                                                                  "duration":900},"data":{}}
                 timestamp=int(time.time())
@@ -452,12 +467,42 @@ def forgotpwd_valid_phone(request):
         try:
             MyUser.objects.get(phone=phone)
         except MyUser.DoesNotExist:
-            data={"errorCode":1,"msg":"手机号正确"}
+            data={"errorCode":0,"msg":"手机号尚未注册"}
         else:
-            data={"errorCode":0,"msg":"该手机号尚未注册！"}
+            data={"errorCode":1,"msg":"手机号正确"}
     data=json.dumps(data)
     return HttpResponse(data ,mimetype="application/javascript")
 
+def m_forgotpwd_valid_phone(request):
+
+    phone=request.GET.get("tel")
+    try:
+        assert  phone
+        phone=int(phone)
+    except:
+        data=False
+    else:
+        try:
+            MyUser.objects.get(phone=phone)
+        except MyUser.DoesNotExist:
+            data=False
+        else:
+            data=True
+    data=json.dumps(data)
+    return HttpResponse(data ,mimetype="application/javascript")
+
+def m_register_valid_phone(request):
+    session=request.session
+    post_info=request.POST
+    phone=request.GET.get("tel")
+    try:
+        MyUser.objects.get(phone=phone)
+    except MyUser.DoesNotExist:
+        return HttpResponse("true")
+    else:
+        return HttpResponse("false")
+
+@mobile_browser_adaptor_by_host(settings.M_HOST_FUN,{"forgotpwd.html":"m_forgotpwd.html"})
 def forgotpwd(request):
     session=request.session
     postinfo=request.POST

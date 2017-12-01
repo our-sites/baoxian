@@ -90,7 +90,7 @@
 
 {% if request.myuser.phone %}
 {% block custom_js %}
-    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+    <script src="/static/jquery.validate.min.js"></script>
     <script>
         jQuery.validator.addMethod("pwdagain", function (value, element) {
             return $("#pwd").val() == value;

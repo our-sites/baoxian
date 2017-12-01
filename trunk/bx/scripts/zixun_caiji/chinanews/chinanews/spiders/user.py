@@ -47,4 +47,5 @@ class ChinanewsSpider(scrapy.Spider):
             item['title'] = 'unknow'
         item['content']=INFO
         return item
+        print item
 

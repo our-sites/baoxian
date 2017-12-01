@@ -15,7 +15,8 @@ class DingZhi(object):
         urlpatterns = patterns('',
       #      ("^%s$"%settings.LOGIN_URL.lstrip("/"),views.login),
       #      ("^%s$"%settings.LOGOUT_URL.lstrip("/"),views.logout),
-                               ("^add/$",views.add)
+                               ("^add/$",views.add),
+                               ("^add_index/$",views.add_index)
             )
         return urlpatterns
     @property

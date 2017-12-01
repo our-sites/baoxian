@@ -179,7 +179,7 @@
                 <!--量身定制-->
                 <div class="index-customized">
                     <h2>量身定制</h2>
-                    <form id="customized-form" class="ui-form" action="/dingzhi/add/" novalidate="novalidate" data-widget-cid="widget-2" method="post">
+                    <form id="customized-form" class="ui-form" action="/dingzhi/add_index/" novalidate="novalidate" data-widget-cid="widget-2" method="post">
                         {% csrf_token %}
                         <div class="ui-form-item">
                             <div class="form-control clf">
@@ -361,12 +361,12 @@
                         <div class="feature"></div>
                         <!--链接-->
                         <div class="links">
-                            <a href="/zixun/anli/" target="_blank" class="links-btn">保险案例</a>
-                            <a href="/zixun/xinwen/" target="_blank" class="links-btn">保险新闻</a>
-                            <a href="/zixun/dongtai/" target="_blank" class="links-btn">监管动态</a>
-                            <a href="/zixun/guahua/" target="_blank" class="links-btn">保险规划</a>
-                            <a href="/zixun/citiao/" target="_blank" class="links-btn">保险词条</a>
-                            <a href="/zixun/baike/" target="_blank" class="links-btn">保险百科</a>
+                            <a href="/news/8/" target="_blank" class="links-btn">保险理财</a>
+                            <a href="/news/40/" target="_blank" class="links-btn">保险观点</a>
+                            <a href="/news/41/" target="_blank" class="links-btn">保险新闻</a>
+                            <a href="/news/12/" target="_blank" class="links-btn">养老保险</a>
+                            <a href="/news/34/" target="_blank" class="links-btn">旅游保险</a>
+                            <a href="/news/36/" target="_blank" class="links-btn">人寿保险</a>
                         </div>
                     </div>
                     <div class="right clf">
@@ -374,37 +374,37 @@
                             <a href="" class="right-item-img">
                                 <img src="/static/imgs/index-news-right-01.png" alt="">
                             </a>
-                            <h3>保险新闻</h3>
+                            <h3>行业资讯</h3>
                             <ul>
-                                {% for i in hot_zixun_news %}
-                                <li><a href="/zixun/detail/{{ i.zid }}.html" target="_blank">{{ i.title }}</a></li>
+                                {% for i in hot_news_1 %}
+                                <li><a href="/news/detail/{{ i.nid }}.html" target="_blank">{{ i.title }}</a></li>
                                 {% endfor %}
                             </ul>
-                            <a href="/zixun/xinwen/" class="color" target="_blank">查看更多&gt;</a>
+                            <a href="/news/1/" class="color" target="_blank">查看更多&gt;</a>
                         </div>
                         <div class="right-item">
                             <a href="" class="right-item-img">
                                 <img src="/static/imgs/index-news-right-02.png" alt="">
                             </a>
-                            <h3>保险百科</h3>
+                            <h3>保险知识</h3>
                             <ul>
-                                {% for i in hot_zixun_baike %}
-                                <li><a href="/zixun/detail/{{ i.zid }}.html" target="_blank">{{ i.title }}</a></li>
+                                {% for i in hot_news_5 %}
+                                <li><a href="/news/detail/{{ i.nid }}.html" target="_blank">{{ i.title }}</a></li>
                                 {% endfor %}
                             </ul>
-                            <a href="/zixun/baike/" class="color" target="_blank">查看更多&gt;</a>
+                            <a href="/news/5/" class="color" target="_blank">查看更多&gt;</a>
                         </div>
                         <div class="right-item">
                             <a href="" class="right-item-img">
                                 <img src="/static/imgs/index-news-right-03.png" alt="">
                             </a>
-                            <h3>保险案例</h3>
+                            <h3>保险产品</h3>
                             <ul>
-                                {% for i in hot_zixun_anli %}
-                                <li><a href="/zixun/detail/{{ i.zid }}.html" target="_blank">{{ i.title }}</a></li>
+                                {% for i in hot_news_2 %}
+                                <li><a href="/news/detail/{{ i.nid }}.html" target="_blank">{{ i.title }}</a></li>
                                 {% endfor %}
                             </ul>
-                            <a href="/zixun/anli/" class="color" target="_blank">查看更多&gt;</a>
+                            <a href="/news/2/" class="color" target="_blank">查看更多&gt;</a>
                         </div>
                     </div>
                 </div>
@@ -434,11 +434,11 @@
                             {% if forloop.counter|mod:"4" == 0 %}
                         <div class="right-row clf">
                         {% endif %}
-                                <a class="right-item clf" href="/dailiren/detail/{{ puser.uid }}.html" target="_blank">
+                                <a class="right-item clf" href="http://{{ puser.uid }}.site.bao361.cn/" target="_blank">
                                     <img src="{{ puser.get_img_url }}">
                                     <div class="word-wrap">
                                         <div class="word">
-                                            <h4 style="display:inline-block;width:100px;overflow:hidden;text-overflow:ellipsis; -o-text-overflow:ellipsis;white-space:nowrap">{{ puser.get_namecontent }}</h4>
+                                            <h4 style="display:inline-block;width:100px;overflow:hidden;text-overflow:ellipsis; -o-text-overflow:ellipsis;white-space:nowrap">{{ puser.get_hide_namecontent }}</h4>
                                             <p>{{ puser.short_comname }}</p>
                                         </div>
                                     </div>

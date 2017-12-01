@@ -1,10 +1,10 @@
 {% extends "base.html" %}
-{% block title %}{{ ask_obj.ask_content }}_问吧详情_保险管家{% endblock %}
+{% block title %}{{ ask_obj.ask_content }}  保险网站{% endblock %}
 {% load atm  %}
 {% load math %}
 {% load range %}
-{% block keywords %}{{ ask_obj.ask_content }} 问吧 保险管家 保险之家{% endblock %}
-{% block description %}{{ ask_obj.ask_content }}_问吧_保险管家_保险之家{% endblock %}
+{% block keywords %}{{ ask_obj.get_keywords }}  保险网站 保险平台 {% endblock %}
+{% block description %}{{ ask_obj.ask_content }}  保险网站  保险平台 {% endblock %}
 {% block css %}{% atmcss www/ask:detail %}{% endblock %}
 {% block content %}
    <div id="askDetail">
@@ -31,7 +31,7 @@
                                     <input name="next" value="/ask/detail/{{ ask_obj.askid }}.html" style="display: none">
                                 </div>
                                 <div class="ui-form-item">
-                                    <textarea id="content" name="content" placeholder="请描述您的问题，15字以上。例如：您的年龄性别、想买何种保险、预算多少..." data-widget-cid="widget-7" data-explain="">{{ last_answer_info }}</textarea>
+                                    <textarea id="content" name="content" placeholder="请描述您的答案，15字以上。" data-widget-cid="widget-7" data-explain="">{{ last_answer_info }}</textarea>
                                     <div class="ui-form-explain"></div>
                                 </div>
                                 <div class="float-layer">
@@ -78,8 +78,8 @@
                                     <a href="" class="result-info-level"></a>
                                     <a href="" class="result-info-authentication"></a>
                                     <a href="" class="ask-btn"><img src="/static/imgs/rank-item-consult-icon.png" alt="">咨询</a>
-{#                                    <span class="result-info-answer">26条回答</span>#}
-{#                                    <span class="result-info-thank">被感谢45次</span>#}
+                                    <span class="result-info-answer">{{ buff_user.ans_num }}条回答</span>
+                                    <span class="result-info-thank">被赞{{ i.good_num }}次</span>
                                 </p>
 {#                                <a href="" class="ask-btn">咨询他</a>#}
                             </div>

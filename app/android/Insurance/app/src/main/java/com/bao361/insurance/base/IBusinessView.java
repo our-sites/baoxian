@@ -8,4 +8,5 @@ public interface IBusinessView extends IView {
     boolean refresh();
 
 
+
 }

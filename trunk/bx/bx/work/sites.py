@@ -31,6 +31,8 @@ class Work_Buy(object):
                                (r"proxy/myshare", views.proxy_myshare),
                                (r"simple_upload",views.simple_upload),
                                (r"phonevalid",views.phonevalid),
+                               (r"myadvice",views.my_advice),
+                               (r"invite",views.invite),
 
             )
         return urlpatterns

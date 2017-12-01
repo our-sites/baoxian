@@ -1,6 +1,7 @@
 # from newtest.items import DmozItem
 # coding:utf-8
 import scrapy
+from scrapy.selector import HtmlXPathSelector
 from toutiao.items import InfoItem
 import re,time
 import copy
@@ -20,32 +21,40 @@ class ToutiaoSpider(scrapy.Spider):
     name = "ToutiaoSpider"
     allowed_domains = ["eastday.com"]
     start_urls = ["https://s.eastday.com"]
+    global Mysql_conf, My_cxn, My_cur
+    Mysql_conf = {
+        'host': '118.89.220.36',
+        'user': 'mha_user',
+        'passwd': 'gc895316',
+        'db': 'bx_caiji',
+        'charset': 'utf8',
+        'init_command': 'set autocommit=0',
+        'cursorclass': MySQLdb.cursors.DictCursor
+    }
+    My_cxn = MySQLdb.connect(**Mysql_conf)
+    My_cur = My_cxn.cursor()
+
     def parse(self, response):
         KW=['保险','社保','医保','工伤','公积金','养老','生育','养老金']
         for kw in KW :
             item={'source':'头条搜索','keyword':kw,'type':0,'publishtime':int(time.time()),'title':'','writer':'','content':''}
             driver = webdriver.PhantomJS("/usr/local/bin/phantomjs")
+            #driver = webdriver.PhantomJS("D:\Program Files\phantomjs.exe")
             driver.get('http://s.eastday.com/?'+urllib.urlencode({"kw":kw}))
             data = driver.page_source
             url_pattern = re.findall(r'(<a class="fl" href="//mini.eastday.com/a/\d+.html|<a class="J-share-a" href="//mini.eastday.com/a/\d+.html)',data)
             if url_pattern :
                 for url in list(set(url_pattern)):
-                    print 'http://'+url.split('href="//')[-1]
-                    yield scrapy.Request('http://'+url.split('href="//')[-1], callback=self.page_list, dont_filter=True, meta={'item': item})
+                    url='http://'+url.split('href="//')[-1]
+                    if self.check_url(url, My_cxn, My_cur):
+                        print u'该页面已爬过~~~'
+                        continue
+                    print url,'~~~1~~~2~~~3~~~'
+                    yield scrapy.Request(url, callback=self.page_list, dont_filter=True, meta={'item': item})
             else :
                 pass
             #driver.quit()
-            """
-            T = int(time.time())
-            URL="http://minivideosearch.dftoutiao.com/search_pc/searchcomplex?keywords=%s&lastcol_video=yes&splitwordsarr=&uid=%d&qid=jcjx01&softtype=toutiao&softname=DFTT&_=%d"%(kw,T,T)
-            R = requests.get(URL)
-            #D = R.text.[5:][:-1]
-            D = R.text.split('(')[-1][:-1]
-            Ulist = json.loads(D).get('zixun').get('data')
-            for d in Ulist:
-                item={'source':'头条搜索','keyword':d.get('keywords'),'type':0,'publishtime':int(str(d.get('ts'))[:-3]),'title':d.get('title',''),'writer':d.get('source',''),'content':''}
-                yield scrapy.Request(d['url'], callback=self.page_list, dont_filter=True, meta={'item': item})
-            """
+
     def page_list(self, response):
         item = response.meta['item']
         url_list=[response.url]
@@ -86,27 +95,62 @@ class ToutiaoSpider(scrapy.Spider):
         else :
             item['title'] = 'unknow'
         item['writer'] = Writer
-        item['publishtime']=int(time.mktime(time.strptime(Time, "%Y-%m-%d %H:%M")))
+        try :
+            item['publishtime']=int(time.mktime(time.strptime(Time, "%Y-%m-%d %H:%M")))
+        except :
+            try :
+                item['publishtime'] = int(time.mktime(time.strptime(Time, "%Y-%m-%d %H:%M:%S")))
+            except :
+                print Time, 'EEEEE~~~~~~EEEEEEEEEEE~~~~~~~~EEEEEE'
+
         if P.match(item['url']) :
-            print item['url'],'~~1~~~~~~2~~~~~~3~~'
-            #print item['content'],item['url']
+            print item['url'],'~~1~~~~~~2~~'
         else :
             return item
 
+    ###检测url是否已经采集过,防止重复采集###
+    def check_url(self, url, My_cxn, My_cur):
+        try:
+            My_cxn.ping()
+        except:
+            My_cxn = MySQLdb.connect(**Mysql_conf)
+            My_cur = My_cxn.cursor()
+        SQL = "SELECT id FROM zixun WHERE url='%s'"
+        My_cur.execute(SQL % url)
+        result = My_cur.fetchall()
+        if result:
+            return True
+        else:
+            return False
 
 ###采集今日头条的数据###
 class TouTiaoSpider(scrapy.Spider):
     name = "TouTiaoSpider"
     allowed_domains = ["toutiao.com"]
     start_urls = ["http://www.toutiao.com"]
+
+    global Mysql_conf, My_cxn, My_cur
+    Mysql_conf = {
+        'host': '118.89.220.36',
+        'user': 'mha_user',
+        'passwd': 'gc895316',
+        'db': 'bx_caiji',
+        'charset': 'utf8',
+        'init_command': 'set autocommit=0',
+        'cursorclass': MySQLdb.cursors.DictCursor
+    }
+    My_cxn = MySQLdb.connect(**Mysql_conf)
+    My_cur = My_cxn.cursor()
+
     def parse(self, response):
         KW=['保险','社保','医保','工伤','公积金','养老','生育','养老金']
         for kw in KW :
-            #URL="http://www.toutiao.com/search_content/?offset=0&format=json&keyword=%s&autoload=true&count=200&cur_tab=1"%kw
             URL="http://www.toutiao.com/search_content/?offset=0&format=json&autoload=true&count=100&cur_tab=1&"+urllib.urlencode({"keyword":kw})
             R = requests.get(URL)
-            #for d in R.json().get('data'):
             for d in json.loads(R.text).get('data'):
+                if self.check_url(d.get('url'), My_cxn, My_cur) :
+                    print u'该页面已爬过~~~',"URL:",d.get('url')
+                    continue
                 item={'source':'今日头条','keyword':d.get('keywords'),'type':0,'publishtime':d.get('publish_time',int(time.time())),'title':d.get('title',''),'writer':d.get('source','')}
                 if d.get('url') and 'toutiao.com/' in d.get('url'):
                     yield scrapy.Request(d.get('url'), callback=self.toutiao_spider, dont_filter=True,meta={'item': item})
@@ -116,22 +160,27 @@ class TouTiaoSpider(scrapy.Spider):
                     yield scrapy.Request(d.get('url'), callback=self.qianlong_spider, dont_filter=True,meta={'item': item})
                 else :
                     pass
+
     def toutiao_spider(self, response):
-        #p_pattern = re.compile(r"<p.*</p>|<div.*<img\sclass.*>")
         item = response.meta['item']
         item['url'] = response.url
-        #title=response.xpath('//h1[@class="article-title"]/text()').extract()[0].strip()
-        #Time=response.xpath('//div[@class="articleInfo"]/span[@class="time"]/text()').extract()[0].strip()
-        #item['publishtime']=int(time.mktime(time.strptime(Time, "%Y-%m-%d %H:%M")))
-        #Writer=response.xpath('//div[@class="articleInfo"]/span[@class="src"]/text()').extract()[0].strip()
-        info=response.xpath('//div[@class="article-content"]/div/node()').extract()
+        driver = webdriver.PhantomJS("/usr/local/bin/phantomjs")
+        #driver = webdriver.PhantomJS("D:\Program Files\phantomjs.exe")
+        driver.get(response.url)
+        data = driver.page_source
+        hxs = HtmlXPathSelector(text=data)
+        #print response.url,'~~~~~~~',response,response.body
+        #info=response.xpath('//div[@class="article-content"]/div')
+        #info=response.xpath('//html/body/div/div/div/div/div[@class="article-content"]/div')
+        info=hxs.select('//div[@class="article-box"]/div[@class="article-content"]/div/node()').extract()
+        if not info:
+            info=hxs.select('//div[@class="article-content"]/node()').extract()
         item['content'] = "".join(info)
-        #item['title'] = title
-        #item['writer'] = Writer
         if info :
             return item
         else :
-            print item['url']
+            print item['url'],'~~~Err~~~',item['title']
+
     def qianlong_spider(self, response):
         item = response.meta['item']
         item['url'] = response.url
@@ -139,6 +188,7 @@ class TouTiaoSpider(scrapy.Spider):
         item['content'] = "".join(info)
         print item['url']
         #return item
+
     def sctv_spider(self, response):
         p_pattern = re.compile(r"<p.*</p>|<div.*<img\ssrc=.*/>")
         item = response.meta['item']
@@ -152,5 +202,21 @@ class TouTiaoSpider(scrapy.Spider):
         item['content'] = "".join(Info)
         item['title'] = title
         item['writer'] = Writer
-        #print item['url']
         return item
+
+    ###检测url是否已经采集过,防止重复采集###
+    def check_url(self, url, My_cxn, My_cur):
+        if not url :
+            return True
+        try:
+            My_cxn.ping()
+        except:
+            My_cxn = MySQLdb.connect(**Mysql_conf)
+            My_cur = My_cxn.cursor()
+        SQL = "SELECT id FROM zixun WHERE url='%s'"
+        My_cur.execute(SQL % url)
+        result = My_cur.fetchall()
+        if result:
+            return True
+        else:
+            return False

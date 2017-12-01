@@ -9,7 +9,7 @@
                     <li {% if request.path|slice:":5" == "/ask/" %}class="active" {% endif %}><a href="/ask/">保险问吧</a></li>
                     <li {% if request.path|slice:":9" == "/product/" %}class="active" {% endif %}><a href="/product/">保险产品</a></li>
                     <li {% if request.path|slice:":10" == "/dailiren/" %}class="active" {% endif %}><a href="/dailiren/">保险顾问</a></li>
-                    <li {% if request.path|slice:":7" == "/zixun/" %}class="active" {% endif %}><a href="/zixun/">资讯</a></li>
+                    <li {% if request.path|slice:":7" == "/zixun/" or request.path|slice:":6" == "/news/" %}class="active" {% endif %}><a href="/news/">保险资讯</a></li>
                     <li><a href="#">VIP管家</a></li>
 
                 </ul>

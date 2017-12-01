@@ -14,6 +14,6 @@ class AllSiteMsgMiddleware(object):
             msg_object.save()
             return  msg_object
         request.send_allsite_msg=send_allsite_msg
-        request.get_allsite_msg=AllSiteMsg.objects.filter(state=0).order_by("-addtime")
+        request.get_allsite_msg=AllSiteMsg.objects.filter(state=0).order_by("-addtime")[:10]
         print "proces_allsite_msg"
 

@@ -40,9 +40,9 @@
 <meta name="description" content="{% block description %}保险管家{% endblock %}">
 {% block css %}{% endblock %}
 <style>@font-face{font-family:uc-nexus-iconfont;src:url(chrome-extension://pogijhnlcfmcppgimcaccdkmbedjkmhi/res/font_1476274416_922599.woff) format('woff'),url(chrome-extension://pogijhnlcfmcppgimcaccdkmbedjkmhi/res/font_1476274416_922599.ttf) format('truetype')}</style>
-<script type="text/javascript">
-	document.write('<script src="\/\/assets-cdn.kf5.com\/supportbox\/main.js?' + (new Date).getDay() + '" id="kf5-provide-supportBox" kf5-domain="wolover.kf5.com" charset="utf-8"><\/script>');
-</script>
+{#<script type="text/javascript">#}
+{#	document.write('<script src="\/\/assets-cdn.kf5.com\/supportbox\/main.js?' + (new Date).getDay() + '" id="kf5-provide-supportBox" kf5-domain="wolover.kf5.com" charset="utf-8"><\/script>');#}
+{#</script>#}
 </head>
 <body>
 {% include "top.html" %}
@@ -54,6 +54,16 @@
 {% include "footer.html" %}
 {% block js %}
 {% endblock %}
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4fb507679a761b71bf05f23d18ed249c";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
 <script src="//s4.cnzz.com/z_stat.php?id=1261923638&web_id=1261923638" language="JavaScript"></script>
 </body>
 </html>

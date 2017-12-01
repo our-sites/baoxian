@@ -3,7 +3,7 @@ from django.conf.urls import patterns, include, url
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
-from django.http import  HttpResponseRedirect
+from django.http import  HttpResponseRedirect,Http404,HttpResponseNotFound
 admin.autodiscover()
 from django.conf import  settings
 import  myauth
@@ -19,6 +19,8 @@ import work
 import  company
 import  app
 import  weixin_dingyuehao
+import news
+import study
 
 urlpatterns = patterns('',
     # Examples:
@@ -49,6 +51,8 @@ urlpatterns = patterns('',
        (r'^ckeditor/', include('ckeditor_uploader.urls')),
        (r"^company/",include(company.site.urls)),
        (r"^app/",include(app.site.urls)),
+       ("^news/",include(news.site.urls)),
+        ("^study/",include(study.site.urls)),
        (r"^weixin_dingyuehao/",include(weixin_dingyuehao.site.urls)),
 
 
@@ -60,6 +64,9 @@ urlpatterns = patterns('',
         ("^zixun_sitemap(\d+).xml$",views.zixun_sitemap_xml),
         ("^product_sitemap(\d+).xml$",views.product_sitemap_xml),
         ("^ask_sitemap(\d+).xml$",views.ask_sitemap_xml),
-
-                       ("^",lambda x:HttpResponseRedirect("/static/imgs/logo.png")),
+        ("^news_sitemap(\d+).xml$",views.news_sitemap_xml),
+                       ("top_roll_message_api",views.top_roll_message_api),
+                       ("^hot_dailiren_api",views.hot_dailiren_api),
+                       ("^",lambda request:\
+                           HttpResponseRedirect((request.path+"/") ) if not  request.path.endswith("/") else HttpResponseNotFound()),
 )

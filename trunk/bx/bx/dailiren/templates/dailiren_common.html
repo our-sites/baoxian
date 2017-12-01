@@ -1,13 +1,13 @@
 <div class="lively-advisers">
     <!--title-->
-    <h3>活跃顾问</h3>
+    <h3>{% if request.city %}<strong style="color: #F57723">{{ request.city }}&nbsp;</strong>{% endif %}活跃顾问</h3>
     <!--list-->
     {% with users=dailiren_common.get_hot|slice:":6" %}
         {% for user in users %}
 
                 <div class="rank-list">
                     <div class="rank-item clf">
-                        <a href="/dailiren/detail/{{ user.uid }}.html" target="_blank">
+                        <a href="http://{{ user.uid }}.site.bao361.cn" target="_blank">
                             <img src="
                                 {{ user.get_img_url }}"
                              class="rank-item-avatar">
@@ -29,7 +29,7 @@
                                             <div class="consultation-popup-content">
                                                 <div class="consultation-header clf">
                                                     <div class="adviser-info clf">
-                                                        <a href="" class="adviser-info-avatar">
+                                                        <a href="http://{{ user.uid }}.site.bao361.cn" class="adviser-info-avatar">
                                                             <img src="{{ user.get_img_url }}" alt="" style="width: 48px;height: 48px;border-radius: 24px">
                                                         </a>
                                                         <div class="adviser-info-content">
@@ -47,11 +47,12 @@
                                                     <span class="chat-online-close close" title="关闭"></span>
                                                 </div>
                                                 <div class="consultation-body">
-                                                    <h5>已有 <span>1234</span> 位客户通过保险管家获得咨询帮助</h5>
+                                                    <h5>已有 <span>1234</span> 位客户通过保险管家获得一对一咨询</h5>
 
                                                     <form class="ui-form consultation-form" action="/dailiren/add_advice" method="post">
                                                         {% csrf_token %}
                                                         <input name="next" value="{{ request.path }}" style="display:none;">
+                                                        <input name="uid" value="{{ user.uid }}" style="display:none;">
                                                         <div class="ui-form-item">
                                                             <div class="form-control clf">
                                                                 <div class="form-control-ele">

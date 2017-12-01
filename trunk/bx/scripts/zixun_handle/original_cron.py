@@ -125,7 +125,7 @@ def myjoin(base, url):
 
 def save_img(content,extname):
     img_content=content
-    a=urllib2.urlopen("http://www.bao361.cn/api/upload_img",data=urllib.urlencode({"extname":extname,"file":img_content}) ).read()
+    a=urllib2.urlopen("https://www.bao361.cn/api/upload_img",data=urllib.urlencode({"extname":extname,"file":img_content}) ).read()
     return  json.loads(a)["imgurl"]
 
 

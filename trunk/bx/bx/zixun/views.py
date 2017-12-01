@@ -11,16 +11,28 @@ from django.core.paginator import  Paginator,InvalidPage,EmptyPage
 import  json
 from django.views.decorators.csrf import  csrf_exempt
 import  traceback
+from django.conf import  settings
+from bx.decorators import mobile_browser_adaptor_by_host
+import  random
 
+@mobile_browser_adaptor_by_host(settings.M_HOST_FUN,{"zixun_index.html":"m_zixun_index.html"})
 def index(request):
     baike_info=Consult.objects.filter(type=1,status=1).order_by("-addtime")[:6]
+    baike_info=[  _ for _ in baike_info]
     anli_info=Consult.objects.filter(type=2,status=1).order_by("-addtime")[:6]
+    anli_info=[_ for _ in anli_info]
     guahua_info=Consult.objects.filter(type=3,status=1).order_by("-addtime")[:6]
+    guahua_info=[_ for _ in guahua_info]
     xinwen_info=Consult.objects.filter(type=4,status=1).order_by("-addtime")[:6]
+    xinwen_info=[_ for _ in xinwen_info]
     dongtai_info=Consult.objects.filter(type=5,status=1).order_by("-addtime")[:6]
+    dongtai_info=[_ for _ in dongtai_info]
     citiao_info=Consult.objects.filter(type=6,status=1).order_by("-addtime")[:6]
+    citiao_info=[_ for _ in citiao_info]
+    info=xinwen_info+guahua_info[:2]+baike_info+dongtai_info[:3]+citiao_info[:3]
     return  render_to_response("zixun_index.html",locals(),context_instance=RequestContext(request))
 
+@mobile_browser_adaptor_by_host(settings.M_HOST_FUN,{"zixun_index_index.html":"m_zixun_index_index.html"})
 def index_index(request,name):
     try:
         page=re.search(r"/(\d+)/",request.path).groups()[0]
@@ -47,9 +59,15 @@ def index_index(request,name):
 
     return  render_to_response("zixun_index_index.html",locals(),context_instance=RequestContext(request))
 
-
+@mobile_browser_adaptor_by_host(settings.M_HOST_FUN,{"zixun_detail.html":"m_zixun_detail.html"})
 def detail(request,zid):
-    info=Consult.objects.get(zid=int(zid))
+    info=Consult.objects.get(zid=int(zid),status=1)
+    get_info=request.GET
+    if get_info.has_key("good"):
+        info.good_num+=1
+        info.save()
+        _=json.dumps({"status":True,"message":info.good_num})
+        return  HttpResponse(_,mimetype="application/javascript")
     try:
         next_obj=Consult.objects.filter(zid__gt=zid,status=1).order_by("zid")[0]
         #next_id_obj=Consult.objects.get(zid=next_id)
@@ -88,7 +106,7 @@ def  add_xinwen(request):
         assert  content
         print title,writer,url
         _=Consult(title=title,type=4,
-                writer=writer,_from=url,content=content,status=0)
+                writer=writer,_from=url,content=content,status=0,good_num=random.randrange(1,10))
         _.save()
 
     except Exception as e :

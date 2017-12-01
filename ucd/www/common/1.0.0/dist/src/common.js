@@ -105,16 +105,27 @@ define('www/common/1.0.0:common', ['com/global/1.0.0:global', 'com/global/1.0.0:
   
   // 首先把
   // 顶部消息
-  $('.bx-rtk ul').slick({
-      dots: false,
-      infinite: true,
-      arrows: false,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      vertical: true,
-      autoplay: true,
-      autoplaySpeed: 2000
+  $.getJSON('//www.bao361.cn/top_roll_message_api',function(res) {
+      var _list = '';
+      if(res) {
+        res.forEach(function(item) {
+          _list += '<li><a href="'+item.url+'">'+item.msg+'</a></li>';
+        });
+        
+        $('.bx-rtk ul').html(_list).slick({
+            dots: false,
+            infinite: true,
+            arrows: false,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            vertical: true,
+            autoplay: true,
+            autoplaySpeed: 2000
+        });
+        
+      }
   });
+  
   
   var $win = $(window);
   $win.on('scroll resize load', function() {

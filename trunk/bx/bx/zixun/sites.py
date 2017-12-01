@@ -18,12 +18,12 @@ class ZiXun(object):
                                ("^$",views.index),
                                (r"^add_xinwen",views.add_xinwen),
                                ("^detail/(\d+)\.html",views.detail),
-                               (r"(baike)/",views.index_index),
-                               (r"(anli)/",views.index_index),
-                               (r"(dongtai)/",views.index_index),
-                               (r"(guahua)/",views.index_index),
-                               (r"(citiao)/",views.index_index),
-                               (r"(xinwen)/",views.index_index),
+                               (r"(baike)",views.index_index),
+                               (r"(anli)",views.index_index),
+                               (r"(dongtai)",views.index_index),
+                               (r"(guahua)",views.index_index),
+                               (r"(citiao)",views.index_index),
+                               (r"(xinwen)",views.index_index),
 
             )
         return urlpatterns

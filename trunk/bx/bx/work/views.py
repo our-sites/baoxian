@@ -592,3 +592,17 @@ def change_pwd(request):
 
 
     return  render_to_response("work_changepwd.html",locals(),context_instance=RequestContext(request))
+
+@login_required
+def my_advice(request):
+    from ..models import Advice
+    my_advice=Advice.objects.filter(touid=request.myuser.uid).order_by("-addtime")
+    return  render_to_response("work_myadvice.html",locals(),context_instance=RequestContext(request))
+
+
+
+@login_required
+def invite(request):
+    my_invite=UserInvite.objects.filter(parentuid=request.myuser.uid)
+    my_invite_url=UserInvite.get_user_invite_url(request.myuser)
+    return render_to_response("work_invite.html",locals(),context_instance=RequestContext(request))

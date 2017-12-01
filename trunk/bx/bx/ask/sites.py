@@ -16,6 +16,8 @@ class Ask(object):
       #      ("^%s$"%settings.LOGIN_URL.lstrip("/"),views.login),
       #      ("^%s$"%settings.LOGOUT_URL.lstrip("/"),views.logout),
                                ("^detail/(\d+).html",views.detail),
+                               ("^auto_add_ask",views.auto_add_ask),
+                               ("^auto_add_ans",views.auto_add_answer),
                                ("^",views.home)
             )
         return urlpatterns

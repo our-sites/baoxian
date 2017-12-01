@@ -4,14 +4,9 @@ __author__ = 'admin'
 # Created by admin  on 2016/10/18.
 # ---------------------------------
 from django.conf.urls import  patterns,url
-import views
-import company
-import product
-import info
-import ask
-import users
-#import custom
-from django.conf import  settings
+from  views import  *
+import  sys
+
 
 class App(object):
     def __init__(self,name="app",app_name="app"):
@@ -20,32 +15,16 @@ class App(object):
 
     def get_urls(self):
         urlpatterns = patterns('',
-            #孙银
-            ("^%s$" % settings.LOGIN_URL.lstrip("/"), views.login),
-            ("^%s$" % settings.LOGOUT_URL.lstrip("/"), views.logout),
-            (r"^register/", views.register),
-            (r"^register_valid_phone/", views.register_valid_phone),
-            (r"^register_send_sms/", views.register_send_sms),
-            (r"^forgotpwd/", views.forgotpwd),
-            (r"^forgotpwd_valid_phone", views.forgotpwd_valid_phone),
-            (r"^users/msg/", users.msg),
-            (r"^company/list/",  company.list),
-            (r"^product/lunbo/",  product.lunbo),
-            (r"^product/list/",  product.list),
-            #(r"^add/", custom.add),
-            #(r"^company/", company.add),
-            #("^$", lambda x: HttpResponseRedirect("/product/search/")),
-            #("^search/redirect/$", product.search_redirect),
-            #("^detail/", product.detail),
-            #("^search/", product.search),
-            #周绍功
-            (r"^info/lunbo/", info.lunbo),
-            (r"^info/yuanchuang/", info.yuanchuang),
-            (r"^info/duanzi/", info.duanzi),
-            (r"^info/shequ/", info.shequ),
-            (r"^info/pinglun/", info.pinglun),
-            (r"^ask/huifu/", ask.huifu),
+
+                               (r"^get_session_key$",get_session_key),
+                               (r"^meta_test",meta_test),
+                               (r"^api_gateway",api_gateway),
+                               (r"^api_document",api_document),
+
             )
+        # if getattr(sys,"bxappapi_config",None):
+        #     print sys.bxappapi_config.items()
+        #     urlpatterns+=patterns("",*sys.bxappapi_config.items())
         return urlpatterns
     @property
     def urls(self):

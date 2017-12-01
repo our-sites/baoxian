@@ -6,9 +6,14 @@
 }
 /* 左侧导航 */
 #side-nav{
+	display: block;
 	width: 192px;
 	float: left;
+	min-height: 100px;
 	margin-right: 24px;	
+}
+.slide-nav-container{
+	width: 192px;
 }
 .side-nav-head{
 	height: 48px;
@@ -25,7 +30,7 @@
 	display: block;
 	height: 32px;
 	line-height: 32px;
-	margin-left: 24px;
+	/*margin-left: 24px;*/
 	padding-left: 24px;
 	font-size: 16px;
   	font-weight: 500;	
@@ -84,6 +89,7 @@
 	width: 672px;
 	height: 120px;
 	margin-top: 24px;
+	padding: 16px 0;
 	background-color: #ffffff;
 }
 .information-news-block img{
@@ -93,7 +99,7 @@
 	float: left;
 }
 .information-news-block dl{
-	padding: 16px 24px 0;
+	padding: 0 24px;
 	float: left;
 }
 .information-news-block dt a{
@@ -138,7 +144,11 @@
 .information-news-block dd span{
 	margin: 0 6px;
 }
-
+.news-simple-intro{
+	height: 22px;
+	line-height: 22px;
+	color: #999999;
+}
 /* 右侧 */
 #information-more{
 	width: 288px;

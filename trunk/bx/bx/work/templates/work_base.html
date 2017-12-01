@@ -64,6 +64,7 @@
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
+            {% if request.get_host != "m.bao361.cn" %}
                 <li>
 
                     <a  href="/" target="_blank"><i class="fa  fa-home    fa-fw"></i> 首页</a>
@@ -133,6 +134,15 @@
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>
+            {% else %}
+{#                <li>#}
+{#                    <a  href="/" target="_blank"><i class="fa  fa-home    fa-fw"></i> 首页</a>#}
+{#                </li>#}
+{#                <li>#}
+{#                    <a  href="/ask/" target="_blank"><i class="fa   fa-question-circle    fa-fw"></i> 问吧</a>#}
+{#                </li>#}
+            {% endif %}
+
                 <!-- /.dropdown -->
             </ul>
             <!-- /.navbar-top-links -->
@@ -157,7 +167,7 @@
                             </div>
                         </li>
                         <li>
-                            <a href="/work/" {% if request.path == "/work/"  %}class="active" {% endif  %}><i class="fa fa-home fa-fw"></i> 首页</a>
+                            <a href="/" {% if request.path == "/work/"  %}class="active" {% endif  %}><i class="fa fa-home fa-fw"></i> 首页</a>
                         </li>
                         <li>
                             <a href="/work/phonevalid/" {% if request.path == '/work/phonevalid/' %}class="active" {% endif %}
@@ -175,9 +185,11 @@
 {#                        <li>#}
 {#                            <a href="/work/mydingzhi/" {% if request.path == "/work/mydingzhi/"  %}class="active" {% endif  %}><i class="fa fa-magic  fa-fw"></i> 我的定制</a>#}
 {#                        </li>#}
+                    {% if request.get_host != "m.bao361.cn" %}
                         <li>
                             <a href="/work/all_msg/" {% if request.path == "/work/all_msg/"  %}class="active" {% endif  %}><i class="fa fa-envelope fa-fw"></i> 系统消息</a>
                         </li>
+                    {% endif %}
                         <li {% if "/work/my/" in  request.path %}class="active" {% endif %}>
                             <a href="#"><i class="fa fa-gears fa-fw"></i> 个人设置<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -191,7 +203,8 @@
                             <!-- /.nav-second-level -->
                         </li>
                     {% if request.myuser.is_proxy %}
-                        <li {% if "/work/proxy/" in  request.path %}class="active" {% endif %}>
+{#                        <li {% if "/work/proxy/" in  request.path %}class="active" {% endif %}>#}
+                          <li class="active">
                             <a href="#" style="color: #C34747"><i class="fa fa-thumbs-o-up fa-fw"></i> 展业中心<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -204,7 +217,10 @@
                                     <a href="/work/proxy/myshare/" {% if request.path == "/work/proxy/myshare/"  %}class="active" {% endif  %} style="color: #C34747">签单分享</a>
                                 </li>
                                 <li>
-                                    <a href="/dailiren/detail/{{ request.myuser.uid }}.html"  target="_blank" style="color: #C34747">我的主页</a>
+                                    <a href="/work/proxy/myadvice/" {% if request.path == "/work/proxy/myadvice/"  %}class="active" {% endif  %} style="color: #C34747">客户咨询</a>
+                                </li>
+                                <li>
+                                    <a href="http://{{ request.myuser.uid }}.site.bao361.cn/"  target="_blank" style="color: #C34747">我的主页</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -214,8 +230,13 @@
                             <a href="/work/startproxy/"  style="color: #C34747"><i class="glyphicon glyphicon-fire glyphicon-fw"></i> 开启展业工具</a>
                         </li>
                     {% endif %}
+                    {% if request.get_host != "m.bao361.cn" %}
                         <li>
                             <a href="/work/change_pwd/" {% if request.path == "/work/change_pwd/"  %}class="active" {% endif  %}><i class="fa fa-lock fa-fw"></i>修改密码</a>
+                        </li>
+                    {% endif %}
+                        <li>
+                            <a href="/work/invite/" {% if request.path == "/work/invite/"  %}class="active" {% endif  %}><i class="fa fa-users fa-fw"></i>邀请注册</a>
                         </li>
                         <li>
                             <a href="#myModal" data-toggle="modal"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
@@ -230,7 +251,7 @@
         <div>
 
                             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" style="width: 400px">
+                                <div class="modal-dialog" style="width:{% if request.get_host == "m.bao361.cn" %}95%{% else %}400px{% endif %}">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

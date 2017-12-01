@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Scrapy settings for toutiao project
 #
 # For simplicity, this file contains only settings considered important or
@@ -24,13 +23,18 @@ FILES_STORE = '/opt/20170204'
 DEFAULT_REQUEST_HEADERS = {
      'accept': 'image/webp,*/*;q=0.8',
      'accept-language': 'zh-CN,zh;q=0.8',
-#     #'referer': 'http://www.23wx.com/',
-     'referer': 'http://member.vobao.com',
+     'referer': 'http://www.toutiao.com/',
      'user-agent': "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.6 (KHTML, like Gecko) Chrome/20.0.1092.0 Safari/536.6",
 }
+
 DOWNLOADER_MIDDLEWARES = {
-     'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware':None,
+#    'baidutieba.rotate_ipagent.ProxyMiddleware': 100,
+    'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware': 350,
+    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware':None,
+    'toutiao.middleware.RotateUserAgentMiddleware' :400,
+    'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware':543,
  }
+
 LOG_LEVEL='INFO'
 # DOWNLOADER_MIDDLEWARES = {
 #     'scrapy.contrib.downloadermiddleware.httpproxy.HttpProxyMiddleware': 110,

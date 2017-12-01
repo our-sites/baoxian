@@ -47,10 +47,13 @@
                         条件：
                     </div>
                     <div class="content">
+                        <a href="/dailiren/search/0-0/" class="selected-item">全部</a>
                         {% if c_id == 0 %}
-                        <a href="javascript:;" class="selected-item">全部</a>
                         {% else %}
-                        <a href="javascript:;" class="selected-item">{{ c_obj.shortname }}</a>
+                        <a href="/dailiren/search/0-0/" class="selected-item">{{ c_obj.shortname }}</a>
+                        {% endif %}
+                        {% if city_id %}
+                            <a href="/dailiren/search/0-{{ c_id }}/" class="selected-item">{{ city_obj.areaname }}</a>
                         {% endif %}
                     </div>
                 </div>
@@ -68,13 +71,13 @@
                     <div class="adviser-item clf">
                             <!--头像-->
                             <div class="adviser-item-resume-img">
-                                <a href="/dailiren/detail/{{ myuser.uid }}.html" target="_blank"><img src="{{ myuser.get_img_url }}"></a>
+                                <a href="http://{{ myuser.uid }}.site.bao361.cn" target="_blank"><img src="{{ myuser.get_img_url }}"></a>
 
                             </div>
                             <!--资料-->
                             <div class="adviser-item-resume-word">
                                 <h4>
-                                    <a href="/dailiren/detail/{{ myuser.uid }}.html" target="_blank">{{ myuser.get_namecontent }}</a>
+                                    <a href="http://{{ myuser.uid }}.site.bao361.cn" target="_blank">{{ myuser.get_namecontent }}</a>
                                     <span class="idf idf-level">Lv2</span>
                                     {% if myuser.phone %}<span class="idf idf-authentication">已认证</span>{% endif %}
                                     {% if myuser.proxy_workyear %}<span class="idf idf-exprience">从业{{ myuser.proxy_workyear }}年</span>{% endif %}
@@ -85,7 +88,7 @@
                                     <span>解答问题：</span><b>{{ i.ans_num }}</b>条
                                 </p>
                                 <p>
-                                    <span>获得点赞：</span><b>11</b>条
+                                    <span>获得点赞：</span><b>{{ i.good_num }}</b>条
                                 </p>
                                 <p>
                                     <span>所属险企：</span>{{ i.get_comcontent }}
@@ -111,7 +114,7 @@
                                 <img src="{{ com_obj.img.url }}" class="adviser-item-company-logo">
                                 <a href="#" class="adviser-item-consult i-want-to-ask">
                                     <img src="/static/imgs/consult-icon.png">
-                                    <span>我要咨询</span>
+                                    <span>立即咨询</span>
                                     <script class="chat-box-wrap" type="text/html">
                                         <div class="consultation-popup">
                                             <div class="consultation-popup-content">

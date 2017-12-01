@@ -1,13 +1,23 @@
 #coding:utf-8
 # Django settings for bx project.
 import  os
-DEBUG = True
+import  json
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
-)
 
+ADMINS = (
+     ('Admin', 'zhoukunpeng@gongchang.com'),
+     ("Admin","18749679769@163.com")
+)
+SERVER_EMAIL="zhoukunpeng@gongchang.com"
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'   #发送邮件的账户密码等配置
+EMAIL_HOST="smtp.qq.com"
+EMAIL_PORT=25
+EMAIL_HOST_USER="zhoukunpeng@gongchang.com"
+EMAIL_HOST_PASSWORD="Gc123456"
+
+M_HOST_FUN=lambda x:x.startswith("m.") or x.startswith("192.")
 MANAGERS = ADMINS
 
 DATABASES = {
@@ -20,6 +30,7 @@ DATABASES = {
         'PORT': '3306',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
+REDIS={"host":"127.0.0.1","port":6379,"db":1}
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.4/ref/settings/#allowed-hosts
@@ -60,6 +71,9 @@ USE_TZ = False
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
 MEDIA_ROOT = os.path.join(os.path.dirname(__file__), '..', 'media').replace('\\','/')
+with open(os.path.join(os.path.dirname(__file__), 'areabuff.txt'),"r") as _f:
+    AREA_BUFF=json.loads(_f.read())
+    AREA_BUFF=dict([(int(i[0]),i[1]) for i in AREA_BUFF.items()])
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -113,9 +127,17 @@ MIDDLEWARE_CLASSES = (
     "bx.ip_middleware.IpMiddleware",  # ip info
     "bx.myauth.custom_middleware.self_auth_middleware" , # self auth,
     "bx.allsite_msg_middleware.AllSiteMsgMiddleware",  #all site msg
+    "bx.mobile_adaptor_middleware.MobileAdaptorMiddleware",
+    "bx.hostregex_middleware.MultiHostMiddleware",
+    "bx.cros_middleware.AppCrosMiddleware",
 )
 
 ROOT_URLCONF = 'bx.urls'
+
+HOST_MIDDLEWARE_URLCONF_MAP = {
+    # Control Panel
+    r".+?.site.bao361.cn": "bx.sites_urls",
+}
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'bx.wsgi.application'
@@ -146,6 +168,8 @@ INSTALLED_APPS = (
     "bx.company",
     "bx.app",
     "bx.weixin_dingyuehao",   # weixin dingyuehao
+    "bx.sites",
+    "bx.news",
 )
 
 # A sample logging configuration. The only tangible logging
@@ -155,27 +179,44 @@ INSTALLED_APPS = (
 # more details on how to customize your logging configuration.
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': False,
+    'disable_existing_loggers': True,
+    'formatters':{
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
     'filters': {
         'require_debug_false': {
             '()': 'django.utils.log.RequireDebugFalse'
         }
     },
     'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
-        }
+        # 'mail_admins': {
+        #     'level': 'ERROR',
+        #     "filters":[],
+        #     'class': 'django.utils.log.AdminEmailHandler',
+        #     'include_html':True
+        # },
+        'console':{
+            'level':'DEBUG',
+            'class':'logging.StreamHandler',
+        },
+
     },
     'loggers': {
-        'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
+        # 'django.request': {
+        #     'handlers': ['mail_admins'],
+        #     'level': 'ERROR',
+        #     'propagate': True,
+        # },
+        'django.db.backends': {
+            'handlers': ['console'],
             'propagate': True,
+            'level':'DEBUG',
         },
     }
 }
+
 
 TEMPLATE_CONTEXT_PROCESSORS = ('django.core.context_processors.debug',
                                'django.core.context_processors.i18n',
@@ -213,3 +254,4 @@ INSTALLED_APPS=tuple(list(INSTALLED_APPS)+["ckeditor_uploader","ckeditor"])
 CKEDITOR_JQUERY_URL = '/static/ckeditor/jquery.min.js'
 CKEDITOR_BROWSE_SHOW_DIRS=True
 CKEDITOR_UPLOAD_SLUGIFY_FILENAME=True
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 7 * 999               # Age of cookie, in seconds (default: 2 weeks).

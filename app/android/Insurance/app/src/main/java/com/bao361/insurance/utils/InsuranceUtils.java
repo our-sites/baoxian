@@ -1,5 +1,7 @@
 package com.bao361.insurance.utils;
 
+import android.content.Context;
+
 import java.util.IdentityHashMap;
 import java.util.Map;
 
@@ -8,14 +10,26 @@ import java.util.Map;
  */
 public class InsuranceUtils {
 
-    public static String WeatherUrl = "http://v.juhe.cn/weather/index?cityname=%E5%8C%97%E4%BA%AC&dtype=&format=&key=177038539bb5e9c91c8a1443145d3765";
-    public static String WeatherUrlByIp = "http://v.juhe.cn/weather/ip?ip=58.215.185.154&dtype=json&format=&key=177038539bb5e9c91c8a1443145d3765";
-
-
     public static Map<String, String> getCommonHeader() {
 
         IdentityHashMap<String, String> header = new IdentityHashMap<String, String>();
 
         return header;
+    }
+
+    /**
+     * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
+     */
+    public static int dip2px(Context context, float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
+    }
+
+    /**
+     * 根据手机的分辨率从 px(像素) 的单位 转成为 dp
+     */
+    public static int px2dip(Context context, float pxValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (pxValue / scale + 0.5f);
     }
 }
