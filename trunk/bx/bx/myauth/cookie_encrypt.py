@@ -47,7 +47,15 @@ def  phpcookie_decode(text,key):
     except:
         return ''
 def phpcookie_encode(text,key):
+    if isinstance(text,unicode):
+        text = text.encode("utf-8")
     return  cookie_encode(text,key)
+
+if __name__ == "__main__":
+    import sys
+    text = u'3063\tweixin\u7528\u6237Od\t0.0.0.0\t1511437646'
+    key	= 'gc895316'
+    print phpcookie_encode(text,key)
 
 
 

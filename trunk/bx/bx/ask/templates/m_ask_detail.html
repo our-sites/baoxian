@@ -1,8 +1,8 @@
 {% extends "m_base.html" %}
 {% block header_title %}问吧详情{% endblock %}
-{% block title %}{{ ask_obj.ask_content }}-保险管家{% endblock %}
-{% block keywords %}{{ ask_obj.get_keywords }} 保险问吧 保险管家{% endblock %}
-{% block description %}{{ ask_obj.ask_content }} 保险问吧 保险管家{% endblock %}
+{% block title %}保险费计算_保险在线咨询{{ ask_obj.ask_content }}_保险管家{% endblock %}
+{% block keywords %}保险费计算_保险在线咨询{{ ask_obj.get_keywords }} 保险管家{% endblock %}
+{% block description %}保险费计算_保险在线咨询{{ ask_obj.ask_content }} 保险管家{% endblock %}
 {% load math %}
 {% load range %}
 {% block content %}
@@ -264,7 +264,7 @@
 {#{% block footer %}#}
 {#{% endblock %}#}
 {% block customjs %}
-    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+    <script src="/static/jquery.validater.min.js"></script>
     <script>
         jQuery(".ans_good").click(function(){
             var _=jQuery(this);
@@ -291,9 +291,27 @@
 
             }, msec)
         }
+    function isWeiXin(){
+        var ua = window.navigator.userAgent.toLowerCase();
+        if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    function jump_to_path(path){
+        if(window.location.pathname==path){
+            if(isWeiXin())
+                    window.location.href=window.location.href+"?_rand="+Math.random;
+            else
+                window.location.reload();
+        }
+        else
+            window.location.href=path;
+    }
         function direct_302(address, msec) {
             setTimeout(function () {
-                window.location.href = address
+                jump_to_path(address);
             }, msec);
         }
         function process_response(data) {

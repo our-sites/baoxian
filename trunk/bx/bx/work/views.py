@@ -61,6 +61,7 @@ def phonevalid(request):
         assert  code==_numer
         session.delete("work_phone_valid")
         request.myuser.phone=phone
+        request.myuser.vphone=1
         request.myuser.save()
         return HttpResponseRedirect("/work/phonevalid/?have_post=1")
 
@@ -546,7 +547,6 @@ def img(request):
             if img_file.size>2000000:
                 error_msg="文件过大，文件大小必须在2M以内！"
         if not error_msg:
-            img_file=get_thumbnail(img_file,125,145)
             request.myuser.imgurl=img_file
             request.myuser.save()
             success_msg="头像修改成功"

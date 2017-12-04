@@ -2,7 +2,15 @@
 # Django settings for bx project.
 import  os
 import  json
-DEBUG = False
+import socket
+
+if socket.gethostname() == 'VM_52_179_centos':
+    REDIS={"host":"127.0.0.1","port":6379,"db":1,"password":"gc895316"}
+    DEBUG = False
+else:
+    REDIS={"host":"118.89.220.36","port":6379,"db":1,"password":"gc895316"}
+    DEBUG = True
+
 TEMPLATE_DEBUG = DEBUG
 
 
@@ -17,6 +25,14 @@ EMAIL_PORT=25
 EMAIL_HOST_USER="zhoukunpeng@gongchang.com"
 EMAIL_HOST_PASSWORD="Gc123456"
 
+# upyun设置
+# 此bucket的账号在18749679769@163.com名下
+
+UPYUN_BUCKETNAME = 'manman-1234'
+UPYUN_USERNAME = 'mm123456'
+UPYUN_PASSWORD = 'mm123456'
+UPYUN_BASE_URL = "https://upyun.bao361.cn"
+
 M_HOST_FUN=lambda x:x.startswith("m.") or x.startswith("192.")
 MANAGERS = ADMINS
 
@@ -30,7 +46,7 @@ DATABASES = {
         'PORT': '3306',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
-REDIS={"host":"127.0.0.1","port":6379,"db":1}
+
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.4/ref/settings/#allowed-hosts

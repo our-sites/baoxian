@@ -1,10 +1,10 @@
 {% extends "base.html" %}
-{% block title %}{{ ask_obj.ask_content }}  保险网站{% endblock %}
+{% block title %}保险费计算_保险在线咨询_{{ ask_obj.ask_content }}_保险管家{% endblock %}
 {% load atm  %}
 {% load math %}
 {% load range %}
-{% block keywords %}{{ ask_obj.get_keywords }}  保险网站 保险平台 {% endblock %}
-{% block description %}{{ ask_obj.ask_content }}  保险网站  保险平台 {% endblock %}
+{% block keywords %}保险费计算 保险在线咨询 {{ ask_obj.get_keywords }}  保险管家 {% endblock %}
+{% block description %}保险费计算 保险在线咨询 {{ ask_obj.ask_content }}  保险管家 {% endblock %}
 {% block css %}{% atmcss www/ask:detail %}{% endblock %}
 {% block content %}
    <div id="askDetail">
@@ -18,7 +18,7 @@
         <div class="clf">
             <div class="ask-list-left">
             <div class="ask-box clf">
-                        <div class="answer-icon-big"></div>
+                        <div class="ask-icon-big"></div>
                         <div class="fr">
                             <h2>
                             {{ ask_obj.ask_content }}

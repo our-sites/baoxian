@@ -1,8 +1,8 @@
 {% extends "m_base.html" %}
 {% block header_title %}保险问吧{% endblock %}
-{% block title %}保险问吧-保险管家{% endblock %}
-{% block keywords %}保险问吧 保险管家{% endblock %}
-{% block description %}保险问吧 保险管家{% endblock %}
+{% block title %}保险在线咨询_保险论坛_保险管家{% endblock %}
+{% block keywords %}保险在线咨询_保险论坛_保险管家{% endblock %}
+{% block description %}保险在线咨询_保险论坛_保险管家{% endblock %}
 {% load math %}
 {% load range %}
 {% block content %}
@@ -204,7 +204,7 @@
 {#{% block footer %}#}
 {#{% endblock %}#}
 {% block customjs %}
-    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+    <script src="/static/jquery.validater.min.js"></script>
     <script>
         jQuery.validator.addMethod("isMobile", function (value, element) {
             var length = value.length;
@@ -220,9 +220,27 @@
 
             }, msec)
         }
+    function isWeiXin(){
+        var ua = window.navigator.userAgent.toLowerCase();
+        if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+            return true;
+        }else{
+            return false;
+        }
+    }
+        function jump_to_path(path){
+            if(window.location.pathname==path){
+                if(isWeiXin())
+                        window.location.href=window.location.href+"?_rand="+Math.random;
+                else
+                    window.location.reload();
+            }
+            else
+                window.location.href=path;
+        }
         function direct_302(address, msec) {
             setTimeout(function () {
-                window.location.href = address
+                jump_to_path(address);
             }, msec);
         }
         function process_response(data) {

@@ -42,12 +42,17 @@ urlpatterns = patterns('',
     url(r"api/",include(api.site.urls)),
        (r"^$",views.home),
         (r"^about",views.about),
+                       (r"testpost",views.testpost),
+
+
+
        (r"^ask/",include(ask.site.urls)),
        (r"^dingzhi/",include(dingzhi.site.urls)),
        (r"^zixun/",include(zixun.site.urls)),
        (r"^product/",include(product.site.urls)),
        (r"^dailiren/",include(dailiren.site.urls)),
        (r"^work/",include(work.site.urls)),
+       (r"^ckeditor/upload/$","bx.manage.views.ck_upload"),  #ck upload
        (r'^ckeditor/', include('ckeditor_uploader.urls')),
        (r"^company/",include(company.site.urls)),
        (r"^app/",include(app.site.urls)),

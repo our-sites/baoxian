@@ -364,7 +364,7 @@ def register(request,parentid=None):
                 return HttpResponse(data,mimetype="application/javascript")
             else:
                 user=MyUser(username=str(phone),phone=phone,salt=salt,password=password,state=1,is_proxy=0,ip=request.ip,
-                            province_id=request.province_id,city_id=request.city_id)
+                            province_id=request.province_id,city_id=request.city_id,vphone=1)
                 user.save()
                 if parentid:
                     try:
@@ -377,7 +377,8 @@ def register(request,parentid=None):
                                                                  "duration":3000},"data":{}}
                 timestamp=int(time.time())
                 data=json.dumps(data)
-                send_dayysms_regsuccess(phone)
+                #send_dayysms_regsuccess(phone)
+                user.send_success_reged_sms()
                 user.send_message("注册成功", "你已成功注册，请妥善保存密码")
                 result= HttpResponse(data,mimetype="application/javascript")
                 request.myuser=user
@@ -429,7 +430,7 @@ def register(request,parentid=None):
             else:
                 user=MyUser(username=str(phone),phone=phone,salt=salt,
                             password=password,state=1,is_proxy=1,ip=request.ip,
-                            province_id=request.province_id,city_id=request.city_id)
+                            province_id=request.province_id,city_id=request.city_id,vphone=1)
                 user.save()
                 if parentid:
                     try:
@@ -442,7 +443,8 @@ def register(request,parentid=None):
                                                                  "duration":900},"data":{}}
                 timestamp=int(time.time())
                 data=json.dumps(data)
-                send_dayysms_regsuccess(phone)
+                #send_dayysms_regsuccess(phone)
+                user.send_success_reged_sms()
                 user.send_message("注册成功","你已成功注册，请妥善保存密码")
                 result= HttpResponse(data,mimetype="application/javascript")
                 request.myuser=user

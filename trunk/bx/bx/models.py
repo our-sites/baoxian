@@ -16,6 +16,7 @@ import  HTMLParser
 from utils import  seo
 import pyquery
 import jieba.posseg as pseg
+from storages import UpyunStorage
 
 def filter_tags(htmlstr):
     s=re.sub("<[^<>]+>",'',htmlstr)
@@ -203,7 +204,7 @@ class News(models.Model):
 
     def get_content_imgs(self):
         _=pyquery.PyQuery("<div>"+self.content+"</div>")
-        return [  pyquery.PyQuery(i).attr("src")  for i in   _("img[src^='/media/']")]
+        return [  pyquery.PyQuery(i).attr("src")  for i in   _("img[src]")]
 
 
 class NewsCate(models.Model):
@@ -230,7 +231,7 @@ class Company(models.Model):
     cid=models.AutoField(primary_key=True)
     comname=models.CharField(max_length=100,verbose_name="企业名",unique=True)
     shortname=models.CharField(max_length=100,verbose_name="企业名简写")
-    img=models.ImageField(max_length=200,upload_to="company_img",verbose_name="企业图片")
+    img=models.ImageField(max_length=200,upload_to="/media/company_img",verbose_name="企业图片",storage=UpyunStorage())
     product_weight=models.IntegerField(default=0)   #权重
     dailiren_weight=models.IntegerField(default=0)    #权重
     content=models.TextField()  #企业介绍
@@ -252,7 +253,7 @@ class UserType(models.Model):
     id=models.AutoField(primary_key=True)
     type_name=models.CharField(max_length=50,verbose_name="类型名")
     end_age=models.PositiveIntegerField(default=0,verbose_name="结束年龄")
-    img=models.ImageField(max_length=200,upload_to="usertype_img",verbose_name="图片")
+    img=models.ImageField(max_length=200,upload_to="/media/usertype_img",verbose_name="图片",storage=UpyunStorage())
     class Meta:
         db_table="bx_usertype_tab"
         verbose_name="保险人群"
@@ -288,7 +289,7 @@ class Product(models.Model):
     pro_desc_reason=RichTextUploadingField(verbose_name="投保理由")
     pro_desc_duty=RichTextUploadingField(verbose_name="责任免除")
     from_url=models.CharField(max_length=200,verbose_name="采集来源",unique=True)
-    img=models.ImageField(max_length=200,upload_to="pro_imgs",verbose_name="产品图片")
+    img=models.ImageField(max_length=200,upload_to="/media/pro_imgs",verbose_name="产品图片",storage=UpyunStorage())
     meta=models.CharField(max_length=300,verbose_name="额外信息",default="",blank=True)
     addtime=models.IntegerField(default=0,verbose_name="创建时间戳")
     keywords=models.CharField(default="",max_length=100)
@@ -348,7 +349,7 @@ class Product(models.Model):
 
 class ProductImgCache(models.Model):
     id=models.AutoField(primary_key=True)
-    img=models.ImageField(max_length=200,upload_to="pro_imgs",verbose_name="产品图片")
+    img=models.ImageField(max_length=200,upload_to="/media/pro_imgs",verbose_name="产品图片",storage=UpyunStorage())
 
     class Meta:
         db_table="bx_product_img_cache"
@@ -596,7 +597,7 @@ class AddDegree(models.Model):
 
 
 class Add(models.Model):
-    "add model"
+    "增员 model"
     aid=models.AutoField(primary_key=True)
     uid=models.PositiveIntegerField(default=0)
     title=models.CharField(max_length=100,default='') # title
@@ -638,24 +639,26 @@ class Add(models.Model):
 
 class Advice(models.Model):
     "咨询,一般指一对一咨询 "
-    iid=models.AutoField(primary_key=True)
-    uid=models.PositiveIntegerField(default=0)
-    name=models.CharField(max_length=20,default='')
-    phone=models.PositiveIntegerField(default=0)
-    content=models.CharField(max_length=300,default='')
-    addtime=models.PositiveIntegerField(default=lambda:int(time.time()))
-    ip=models.CharField(max_length=50,default='')
-    province_id=models.PositiveIntegerField(default=0)
-    city_id=models.PositiveIntegerField(default=0)
-    touid=models.PositiveIntegerField(default=0,db_column="to_uid")
+    iid = models.AutoField(primary_key=True)
+    uid = models.PositiveIntegerField(default=0)  #uid为 0代表非登录用户   uid>0 代表是已登录用户
+    name = models.CharField(max_length=20,default='')
+    phone = models.PositiveIntegerField(default=0)
+    content = models.CharField(max_length=300,default='')
+    addtime = models.PositiveIntegerField(default=lambda:int(time.time()))
+    ip = models.CharField(max_length=50,default='')
+    province_id = models.PositiveIntegerField(default=0)
+    city_id = models.PositiveIntegerField(default=0)
+    touid = models.PositiveIntegerField(default=0,db_column="to_uid")
+    is_replyed = models.PositiveSmallIntegerField(default=0)  #是否已回复   1 已回复 0未回复
+
     class Meta:
         db_table="bx_advice"
 
     def get_date_time(self):
         return  datetime.datetime.fromtimestamp(self.addtime).strftime("%Y%m%d %H:%M:%S")
 
-    def save(self, force_insert=False, force_update=False, using=None):
-        result=models.Model.save(self,force_insert,force_update,using)
+    def send_success_add_sms(self):
+        "发送创建成功短信"
         from utils import  sms
         from myauth.models import MyUser
         sms.send_advice_addsuccess(self.phone)
@@ -666,7 +669,33 @@ class Advice(models.Model):
             pass
         else:
             sms.send_advice_received(str(_user.phone),str(self.phone))
-        return  result
+
+    def add_reply(self,content):
+        _ = AdviceReply(iid=self.iid,uid=self.touid,touid=self.uid,content=content)
+        _.save()
+        self.is_replyed = 1
+        self.save()
+        return True
+
+    def get_by_user(self):
+        from myauth.models import MyUser
+        if self.uid:
+            return MyUser.objects.get(uid=self.uid)
+        else:
+            return None
+
+
+class AdviceReply(models.Model):
+    "咨询的回复"
+    id = models.AutoField(primary_key=True)
+    iid = models.PositiveIntegerField(default=0)
+    uid = models.PositiveIntegerField(default=0)
+    touid = models.PositiveIntegerField(default=0)
+    content = models.TextField(default='')
+    addtime = models.PositiveIntegerField(default=lambda:int(time.time()))
+
+    class Meta:
+        db_table = "bx_advice_reply"
 
 # class Statis(models.Model):
 #     sid=models.AutoField(primary_key=True)

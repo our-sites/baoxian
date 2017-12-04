@@ -137,6 +137,7 @@ def add_adivce(request):
             _=Advice(phone=phone,content=text,ip=request.ip,province_id=request.province_id,
                      city_id=request.city_id,name=name)
             _.save()
+            _.send_success_add_sms()
             if request.province or request.city:
                 request.send_allsite_msg("来自%s的用户提交了一份保险咨询"%(request.province+request.city))
             if not request.GET.has_key("site"):

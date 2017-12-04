@@ -44,6 +44,11 @@ class FieldError(Exception):
     def __unicode__(self):
         return unicode("$fielderror"+json.dumps({"field_name":self.field_name,"message":self.message}))
 
+class ReturnValue(Exception):
+    def __init__(self,data,message=""):
+        self.data=data
+        self.message=message
+
 def app_api(login_required=False):
     def _app_api(views):
         @csrf_exempt
@@ -58,10 +63,6 @@ def app_api(login_required=False):
             else:
                 engine = import_module("bx.app.session_engine.db")
                 request.appsession=engine.SessionStore(md5(session_info))
-                #print "appsession_key",request.appsession.session_key,request.appsession._session
-                #request.appsession["test"]="11111"
-                #print request.appsession["test"]
-                #print "ttt",request.appsession.session_key
                 try:
                     value=request.appsession.get("uid")
                     uid=int(value)
@@ -90,7 +91,11 @@ def app_api(login_required=False):
                         _result= JsonResponse({"errorCode":500,"message":str(e),"formError":
                             {},"data":None})
                     else:
-                        _result= JsonResponse({"errorCode":0,"message":"","formError":{},"data":result})
+                        message=""
+                        if isinstance(result,ReturnValue):
+                            message=result.message
+                            result=result.data
+                        _result= JsonResponse({"errorCode":0,"message":message,"formError":{},"data":result})
                     try:
                         modified = request.appsession.modified
                         empty = request.appsession.is_empty()

@@ -18,11 +18,26 @@ import  json
 import decimal
 import  traceback
 import  urllib
-
+from django.views.decorators.csrf import csrf_exempt
+import string
 
 @staff_member_required
 def home(request):
-    return  HttpResponseRedirect('/manage/user/buy/')
+    return  HttpResponseRedirect('/manage/product/add/')
+
+@csrf_exempt
+def ck_upload(request):
+    file = request.FILES["upload"]
+    sha = request.GET.get("CKEditorFuncNum")
+    from ..storages import UpyunStorage
+    file_name = file.name
+    file_content = file.read()
+    path = "/"+ str(int(time.time())) + "".join(random.sample(string.lowercase,4)) + "/" + file_name
+    url = UpyunStorage.simple_upload(path,file_content)
+    data =  '''<script type='text/javascript'>
+            window.parent.CKEDITOR.tools.callFunction(%s, '%s'); //upyun
+        </script> '''%(sha,url)
+    return HttpResponse(data,content_type="text/html")
 
 @staff_member_required
 def user_buy(request):

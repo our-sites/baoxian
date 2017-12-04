@@ -18,33 +18,29 @@ import random
 from gcutils.encrypt import  md5
 import  time
 import  traceback
+import upyun
 
 @csrf_exempt
 def upload_img(request):
     print request.method,len(request.body)
-    postinfo=request.POST
     try:
-        _file=urlparse.parse_qs(request.body).get("file")[0]
-        extname=request.POST["extname"]
-        extname=extname.split("?")[0]
-        finger=md5(_file)
-        filename=finger+str(extname)
-        _flag=int(finger,16)
-        try:
-            os.mkdir(os.path.join(settings.MEDIA_ROOT,"img",str(_flag%100)))
-        except:
-            pass
-        path=os.path.join(settings.MEDIA_ROOT,"img",str(_flag%100),filename)
-        _u=open(path,"wb")
-        _u.write(_file)
-        _u.flush()
-        _u.close()
-        return HttpResponse(json.dumps({"status":True,"filename":filename,"imgurl":"/media/img/"+str(_flag%100)+"/"+filename}),
+        _file = urlparse.parse_qs(request.body).get("file")[0]
+        extname = request.POST["extname"]
+        extname = extname.split("?")[0]
+        def up_to_upyum(key, value):
+            up_conn = upyun.UpYun(settings.UPYUN_BUCKETNAME, settings.UPYUN_USERNAME, settings.UPYUN_PASSWORD)
+            up_headers = {}
+            up_conn.put(key, value, checksum=True, headers=up_headers)
+            return settings.UPYUN_BASE_URL + key
+        filename = md5(str(time.time())+str(random.random()))+extname
+        image_key = "/image_upload_api/"+filename
+        url = up_to_upyum(image_key,_file)
+        return HttpResponse(json.dumps({"status":True,"filename":filename,"imgurl":url}),
                             mimetype="application/javascript")
     except Exception as e :
         traceback.print_exc()
         print e.message
-        return  HttpResponse(json.dumps({"status":False,"message":e.message}),mimetype="application/javascript")
+        return HttpResponse(json.dumps({"status":False,"message":e.message}),mimetype="application/javascript")
 
 def area_list(request):
     getinfo=request.GET
