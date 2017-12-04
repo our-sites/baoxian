@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+{% load atm %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>保险代理人_{{ user.real_name }}_{{ user.comname }}_保险管家</title>
+<meta name="keywords" content="保险代理人_{{ user.real_name }}_{{ user.comname }}_保险管家">
+<meta name="description" content="保险代理人_{{ user.real_name }}_{{ user.comname }}_保险管家">
+    {% atmcss www/site:site %}
+</head>
+
+<body>
+    <!-- header -->
+    <div id="com-header">
+        <div class="com-header-content clf">
+            <!-- logo -->
+            <a href="https://www.bao361.cn/" class="header-logo-wrap">
+                <img class="header-logo" src="/static/testdir/logo.png" />
+            </a>
+            <!-- 头部导航 -->
+            <ul class="header-nav clf">
+                <li><a href="#theme-banner">首页</a></li>
+                <li><a href="#anchor-person">个人简介</a></li>
+                <li><a href="#anchor-company">公司简介</a></li>
+                <li><a href="#anchor-pro">保险产品</a></li>
+                <li><a href="#anchor-ask">保险问答</a></li>
+                <li><a href="#point-case">资讯案例</a></li>
+                <li><a href="#point-business">签单增员</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="top-tips-wrap"></div>
+
+    <!-- banner -->
+    <div id="theme-banner"></div>
+
+    <!-- 保险服务人员基本介绍 -->
+    <div id="personnel-intro" class="clf">
+        <img class="personnel-img" src="{{ user.get_img_url }}"  style="width: 128px;height: 128px;border-radius: 50%"/>
+        <div class="personnel-intro-list">
+            <div class="personnel-intro-title clf">
+                <h4>{{ user.get_namecontent }}</h4>
+                <span class="bg-yellow">Lv2</span>
+                <span class="bg-blue">已认证</span>
+                <span class="bg-green">从业{{ user.proxy_workyear }}年</span>
+            </div>
+            <div class="personnel-intro-item clf">
+                <i class="icon-compay"></i>
+                <p>所在公司：</p>
+                <p>{{ user.comname }}</p>
+            </div>
+            <div class="personnel-intro-item clf">
+                <i class="icon-mark"></i>
+                <p>所在地区：</p>
+                <p>{{ user.get_province_city_info }}</p>
+            </div>
+            <div class="personnel-intro-item clf">
+                <i class="icon-sort"></i>
+                <p>擅长险种：</p>
+                <span>人寿险</span>
+                <span>养老险</span>
+                <span>重疾险</span>
+            </div>
+        </div>
+        <dl class="goto-mini-shop">
+            <dt>
+			<img src="{{ user.get_img_url }}"  style="width: 128px;height: 128px"/>
+		</dt>
+            <dd>扫码进入我的微站</dd>
+        </dl>
+    </div>
+
+    <!-- 主要内容 -->
+    <div class="site-main clf">
+        <div class="site-main-fl fl">
+            <!-- 个人简介  -->
+            <div class="bx-intro-modal personnel-simple-intro-modal" id="anchor-person">
+                <div class="bx-intro-modal-title">
+                    <h3>个人简介</h3>
+                </div>
+                <div class="bx-intro-main" style="min-height: 217px">
+                    <p>{% if  user.proxy_myad %}{{ user.proxy_myad }}
+                    {% else %}
+                        我叫{{ user.realname }}. 我在{{ user.comname }} 欢迎大家联系我.
+                    {% endif %}</p>
+                    </div>
+            </div>
+            <!-- 公司简介 -->
+            <div class="bx-intro-modal company-intro-modal" id="anchor-company">
+                <div class="bx-intro-modal-title">
+                    <h3>公司简介</h3>
+                </div>
+                <div class="bx-intro-main" style="min-height: 231px">
+    <p>{{ user.comcontent }}</p>
+                </div>
+            </div>
+            <!-- 保险产品 -->
+            <div class="bx-intro-modal insurance-pro-modal" id="anchor-pro">
+                <div class="bx-intro-modal-title">
+                    <h3>保险产品</h3>
+                    <a href="https://www.bao361.cn/product/" class="more-info">更多</a>
+                </div>
+                <div class="bx-intro-main clf">
+                    {% for product in products|slice:":2" %}
+                    <div class="insurance-pro-block">
+                        <div class="insurance-pro-intro clf">
+                            <a href="https://www.bao361.cn/product/detail/{{ product.pid }}.html"><img src="{{ product.img.url }}" style="width: 144px;height: 144px" /></a>
+                            <dl>
+                                <dt>{{ product.pro_name }}</dt>
+                                <dd>
+                                    <span>投保年龄：</span>
+                                    <p>{{ product.insurance_agelimit }}</p>
+                                </dd>
+                                <dd>
+                                    <span>保障期限：</span>
+                                    <p>{{ product.insurance_timelimit }} </p>
+                                </dd>
+                                <dd>
+                                    <span>缴费方式：</span>
+                                    <p>{{ product.insurance_paytype }}</p>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="insurance-pro-special">产品特色：{{ product.bx_feature }}</div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+            <!-- 保险问答 -->
+            <div class="bx-intro-modal insurance-qa-modal" id="anchor-ask">
+                <div class="bx-intro-modal-title">
+                    <h3>保险问答</h3>
+                    <a href="https://www.bao361.cn/ask/" class="more-info">更多</a>
+                </div>
+                <div class="bx-intro-main" style="height: 264px">
+                {% if my_ans_ask.count %}
+                    {% for i in my_ans_ask|slice:":3" %}
+                    <dl>
+                        <dt>
+						<p
+                    style="width: 700px;
+                        overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;"><a href="https://www.bao361.cn/ask/detail/{{ i.askid }}.html">{{ i.ask_content }}</a></p>
+						<span>{{ i.get_date }}</span>
+					</dt>
+                        <dd>{{ i.self_content }}</dd>
+                    </dl>
+                    {% endfor %}
+                {% else %}
+                    {% for i in asks_withans|slice:":3" %}
+                    <dl>
+                        <dt>
+						<p
+                    style="width: 700px;
+                        overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;"><a href="https://www.bao361.cn/ask/detail/{{ i.askid }}.html"
+                    >{{ i.ask_content }}</a></p>
+						<span>{{ i.get_date }}</span>
+					</dt>
+                        <dd>{{ i.get_first_ans.ans_content }}</dd>
+                    </dl>
+                    {% endfor %}
+                {% endif %}
+
+                </div>
+            </div>
+            <!-- 咨询&案例 -->
+            <div class="info-case-block clf" id="anchor-case">
+                <!--保险资讯-->
+                <div class="bx-intro-modal information-case-modal">
+                    <div class="bx-intro-modal-title">
+                        <h3>保险资讯</h3>
+                        <a href="https://www.bao361.cn/zixun/xinwen/" class="more-info">更多</a>
+                    </div>
+                    <div class="bx-intro-main">
+                        {% for  news in xinwen_info|slice:":6" %}
+                        <p class="info-case-item clf">
+                            <i></i>
+                            <a href="https://www.bao361.cn/zixun/detail/{{ news.zid }}.html">{{ news.title }}</a>
+                            <span>{{ i.get_date }}</span>
+                        </p>
+                        {% endfor %}
+                    </div>
+                </div>
+                <!--保险案例-->
+                <div class="bx-intro-modal safe-case-modal">
+                    <div class="bx-intro-modal-title">
+                        <h3>保险案例</h3>
+                        <a href="https://www.bao361.cn/zixun/anli/" class="more-info">更多</a>
+                    </div>
+                    <div class="bx-intro-main">
+                        {% for anli in anli_info|slice:":6" %}
+                        <p class="info-case-item clf">
+                            <i></i>
+                            <a href="https://www.bao361.cn/zixun/detail/{{ anli.zid }}.html">{{ anli.title }}</a>
+                            <span>{{ i.get_date }}</span>
+                        </p>
+                        {% endfor %}
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="site-main-fr fr">
+            <!-- 认证成就 -->
+            <div class="bx-intro-modal approve-modal">
+                <div class="bx-intro-modal-title">
+                    <h3>认证成就</h3>
+                </div>
+                <div class="bx-intro-main">
+                    <div class="approve-info-item clf">
+                        <i class="icon-approve"></i>
+                        <p>{{ user.comname }}</p>
+                    </div>
+                    <div class="approve-info-item clf">
+                        <i class="icon-linke"></i>
+                        <p>获得<span>{{ user.good_num }}</span>个赞</p>
+                    </div>
+                    <div class="approve-info-item clf">
+                        <i class="icon-question-gray"></i>
+                        <p>解答<span>{{ user.ans_num }}</span>个问题</p>
+                    </div>
+                    <div class="approve-info-item clf">
+                        <i class="icon-bill"></i>
+                        <p>签单<span>{{ my_shares.count }}</span>单</p>
+                    </div>
+                    <p class="personnel-license-item" style="margin-top: 12px;">保险销售执业证号：{{ user.proxy_certifinum|slice:":10" }}****</p>
+                    <p class="personnel-license-item">保险代理资格证号：{{ user.proxy_practicenum|slice:":10" }}****</p>
+                </div>
+            </div>
+            <!-- 视频了解 -->
+            <div class="bx-intro-modal video-find-modal">
+                <div class="bx-intro-modal-title">
+                    <h3>视频介绍</h3>
+                </div>
+                <div class="bx-intro-main">
+                    <embed align="middle" height="180" width="240" type="application/x-shockwave-flash" src="//static.gcimg.net/work_v3/video/1.0.0/playercase0.0.1.swf?playerurl=http://player.youku.com/player.php/sid/{% if not user.video_id %}XMjU1MjYzNDA5Mg=={% else %}{{ user.video_id }}{% endif %}/v.swf">
+                    <dl>
+                        <dt>{{ user.comname }}</dt>
+                        <dd>视频介绍</dd>
+                    </dl>
+                </div>
+            </div>
+            <!-- 预约咨询 -->
+            <div class="bx-intro-modal advisory-modal">
+                <div class="bx-intro-modal-title">
+                    <h3>量身订制</h3>
+                </div>
+                <div class="bx-intro-main">
+                    <form action="/dingzhi/add/?site=xx" method="post">
+                        {% csrf_token %}
+                        <input type="text" placeholder="称呼" class="full-inp" name="name" />
+                        <input type="text" placeholder="手机" class="full-inp" name="cellphone" />
+                        <input type="submit" value="免费预约咨询" class="full-sub" />
+                    </form>
+                    <div class="has-ask-box">
+                        <ul>
+                            {% for dingzhi in dingzhis|slice:":10" %}
+                            <li>恭喜<span>{{ dingzhi.realname }}</span>提交预约服务</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <!-- 立即提问  -->
+            <div class="bx-intro-modal ask-question-modal">
+                <div class="bx-intro-modal-title">
+                    <h3>预约一对一咨询</h3>
+                </div>
+                <div class="bx-intro-main">
+                    <form action="/add_advice" method="post">
+                        {% csrf_token %}
+                        <input style="display: none" name="uid" value="{{ user.uid }}">
+                        <input type="text" placeholder="称呼" class="full-inp" name="name" />
+                        <input type="text" placeholder="手机" class="full-inp" name="cellphone" />
+                        <textarea class="full-textarea" placeholder="问题" name="text"></textarea>
+                        <input type="submit" value="立即提交疑问获得免费解答" class="full-sub" />
+                    </form>
+                    <p class="ask-question-show"><span>{{ advices.count }}</span>客户预约了一对一咨询</p>
+                </div>
+            </div>
+            <!-- 签单增员 -->
+            <div class="bx-intro-modal bill-add-modal" id="anchor-business">
+                <div class="bx-intro-modal-title">
+                    <h3>签单增员</h3>
+                </div>
+                <div class="bx-intro-main" style="height: 240px">
+
+                    <div class="bill-add-item clf">
+                        <i class="icon-win"></i>
+                        <span>签单：</span>
+                        <p>保险管家推广增员</p>
+                    </div>
+                    <div class="bill-add-item clf">
+                        <i class="icon-add"></i>
+                        <span>增员：</span>
+                        <p>通过保险管家微信咨询...</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {% include "footer.html" %}
+{% atmjs www/site:site %}
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4fb507679a761b71bf05f23d18ed249c";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</body>
+
+</html>

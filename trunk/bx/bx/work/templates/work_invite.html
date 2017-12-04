@@ -1,0 +1,65 @@
+{% extends "work_base.html" %}
+{% block content %}
+    {% load math %}
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header hd"> 邀请注册</h3>
+            </div>
+
+        </div>
+        <div class="row">
+            <form style="padding-left: 15px">
+                <span class="label label-info">我的邀请url:</span>
+                <div class="form-group" style="padding-top: 10px;width: 400px">
+                    <input type="text" class="form-control" value="{{ my_invite_url|safe }}" readonly>
+                </div>
+
+            </form>
+        </div>
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="chat-panel panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-users fa-fw"></i>被我邀请注册的用户
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body" style="height: auto;min-height:550px ">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>用户名</th>
+                                    <th>注册时间</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                {% for invite in my_invite %}
+                                <tr>
+                                    <td>{{ invite.id }}</td>
+                                    <td>{{ invite.get_uid_user.get_hide_namecontent }}</td>
+                                    <td>{{ invite.get_date_time }}</td>
+                                </tr>
+                                {% endfor %}
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <!-- /.panel-body -->
+
+                    <!-- /.panel-footer -->
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+{% endblock %}

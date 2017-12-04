@@ -1,0 +1,56 @@
+{% extends "work_base.html" %}
+{% block content %}
+    {% load math %}
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header hd"> 客户咨询</h3>
+            </div>
+
+        </div>
+         <div class="row">
+             <div class="col-lg-7">
+                <div class="chat-panel panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-comments fa-fw"></i>
+
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" style="height: auto;min-height:550px ">
+                            <ul class="chat">
+                                {% for advice in my_advice %}
+                                <li class="left clearfix" >
+
+                                    <div class="chat-body clearfix" style="padding-left: 5px;margin-left: 5px">
+                                        <div class="header">
+                                            <strong class="primary-font">{% if advice.name %}{{ advice.name }}{% else %}匿名**{% endif %}</strong>
+                                            <small class="pull-right text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i> {{ advice.get_date_time }}
+                                            </small>
+                                            <small class="pull-right text-muted">
+                                                <i class="fa fa-phone fa-fw"></i> {{ advice.phone }}&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </small>
+                                        </div>
+                                        <p>
+{{ advice.content }}                                        </p>
+                                    </div>
+                                </li>
+
+                            {% endfor %}
+
+                            </ul>
+
+                        </div>
+                        <!-- /.panel-body -->
+
+                        <!-- /.panel-footer -->
+                    </div>
+             </div>
+
+        </div>
+
+
+
+    </div>
+
+{% endblock %}

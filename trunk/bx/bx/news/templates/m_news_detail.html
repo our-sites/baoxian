@@ -1,0 +1,113 @@
+{% extends "m_base.html" %}
+{% block header_title %}保险资讯{% endblock %}
+{% block title %}
+    {{ info.title }}_{{ info.get_cate2.catename }}_保险管家
+{% endblock %}
+{% block keywords %}{{ info.keywords }} {{ info.get_cate2.catename }} 保险管家{% endblock %}
+{% block description %}{{ info.get_simple_content|slice:":100" }}_保险管家{% endblock %}
+
+{% load math %}
+{% load range %}
+{% load thumb %}
+{% block content %}
+
+    <div class="row row-content">
+    <div class="chat-panel panel panel-info" style="height: auto;margin-bottom: 0px;">
+        <div class="panel-heading">
+            <i class="fa fa-fire fa-fw"></i> 资讯详情
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body" style="height: auto;">
+            <div class="row row-content" style="margin-top: 2px;padding-bottom: 10px ;border-bottom: 1px solid #eee">
+
+                <div style="width:80%;text-align: center;margin-left: 10%;font-size: 16px;margin-bottom: 10px;">
+                    <strong>{{ info.title }}</strong>
+
+                </div>
+                <div style="width:80%;text-align: center;margin-left: 10%;font-size: 13px;margin-bottom: 10px;">
+                    <em>{{ info.writer }}</em>&nbsp;&nbsp;{{ info.get_date }}
+
+                </div>
+                <div style="width: 100%;">
+                    <div style="ppadding-left: 8px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;">
+                        <a href="/zixun/detail/{{ info.zid }}.html"><span>{{ i.title }}</span></a>
+                    </div>
+                    <div style="width: 100%;height: auto" class="product-detail-content">
+                        {{ info.content|safe }}
+
+                    </div>
+
+                </div>
+                <div style="width: 100%;">
+                    <div style="background: #f1f1f1;padding: 2px 3px;font-size: 13px;line-height: 25px;color: #666;margin: 0 0px;border-radius: 5px;">
+                        <p >保险管家网关于版权的免责声明：</p>
+                        <p>1.凡本网站注明 来源"保险管家网"的作品均受著作权保护，版权属于本网站，转账请注明出处。违反上述声明者，本网站有权追究法律责任</p>
+                        <p>2.凡本网站中注明来源非保险管家网的作品， 均转载自网络， 目的在于传播更多信息，并不代表本网赞同其观点和对其真实性负责，如果涉及侵权，请及时联系我们(news@bao361.cn)，我们会尽快核实并删除。</p>
+                    </div>
+                </div>
+
+                                                <div style="height: 45px;width: 100%;padding-top: 8px;">
+                                                    <div style="display:inline-block;padding-top: 12px;vertical-align: top ;"><span class="label label-default" style="vertical-align: top;font-size: 14px;">分享：</span></div>
+<div class="bdsharebuttonbox" style="display: inline-block;"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+                    </div>
+
+
+                <div style="text-align:center;padding-top:10px;">
+                    <button type="button" class="btn btn-outline btn-primary" style="padding: 4px 13px;" id="good_num_button" onclick="good()">
+                       <i class="fa fa-heart fa-fw"></i> 点赞 &nbsp;<span id="good_num">{{ info.good_num }}</span>
+                    </button>
+                    <script>
+                        function good(){
+                            jQuery.getJSON("?good=1",function(data){
+                                jQuery("#good_num").text(data.message);
+                                jQuery("#good_num_button").removeClass("btn-outline");
+                            })
+                        }
+                    </script>
+                </div>
+                <div id="SOHUCS" sid="{{ info.nid }}"></div>
+                <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
+                <script type="text/javascript">
+                window.changyan.api.config({
+                appid: 'cysFpBdpH',
+                conf: 'prod_b62f090c0a833a65b399a605ebb28635'
+                });
+                </script>
+                </div>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+{#    <a href="/zixun/" class="btn btn-default btn-block">查看更多</a>#}
+</div>
+    <div class="row row-content">
+    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i>相关推荐
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="list-group">
+
+                                {% for i  in hot_infos|slice:":5" %}
+                                <a href="/zixun/detail/{{ i.zid }}.html" class="list-group-item" style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap" target="_blank">
+                                     &nbsp;&nbsp; {{ i.title }}
+                                </a>
+                                {% endfor %}
+
+
+
+                            </div>
+                            <!-- /.list-group -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+    </div>
+
+
+
+    {% include "m_dailiren_common.html" %}
+{% endblock %}
+{#{% block footer %}#}
+{#{% endblock %}#}

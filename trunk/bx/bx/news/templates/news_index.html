@@ -1,0 +1,124 @@
+{% extends "news_base.html" %}
+{% block title %}
+    {% if not tag and not cateobj  %}
+    保险新闻_保险网_保险管家
+    {% else %}
+        保险新闻_{% if tag %}{{ tag }}{% else %}{{ cateobj.catename }}{% endif %}_保险网_保险管家
+    {% endif %}
+{% endblock %}
+{% block keywords %}
+    {% if not tag and not cateobj %}
+         保险新闻_保险网_保险管家
+    {% else %}
+    保险新闻_{% if tag %}{{ tag }}{% else %}{{ cateobj.catename }}{% endif %}_保险网_保险管家
+    {% endif %}
+{% endblock %}
+{% block description %}
+    {% if not tag and not cateobj %}
+         保险新闻_保险网_保险管家
+    {% else %}
+    保险新闻_{% if tag %}{{ tag }}{% else %}{{ cateobj.catename }}{% endif %}_保险网_保险管家
+    {% endif %}
+{% endblock %}
+{% load range %}
+{% block content %}
+    <div id="informationContent">
+        <div class="grid clf">
+            <!-- 左侧导航 -->
+            <div id="side-nav">
+                <div class="slide-nav-container fn-fixed">
+                    <div class="side-nav-head"></div>
+                    {% for cate1 in cate1_list %}
+                    <div class="side-nav-item">
+                        <a href="/news/{{ cate1.cateid }}/" class="side-nav-item-tit">{{ cate1.catename }}</a>
+                        <div class="side-nav-list clf">
+                            {% for j in cate1.get_childrens %}
+                            <a href="/news/{{ j.cateid }}/">{{ j.catename }}</a>
+                                {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+            <div id="infomation-main">
+                <a href="/" class="information-news-first">
+                    <img src="/static/testdir/QQ20170918-183431.png" width="672" height="288">
+                    <span></span>
+                </a>
+                <div class="bx-crubms" style="padding-top: 10px;padding-bottom: 0px">
+                    <a href="/news/">保险新闻</a>
+                    {% if tag or cateobj %}&gt;
+                    <a href="#">{% if tag %}{{ tag }}{% else %}{{ cateobj.catename }}{% endif %}</a>{% endif %}
+                </div>
+                {% for i in info  %}
+                    {% with imgs=i.get_content_imgs %}
+                <div class="information-news-block clf">
+                    {% if imgs %}
+                    <img src="{{ imgs.0 }}" width="168" height="120">
+                    {% endif %}
+                    <dl>
+                        <dt>
+    					<a href="/news/detail/{{ i.nid }}.html" {% if not imgs %}style="width:600px " {% endif %}>{{ i.title }}</a>
+    				</dt>
+                    <dd class="news-simple-intro" style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;{% if imgs %}width:440px{% else %} width:550px{% endif %}">{{ i.get_simple_content|slice:":80" }}</dd>
+                        <dd class="clf">
+                            {% for tag in i.get_tags %}
+                            <a href="/news/tag/{{ tag|urlencode }}/">{{ tag }}</a>
+                            {% endfor %}
+
+                            <p>{{ i.see_num }}浏览 <span>|</span>{{ i.good_num }}赞<span>|</span>{{ i.get_datetimeinfo_before_content }}</p>
+                        </dd>
+                    </dl>
+                </div>
+                    {% endwith %}
+                {% endfor %}
+
+            {% if info.paginator.num_pages >= 2 %}
+                <div class="bx-list-flip clf">
+                    {% if info.has_previous %}
+                    <a href="{{ non_page_url }}{{ info.previous_page_number }}.html" class="bx-list-flip-btn prev">上一页</a>
+                        {% endif %}
+                    {% for t in info.number|near:3 %}
+                        {% if t > 0 and t <= info.paginator.num_pages %}
+                    <a href="{{ non_page_url }}{{ t }}.html" class="bx-list-flip-btn number {% if t == info.number %}active{% endif %}">{{ t }}</a>
+                        {% endif %}
+                    {% endfor %}
+                {% if info.has_next %}
+                    <a href="{{ non_page_url }}{{ info.next_page_number }}.html" class="bx-list-flip-btn next">下一页</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+            </div>
+            <div id="information-more">
+{#                <a href="" class="information-news-important">#}
+{#                    <img src="//i.epetbar.com/2015-09/18/10/973dc713c7477860dc670af4fa3c3b3d.jpg" width="288" height="196">#}
+{#                    <span>劳动者自愿不缴社会保险 解除劳动合同能否主张经济补偿金？</span>#}
+{#                </a>#}
+                <!-- 热点新闻 -->
+                <div class="information-hot-news">
+
+                    <div class="information-hot-head">24小时热闻</div>
+                    {% for i in info|slice:":4" %}
+                    <div class="hot-news-item clf">
+                        {% with imgs=i.get_content_imgs %}
+                            {% if imgs %}
+                        <img src="{{ imgs.0 }}" width="72" height="64">
+                            {% endif %}
+                        <dl {% if not imgs %} style="width: 230px" {% endif %}>
+                            <dt><a href="/news/detail/{{ i.nid }}.html">{{ i.title }}</a></dt>
+                            <dd>{{ i.get_datetimeinfo_before_content }}</dd>
+                        </dl>
+                    {% endwith %}
+                    </div>
+                    {% endfor %}
+
+                </div>
+                <!-- 活跃顾问 -->
+                <!-- 活跃顾问 -->
+                {% include "dailiren_common.html" %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
