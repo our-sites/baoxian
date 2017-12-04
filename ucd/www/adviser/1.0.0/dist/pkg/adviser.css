@@ -258,3 +258,21 @@
 #adviserList .adviser-item-consult:hover {
     border-color: #42bad0;
 }
+/* 增加细分选择 */
+#adviserList .adviser-condition .single {
+    width: 120px;
+    margin-right: 24px;
+}
+#adviserList .adviser-condition .content{
+    width: 1050px;
+}
+#adviserList .adviser-condition .subsrction .single-grapheme {
+    margin-right: 24px;
+}
+.subsrction .single-grapheme{
+    display: inline-block;
+    width: 120px;
+}
+.sub-content{
+    margin-left: 148px;
+}
